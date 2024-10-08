@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     Vector3 PlayerPosition;
+
+    private float _horizontal;
+    private float _vertical;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +19,24 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _horizontal = _vertical = 0;
+
+        // à⁄ìÆó Ç∆âÒì]ó ÇãÅÇﬂÇÈ
+        _horizontal = Input.GetAxis("Horizontal");
+        _vertical = Input.GetAxis("Vertical");
 
 
-        
+        if (_horizontal == 0 && _vertical == 0) return;
+
+
+        Vector3 position=this.transform.position;
+
+        position.x += _horizontal;
+        position.z += _vertical;
+
+
+
+
+
     }
 }
