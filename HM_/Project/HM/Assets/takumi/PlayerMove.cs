@@ -13,11 +13,19 @@ public class PlayerMove : MonoBehaviour
     //プレイヤーの角度
     [SerializeField] private float _angle;
 
+
+    //角度の差
+    [SerializeField] private float _angleDifference;
+
     private PlayerStatus _status;
 
+    [SerializeField] private CameraManager _manager;
 
     public Vector3 pos;
-    // Start is called before the first frame update
+   
+    //角度を与える関数
+    public void SetAngle(float angle) {  _angle = angle; }
+
     void Start()
     {
         //座標を今の座標に更新するプログラム
@@ -27,15 +35,23 @@ public class PlayerMove : MonoBehaviour
 
         _status = this.GetComponent<PlayerStatus>();
 
+        _angle = _manager.Get_CameraPositionAngle() * 180 / 3.14f;
     }
 
-
+    private bool Flag = false;
     // Update is called once per frame
     void Update()
     {
 
         pos = Vector3.zero;
         _horizontal = _vertical = 0;
+
+
+        Vector3 Angles = this.transform.eulerAngles;
+
+        Angles.y = _angle;
+        this.transform.eulerAngles = Angles;
+
 
         // 移動量と回転量を求める
         _horizontal = Input.GetAxis("Horizontal");
@@ -45,26 +61,20 @@ public class PlayerMove : MonoBehaviour
         if (_horizontal == 0 && _vertical == 0) return;
 
 
-        _angle -= (_horizontal) * 0.1f;
+        _angle += (_horizontal) * 0.1f;
 
-        Vector3 Angles = this.transform.eulerAngles;
+        _manager.Add_CameraPositionAngle((_horizontal * 0.1f)*3.14f/180);
 
-        Angles.y = _angle;
-        this.transform.eulerAngles = Angles;
-
-
-        pos=this.transform.position;
+        pos = this.transform.position;
 
 
         //プレイヤーの移動
-        //pos.x += ( _vertical * _status.GetSpeed());
-        pos.z += (_vertical * _status.GetSpeed());
+        pos.x += Mathf.Sin(_angle*3.14f/180) *( _vertical * _status.GetSpeed());
+        pos.z += Mathf.Cos(_angle * 3.14f / 180) *(_vertical * _status.GetSpeed());
 
 
 
         this.transform.position=pos;
-
-
 
     }
 }
