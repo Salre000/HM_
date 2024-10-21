@@ -12,13 +12,16 @@ public class PlayerStatus : MonoBehaviour
    　float MAXHP = 0.0f;
 
     //プレイヤーの速度
-    [SerializeField] float Speed = 0.0f;
+    [SerializeField] float Speed = 0.1f;
 
     //プレイヤーの回転の速度の変数
     [SerializeField] float RotateSpeed = 0.0f;
 
     //最大HPを返す関数
     public float GetMaxHP() { return MAXHP; }
+
+    //プレイヤーのスピードを返す関数関数
+    public float GetSpeed() { return Speed; }
 
     // Start is called before the first frame update
     void Start()
