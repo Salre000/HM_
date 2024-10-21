@@ -24,6 +24,7 @@ public class PlayerManager : MonoBehaviour
 
             _playerMove.SetAngle(_cameraManager.Get_CameraPositionAngle() * 180 / 3.14f);
 
+            _cameraManager.SetCameraPosition();
 
         }
 
