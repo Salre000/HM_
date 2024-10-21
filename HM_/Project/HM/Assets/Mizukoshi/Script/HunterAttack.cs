@@ -15,7 +15,7 @@ public class HunterAttack : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -23,18 +23,11 @@ public class HunterAttack : MonoBehaviour
         }
         // アニメーションの状態を取得
         AnimatorStateInfo animationState = animator.GetCurrentAnimatorStateInfo(0);
-        if (animationState.IsName("Attack"))
+        //animationState.normalizedTime;
+        if (animationState.normalizedTime == 1)
         {
-            Debug.Log("終了");
-        }
-        else
-        {
-            if (attack)
-            {
-                Debug.Log("終了");
-                animator.SetBool("Attack", false);
-                attack = animator.GetBool("Attack");
-            }
+            animator.SetBool("Attack", false);
+            attack = false;
         }
     }
 
