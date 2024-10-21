@@ -13,7 +13,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private GameObject _player;
 
     //プレイヤーとカメラの距離
-    [SerializeField] private float _range;
+   [SerializeField] private float _range=100;
 
     [SerializeField] private float _horizontal;
     [SerializeField] private float _vertical;
@@ -28,13 +28,20 @@ public class CameraManager : MonoBehaviour
     {
 
         _player = GameObject.FindGameObjectWithTag("Player");
+        Vector3 _position = this.transform.position;
+
+        _position.x = _player.transform.position.x + Mathf.Sin(_cameraPositionAngle) * _range;
+        _position.z = _player.transform.position.z + Mathf.Cos(_cameraPositionAngle) * _range;
+        _position.y = _player.transform.position.y+20;
+
+        this.transform.position = _position;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 cameraOffset = new Vector3(0, 5, 0);
-        transform.LookAt(_player.transform.position+cameraOffset);
+        transform.LookAt(_player.transform.position+Vector3.up*10);
 
         // 移動量と回転量を求める
         _horizontal = Input.GetAxis("HorizontalR");
@@ -49,12 +56,12 @@ public class CameraManager : MonoBehaviour
         _range += (_vertical)*0.1f;
 
         //レンジの最小値を設定する
-        if (_range < 50.0f) { _range = 50.0f; }
+        if (_range < 20.0f) { _range = 20.0f; }
 
         //レンジの最大値を設定する
         if (_range > 100) {  _range = 100; }
 
-
+        _position.y=_player.transform.position.y+20+(_range/10);
 
         _position.x = _player.transform.position.x + Mathf.Sin(_cameraPositionAngle) * _range;
         _position.z = _player.transform.position.z + Mathf.Cos(_cameraPositionAngle) * _range;
@@ -65,6 +72,19 @@ public class CameraManager : MonoBehaviour
 
 
 
+
+
+    }
+
+    public  void SetCameraPosition() 
+    {
+
+        Vector3 _position = this.transform.position;
+
+        _position.x = _player.transform.position.x + Mathf.Sin(_cameraPositionAngle) * _range;
+        _position.z = _player.transform.position.z + Mathf.Cos(_cameraPositionAngle) * _range;
+
+        this.transform.position = _position;
 
 
     }
