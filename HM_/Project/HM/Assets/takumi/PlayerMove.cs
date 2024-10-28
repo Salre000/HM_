@@ -26,6 +26,7 @@ public class PlayerMove : MonoBehaviour
     //角度を与える関数
     public void SetAngle(float angle) {  _angle = angle; }
 
+    private PlayerAnime _anime;
     void Start()
     {
         //座標を今の座標に更新するプログラム
@@ -36,6 +37,8 @@ public class PlayerMove : MonoBehaviour
         _status = this.GetComponent<PlayerStatus>();
 
         _angle = _manager.Get_CameraPositionAngle() * 180 / 3.14f;
+    
+        _anime=this.gameObject.GetComponent<PlayerAnime>();
     }
 
     private bool Flag = false;
@@ -57,10 +60,10 @@ public class PlayerMove : MonoBehaviour
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = Input.GetAxis("Vertical");
 
-
+        _anime.SetMoveFlag(Flag);
         if (_horizontal == 0 && _vertical == 0) return;
 
-
+        _anime.SetMoveFlag(true);  
         _angle += (_horizontal) * 0.1f;
 
         _manager.Add_CameraPositionAngle((_horizontal * 0.1f)*3.14f/180);

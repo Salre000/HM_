@@ -29,7 +29,13 @@ public class HitTestMove : MonoBehaviour
 
             Sphere[i].radius = 1.0f;
 
-            Sphere[i].center = GameObjects[i].transform.position-this.transform.position;
+            Vector3 Game = GameObjects[i].transform.position;
+
+            Game *= 10.0f;
+
+            Game.y*=0.1f;
+
+            Sphere[i].center =  Game-this.transform.position;
 
         }
 

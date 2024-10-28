@@ -9,12 +9,24 @@ public class HItTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _status = this.gameObject.GetComponent<PlayerStatus>();
+        _status = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>();
     }
 
-    // Update is called once per frame
-    void Update()
+    //‰½‚©‚É“–‚½‚Á‚½
+    //(ƒgƒŠƒK[“¯m‚àŠl“¾‚µ‚Ä‚­‚ê‚é)
+    private void OnTriggerEnter(Collider other)
     {
-        
+        Debug.Log("“–‚½‚Á‚½");
+
+        //“G‚ÌUŒ‚‚ğó‚¯‚½
+        if (other.gameObject.tag == "EnemyAttack")
+        {
+
+            //“G‚ÌUŒ‚—Í‚ğ—˜—p‚µ‚½‹““®
+            Damage _damage=other.GetComponent<Damage>();
+
+            //HP‚ğŒ¸‚ç‚·
+            _status.Damage(_damage.GetDamage());
+        }
     }
 }

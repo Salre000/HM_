@@ -13,10 +13,13 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private GameObject _player;
 
     //プレイヤーとカメラの距離
-   [SerializeField] private float _range=100;
+   [SerializeField] private float _range=10;
 
     [SerializeField] private float _horizontal;
     [SerializeField] private float _vertical;
+
+    [SerializeField] private const float _minRange=2.0f;
+    [SerializeField] private const float _maxRange=10.0f;
 
     [SerializeField]private float _cameraPositionAngle = 3.14f;
 
@@ -56,10 +59,10 @@ public class CameraManager : MonoBehaviour
         _range += (_vertical)*0.1f;
 
         //レンジの最小値を設定する
-        if (_range < 20.0f) { _range = 3f; }
+        if (_range < _minRange) { _range = _minRange; }
 
         //レンジの最大値を設定する
-        if (_range > 100) {  _range = 15; }
+        if (_range > _maxRange) {  _range = _maxRange; }
 
         _position.y = _player.transform.position.y + 2;// +(_range/10);
 
