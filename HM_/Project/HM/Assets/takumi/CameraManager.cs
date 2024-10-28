@@ -41,7 +41,7 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(_player.transform.position+Vector3.up*10);
+        transform.LookAt(_player.transform.position+Vector3.up);
 
         // 移動量と回転量を求める
         _horizontal = Input.GetAxis("HorizontalR");
@@ -56,12 +56,12 @@ public class CameraManager : MonoBehaviour
         _range += (_vertical)*0.1f;
 
         //レンジの最小値を設定する
-        if (_range < 20.0f) { _range = 20.0f; }
+        if (_range < 20.0f) { _range = 3f; }
 
         //レンジの最大値を設定する
-        if (_range > 100) {  _range = 100; }
+        if (_range > 100) {  _range = 15; }
 
-        _position.y=_player.transform.position.y+20+(_range/10);
+        _position.y = _player.transform.position.y + 2;// +(_range/10);
 
         _position.x = _player.transform.position.x + Mathf.Sin(_cameraPositionAngle) * _range;
         _position.z = _player.transform.position.z + Mathf.Cos(_cameraPositionAngle) * _range;
