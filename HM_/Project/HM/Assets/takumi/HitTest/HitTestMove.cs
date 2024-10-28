@@ -12,11 +12,16 @@ public class HitTestMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
+
         GameObjects[index] =GameObject.Find("Bone.024");index++;
         GameObjects[index] =GameObject.Find("Bone.019");index++;
         GameObjects[index] =GameObject.Find("Bone.003");index++;
         GameObjects[index] =GameObject.Find("Bone.022");index++;
         GameObjects[index]=GameObject.Find("Bone.015");index++;
+
+
 
         for (int i = 0; i < GameObjects.Length; i++) 
         {
