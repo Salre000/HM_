@@ -8,8 +8,8 @@ public class PlayerStatus : MonoBehaviour
     //現在のプレイヤーのHPの変数
     [SerializeField] float HP = 0.0f;
 
-    //プレイヤーの最大HPの変数
-   　float MAXHP = 0.0f;
+    //プレイヤーの最大HPの定数
+   　const float MAXHP = 0.0f;
 
     //プレイヤーの速度
     [SerializeField] float Speed = 0.1f;
