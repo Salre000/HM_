@@ -5,38 +5,34 @@ using UnityEngine;
 public class HunterHPManager : MonoBehaviour
 {
     // ハンターのHP
-    public int hp = 100;
+    public float hp = 100;
 
+    public float maxhp = 100;
 
-    // Start is called before the first frame update
-    void Start()
+    public bool isDeadFlag=false;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // タグの名前によってダメージ処理を行う
-        if (collision.gameObject.tag == "Player")
+        if(other.gameObject.tag== "PlayerAttack")
         {
-            Damage(10/**/);
+            Damage(other.GetComponent<Damage>().GetDamage());
         }
     }
 
     // HPの減少処理 
-    void Damage(int damage)
+    void Damage(float damage)
     {
         hp -= damage;
         // HPが0になったら
         if (hp < 0)
         {
             hp = 0;
+
+            // 死亡判定
+            isDeadFlag = true;
         }
     }
+
+    // HPを保持
+    public float GetHP() { return hp; }
 }

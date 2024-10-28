@@ -7,20 +7,22 @@ public class SpearDamage : MonoBehaviour
 
     public int damege = 10;
 
+    // タグの名前
+    private string _tagName = "EnemyAttack";
+
+    // やりをもつゲームオブジェクトの生成
+    private GameObject _gameObject;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        // タグのついているオブジェクトを探し
+        _gameObject=GameObject.FindGameObjectWithTag( _tagName );
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        // ダメージをセットする
+        _gameObject.GetComponent<Damage>().SetDamage( damege );
 
-    int GetDamage()
-    {
-        return damege;
+        Debug.Log(_gameObject.GetComponent<Damage>().GetDamage().ToString());
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Hunter_AI : MonoBehaviour
 {
@@ -12,43 +13,98 @@ public class Hunter_AI : MonoBehaviour
 
     // ④ 距離が10以下ならば攻撃する。
 
+    // モンスターとの距離
     float distance = 0;
+
+    // 攻撃してきた回数
     int attackNum = 0;
 
+    // モンスターのオブジェクト 
+    private GameObject _monster;
+
+    //エージェントとなるオブジェクトのNavMeshAgent格納用 
+    private NavMeshAgent agent;
+
+    float waitTime = 0;
+
+    private Animator _animator;
+
+    public bool attackNow = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // モンスターのタグ取得
+        _monster = GameObject.FindGameObjectWithTag("Player");
+
+        // ナビの取得
+        agent=GetComponent<NavMeshAgent>();
+
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 攻撃が5回目になったらいったんよける
-        if (attackNum % 5 == 0)
+        AnimatorStateInfo animationState = _animator.GetCurrentAnimatorStateInfo(0);
+        // モンスターと自分の距離を測る
+        distance =Vector3.Distance(this.transform.position,_monster.transform.position);
+
+        // モンスターと自分の距離が20以上であればナビメッシュによる移動を行う
+        if (distance>5)
         {
-            // 逃げる
+            agent.isStopped=false;
+            agent.destination = _monster.transform.position;
+            waitTime = 0;
         }
         else
         {
-
-            if (distance >= 30)
-            {
-                // ナビメッシュによる移動
-            }
-            else if (distance < 30 && distance > 10)
-            {
-                // ゆっくり移動
-            }
-
-            else if (distance < 10)
-            {
-                // 攻撃
-
-            }
-
+            agent.isStopped=true;
+            waitTime = 1;
         }
 
+        if (waitTime >= 1)
+        {
+            
+           
+            // 攻撃のアニメーションを流す。
+            _animator.SetBool("Attack",true);
+            _animator.SetBool("AttackFinish",false);
+
+            if (animationState.normalizedTime >= 0.01f && animationState.IsName("ataka1"))
+            {
+                attackNow = true;
+            }
+
+            if (animationState.normalizedTime >=0.75f&&animationState.IsName("ataka1")) 
+            { 
+                AttackAnimationEnd();
+                attackNow = false;
+            }
+        }
+
+        if (!agent.isStopped)
+        {
+            // 走るアニメーションを再生する
+            _animator.SetBool("Walk",true );
+            _animator.SetBool("WalkFinish",false );
+        }
+        else
+        {
+            // 走るアニメーションを止める
+            _animator.SetBool("Walk", false);
+            _animator.SetBool("WalkFinish", true);
+        }
+    }
+
+    public void AttackAnimationEnd()
+    {
+        _animator.SetBool("Attack", false);
+        _animator.SetBool("AttackFinish",true );
+    }
+    
+    public bool GetAttackState()
+    {
+        return attackNow;
     }
 }
