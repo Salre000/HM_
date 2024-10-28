@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Hunter
   - New tag
+  - EnemyAttack
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX
