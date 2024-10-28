@@ -31,9 +31,9 @@ public class HitTestMove : MonoBehaviour
 
             Vector3 Game = GameObjects[i].transform.position;
 
-            Game *= 10.0f;
+            //Game *= 10.0f;
 
-            Game.y*=0.1f;
+            //Game.y*=0.1f;
 
             Sphere[i].center =  Game-this.transform.position;
 
