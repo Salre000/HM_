@@ -1556,15 +1556,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.50132626
-        functionName: ResetFlag
+      - time: 0.50663126
+        functionName: ResetObject
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.5198939
-        functionName: ResetObject
+      - time: 0.52519894
+        functionName: ResetFlag
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

@@ -75,6 +75,7 @@ public class PlayerAttack : MonoBehaviour
                 sphere.center = Vector3.zero;
 
                 sphere.radius = 1.0f;
+                sphere.isTrigger=true;
                 
                 position=this.transform.position;
 
