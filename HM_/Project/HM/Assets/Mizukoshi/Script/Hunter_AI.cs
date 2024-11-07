@@ -25,6 +25,7 @@ public class Hunter_AI : MonoBehaviour
     //エージェントとなるオブジェクトのNavMeshAgent格納用 
     private NavMeshAgent agent;
 
+    // 待つ時間
     float waitTime = 0;
 
     private Animator _animator;
@@ -51,7 +52,7 @@ public class Hunter_AI : MonoBehaviour
         distance =Vector3.Distance(this.transform.position,_monster.transform.position);
 
         // モンスターと自分の距離が20以上であればナビメッシュによる移動を行う
-        if (distance>5)
+        if (distance>1.5f)
         {
             agent.isStopped=false;
             agent.destination = _monster.transform.position;
