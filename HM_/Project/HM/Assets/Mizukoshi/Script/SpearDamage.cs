@@ -23,6 +23,5 @@ public class SpearDamage : MonoBehaviour
         // ダメージをセットする
         _gameObject.GetComponent<Damage>().SetDamage( damege );
 
-        Debug.Log(_gameObject.GetComponent<Damage>().GetDamage().ToString());
     }
 }

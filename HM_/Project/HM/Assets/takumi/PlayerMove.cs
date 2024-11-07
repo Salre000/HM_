@@ -60,10 +60,10 @@ public class PlayerMove : MonoBehaviour
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = Input.GetAxis("Vertical");
 
-        _anime.SetMoveFlag(Flag);
+        // _anime.SetMoveFlag(Flag);
         if (_horizontal == 0 && _vertical == 0) return;
 
-        _anime.SetMoveFlag(true);  
+        //_anime.SetMoveFlag(true);  
         _angle += (_horizontal) * 0.1f;
 
         _manager.Add_CameraPositionAngle((_horizontal * 0.1f)*3.14f/180);

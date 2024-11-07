@@ -65,24 +65,24 @@ public class Hunter_AI : MonoBehaviour
 
         if (waitTime >= 1)
         {
-            
-           
-            // 攻撃のアニメーションを流す。
-            _animator.SetBool("Attack",true);
-            _animator.SetBool("AttackFinish",false);
 
-            if (animationState.normalizedTime >= 0.01f && animationState.IsName("ataka1"))
+            if (agent.isStopped)
             {
-                attackNow = true;
-            }
-
-            if (animationState.normalizedTime >=0.75f&&animationState.IsName("ataka1")) 
-            { 
-                AttackAnimationEnd();
-                attackNow = false;
+                // 攻撃のアニメーションを流す。
+                _animator.SetBool("Attack", true);
+                _animator.SetBool("AttackFinish", false);
             }
         }
+        if (animationState.normalizedTime >= 0.01f && animationState.IsName("ataka1"))
+        {
+            attackNow = true;
+        }
 
+        if (animationState.normalizedTime >= 0.75f && animationState.IsName("ataka1"))
+        {
+            AttackAnimationEnd();
+            attackNow = false;
+        }
         if (!agent.isStopped)
         {
             // 走るアニメーションを再生する
