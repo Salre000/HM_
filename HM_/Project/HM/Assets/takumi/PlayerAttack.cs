@@ -9,7 +9,6 @@ public class PlayerAttack : MonoBehaviour
 {
     private PlayerAnime _anime;
     GameObject attackPosition;
-    Rigidbody rb;
     private GameObject _attackObject;
     private Vector3 position;
     // Start is called before the first frame update
@@ -19,7 +18,6 @@ public class PlayerAttack : MonoBehaviour
         attackPosition = GameObject.Find("Bone.024");
 
         Application.targetFrameRate = 60;
-        rb = GetComponent<Rigidbody>();
     }
 
     [SerializeField]private float _counter = 0;
@@ -52,48 +50,70 @@ public class PlayerAttack : MonoBehaviour
 
         }
 
-        //çUåÇÇÇ∑ÇÈÉ{É^Éì
-        if (Input.GetKeyUp("joystick button 7")) 
+        //âìãóó£çUåÇÇÇ∑ÇÈÉ{É^Éì
+        if (Input.GetKey("joystick button 6")) 
         {
-
-            _anime.SetAttackFlag(true);
-            Debug.Log("7");
-
-            if(_attackObject == null) 
-            {
-
-                _attackObject = new GameObject();
-
-                _attackObject.tag = "EnemyAttack";
-
-                Damage damage=_attackObject.AddComponent<Damage>();
-
-                damage.SetDamage(0);
-
-                SphereCollider sphere= _attackObject.AddComponent<SphereCollider>();
-
-                sphere.center = Vector3.zero;
-
-                sphere.radius = 1.0f;
-                sphere.isTrigger=true;
-                
-                position=this.transform.position;
-
-            }
-           
+            _anime.SetLoanAttackFlag(true);
 
 
         }
+        else 
+        {
+            _anime.SetLoanAttackFlag(false);
+
+        }
+        //çUåÇÇÇ∑ÇÈÉ{É^Éì
+        if (Input.GetKey("joystick button 7")) 
+        {
+            _anime.SetAttackFlag(true);
 
 
+        }
+        else
+        {
+            _anime.SetAttackFlag(false);
+
+        }
+
+        //ôÙöK
+        if(Input.GetKey("joystick button 4")&& Input.GetKey("joystick button 5"))
+        {
+            _anime.SetRoarFlag(true);
+        }
+        else
+        {
+            _anime.SetRoarFlag(false);
+        }
+
+        if (Input.GetAxis("Vertical")>=-0.3f && Input.GetKey("joystick button 3") || Input.GetKey("joystick button 2")) 
+        {
+            _anime.SetJumpFlag(true);
+
+
+        }
+        else 
+        {
+            _anime.SetJumpFlag(false);
+
+        }
+        if (Input.GetAxis("Vertical")<-0.3f&& Input.GetKey("joystick button 3")|| Input.GetKey("joystick button 2")) 
+        {
+            _anime.SetBackSteppeFlag(true);
+
+
+        }
+        else 
+        {
+            _anime.SetBackSteppeFlag(false);
+
+
+        }
 
     }
 
 
     void ResetObject() 
     {
-        Destroy(_attackObject);
-        _attackObject = null;
-        flag = true;
+
     }
 }
