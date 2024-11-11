@@ -1,0 +1,12 @@
+{
+  "a": "joystick button 2",
+  "b": "joystick button 3",
+  "x": "joystick button 0",
+  "y": "joystick button 1",
+  "start": "joystick button 11",
+  "back": "joystick button 10",
+  "rt": "joystick button 7",
+  "lt": "joystick button 6",
+  "rb": "joystick button 5",
+  "lb": "joystick button 4"
+}
