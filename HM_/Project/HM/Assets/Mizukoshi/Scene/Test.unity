@@ -318,7 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 156367937}
   - component: {fileID: 156367938}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cliff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2357,7 +2357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 592877101}
   - component: {fileID: 592877102}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cliff (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2586,7 +2586,7 @@ GameObject:
   - component: {fileID: 814805852}
   - component: {fileID: 814805851}
   - component: {fileID: 814805850}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: slope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2951,7 +2951,7 @@ GameObject:
   - component: {fileID: 1036326899}
   - component: {fileID: 1036326898}
   - component: {fileID: 1036326897}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3109,7 +3109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1228697136}
   - component: {fileID: 1228697137}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cliff (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3328,7 +3328,7 @@ GameObject:
   - component: {fileID: 1850271396}
   - component: {fileID: 1850271395}
   - component: {fileID: 1850271394}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: slope (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
