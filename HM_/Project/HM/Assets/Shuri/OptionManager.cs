@@ -20,13 +20,11 @@ public class OptionManager : MonoBehaviour
 
     InputManager _inputManager;
 
-    
-
     void Start()
     {
         uiPanel.SetActive(false);
 
-        _inputManager = GetComponent<InputManager>();
+        _inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
     }
 
     void Update()
@@ -40,6 +38,8 @@ public class OptionManager : MonoBehaviour
         // オプション画面が開いていたら
         if(uiPanel.activeSelf)
         {
+            Time.timeScale = 0.0f;
+
             // RB
             if (Input.GetKeyDown(_inputManager.config.rb) && menuIndex < menuNum) 
             {
@@ -53,12 +53,13 @@ public class OptionManager : MonoBehaviour
                 StartCoroutine(UIMove(Vector3.right));
             }
         }
+        else Time.timeScale = 1.0f;
 
-        switch(menuIndex)
+        switch (menuIndex)
         {
             case 1:break;
-                case 2:Option(); break;
-                case 3:break;
+            case 2:Option(); break;
+            case 3:break;
         }
     }
 
