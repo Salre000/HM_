@@ -35,4 +35,6 @@ public class HunterHPManager : MonoBehaviour
 
     // HP‚ğ•Û
     public float GetHP() { return hp; }
+
+  
 }
