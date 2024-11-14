@@ -20,7 +20,7 @@ public class PlayerStatus : MonoBehaviour
     //Å‘åHP‚ğ•Ô‚·ŠÖ”
     public float GetMaxHP() { return MAXHP; }
 
-    public float GetHp() { return HP; }
+    public float GetHP() { return HP; }
 
     public void Damage(float Damage) { HP -= Damage;if (HP <= 0) { _anime.SetDieFlag(true); } }
 
