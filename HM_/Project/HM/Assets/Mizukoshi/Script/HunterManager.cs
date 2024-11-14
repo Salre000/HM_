@@ -24,7 +24,7 @@ public class HunterManager : MonoBehaviour
         {
             if (gameObjects[i].GetComponent<HunterHPManager>().isDeadFlag)
             {
-
+                Respawn(i);
             }
         }
     }
