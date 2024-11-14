@@ -31,6 +31,17 @@ public class PlayerStatus : MonoBehaviour
 
     private PlayerAnime _anime;
 
+    public enum Condition
+    {
+        Normal,//’Êíó‘Ô
+        Stun,//‹Câó‘Ô
+        Anger,//“{‚èó‘Ô
+        Fatigue//”æ˜Jó‘Ô
+    }
+
+    private Condition _nowCondition;
+    private Condition _lostCondition;
+
     public void Start()
     {
         _anime=this.gameObject.GetComponent<PlayerAnime>();

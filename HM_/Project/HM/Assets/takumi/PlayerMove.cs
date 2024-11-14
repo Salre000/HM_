@@ -4,6 +4,7 @@ using UnityEngine;
 //プレイヤーを動かすクラス
 public class PlayerMove : MonoBehaviour
 {
+
     Vector3 PlayerPosition;
 
    [SerializeField]  private float _horizontal;
