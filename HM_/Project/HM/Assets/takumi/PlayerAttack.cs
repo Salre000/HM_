@@ -23,9 +23,12 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField]private float _counter = 0;
     [SerializeField] private float _maxCount = 5;
     private bool flag = false;
+
+    public float V = 0;
     // Update is called once per frame
     void Update()
     {
+        V = Input.GetAxis("Vertical");
 
         if (flag) 
         {
@@ -85,9 +88,18 @@ public class PlayerAttack : MonoBehaviour
             _anime.SetRoarFlag(false);
         }
 
-        if (Input.GetAxis("Vertical")>=-0.3f && Input.GetKey("joystick button 3") || Input.GetKey("joystick button 2")) 
+        //前ジャンプ
+        if (Input.GetAxis("Vertical")>=-0.3f &&Input.GetKey("joystick button 2")) 
         {
             _anime.SetJumpFlag(true);
+
+            JumpAnime jumpAnime=this.gameObject.GetComponent<JumpAnime>();
+
+            if (jumpAnime == null)
+            {
+                jumpAnime=this.gameObject.AddComponent<JumpAnime>();
+
+            }
 
 
         }
@@ -96,9 +108,20 @@ public class PlayerAttack : MonoBehaviour
             _anime.SetJumpFlag(false);
 
         }
-        if (Input.GetAxis("Vertical")<-0.3f&& Input.GetKey("joystick button 3")|| Input.GetKey("joystick button 2")) 
+
+        //バックジャンプ
+        if (Input.GetAxis("Vertical")<-0.3f&&Input.GetKey("joystick button 2")) 
         {
             _anime.SetBackSteppeFlag(true);
+
+            BackSteppeAnime backSteppeAnime = this.gameObject.GetComponent<BackSteppeAnime>();
+
+            if (backSteppeAnime == null)
+            {
+                backSteppeAnime = this.gameObject.AddComponent<BackSteppeAnime>();
+
+            }
+
 
 
         }
