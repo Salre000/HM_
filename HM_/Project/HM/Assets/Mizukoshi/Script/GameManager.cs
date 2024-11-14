@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // ƒvƒŒƒCƒ„[‚ÌHP‚ª0‚È‚ç‚Î
-        if (player.GetComponent<PlayerStatus>().GetHp() <= 0)
+        if (player.GetComponent<PlayerStatus>().GetHP() <= 0)
         {
             Debug.Log("GameOver");
         }
