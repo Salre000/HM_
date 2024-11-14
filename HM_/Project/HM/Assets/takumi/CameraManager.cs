@@ -54,7 +54,7 @@ public class CameraManager : MonoBehaviour
 
         Vector3 _position = this.transform.position;
 
-        _cameraPositionAngle +=( (_horizontal)/3.14f*180)*0.0001f;
+        _cameraPositionAngle +=( (_horizontal*10)/3.14f*180)*0.0001f;
 
         _range += (_vertical)*0.1f;
 

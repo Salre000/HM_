@@ -27,7 +27,7 @@ public class HitTestMove : MonoBehaviour
         {
             Sphere[i]= GameObjects[i].AddComponent<SphereCollider>();
 
-            Sphere[i].radius = 0.001f;
+            Sphere[i].radius = 0.005f;
 
             Vector3 Game = Vector3.zero;//GameObjects[i].transform.position;
 
