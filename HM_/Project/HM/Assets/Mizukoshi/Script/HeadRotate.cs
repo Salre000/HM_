@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HeadRotate : MonoBehaviour
 {
+    GetPosition g;
+
     private float _turnSpeed = 15.0f;  // Šç‚Ì‰ñ“]‘¬“x
 
     public float speedRate = 2.0f;
@@ -21,6 +23,7 @@ public class HeadRotate : MonoBehaviour
 
     void Start()
     {
+        
     }
 
     void Update()
