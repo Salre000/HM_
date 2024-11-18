@@ -7,9 +7,9 @@ using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class UIManager : MonoBehaviour
 {
-    const float LimitTime = 600;
+    public const float LimitTime = 600;
 
-    float remainingTime;
+    public float remainingTime;
 
     [SerializeField] Image timer;
     [SerializeField] Slider hpBar;
@@ -48,6 +48,11 @@ public class UIManager : MonoBehaviour
 
     void ObjectiveText()
     {
-        //textMeshProUGUI.text = string.Format("Å•Defeat the Hunter {0}/4", hunterManager.GetHunterDeathAmount());
+        textMeshProUGUI.text = string.Format("Å•Defeat the Hunter {0}/4", hunterManager.GetHunterDeathAmount());
+    }
+
+    public float GetLimitTime()
+    {
+        return LimitTime;
     }
 }

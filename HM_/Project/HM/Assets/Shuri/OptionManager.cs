@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class OptionManager : MonoBehaviour
 {
     public int menuIndex = 1;
-    int menuNum = 2;
+    int menuNum = 4;
 
     public int sliderIndex;
 

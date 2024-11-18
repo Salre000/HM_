@@ -9,7 +9,7 @@ public class HunterHPManager : MonoBehaviour
 
     public float maxhp = 100;
 
-    public bool isDeadFlag=false;
+    public bool isDeadFlag = false;
 
     private void OnTriggerEnter(Collider other)
     {
