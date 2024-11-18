@@ -20,7 +20,7 @@ public class ResultRetention : MonoBehaviour
         }
         else Destroy(this.gameObject);
 
-        if(!(SceneManager.GetActiveScene().name == "Result" || SceneManager.GetActiveScene().name == "Main")) Destroy(this.gameObject);
+        if (!(SceneManager.GetActiveScene().name == "Result" || SceneManager.GetActiveScene().name == "Main")) Destroy(this.gameObject);
 
         TextMeshProUGUI resultTime = GameObject.Find("Time").GetComponent<TextMeshProUGUI>();
 
@@ -28,7 +28,7 @@ public class ResultRetention : MonoBehaviour
         else resultTime.text = "Time : --:--";
     }
 
-    public void SetResultData(bool flag,float time)
+    public void SetResultData(bool flag, float time)
     {
         clearFlag = flag;
         elapsedTime = time;

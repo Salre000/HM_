@@ -20,7 +20,7 @@ public class SceneChanger : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton3) && _nowScene == title) 
+        if (Input.GetKeyDown(KeyCode.JoystickButton3) && _nowScene == title)
         {
             ChangeScene();
         }

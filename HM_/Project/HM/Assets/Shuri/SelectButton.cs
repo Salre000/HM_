@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SelectButton : MonoBehaviour
 {
-    [SerializeField]Button button;
+    [SerializeField] Button button;
     InputManager _inputManager;
 
     void Start()
