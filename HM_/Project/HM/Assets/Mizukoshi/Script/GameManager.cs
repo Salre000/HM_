@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 
     private GameObject player;
 
+    public int defeatCountTrigger = 4;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("GameOver");
         }
-        if(this.gameObject.GetComponent<HunterManager>().GetHunterDeathAmount() >= 1)
+        if(this.gameObject.GetComponent<HunterManager>().GetHunterDeathAmount() >= defeatCountTrigger)
         {
             Debug.Log("GameClear");
         }
