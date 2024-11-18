@@ -48,6 +48,6 @@ public class UIManager : MonoBehaviour
 
     void ObjectiveText()
     {
-        textMeshProUGUI.text = string.Format("Å•Defeat the Hunter {0}/4", hunterManager.GetHunterDeathAmount());
+        //textMeshProUGUI.text = string.Format("Å•Defeat the Hunter {0}/4", hunterManager.GetHunterDeathAmount());
     }
 }
