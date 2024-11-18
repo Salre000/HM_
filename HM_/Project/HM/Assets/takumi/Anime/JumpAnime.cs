@@ -7,6 +7,7 @@ using UnityEngine;
 public class JumpAnime : AnimeBase
 {
 
+    const float Damages=30.0f;
 
     const float MaxTime = 0.2f;
 
@@ -19,26 +20,34 @@ public class JumpAnime : AnimeBase
 
     SphereCollider[] Sphere = new SphereCollider[3];
 
+    Damage []damage=new Damage[3];
 
     private void Awake()
     {
         rb=this.gameObject.GetComponent<Rigidbody>();
         rb.useGravity = false;
 
-        _AnimeName = "Armature|AttackJumping";
+        _AnimeName = "Armature|jump";
 
         HitGameObject[0] = GameObject.Find("Bone.024");
         HitGameObject[1] = GameObject.Find("Bone.019");
         HitGameObject[2] = GameObject.Find("Bone.022");
 
-        for(int i = 0; i < 3; i++) 
+        PlayerAttack playerAttack = GetComponent<PlayerAttack>();
+
+
+        for (int i = 0; i < 3; i++) 
         {
             Sphere[i]=HitGameObject[i].AddComponent<SphereCollider>();
 
             //HitGameObject[i].tag;
             Sphere[i].radius = 0.01f;
             Sphere[i].center=Vector3.zero;
+            Sphere[i].isTrigger= true;
+            HitGameObject[i].tag = playerAttack.GetTag().GetPlayerAttackTag();
 
+            damage[i] = HitGameObject[i].AddComponent<Damage>();
+            damage[i].SetDamage(Damages);
 
         }
 
@@ -86,6 +95,14 @@ public class JumpAnime : AnimeBase
 
         Destroy(jumpAnime);
 
+        for(int i = 0; i < 3; i++)
+        {
+            HitGameObject[i].tag = TagBox.GetPlayerTag();
+
+            Destroy(Sphere[i]);
+            Destroy(damage[i]);
+
+        }
 
 
     }

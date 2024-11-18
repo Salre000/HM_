@@ -11,6 +11,9 @@ public class PlayerAttack : MonoBehaviour
     GameObject attackPosition;
     private GameObject _attackObject;
     private Vector3 position;
+
+    [SerializeField] private Tag TagBox;
+    public Tag GetTag() { return TagBox; }
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +73,15 @@ public class PlayerAttack : MonoBehaviour
         {
             _anime.SetAttackFlag(true);
 
+            AnimeAttackNormal AttackNormalAnime = this.gameObject.GetComponent<AnimeAttackNormal>();
+
+            if (AttackNormalAnime == null)
+            {
+                AttackNormalAnime = this.gameObject.AddComponent<AnimeAttackNormal>();
+
+                AttackNormalAnime.TagBox = TagBox;
+
+            }
 
         }
         else
@@ -98,6 +110,8 @@ public class PlayerAttack : MonoBehaviour
             if (jumpAnime == null)
             {
                 jumpAnime=this.gameObject.AddComponent<JumpAnime>();
+
+                jumpAnime.TagBox = TagBox;
 
             }
 
