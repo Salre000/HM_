@@ -67,7 +67,6 @@ public class HunterStatus : MonoBehaviour
         for (int i = 0; i < ketBorn.Length; i++)
         {
             betweenRay[i]= new Ray(AIposition + height * Vector3.up, ketBorn[i].transform.position.normalized);
-            Debug.Log("a");
             Debug.DrawRay(AIposition + height * Vector3.up, ketBorn[i].transform.position.normalized,Color.red);
             if (Physics.SphereCast(betweenRay[i], radius, (ketBorn[i].transform.position - AIposition).magnitude, layerMask))
             {
@@ -81,4 +80,9 @@ public class HunterStatus : MonoBehaviour
         }
         
     }
+
+
+
+
+
 }
