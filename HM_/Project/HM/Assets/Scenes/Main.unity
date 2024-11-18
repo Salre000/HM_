@@ -3925,7 +3925,7 @@ MonoBehaviour:
   hpBar: {fileID: 72699139}
   textMeshProUGUI: {fileID: 425375742}
   playerStatus: {fileID: 1699679825}
-  hunterManager: {fileID: 0}
+  hunterManager: {fileID: 1418245116}
 --- !u!4 &1209621435
 Transform:
   m_ObjectHideFlags: 0
