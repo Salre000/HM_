@@ -21,16 +21,21 @@ public class ResultRetention : MonoBehaviour
         else Destroy(this.gameObject);
 
         if (!(SceneManager.GetActiveScene().name == "Result" || SceneManager.GetActiveScene().name == "Main")) Destroy(this.gameObject);
-
-        TextMeshProUGUI resultTime = GameObject.Find("Time").GetComponent<TextMeshProUGUI>();
-
-        if (clearFlag) resultTime.text = "Time : " + elapsedTime.ToString();
-        else resultTime.text = "Time : --:--";
     }
 
     public void SetResultData(bool flag, float time)
     {
         clearFlag = flag;
         elapsedTime = time;
+    }
+
+    public bool GetClearFlag()
+    {
+        return clearFlag;
+    }
+
+    public float GetClearTime()
+    {
+        return elapsedTime;
     }
 }
