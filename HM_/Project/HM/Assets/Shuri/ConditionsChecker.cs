@@ -10,6 +10,12 @@ public class ConditionsChecker : MonoBehaviour
     [SerializeField] UIManager uiManager;
     [SerializeField] ResultRetention resultRetention;
 
+    private void Start()
+    {
+        playerStatus = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>();
+        hunterManager = GetComponent<HunterManager>();
+    }
+
     void Update()
     {
         if (hunterManager.GetHunterDeathAmount() > 3)
