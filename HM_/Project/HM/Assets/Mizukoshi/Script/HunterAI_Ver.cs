@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class HunterAI_Ver : MonoBehaviour
 {
+
+    public float sightRange = 10f; // 視認距離
+    public float fieldOfViewAngle = 110f; // 視界角度
+    public LayerMask playerLayer; // プレイヤーのレイヤー
+
+    private Transform player; // プレイヤーのTransform
+
+
     private enum State
     {
         Idle=0,
@@ -105,6 +113,56 @@ public class HunterAI_Ver : MonoBehaviour
 
     }
 
-   
+    bool IsPlayerInSight()
+    {
+        // プレイヤーとの方向ベクトルを計算
+        Vector3 directionToPlayer = player.position - transform.position;
+
+        // プレイヤーが視界角度内にいるかをチェック
+        float angleToPlayer = Vector3.Angle(directionToPlayer, transform.forward);
+        if (angleToPlayer < fieldOfViewAngle / 2)
+        {
+            // プレイヤーが視界角度内にいる場合、レイを飛ばして遮蔽物がないか確認
+            float distanceToPlayer = directionToPlayer.magnitude;
+            if (distanceToPlayer <= sightRange)
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position + Vector3.up, directionToPlayer.normalized, out hit, sightRange, playerLayer))
+                {
+                    // レイがプレイヤーに当たった場合、視界内にプレイヤーがいる
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    bool IsPlayerInSight(Vector3 []targetPosition)
+    {
+        for (int i = 0; i < targetPosition.Length; i++)
+        {
+            // プレイヤーとの方向ベクトルを計算
+            Vector3 directionToPlayer = targetPosition[i] - transform.position;
+
+            // プレイヤーが視界角度内にいるかをチェック
+            float angleToPlayer = Vector3.Angle(directionToPlayer, transform.forward);
+            if (angleToPlayer < fieldOfViewAngle / 2)
+            {
+                // プレイヤーが視界角度内にいる場合、レイを飛ばして遮蔽物がないか確認
+                float distanceToPlayer = directionToPlayer.magnitude;
+                if (distanceToPlayer <= sightRange)
+                {
+                    RaycastHit hit;
+                    if (Physics.Raycast(transform.position + Vector3.up, directionToPlayer.normalized, out hit, sightRange, playerLayer))
+                    {
+                        // レイがプレイヤーに当たった場合、視界内にプレイヤーがいる
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
 
 }

@@ -53,14 +53,22 @@ public class HunterStatus : MonoBehaviour
         layerMask = LayerMask.GetMask("Terrain");
     }
 
+    public void Update()
+    {
+        IsEnemyVisibleFront(this.transform.position);
+    }
+
 
     public void IsEnemyVisibleFront(Vector3 AIposition,float height=2.0f,float radius=0.5f)
     {
         Ray[] betweenRay=new Ray[4];
         bool []noneObstacle=new bool[4];
+        
         for (int i = 0; i < ketBorn.Length; i++)
         {
             betweenRay[i]= new Ray(AIposition + height * Vector3.up, ketBorn[i].transform.position.normalized);
+            Debug.Log("a");
+            Debug.DrawRay(AIposition + height * Vector3.up, ketBorn[i].transform.position.normalized,Color.red);
             if (Physics.SphereCast(betweenRay[i], radius, (ketBorn[i].transform.position - AIposition).magnitude, layerMask))
             {
                 // áŠQ•¨‚ª‚È‚¢‚Æ”»’è
