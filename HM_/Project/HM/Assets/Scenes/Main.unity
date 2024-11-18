@@ -702,6 +702,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 6678395454741357372, guid: dde5374b18cc1d04d985a55ea6dd4dba, type: 3}
+      propertyPath: TagBox
+      value: 
+      objectReference: {fileID: 11400000, guid: 51ef161ce5aa1684e86e1d485aeeb784, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dde5374b18cc1d04d985a55ea6dd4dba, type: 3}
 --- !u!1001 &309135593
