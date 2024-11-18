@@ -13,6 +13,8 @@ public class Hunter_AI : MonoBehaviour
 
     // ④ 距離が10以下ならば攻撃する。
 
+    public int attackDistance = 5;
+
     // モンスターとの距離
     float distance = 0;
 
@@ -52,7 +54,7 @@ public class Hunter_AI : MonoBehaviour
         distance =Vector3.Distance(this.transform.position,_monster.transform.position);
 
         // モンスターと自分の距離が20以上であればナビメッシュによる移動を行う
-        if (distance>1.5f)
+        if (distance>attackDistance)
         {
             agent.isStopped=false;
             agent.destination = _monster.transform.position;

@@ -10,6 +10,8 @@ public class SimpleEnemySight : MonoBehaviour
 
     private Transform player; // プレイヤーのTransform
 
+
+
     void Start()
     {
         // プレイヤーのTransformを取得
