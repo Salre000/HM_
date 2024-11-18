@@ -11,7 +11,7 @@ public class PlayerAttack : MonoBehaviour
     GameObject attackPosition;
     private GameObject _attackObject;
     private Vector3 position;
-
+    private GameObject LeftHand;
     [SerializeField] private Tag TagBox;
     public Tag GetTag() { return TagBox; }
     // Start is called before the first frame update
@@ -19,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
     {
         _anime = GetComponent<PlayerAnime>();
         attackPosition = GameObject.Find("Bone.024");
+        LeftHand = GameObject.Find("Bone.019");
 
         Application.targetFrameRate = 60;
     }
@@ -60,6 +61,19 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetKey("joystick button 6")) 
         {
             _anime.SetLoanAttackFlag(true);
+            AnimeAttackLongRange animeAttackLongRange =this.gameObject.GetComponent<AnimeAttackLongRange>();
+
+            if (animeAttackLongRange == null)
+            {
+
+                animeAttackLongRange = this.gameObject.AddComponent<AnimeAttackLongRange>();
+
+                animeAttackLongRange.TagBox = TagBox;
+
+                animeAttackLongRange.StartObject = LeftHand;
+
+
+            }
 
 
         }
