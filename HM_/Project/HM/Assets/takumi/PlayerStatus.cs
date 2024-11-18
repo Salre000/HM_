@@ -31,6 +31,8 @@ public class PlayerStatus : MonoBehaviour
 
     private PlayerAnime _anime;
 
+
+
     public enum Condition
     {
         Normal,//’Êíó‘Ô

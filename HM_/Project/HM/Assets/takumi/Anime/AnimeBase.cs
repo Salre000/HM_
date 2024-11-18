@@ -7,6 +7,8 @@ public class AnimeBase : MonoBehaviour
 
     protected Animator _animator;
 
+    public Tag TagBox;
+
     protected string _AnimeName="";
     // Start is called before the first frame update
     void Start()
