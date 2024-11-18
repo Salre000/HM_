@@ -15,6 +15,7 @@ public class HunterManager : MonoBehaviour
     void Start()
     {
         gameObjects = GameObject.FindGameObjectsWithTag("Hunter");
+        respawnPosition= transform.position;
     }
 
     // Update is called once per frame

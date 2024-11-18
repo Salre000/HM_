@@ -19,18 +19,21 @@ public class HunterHPManager : MonoBehaviour
         }
     }
 
-    // HP‚ÌŒ¸­ˆ— 
-    void Damage(float damage)
+    private void Update()
     {
-        hp -= damage;
         // HP‚ª0‚É‚È‚Á‚½‚ç
         if (hp < 0)
         {
             hp = 0;
-
             // €–S”»’è
             isDeadFlag = true;
         }
+    }
+
+    // HP‚ÌŒ¸­ˆ— 
+    void Damage(float damage)
+    {
+        hp -= damage;
     }
 
     // HP‚ğ•Û
