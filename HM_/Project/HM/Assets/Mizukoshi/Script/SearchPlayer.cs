@@ -13,11 +13,15 @@ public class SearchPlayer : MonoBehaviour
         // プレイヤーとの距離を取得
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
+        
+
         if (distanceToPlayer <= detectionRange)
         {
             // 視界内にプレイヤーがいるか判定（視界角度を考慮）
             Vector3 directionToPlayer = (player.position - transform.position).normalized;
             float angle = Vector3.Angle(transform.forward, directionToPlayer);
+
+          
 
             if (angle <= detectionAngle / 2)
             {
