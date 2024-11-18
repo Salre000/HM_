@@ -7,14 +7,10 @@ public class GameManager : MonoBehaviour
 
     private GameObject player;
 
-    private GameObject hunter
-
-
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-       
     }
 
     // Update is called once per frame
@@ -25,9 +21,9 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("GameOver");
         }
-
-
-
-
+        if(this.gameObject.GetComponent<HunterManager>().GetHunterDeathAmount() >= 1)
+        {
+            Debug.Log("GameClear");
+        }
     }
 }
