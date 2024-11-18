@@ -23,13 +23,15 @@ public class UIManager : MonoBehaviour
         remainingTime = LimitTime;
 
         hpBar.value = hpBar.maxValue = playerStatus.GetMaxHP();
+
+        playerStatus = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>();
     }
 
     void Update()
     {
         Timer();
         HPBar();
-        //ObjectiveText();
+        ObjectiveText();
     }
 
     void Timer()
