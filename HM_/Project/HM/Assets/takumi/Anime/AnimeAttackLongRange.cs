@@ -4,31 +4,17 @@ using UnityEngine;
 
 public class AnimeAttackLongRange : AnimeBase
 {
-    GameObject AttackObject;
-
-    SphereCollider Sphere;
-
-    Damage damage;
-
     const float damages = 30;
+
+    //岩のゲームオブジェクト
+    GameObject Rocks;
 
     private void Awake()
     {
 
-        _AnimeName = "Armature|AttackNorml";
-        //頭のゲームオブジェクト
-        AttackObject = GameObject.Find("Bone.024");
+        _AnimeName = "Armature|AttackLongRange";
 
         PlayerAttack playerAttack = GetComponent<PlayerAttack>();
-
-        AttackObject.tag = playerAttack.GetTag().GetPlayerAttackTag();
-        Sphere = AttackObject.AddComponent<SphereCollider>();
-        Sphere.center = Vector3.zero;
-        Sphere.radius = 0.05f;
-        Sphere.isTrigger = true;
-
-        damage = AttackObject.AddComponent<Damage>();
-        damage.SetDamage(damages);
 
 
     }
@@ -39,11 +25,10 @@ public class AnimeAttackLongRange : AnimeBase
     }
     override protected void AnimeEnd()
     {
-        AnimeAttackNormal animeAttackNormal = GetComponent<AnimeAttackNormal>();
-        AttackObject.tag = TagBox.GetPlayerTag();
-        Destroy(Sphere);
-        Destroy(damage);
-        Destroy(animeAttackNormal);
+        AnimeAttackLongRange animeAttackLongRange = GetComponent<AnimeAttackLongRange>();
+
+
+        Destroy(animeAttackLongRange );
 
 
     }
