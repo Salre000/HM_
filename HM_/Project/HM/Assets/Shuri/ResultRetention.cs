@@ -13,7 +13,12 @@ public class ResultRetention : MonoBehaviour
 
     void Start()
     {
+        if (resultRetention == null)
+        {
+            resultRetention = this;
             DontDestroyOnLoad(this.gameObject);
+        }
+        else Destroy(this.gameObject);
 
         if (!(SceneManager.GetActiveScene().name == "Result" || SceneManager.GetActiveScene().name == "Main")) Destroy(this.gameObject);
 

@@ -18,7 +18,7 @@ public class SpearDamage : MonoBehaviour
     void Start()
     {
         // タグのついているオブジェクトを探し
-        _gameObject=GameObject.FindGameObjectWithTag( _tagName );
+        _gameObject=this.gameObject;
 
         // ダメージをセットする
         _gameObject.GetComponent<Damage>().SetDamage( damege );
