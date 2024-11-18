@@ -22,7 +22,7 @@ public class HunterManager : MonoBehaviour
     {
         for (int i = 0; i < gameObjects.Length; i++)
         {
-            if (gameObjects[i].GetComponent<HunterHPManager>().isDeadFlag)
+            if (gameObjects[i].transform.GetChild(0).GetComponent<HunterHPManager>().isDeadFlag)
             {
                 Respawn(i);
             }
