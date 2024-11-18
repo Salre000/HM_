@@ -684,8 +684,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3951831474188270025, guid: b7d678fa5e841454694d8c445c0db4d0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3951831474188270025, guid: b7d678fa5e841454694d8c445c0db4d0, type: 3}
       propertyPath: attackDistance
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3951831474188270027, guid: b7d678fa5e841454694d8c445c0db4d0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7095236046782732492, guid: b7d678fa5e841454694d8c445c0db4d0, type: 3}
       propertyPath: m_RootOrder

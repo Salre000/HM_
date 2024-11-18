@@ -11,7 +11,7 @@ public class ResultManager : MonoBehaviour
 
     void Start()
     {
-        result = GameObject.Find("Retention").GetComponent<ResultRetention>();
+        result = GameObject.Find("RetentionObject").GetComponent<ResultRetention>();
 
         if (result.GetClearFlag()) resultTime.text = "Time : " + result.GetClearTime().ToString();
         else resultTime.text = "Time : --:--";
