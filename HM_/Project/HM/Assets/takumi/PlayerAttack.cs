@@ -83,7 +83,7 @@ public class PlayerAttack : MonoBehaviour
 
         }
         //çUåÇÇÇ∑ÇÈÉ{É^Éì
-        if (Input.GetKey("joystick button 7")) 
+        if (Input.GetKeyDown("joystick button 7")) 
         {
             _anime.SetAttackFlag(true);
 
@@ -94,6 +94,8 @@ public class PlayerAttack : MonoBehaviour
                 AttackNormalAnime = this.gameObject.AddComponent<AnimeAttackNormal>();
 
                 AttackNormalAnime.TagBox = TagBox;
+                attackPosition.tag = TagBox.GetPlayerAttackTag();
+                AttackNormalAnime.SetAttackObject(attackPosition);
 
             }
 

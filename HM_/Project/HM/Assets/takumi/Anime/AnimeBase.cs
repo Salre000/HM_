@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 public class AnimeBase : MonoBehaviour
@@ -38,6 +39,29 @@ public class AnimeBase : MonoBehaviour
     virtual protected void AnimeEnd()
     {
         
+    }
+
+    //“G‚ÉUŒ‚‚ğ‚ ‚Ä‚½‚Æ‚«‚É‚ ‚½‚è”»’è‚ğíœ‚·‚é‰¼‘zŠÖ”
+    virtual protected void DestroyHitObject() 
+    {
 
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+
+
+        if (other.transform.tag != TagBox.GetEnemyTag()) return;
+
+        AnimeEnd();
+
+
+
+
+
+
+
+    }
+
+
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3f8a259da116b4c82222f833f4a9f2, type: 3}
   m_Name: Tag
   m_EditorClassIdentifier: 
-  EnemyTag: Enemy
+  EnemyTag: Hunter
   PlayerTag: Player
   EnemyAttackTag: EnemyAttack
   PlayerAttackTag: PlayerAttack
