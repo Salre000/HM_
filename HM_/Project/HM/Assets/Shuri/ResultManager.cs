@@ -3,44 +3,47 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using UnityEngine.UI;
 
 public class ResultManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI resultTime;
+    [SerializeField] Text resultTime;
 
     ResultRetention result;
 
-    [SerializeField]TextMeshProUGUI rankText;
+    [SerializeField] TextMeshProUGUI rankText;
+
+    const float timeS = 60.0f;
+    const float timeA = 180.0f;
+    const float timeB = 300.0f;
 
     struct Rank
     {
-        char rank;
-        float time;
+        public string rankText;
         public TMP_ColorGradient rankColor;
-        public Rank(char rank,float time, TMP_ColorGradient rankColor) { this.rank = rank; this.time = time; this.rankColor = rankColor; }
+        public Rank(string rank, TMP_ColorGradient rankColor) { this.rankText = rank; this.rankColor = rankColor; }
     }
 
-    Rank rankS = new Rank('S',60, new TMP_ColorGradient(new Color32(255, 167, 0, 255), new Color32(255, 231, 0, 255), new Color32(255, 231, 0, 255), new Color32(255, 167, 0, 255)));
-    Rank rankA = new Rank('A',180, new TMP_ColorGradient(new Color32(255, 0, 166, 255), new Color32(255, 221, 255, 255), new Color32(255, 221, 255, 255), new Color32(240, 128, 176, 255)));
-    Rank rankB = new Rank('B', 300, new TMP_ColorGradient(new Color32(245, 130, 47, 255), new Color32(245, 210, 176, 255), new Color32(245, 210, 176, 255), new Color32(245, 130, 47, 255)));
+    Rank rank;
 
     void Start()
     {
-        //result = GameObject.Find("RetentionObject").GetComponent<ResultRetention>();
+        Rank rankS = new Rank("S", new TMP_ColorGradient(new Color32(255, 167, 0, 255), new Color32(255, 231, 0, 255), new Color32(255, 231, 0, 255), new Color32(255, 167, 0, 255)));
+        Rank rankA = new Rank("A", new TMP_ColorGradient(new Color32(255, 0, 166, 255), new Color32(255, 221, 255, 255), new Color32(255, 221, 255, 255), new Color32(240, 128, 176, 255)));
+        Rank rankB = new Rank("B", new TMP_ColorGradient(new Color32(245, 130, 47, 255), new Color32(245, 210, 176, 255), new Color32(245, 210, 176, 255), new Color32(245, 130, 47, 255)));
 
-        //if (result.GetClearFlag()) resultTime.text = "Time : " + result.GetClearTime().ToString();
-        //else resultTime.text = "Time : --:--";
+        result = GameObject.Find("RetentionObject").GetComponent<ResultRetention>();
 
-        rankText.colorGradientPreset = rankS.rankColor;
-    }
+        if (result.GetClearFlag()) resultTime.text = "Time : " + result.GetClearTime().ToString();
+        else resultTime.text = "Time : --:--";
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
+        switch (result.GetClearTime())
         {
-            if (rankText.colorGradientPreset == rankS.rankColor) rankText.colorGradientPreset = rankA.rankColor;
-            else if (rankText.colorGradientPreset == rankA.rankColor) rankText.colorGradientPreset = rankB.rankColor;
-            else if (rankText.colorGradientPreset == rankB.rankColor) rankText.colorGradientPreset = rankS.rankColor;
+            case < timeS: rank = rankS; break;
+            case < timeA: rank = rankA; break;
+            case < timeB: rank = rankB; break;
         }
+        rankText.text = rank.rankText;
+        rankText.colorGradientPreset = rank.rankColor;
     }
 }
