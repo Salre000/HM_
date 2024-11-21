@@ -50,8 +50,9 @@ public class AnimeAttackNormal : AnimeBase
 
     override protected void DestroyHitObject() 
     {
-        AnimeEnd();
 
+        Destroy(Sphere);
+        damage.SetDamage(0);
 
 
     }

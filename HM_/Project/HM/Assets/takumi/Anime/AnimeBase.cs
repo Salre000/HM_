@@ -10,6 +10,7 @@ public class AnimeBase : MonoBehaviour
 
     public Tag TagBox;
 
+
     protected string _AnimeName="";
     // Start is called before the first frame update
     void Start()
@@ -53,7 +54,7 @@ public class AnimeBase : MonoBehaviour
 
         if (other.transform.tag != TagBox.GetEnemyTag()) return;
 
-        AnimeEnd();
+        DestroyHitObject();
 
 
 
