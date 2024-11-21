@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class HunterAI_Ver : MonoBehaviour
 {
-
+    public NavMeshAgent agent;
+    public Vector3[] distination=new Vector3[4];
+    private int distinationNum = 0;
     public float sightRange = 10f; // 視認距離
     public float fieldOfViewAngle = 110f; // 視界角度
     public float speed = 5.0f;
     public LayerMask playerLayer; // プレイヤーのレイヤー
-
+    public float searchRadius = 10f; // きょろきょろの視線の範囲
+    public float attackDistance = 2.0f;
     private Transform player; // プレイヤーのTransform
-
+    private bool _enemyInsight=false;
+    private Animator _animator;
 
     private enum State
     {
@@ -26,22 +31,47 @@ public class HunterAI_Ver : MonoBehaviour
     private void Start()
     {
         _state = State.Search;
+        _animator = GetComponent<Animator>();
+        agent.destination=distination[0];
+        agent.speed=speed;
     }
 
 
     private void Update()
     {
+        AnimatorStateInfo animationState = _animator.GetCurrentAnimatorStateInfo(0);
 
         // 敵の攻撃をうけた?
-
+        if (HitEnemyAttack())
+        {
+            agent.destination = player.position;
+        }
 
         // 敵を見つけている?
+        if (_enemyInsight)
+        {
+            agent.destination=player.position;
+        }
+        else
+        {
+            Search();
+        }
 
 
         // 敵は攻撃中?
+        if (EnemyAttackNow()&&!_enemyInsight)
+        {
+           // 敵の前にいるかどうかを判断
+           
+        }
 
-       
+
         // 距離はd以内?
+        if (PlayerToDistance() <= attackDistance)
+        {
+            // 攻撃アニメーションを流す
+            Attack();
+        }
 
 
         // 
@@ -51,26 +81,7 @@ public class HunterAI_Ver : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
-    {
-        switch (_state)
-        {
-            case State.Idle:
-                break;
-            case State.Search:
-
-                break;
-            case State.Chase:
-                break;
-            case State.Fighting:
-                break;
-        }
-
-
-
-    }
-
-
+   
 
     bool HitEnemyAttack()
     {
@@ -106,11 +117,24 @@ public class HunterAI_Ver : MonoBehaviour
 
     void Attack()
     {
-
+        // 攻撃のアニメーションを流す。
+        _animator.SetBool("Attack", true);
+        _animator.SetBool("AttackFinish", false);
     }
 
     void Search()
     {
+        if (IsPlayerInSight())
+        {
+            _state= State.Chase;
+            return;
+        }
+       
+        if(Vector3.Distance(transform.position, agent.destination) < 1f)
+        {
+            distinationNum++;
+            agent.destination = distination[distinationNum];
+        }
 
     }
 
@@ -166,7 +190,22 @@ public class HunterAI_Ver : MonoBehaviour
         return false;
     }
 
+    float PlayerToDistance()
+    {
+        float distance = 0;
+        distance=Vector3.Distance(player.transform.position,this.transform.position);
+        return distance;
+    }
 
+    void AnimationFinishInform(AnimatorStateInfo inform)
+    {
+         
+    }
 
+    public void AttackAnimationEnd()
+    {
+        _animator.SetBool("Attack", false);
+        _animator.SetBool("AttackFinish", true);
+    }
 
 }
