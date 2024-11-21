@@ -7,6 +7,7 @@ public class HunterAI_Ver : MonoBehaviour
 
     public float sightRange = 10f; // 視認距離
     public float fieldOfViewAngle = 110f; // 視界角度
+    public float speed = 5.0f;
     public LayerMask playerLayer; // プレイヤーのレイヤー
 
     private Transform player; // プレイヤーのTransform

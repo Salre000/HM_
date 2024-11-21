@@ -11,6 +11,8 @@ public class HunterHPManager : MonoBehaviour
 
     public bool isDeadFlag = false;
 
+
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag== "PlayerAttack")
