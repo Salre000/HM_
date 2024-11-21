@@ -14,13 +14,14 @@ public class HItTest : MonoBehaviour
 
     //‰½‚©‚É“–‚½‚Á‚½
     //(ƒgƒŠƒK[“¯m‚àŠl“¾‚µ‚Ä‚­‚ê‚é)
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         Debug.Log("“–‚½‚Á‚½");
 
         //“G‚ÌUŒ‚‚ğó‚¯‚½
         if (other.gameObject.tag == "EnemyAttack")
         {
+
 
             //“G‚ÌUŒ‚—Í‚ğ—˜—p‚µ‚½‹““®
             Damage _damage=other.GetComponent<Damage>();

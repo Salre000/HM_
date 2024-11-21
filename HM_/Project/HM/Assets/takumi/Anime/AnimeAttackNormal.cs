@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AnimeAttackNormal : AnimeBase
 {
-    GameObject AttackObject;
-
+     GameObject AttackObject;
+    public void SetAttackObject(GameObject objects) {  AttackObject = objects; }
     SphereCollider Sphere;
 
     Damage damage;
@@ -16,12 +16,8 @@ public class AnimeAttackNormal : AnimeBase
     {
 
         _AnimeName = "Armature|AttackNorml";
-        //頭のゲームオブジェクト
-        AttackObject = GameObject.Find("Bone.024");
-
         PlayerAttack playerAttack =GetComponent<PlayerAttack>();
 
-        AttackObject.tag = playerAttack.GetTag().GetPlayerAttackTag();
         Sphere=AttackObject.AddComponent<SphereCollider>();
         Sphere.center = Vector3.zero;
         Sphere.radius = 0.05f;
@@ -47,4 +43,13 @@ public class AnimeAttackNormal : AnimeBase
 
 
     }
+
+    override protected void DestroyHitObject() 
+    {
+        AnimeEnd();
+
+
+
+    }
+
 }

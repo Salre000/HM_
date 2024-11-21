@@ -338,6 +338,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5504199309765421698, guid: 7c8b65cbb2203be48af84614178be35a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 5504199309765421702, guid: 7c8b65cbb2203be48af84614178be35a, type: 3}
       propertyPath: m_Name
       value: Hunter_ver1.7
@@ -5077,8 +5081,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spearHuman: {fileID: 1447175391}
-  objectToClone: {fileID: 56781879}
   condition: 0
+  hit: 0
 --- !u!1 &1595318498
 GameObject:
   m_ObjectHideFlags: 0
