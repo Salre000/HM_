@@ -38,8 +38,8 @@ public class HunterManager : MonoBehaviour
     void Respawn(int i)
     {
         deathCount++;
-        gameObjects[i].GetComponent<HunterHPManager>().hp = 100;
-        gameObjects[i].GetComponent<HunterHPManager>().isDeadFlag = false;
+        gameObjects[i].transform.GetChild(0).GetComponent<HunterHPManager>().hp = 100;
+        gameObjects[i].transform.GetChild(0).GetComponent<HunterHPManager>().isDeadFlag = false;
         gameObjects[i].transform.position = respawnPosition;
     }
 }
