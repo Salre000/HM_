@@ -18,7 +18,11 @@ public class AnimeAttackNormal : AnimeBase
         _AnimeName = "Armature|AttackNorml";
         PlayerAttack playerAttack =GetComponent<PlayerAttack>();
 
-        Sphere=AttackObject.AddComponent<SphereCollider>();
+    }
+    public void SetHitTest() 
+    {
+
+        Sphere = AttackObject.AddComponent<SphereCollider>();
         Sphere.center = Vector3.zero;
         Sphere.radius = 0.05f;
         Sphere.isTrigger = true;
