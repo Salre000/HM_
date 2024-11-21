@@ -40,9 +40,10 @@ public class TriggerDisapper : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Player")
+        if (collision.transform.CompareTag("Player"))
         {
-            hit = true;
+            Destroy(co);
+            hit=true;
         }
     }
 
