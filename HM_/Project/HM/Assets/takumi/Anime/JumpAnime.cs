@@ -25,7 +25,6 @@ public class JumpAnime : AnimeBase
     private void Awake()
     {
         rb=this.gameObject.GetComponent<Rigidbody>();
-        rb.useGravity = false;
 
         _AnimeName = "Armature|jump";
 
@@ -75,7 +74,6 @@ public class JumpAnime : AnimeBase
         }
         else 
         {
-            rb.useGravity = true;
 
 
 
@@ -89,7 +87,6 @@ public class JumpAnime : AnimeBase
     {
 
 
-        rb.useGravity = true;
 
         JumpAnime jumpAnime=this.gameObject.GetComponent<JumpAnime>();
 

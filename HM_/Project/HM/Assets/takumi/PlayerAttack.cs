@@ -84,7 +84,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         //UŒ‚‚ğ‚·‚éƒ{ƒ^ƒ“
-        if (Input.GetKeyUp("joystick button 7")) 
+        if (Input.GetKey("joystick button 7")) 
         {
             _anime.SetAttackFlag(true);
 
