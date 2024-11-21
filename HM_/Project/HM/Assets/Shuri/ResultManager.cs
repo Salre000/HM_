@@ -37,6 +37,7 @@ public class ResultManager : MonoBehaviour
         if (result.GetClearFlag()) resultTime.text = "Time : " + result.GetClearTime().ToString();
         else resultTime.text = "Time : --:--";
 
+
         switch (result.GetClearTime())
         {
             case < timeS: rank = rankS; break;
@@ -45,5 +46,6 @@ public class ResultManager : MonoBehaviour
         }
         rankText.text = rank.rankText;
         rankText.colorGradientPreset = rank.rankColor;
+        if (!result.GetClearFlag()) rankText.text = "E";
     }
 }

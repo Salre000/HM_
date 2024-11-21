@@ -26,19 +26,20 @@ public class AnimeAttackNormal : AnimeBase
         Sphere.center = Vector3.zero;
         Sphere.radius = 0.05f;
         Sphere.isTrigger = true;
-
         damage = AttackObject.AddComponent<Damage>();
         damage.SetDamage(damages);
-
 
     }
 
     private void FixedUpdate()
     {
+
         AnimeUPDate();
+
     }
     override protected void AnimeEnd()
     {
+
         AnimeAttackNormal animeAttackNormal = GetComponent<AnimeAttackNormal>();
         AttackObject.tag=TagBox.GetPlayerTag();
         Destroy(Sphere);

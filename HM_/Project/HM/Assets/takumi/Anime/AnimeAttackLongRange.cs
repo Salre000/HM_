@@ -62,6 +62,10 @@ public class AnimeAttackLongRange : AnimeBase
 
             rockAttack.SetMoveVec(new Vector3( Mathf.Sin(Angle+((i*15)*3.14f/180)),0,Mathf.Cos(Angle + ((i * 15) * 3.14f / 180))));
 
+            Damage damage=Rock.GetComponent<Damage>();
+
+            damage.SetDamage(30);
+
 
 
         }
