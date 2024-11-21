@@ -16,9 +16,9 @@ public class TriggerDisapper : MonoBehaviour
     {
         condition = spearHuman.GetComponent<Hunter_AI>().GetAttackState();
         // 条件が真ならコライダー生成
-        if (condition && co == null&&!hit)
+        if (condition && co == null && !hit)
         {
-            co=gameObject.AddComponent<BoxCollider>();
+            co = gameObject.AddComponent<BoxCollider>();
             co.size = new Vector3(0.2f, 5, 0.2f);
         }
         // 条件が偽なら
@@ -27,11 +27,26 @@ public class TriggerDisapper : MonoBehaviour
             Destroy(co);
             hit = false;
         }
+        else if (co == null && !condition)
+        {
+            hit = false;
+        }
 
         if (hit) 
         {
             Destroy(co);
         }
-
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            hit = true;
+        }
+    }
+
+
+
+
 }
