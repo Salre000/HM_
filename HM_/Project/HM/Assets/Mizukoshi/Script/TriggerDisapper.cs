@@ -37,17 +37,14 @@ public class TriggerDisapper : MonoBehaviour
             Destroy(co);
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.transform.CompareTag("Player"))
+        if (other.transform.tag == "Player")
         {
             Destroy(co);
-            hit=true;
+            hit=true;  
         }
     }
-
-
 
 
 }
