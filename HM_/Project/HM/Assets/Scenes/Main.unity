@@ -5077,8 +5077,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spearHuman: {fileID: 1447175391}
-  objectToClone: {fileID: 56781879}
   condition: 0
+  hit: 0
+--- !u!114 &1507167234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507167230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff321e354a13e9b4e88d4a77cf5c114d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1507167235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507167230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0870823dd9a2e78479971875860d4c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damege: 10
 --- !u!1 &1595318498
 GameObject:
   m_ObjectHideFlags: 0
