@@ -10,6 +10,7 @@ public class HunterManager : MonoBehaviour
     private Animator _animator;
 
     int deathCount = 0;
+    bool deathAnimationNow = false;
     bool[]isDeath = new bool[4];
     float []time=new float[4];
     
@@ -30,10 +31,12 @@ public class HunterManager : MonoBehaviour
     {
         for (int i = 0; i < gameObjects.Length; i++)
         {
-            if (gameObjects[i].transform.GetComponent<HunterHPManager>().isDeadFlag)
+            if (gameObjects[i].transform.GetComponent<HunterHPManager>().isDeadFlag&&!deathAnimationNow)
             {
                 _animator.SetBool("isDead",true);
                 isDeath[i] = true;
+                deathAnimationNow=true;
+                deathCount++;
             }
         }
 
@@ -44,7 +47,7 @@ public class HunterManager : MonoBehaviour
                 time[i] += Time.deltaTime;
                 if (time[i] > 0.5f)
                 {
-                    deathCount++;
+                    time[i] = 0f;
                     isDeath[i] = false;
                     _animator.SetBool("isDead", false);
                     Respawn(i);
