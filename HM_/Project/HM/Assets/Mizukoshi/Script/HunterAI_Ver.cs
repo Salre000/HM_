@@ -10,10 +10,10 @@ public class HunterAI_Ver : MonoBehaviour
     private int distinationNum = 0;
     public float sightRange = 10f; // 視認距離
     public float fieldOfViewAngle = 110f; // 視界角度
-    public float speed = 5.0f;
+    public float speed;
     public LayerMask playerLayer; // プレイヤーのレイヤー
-    public float searchRadius = 10f; // きょろきょろの視線の範囲
-    public float attackDistance = 2.0f;
+    public float searchRadius; // きょろきょろの視線の範囲
+    public float attackDistance;
     public Transform player; // プレイヤーのTransform
     private bool _enemyInsight=false;
     private bool _attackNow=false;

@@ -6,8 +6,12 @@ public class HunterManager : MonoBehaviour
 {
 
     private GameObject[] gameObjects;
+    private Animator _animator;
 
     int deathCount = 0;
+    bool[]isDeath = new bool[4];
+    float []time=new float[4];
+    
 
     Vector3 respawnPosition;
 
@@ -25,9 +29,26 @@ public class HunterManager : MonoBehaviour
         {
             if (gameObjects[i].transform.GetComponent<HunterHPManager>().isDeadFlag)
             {
-                Respawn(i);
+                _animator.SetBool("isDead",true);
+                isDeath[i] = true;
             }
         }
+
+        for (int i = 0; i <4; i++)
+        {
+           if (isDeath[i])
+           {
+                time[i] += Time.deltaTime;
+                if (time[i] > 0.5f)
+                {
+                    deathCount++;
+                    isDeath[i] = false;
+                    Respawn(i);
+                }
+           }
+        }
+
+       
     }
 
     public int GetHunterDeathAmount()
