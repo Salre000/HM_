@@ -15,6 +15,8 @@ public class Hunter_AI : MonoBehaviour
 
     public int attackDistance = 5;
 
+    public float speed = 3.0f;
+
     // モンスターとの距離
     float distance = 0;
 
@@ -42,6 +44,8 @@ public class Hunter_AI : MonoBehaviour
 
         // ナビの取得
         agent=GetComponent<NavMeshAgent>();
+
+        agent.speed = speed;
 
         _animator = GetComponent<Animator>();
     }
