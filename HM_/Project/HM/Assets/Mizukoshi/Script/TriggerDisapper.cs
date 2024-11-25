@@ -48,6 +48,6 @@ public class TriggerDisapper : MonoBehaviour
 
     bool CheckGetHitAnumation()
     {
-        return true;//spearHuman.GetComponent<Hunter_AI>().GetAttackState()/* || spearHuman.GetComponent<HunterAI_Ver>().GetAttackState()*/;
+        return spearHuman.GetComponent<Hunter_AI>().GetAttackState()/* || spearHuman.GetComponent<HunterAI_Ver>().GetAttackState()*/;
     }
 }
