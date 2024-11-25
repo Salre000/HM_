@@ -3,7 +3,7 @@ public class HunterManager : MonoBehaviour
 {
 
     private GameObject[] gameObjects;
-    private Animator[] _animator = new Animator[4];
+    private Animator[] _animator = new Animator[1];
 
     int deathCount = 0;
     bool deathAnimationNow = false;
