@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -115,6 +116,10 @@ public class Hunter_AI : MonoBehaviour
         _animator.SetBool("Attack", false);
         _animator.SetBool("AttackFinish", true);
     }
-
+    
+    public bool GetAttackState()
+    {
+        return attackNow;
+    }
 
 }
