@@ -16,6 +16,15 @@ public class ResultManager : MonoBehaviour
     const float timeS = 60.0f;
     const float timeA = 180.0f;
     const float timeB = 300.0f;
+    const float timeC = 480.0f;
+    const float timeD = 600.0f;
+
+    Color32 Gold = new(255, 231, 0, 255);
+    Color32 Red = new(255, 50, 150, 255);
+    Color32 Orange = new(220, 155, 45, 255);
+    Color32 Green = new(0, 255, 128, 255);
+    Color32 Blue = new(64, 128, 255, 255);
+    Color32 Gray = new(128, 128, 128, 255);
 
     struct Rank
     {
@@ -25,12 +34,22 @@ public class ResultManager : MonoBehaviour
     }
 
     Rank rank;
+    Rank rankS;
+    Rank rankA;
+    Rank rankB;
+    Rank rankC;
+    Rank rankD;
+    Rank rankE;
 
     void Start()
     {
-        Rank rankS = new Rank("S", new TMP_ColorGradient(new Color32(255, 167, 0, 255), new Color32(255, 231, 0, 255), new Color32(255, 231, 0, 255), new Color32(255, 167, 0, 255)));
-        Rank rankA = new Rank("A", new TMP_ColorGradient(new Color32(255, 0, 166, 255), new Color32(255, 221, 255, 255), new Color32(255, 221, 255, 255), new Color32(240, 128, 176, 255)));
-        Rank rankB = new Rank("B", new TMP_ColorGradient(new Color32(245, 130, 47, 255), new Color32(245, 210, 176, 255), new Color32(245, 210, 176, 255), new Color32(245, 130, 47, 255)));
+        rankS = new("S", new(Color.white, Gold, Gold, Gold));
+        rankA = new("A", new(Color.white, Red, Red, Color.red));
+        rankB = new("B", new(Color.white, Orange, Orange, Orange));
+        rankC = new("C", new(Color.white, Green, Green, Color.gray));
+        rankD = new("D", new(Color.white, Blue, Blue, Blue));
+        rankE = new("E", new(Color.white, Gray, Gray, Color.black));
+
 
         result = GameObject.Find("RetentionObject").GetComponent<ResultRetention>();
 
@@ -43,9 +62,12 @@ public class ResultManager : MonoBehaviour
             case < timeS: rank = rankS; break;
             case < timeA: rank = rankA; break;
             case < timeB: rank = rankB; break;
+            case < timeC: rank = rankC; break;
+            case < timeD: rank = rankD; break;
         }
+        if (!result.GetClearFlag()) rank = rankE;
+
         rankText.text = rank.rankText;
         rankText.colorGradientPreset = rank.rankColor;
-        if (!result.GetClearFlag()) rankText.text = "E";
     }
 }
