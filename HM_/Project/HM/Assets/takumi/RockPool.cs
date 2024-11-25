@@ -15,7 +15,24 @@ public class RockPool : MonoBehaviour
 
     GameObject Items;
 
-    public GameObject GetRockPool(int index) { return RockPools[index];}
+    public GameObject GetRockPool() 
+    {
+        for (int i=0;i<RockPools.Length;i++) 
+        {
+            if(RockPools[i].transform.gameObject.activeSelf == false) 
+            {
+
+
+
+        return RockPools[i];
+            }
+
+
+
+        }
+        return null;    
+    
+    }
 
     void Start()
     {
@@ -26,7 +43,6 @@ public class RockPool : MonoBehaviour
 
         for (int i=0;i<RockPools.Length;i++) 
         {
-            activeCount++;
 
             RockPools[i]= Instantiate(dragonItem.GetObjectRock());
 

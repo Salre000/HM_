@@ -55,7 +55,9 @@ public class AnimeAttackLongRange : AnimeBase
         for (int i=-1;i<2;i++) 
         {
 
-            GameObject Rock=RockPool.GetRockPool(21-RockPool.GetActiveCount());
+            GameObject Rock=RockPool.GetRockPool();
+
+            if (Rock == null) return;
 
             Rock.SetActive(true);
 
@@ -65,8 +67,6 @@ public class AnimeAttackLongRange : AnimeBase
 
 
             RockAttack rockAttack = Rock.GetComponent<RockAttack>();
-
-            //rockAttack.
 
             rockAttack.SetMoveVec(new Vector3( Mathf.Sin(Angle+((i*15)*3.14f/180)),0,Mathf.Cos(Angle + ((i * 15) * 3.14f / 180))));
 

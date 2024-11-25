@@ -13,7 +13,7 @@ public class Hunter_AI : MonoBehaviour
 
     // ④ 距離が10以下ならば攻撃する。
 
-    public int attackDistance = 5;
+     int attackDistance = 2;
 
     // モンスターとの距離
     float distance = 0;
