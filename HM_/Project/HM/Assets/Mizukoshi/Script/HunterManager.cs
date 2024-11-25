@@ -50,6 +50,7 @@ public class HunterManager : MonoBehaviour
                     time[i] = 0f;
                     isDeath[i] = false;
                     _animator.SetBool("isDead", false);
+                    deathAnimationNow=false;
                     Respawn(i);
                 }
            }
