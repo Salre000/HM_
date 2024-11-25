@@ -14,7 +14,7 @@ public class TriggerDisapper : MonoBehaviour
 
     void Update()
     {
-        condition = spearHuman.GetComponent<Hunter_AI>().GetAttackState();
+        condition = CheckGetHitAnumation();
         // 条件が真ならコライダー生成
         if (condition && co == null && !hit)
         {
@@ -46,5 +46,8 @@ public class TriggerDisapper : MonoBehaviour
         }
     }
 
-
+    bool CheckGetHitAnumation()
+    {
+        return spearHuman.GetComponent<Hunter_AI>().GetAttackState() || spearHuman.GetComponent<HunterAI_Ver>().GetAttackState();
+    }
 }

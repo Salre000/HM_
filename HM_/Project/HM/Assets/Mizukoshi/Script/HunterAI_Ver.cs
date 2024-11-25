@@ -14,8 +14,10 @@ public class HunterAI_Ver : MonoBehaviour
     public LayerMask playerLayer; // プレイヤーのレイヤー
     public float searchRadius = 10f; // きょろきょろの視線の範囲
     public float attackDistance = 2.0f;
-    private Transform player; // プレイヤーのTransform
+    public Transform player; // プレイヤーのTransform
     private bool _enemyInsight=false;
+    private bool _attackNow=false;
+
     private Animator _animator;
 
     private enum State
@@ -30,6 +32,7 @@ public class HunterAI_Ver : MonoBehaviour
 
     private void Start()
     {
+
         _state = State.Search;
         _animator = GetComponent<Animator>();
         agent.destination=distination[0];
@@ -54,16 +57,22 @@ public class HunterAI_Ver : MonoBehaviour
         }
         else
         {
+            Run();
             Search();
         }
 
+        //if (agent.isStopped)
+        //{
+            
+        //}
+
 
         // 敵は攻撃中?
-        if (EnemyAttackNow()&&!_enemyInsight)
-        {
-           // 敵の前にいるかどうかを判断
+        //if (EnemyAttackNow()&&!_enemyInsight)
+        //{
+        //   // 敵の前にいるかどうかを判断
            
-        }
+        //}
 
 
         // 距離はd以内?
@@ -73,11 +82,7 @@ public class HunterAI_Ver : MonoBehaviour
             Attack();
         }
 
-
-        // 
-
-
-
+        Debug.Log(agent.destination);
         
     }
 
@@ -120,6 +125,7 @@ public class HunterAI_Ver : MonoBehaviour
         // 攻撃のアニメーションを流す。
         _animator.SetBool("Attack", true);
         _animator.SetBool("AttackFinish", false);
+        _attackNow = true;
     }
 
     void Search()
@@ -127,10 +133,10 @@ public class HunterAI_Ver : MonoBehaviour
         if (IsPlayerInSight())
         {
             _state= State.Chase;
-            return;
+            _enemyInsight = true;
         }
        
-        if(Vector3.Distance(transform.position, agent.destination) < 1f)
+        if(Vector3.Distance(transform.position,agent.destination) < 1f)
         {
             distinationNum++;
             agent.destination = distination[distinationNum];
@@ -199,13 +205,45 @@ public class HunterAI_Ver : MonoBehaviour
 
     void AnimationFinishInform(AnimatorStateInfo inform)
     {
-         
+        //animationState.normalizedTime >= 0.75f && animationState.IsName("ataka1")
+        if (inform.normalizedTime >= 0.75f && inform.IsName("ataka1"))
+        {
+            AttackAnimationEnd();
+        }
+
+        if (agent.isStopped)
+        {
+
+        }
     }
 
     public void AttackAnimationEnd()
     {
         _animator.SetBool("Attack", false);
         _animator.SetBool("AttackFinish", true);
+        _attackNow=false;
+    }
+
+    public void RunAnimationEnd()
+    {
+        _animator.SetBool("Walk", false);
+        _animator.SetBool("WalkFinish", true);
+    }
+
+    public void Run()
+    {
+        _animator.SetBool("Walk", true);
+        _animator.SetBool("WalkFinish", false);
+    }
+
+    public void Idle()
+    {
+
+    }
+
+    public bool GetAttackState()
+    {
+        return true;
     }
 
 }
