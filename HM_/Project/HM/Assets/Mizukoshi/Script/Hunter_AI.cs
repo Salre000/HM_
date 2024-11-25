@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Hunter_AI : MonoBehaviour
 {
+
+
     // ① 距離が30以上あるならばナビメッシュによる移動
 
     // ② 距離が30以下ならばゆっくり移動
@@ -43,7 +45,7 @@ public class Hunter_AI : MonoBehaviour
         _monster = GameObject.FindGameObjectWithTag("Player");
 
         // ナビの取得
-        agent=GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
 
         agent.speed = speed;
 
@@ -55,18 +57,22 @@ public class Hunter_AI : MonoBehaviour
     {
         AnimatorStateInfo animationState = _animator.GetCurrentAnimatorStateInfo(0);
         // モンスターと自分の距離を測る
-        distance =Vector3.Distance(this.transform.position,_monster.transform.position);
+        distance = Vector3.Distance(this.transform.position, _monster.transform.position);
 
         // モンスターと自分の距離が20以上であればナビメッシュによる移動を行う
-        if (distance>attackDistance)
+        if (distance > attackDistance)
         {
-            agent.isStopped=false;
+            // 走るアニメーションを再生する
+            _animator.SetBool("Walk", true);
+            _animator.SetBool("WalkFinish", false);
+            agent.isStopped = false;
             agent.destination = _monster.transform.position;
             waitTime = 0;
+            return;
         }
         else
         {
-            agent.isStopped=true;
+            agent.isStopped = true;
             waitTime = 1;
         }
 
@@ -93,8 +99,8 @@ public class Hunter_AI : MonoBehaviour
         if (!agent.isStopped)
         {
             // 走るアニメーションを再生する
-            _animator.SetBool("Walk",true );
-            _animator.SetBool("WalkFinish",false );
+            _animator.SetBool("Walk", true);
+            _animator.SetBool("WalkFinish", false);
         }
         else
         {
@@ -107,11 +113,8 @@ public class Hunter_AI : MonoBehaviour
     public void AttackAnimationEnd()
     {
         _animator.SetBool("Attack", false);
-        _animator.SetBool("AttackFinish",true );
+        _animator.SetBool("AttackFinish", true);
     }
-    
-    public bool GetAttackState()
-    {
-        return attackNow;
-    }
+
+
 }
