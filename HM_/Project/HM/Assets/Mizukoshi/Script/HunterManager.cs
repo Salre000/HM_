@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.TextCore.Text;
 using UnityEngine;
 
 public class HunterManager : MonoBehaviour
@@ -20,6 +21,8 @@ public class HunterManager : MonoBehaviour
     {
         gameObjects = GameObject.FindGameObjectsWithTag("Hunter");
         respawnPosition= transform.position;
+
+        _animator = gameObjects[0].GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -43,6 +46,7 @@ public class HunterManager : MonoBehaviour
                 {
                     deathCount++;
                     isDeath[i] = false;
+                    _animator.SetBool("isDead", false);
                     Respawn(i);
                 }
            }
