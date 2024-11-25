@@ -17,9 +17,13 @@ public class AnimeBase : MonoBehaviour
     {
         _animator = this.gameObject.GetComponent<Animator>();
     }
+    float TimeCount =0;
     // Update is called once per frame
     protected void AnimeUPDate() 
     {
+        TimeCount += Time.deltaTime;
+
+        if (TimeCount < 1.5f) return;
 
         string NowAnime = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
@@ -48,15 +52,17 @@ public class AnimeBase : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
 
 
-        if (other.transform.tag != TagBox.GetEnemyTag()) return;
+        if (other.transform.tag == TagBox.GetEnemyTag()) 
+        {
 
         DestroyHitObject();
+            this.tag = "Player";
 
-
+        }
 
 
 

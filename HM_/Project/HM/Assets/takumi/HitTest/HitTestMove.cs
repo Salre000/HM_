@@ -8,6 +8,8 @@ public class HitTestMove : MonoBehaviour
     public GameObject []GameObjects=new GameObject[5];
 
     public SphereCollider[]Sphere=new SphereCollider[5];
+
+    public BoxCollider[]BoxCollider=new BoxCollider[5];
     int index = 0;
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,8 @@ public class HitTestMove : MonoBehaviour
         }
 
     }
+
+
 
     // Update is called once per frame
     void Update()

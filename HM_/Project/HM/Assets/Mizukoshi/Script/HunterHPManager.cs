@@ -5,9 +5,9 @@ using UnityEngine;
 public class HunterHPManager : MonoBehaviour
 {
     // ÉnÉìÉ^Å[ÇÃHP
-    public float hp = 100;
+    public float hp = 1000;
 
-    public float maxhp = 100;
+    public float maxhp = 1000;
 
     public bool isDeadFlag = false;
 
@@ -15,9 +15,12 @@ public class HunterHPManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag== "PlayerAttack")
+        if (other.GetComponent<Damage>() == null) return;
+
+        if(other.gameObject.tag== "PlayerAttack"&&"Hunter"==this.tag)
         {
             Damage(other.GetComponent<Damage>().GetDamage());
+
         }
     }
 

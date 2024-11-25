@@ -10,13 +10,9 @@ public class BackSteppeAnime : AnimeBase
 
     float time = 0;
 
-    Rigidbody rb;
 
     private void Awake()
     {
-        rb = this.gameObject.GetComponent<Rigidbody>();
-        rb.useGravity = false;
-
         _AnimeName = "Armature|BackSteppe";
     }
 
@@ -39,14 +35,6 @@ public class BackSteppeAnime : AnimeBase
 
 
         }
-        else
-        {
-            rb.useGravity = true;
-
-
-
-        }
-
         AnimeUPDate();
 
     }
@@ -55,7 +43,6 @@ public class BackSteppeAnime : AnimeBase
     {
 
 
-        rb.useGravity = true;
 
         BackSteppeAnime backSteppeAnime = this.gameObject.GetComponent<BackSteppeAnime>();
 

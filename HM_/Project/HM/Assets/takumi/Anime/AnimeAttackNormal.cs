@@ -27,12 +27,14 @@ public class AnimeAttackNormal : AnimeBase
         Sphere.radius = 0.05f;
         Sphere.isTrigger = true;
         damage = AttackObject.AddComponent<Damage>();
+        this.tag = TagBox.GetPlayerAttackTag();
         damage.SetDamage(damages);
 
     }
 
     private void FixedUpdate()
     {
+
 
         AnimeUPDate();
 
@@ -41,7 +43,7 @@ public class AnimeAttackNormal : AnimeBase
     {
 
         AnimeAttackNormal animeAttackNormal = GetComponent<AnimeAttackNormal>();
-        AttackObject.tag=TagBox.GetPlayerTag();
+        AttackObject.tag = TagBox.GetPlayerTag();
         Destroy(Sphere);
         Destroy(damage);
         Destroy(animeAttackNormal);

@@ -9,22 +9,52 @@ public class RockAttack : MonoBehaviour
     float StartUpVec = 0.05f;
     float DVec = -0.001f;
 
-    public void SetMoveVec(Vector3 Vec) { MoveVec = Vec; } 
+    public void SetMoveVec(Vector3 Vec) { MoveVec = Vec; }
 
+    [SerializeField] private Tag TagBox;
+
+    float TimeCount = 0;
     // Start is called before the first frame update
-    void Start()
+
+    RockPool RockPool;
+
+    private void Start()
     {
-       Destroy(gameObject,10);
+
+        RockPool=GameObject.FindGameObjectWithTag("ItemBox").GetComponent<RockPool>();
+
     }
 
     private void FixedUpdate()
     {
+
+        TimeCount += Time.deltaTime;
         this.transform.position+=MoveVec/20;
 
         this.transform.position += new Vector3(0,StartUpVec,0);
 
         StartUpVec += DVec;
+
+        if (TimeCount > 8) 
+        {
+
+            RockPool.AddActiveCount();
+
+
+        }
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.tag == TagBox.GetEnemyTag())
+        {
+            this.gameObject.SetActive(false);
+            RockPool.AddActiveCount();
+
+        }
+
     }
 
 }
