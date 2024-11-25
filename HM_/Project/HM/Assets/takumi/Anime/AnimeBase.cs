@@ -23,7 +23,7 @@ public class AnimeBase : MonoBehaviour
     {
         TimeCount += Time.deltaTime;
 
-        if (TimeCount < 1.5f) return;
+        if (TimeCount < 0.5f) return;
 
         string NowAnime = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
