@@ -1,3 +1,4 @@
+using ScreenshotUtility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class HunterHPManager : MonoBehaviour
 
     public bool isDeadFlag = false;
 
-
+    [SerializeField] ScreenShot screenShot;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +22,7 @@ public class HunterHPManager : MonoBehaviour
         {
             Damage(other.GetComponent<Damage>().GetDamage());
 
+            screenShot.TakeScreenShot();
         }
     }
 

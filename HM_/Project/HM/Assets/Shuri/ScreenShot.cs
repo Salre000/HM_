@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 namespace ScreenshotUtility
@@ -74,15 +75,15 @@ namespace ScreenshotUtility
         [Tooltip("スクリーンショットを保存するフォルダ名 Assetsフォルダーの直下に配置されます"), SerializeField]
         string _screenShotFolderName = "ScreenShots";
 
-        [Header("実行中の撮影キー")]
-        [Space(10)]
-        [Tooltip("Unity実行中にスクリーンショットを撮る場合のキーバインド")]
-        public KeyCode _screenShotsKeybinding = KeyCode.F1;
-
         [Header("Consoleに保存先のパスのログを出力します")]
         [Space(10)]
         [Tooltip("チェックをすると、画像のファイル名と画像の保存先のパスのログの出力します"), SerializeField]
         bool _consoleLogIsActive = true;
+
+        private void Start()
+        {
+            AssetDatabase.DeleteAsset("Assets/ScreenShots");
+        }
 
         public void TakeScreenShot()
         {
@@ -120,15 +121,18 @@ namespace ScreenshotUtility
             StartCoroutine(imageShooting(path, _screenShotsTitle));
         }
 
+        int photoNum = 1;
+
         //撮影処理
         //第一引数 ファイルパス / 第二引数 タイトル
         private IEnumerator imageShooting(string path, string title)
         {
-            yield return new WaitForEndOfFrame();
+            //yield return new WaitForEndOfFrame();
 
+            yield return null;
             //パスの作成
             imagePathCheck(path);
-            string name = title + getTimeStamp(_timeStampStyle) + ".png";
+            string name = title + photoNum++.ToString() + ".png";
 
             //元々の背景色をCache
             Color32 CacheColor = _UseCamera.backgroundColor;

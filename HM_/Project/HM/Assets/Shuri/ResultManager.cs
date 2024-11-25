@@ -13,6 +13,8 @@ public class ResultManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI rankText;
 
+    [SerializeField] Image backGround;
+
     const float timeS = 60.0f;
     const float timeA = 180.0f;
     const float timeB = 300.0f;
@@ -56,6 +58,7 @@ public class ResultManager : MonoBehaviour
         if (result.GetClearFlag()) resultTime.text = "Time : " + result.GetClearTime().ToString();
         else resultTime.text = "Time : --:--";
 
+        backGround.sprite = Resources.Load<Sprite>("Assets/ScreenShots/img" + 1.ToString()) as Sprite;
 
         switch (result.GetClearTime())
         {
