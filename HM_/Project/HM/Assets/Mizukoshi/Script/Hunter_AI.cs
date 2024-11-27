@@ -20,6 +20,8 @@ public class Hunter_AI : MonoBehaviour
 
     public float speed = 3.0f;
 
+    public float AttackCoolTime;
+
     // モンスターとの距離
     float distance = 0;
 
@@ -38,6 +40,10 @@ public class Hunter_AI : MonoBehaviour
     private Animator _animator;
 
     public bool attackNow = false;
+
+    private bool _fight=false;
+
+    private bool readyAttack=false;
 
     // Start is called before the first frame update
     void Start()
@@ -68,23 +74,31 @@ public class Hunter_AI : MonoBehaviour
             _animator.SetBool("WalkFinish", false);
             agent.isStopped = false;
             agent.destination = _monster.transform.position;
-            waitTime = 0;
+            _fight = true;
             return;
         }
         else
         {
             agent.isStopped = true;
-            waitTime = 1;
+            _fight=true;
         }
 
-        if (waitTime >= 1)
+        if (_fight)
         {
 
             if (agent.isStopped)
             {
-                // 攻撃のアニメーションを流す。
-                _animator.SetBool("Attack", true);
-                _animator.SetBool("AttackFinish", false);
+                if (!attackNow)
+                {
+                    waitTime += Time.deltaTime;
+                }
+                if (waitTime > AttackCoolTime) 
+                {
+                    // 攻撃のアニメーションを流す。
+                    _animator.SetBool("Attack", true);
+                    _animator.SetBool("AttackFinish", false);
+                    waitTime = 0;
+                }
             }
         }
         if (animationState.normalizedTime >= 0.01f && animationState.IsName("ataka1"))
