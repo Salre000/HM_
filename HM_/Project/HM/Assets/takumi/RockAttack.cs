@@ -35,7 +35,7 @@ public class RockAttack : MonoBehaviour
 
         StartUpVec += DVec;
 
-        if (TimeCount > 3) 
+        if (TimeCount > 1) 
         {
             TimeCount = 0;
             RockPool.AddActiveCount();
