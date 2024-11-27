@@ -18,6 +18,9 @@ public class AnimeAttackNormal : AnimeBase
         _AnimeName = "Armature|AttackNorml";
         PlayerAttack playerAttack =GetComponent<PlayerAttack>();
 
+
+
+
     }
     public void SetHitTest() 
     {
