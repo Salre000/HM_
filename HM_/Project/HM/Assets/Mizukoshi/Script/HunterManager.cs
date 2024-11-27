@@ -30,12 +30,18 @@ public class HunterManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         for (int i = 0; i < gameObjects.Length; i++)
         {
+            if (!gameObjects[i].GetComponent<Hunter_AI>().GetAnimState().IsName("ataka1"))
+            {
+                _spear.GetComponent<TriggerDisapper>().DestoryTrigger();
+            }
+
             if (gameObjects[i].transform.GetComponent<HunterHPManager>().isDeadFlag && !deathAnimationNow)
             {
                 _animator[i].SetBool("isDead", true);
-                _spear.GetComponent<TriggerDisapper>().hit = true;
                 isDeath[i] = true;
                 deathAnimationNow = true;
                 deathCount++;

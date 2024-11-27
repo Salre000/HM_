@@ -45,6 +45,8 @@ public class Hunter_AI : MonoBehaviour
 
     private bool readyAttack=false;
 
+    AnimatorStateInfo animationState;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +64,7 @@ public class Hunter_AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AnimatorStateInfo animationState = _animator.GetCurrentAnimatorStateInfo(0);
+        animationState = _animator.GetCurrentAnimatorStateInfo(0);
         // ƒ‚ƒ“ƒXƒ^[‚Æ©•ª‚Ì‹——£‚ğ‘ª‚é
         distance = Vector3.Distance(this.transform.position, _monster.transform.position);
 
@@ -136,4 +138,8 @@ public class Hunter_AI : MonoBehaviour
         return attackNow;
     }
 
+    public AnimatorStateInfo GetAnimState()
+    {
+        return animationState;
+    }
 }
