@@ -17,43 +17,37 @@ public class RockPool : MonoBehaviour
 
     public GameObject GetRockPool() 
     {
+
         for (int i=0;i<RockPools.Length;i++) 
         {
             if(RockPools[i].transform.gameObject.activeSelf == false) 
             {
-
-
-
-        return RockPools[i];
+                return RockPools[i];
             }
-
-
-
         }
+
         return null;    
-    
     }
 
     void Start()
     {
-        Items = GameObject.FindGameObjectWithTag("ItemBox");
-
-        DragonItem dragonItem=Items.GetComponent<DragonItem>();
-
+        DragonItem dragonItem=GetComponent<DragonItem>();
 
         for (int i=0;i<RockPools.Length;i++) 
         {
 
             RockPools[i]= Instantiate(dragonItem.GetObjectRock());
 
+
+
+            RockPools[i].transform.parent = this.transform;
+
             RockPools[i].SetActive(false);
+
+
         
         }
 
 
-
-        
     }
-
-
 }

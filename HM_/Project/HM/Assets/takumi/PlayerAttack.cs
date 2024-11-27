@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
     private Vector3 position;
     private GameObject LeftHand;
     [SerializeField] private Tag TagBox;
+    [SerializeField] RockPool rockPool;
     public Tag GetTag() { return TagBox; }
     // Start is called before the first frame update
     void Start()
@@ -72,7 +73,7 @@ public class PlayerAttack : MonoBehaviour
 
                 animeAttackLongRange.StartObject = LeftHand;
 
-
+                animeAttackLongRange.RockPool=rockPool;
             }
 
 

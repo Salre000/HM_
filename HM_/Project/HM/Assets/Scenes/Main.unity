@@ -123,6 +123,65 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 1b7dee075f82ccc4d83b0c7136216803, type: 2}
+--- !u!1001 &19258534
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1968185829952703210, guid: 08ead0a9ccbf56b44b7df1d6f54f5de1, type: 3}
+      propertyPath: m_Name
+      value: LongRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968185829953001162, guid: 08ead0a9ccbf56b44b7df1d6f54f5de1, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968185829953001162, guid: 08ead0a9ccbf56b44b7df1d6f54f5de1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 35.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968185829953001162, guid: 08ead0a9ccbf56b44b7df1d6f54f5de1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968185829953001162, guid: 08ead0a9ccbf56b44b7df1d6f54f5de1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968185829953001162, guid: 08ead0a9ccbf56b44b7df1d6f54f5de1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968185829953001162, guid: 08ead0a9ccbf56b44b7df1d6f54f5de1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968185829953001162, guid: 08ead0a9ccbf56b44b7df1d6f54f5de1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968185829953001162, guid: 08ead0a9ccbf56b44b7df1d6f54f5de1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968185829953001162, guid: 08ead0a9ccbf56b44b7df1d6f54f5de1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968185829953001162, guid: 08ead0a9ccbf56b44b7df1d6f54f5de1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968185829953001162, guid: 08ead0a9ccbf56b44b7df1d6f54f5de1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -4699214801591974662, guid: 08ead0a9ccbf56b44b7df1d6f54f5de1, type: 3}
+    - {fileID: 329408397701207682, guid: 08ead0a9ccbf56b44b7df1d6f54f5de1, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 08ead0a9ccbf56b44b7df1d6f54f5de1, type: 3}
 --- !u!1 &29371719
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,7 +427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7869974276903342854, guid: 86ddb3f7847a30e4e8e23862ff097e2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.180346
+      value: 27.92
       objectReference: {fileID: 0}
     - target: {fileID: 7869974276903342854, guid: 86ddb3f7847a30e4e8e23862ff097e2d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -376,7 +435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7869974276903342854, guid: 86ddb3f7847a30e4e8e23862ff097e2d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.418312
+      value: 19.22
       objectReference: {fileID: 0}
     - target: {fileID: 7869974276903342854, guid: 86ddb3f7847a30e4e8e23862ff097e2d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -704,6 +763,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u30C9\u30E9\u30B4\u30F3 1"
       objectReference: {fileID: 0}
+    - target: {fileID: 3115370620048113510, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+      propertyPath: rockPool
+      value: 
+      objectReference: {fileID: 69537806}
     - target: {fileID: 3115370620048113512, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
       propertyPath: m_Mass
       value: 10

@@ -11,7 +11,7 @@ public class AnimeAttackLongRange : AnimeBase
     //岩のゲームオブジェクト
     GameObject Rocks;
 
-    RockPool RockPool;
+    public RockPool RockPool;
 
     private void Awake()
     {
@@ -20,8 +20,13 @@ public class AnimeAttackLongRange : AnimeBase
 
         PlayerAttack playerAttack = GetComponent<PlayerAttack>();
 
-        RockPool=GameObject.FindGameObjectWithTag("ItemBox").GetComponent<RockPool>();
+        Rocks = GameObject.FindGameObjectWithTag("ItemBox");
 
+
+
+
+
+        
     }
     private bool Flag = false;
     public float time = 0;
@@ -55,9 +60,12 @@ public class AnimeAttackLongRange : AnimeBase
         for (int i=-1;i<2;i++) 
         {
 
-            GameObject Rock=RockPool.GetRockPool();
+            GameObject Rock =RockPool.GetRockPool();
 
             if (Rock == null) return;
+
+            
+
 
             Rock.SetActive(true);
 
@@ -67,6 +75,8 @@ public class AnimeAttackLongRange : AnimeBase
 
 
             RockAttack rockAttack = Rock.GetComponent<RockAttack>();
+
+
 
             rockAttack.SetMoveVec(new Vector3( Mathf.Sin(Angle+((i*15)*3.14f/180)),0,Mathf.Cos(Angle + ((i * 15) * 3.14f / 180))));
 
