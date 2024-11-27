@@ -20,6 +20,7 @@ public class TriggerDisapper : MonoBehaviour
         {
             co = gameObject.AddComponent<BoxCollider>();
             co.size = new Vector3(0.2f, 5, 0.2f);
+            co.isTrigger = true;
         }
         // ğŒ‚ª‹U‚È‚ç
         else if (!condition && co != null)
@@ -34,6 +35,7 @@ public class TriggerDisapper : MonoBehaviour
 
         if (hit) 
         {
+
             Destroy(co);
         }
     }
@@ -49,5 +51,10 @@ public class TriggerDisapper : MonoBehaviour
     bool CheckGetHitAnumation()
     {
         return spearHuman.GetComponent<Hunter_AI>().GetAttackState()/* || spearHuman.GetComponent<HunterAI_Ver>().GetAttackState()*/;
+    }
+
+    public void DestoryTrigger()
+    {
+        Destroy(co);
     }
 }

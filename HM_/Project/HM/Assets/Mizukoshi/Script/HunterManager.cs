@@ -5,6 +5,8 @@ public class HunterManager : MonoBehaviour
     private GameObject[] gameObjects;
     private Animator[] _animator = new Animator[1];
 
+    private GameObject _spear;
+
     int deathCount = 0;
     bool deathAnimationNow = false;
     bool[] isDeath = new bool[4];
@@ -22,14 +24,21 @@ public class HunterManager : MonoBehaviour
         {
             _animator[i] = gameObjects[i].GetComponent<Animator>();
         }
-
+        _spear = GameObject.FindGameObjectWithTag("EnemyAttack");
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         for (int i = 0; i < gameObjects.Length; i++)
         {
+            if (!gameObjects[i].GetComponent<Hunter_AI>().GetAnimState().IsName("ataka1"))
+            {
+                _spear.GetComponent<TriggerDisapper>().DestoryTrigger();
+            }
+
             if (gameObjects[i].transform.GetComponent<HunterHPManager>().isDeadFlag && !deathAnimationNow)
             {
                 _animator[i].SetBool("isDead", true);
