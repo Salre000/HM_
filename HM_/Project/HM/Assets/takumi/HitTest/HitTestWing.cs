@@ -10,7 +10,7 @@ public class HitTestWing : MonoBehaviour
     void Start()
     {
         
-        //atama=this.gameObject.AddComponent<SphereCollider>();
+        //atama=this.Roar.AddComponent<SphereCollider>();
 
 
 

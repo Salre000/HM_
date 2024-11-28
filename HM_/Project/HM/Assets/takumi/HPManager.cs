@@ -9,9 +9,9 @@ public class HPManager : MonoBehaviour
 
     [SerializeField] int HunterCount = 4;
     //引数はハンターの数
-    void Start() 
+    void Start()
     {
-        MonsterHp=MaxMonsterHP;
+        MonsterHp = MaxMonsterHP;
 
         //ハンターの数を指定する
         HunterHp = new float[HunterCount];
@@ -19,7 +19,7 @@ public class HPManager : MonoBehaviour
 
 
         //すべてのハンターのHPをリセットする
-        for(int i=0; i<HunterCount; i++) 
+        for (int i = 0; i < HunterCount; i++)
         {
             HunterHp[i] = MaxHunterHp;
             HunterInvincibilityTime[i] = 0;
@@ -34,38 +34,38 @@ public class HPManager : MonoBehaviour
     }
 
     //モンスターのダメージ処理
-    public void MonsterDamage(float Damage) 
+    public void MonsterDamage(float Damage)
     {
-        if (MonsterInvincibilityTime != -1) return; 
-        MonsterHp-=Damage;
+        if (MonsterInvincibilityTime != -1) return;
+        MonsterHp -= Damage;
         MonsterInvincibilityTime = 0;
     }
 
-    public void HunterDamage(float Damage,int Number) 
+    public void HunterDamage(float Damage, int Number)
     {
         if (HunterInvincibilityTime[Number] != -1) return;
 
-        HunterHp[Number]-=Damage;
+        HunterHp[Number] -= Damage;
         HunterInvincibilityTime[Number] = 0;
 
     }
 
     //ハンターの回復の処理 引数１はHPを上書きする値
-    public void HunterHeel(float Heel, int Number) 
+    public void HunterHeel(float Heel, int Number)
     {
 
-        MonsterHp=Heel;
+        MonsterHp = Heel;
 
-        if (HunterHp[Number] > MaxHunterHp) HunterHp[Number]     = MaxHunterHp;
+        if (HunterHp[Number] > MaxHunterHp) HunterHp[Number] = MaxHunterHp;
 
 
     }
 
     //無敵時間をカウントする関数
-    void TimeCount() 
+    void TimeCount()
     {
         //ハンターの無敵時間
-        for(int i=0;i< HunterInvincibilityTime.Length; i++) 
+        for (int i = 0; i < HunterInvincibilityTime.Length; i++)
         {
             if (HunterInvincibilityTime[i] < 0) continue;
 
@@ -89,6 +89,7 @@ public class HPManager : MonoBehaviour
     const float MaxInvincibilityTim = 2;
 
     const float MaxMonsterHP = 1000;
+    float GetMaxMonsterHp() { return MaxMonsterHP; }
 
     float MonsterHp = 0;
 
