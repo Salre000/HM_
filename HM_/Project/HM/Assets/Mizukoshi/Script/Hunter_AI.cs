@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.AI;
@@ -45,6 +46,10 @@ public class Hunter_AI : MonoBehaviour
 
     private bool readyAttack=false;
 
+    private bool _deathAnimationNow=false;
+
+    public bool deathAnimationFinish=false;
+
     AnimatorStateInfo animationState;
 
     // Start is called before the first frame update
@@ -67,6 +72,30 @@ public class Hunter_AI : MonoBehaviour
         animationState = _animator.GetCurrentAnimatorStateInfo(0);
         // モンスターと自分の距離を測る
         distance = Vector3.Distance(this.transform.position, _monster.transform.position);
+
+        if (CheckDie())
+        {
+            _deathAnimationNow = true;
+            AttackAnimationEnd();
+            // 走るアニメーションを止める
+            _animator.SetBool("Walk", false);
+            _animator.SetBool("WalkFinish", true);
+            _animator.SetBool("isDeadFinish", false);
+            _animator.SetBool("isDead",true);
+        }
+
+        if (_deathAnimationNow)
+        {
+            if (animationState.normalizedTime >= 0.75f&&animationState.IsName("death2"))
+            {
+                // 終了検知
+                deathAnimationFinish = true;
+                _deathAnimationNow = false;
+                _animator.SetBool("isDead", false);
+                _animator.SetBool("isDeadFinish",true);
+            }
+            return;
+        }
 
         // モンスターと自分の距離が20以上であればナビメッシュによる移動を行う
         if (distance > attackDistance)
@@ -111,8 +140,8 @@ public class Hunter_AI : MonoBehaviour
         if (animationState.normalizedTime >= 0.75f && animationState.IsName("ataka1"))
         {
             AttackAnimationEnd();
-            attackNow = false;
         }
+        if (!animationState.IsName("ataka1")) attackNow = false;
         if (!agent.isStopped)
         {
             // 走るアニメーションを再生する
@@ -136,6 +165,11 @@ public class Hunter_AI : MonoBehaviour
     public bool GetAttackState()
     {
         return attackNow;
+    }
+
+    bool CheckDie()
+    {
+        return this.gameObject.GetComponent<HunterHPManager>().GetHP()<=0;
     }
 
     public AnimatorStateInfo GetAnimState()
