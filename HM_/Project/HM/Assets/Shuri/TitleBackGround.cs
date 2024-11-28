@@ -11,8 +11,4 @@ public class TitleBackGround : MonoBehaviour
     {
         GetComponent<Image>().sprite = backGroundSprites[Random.Range(0, backGroundSprites.Length - 1)];
     }
-    void Update()
-    {
-        
-    }
 }

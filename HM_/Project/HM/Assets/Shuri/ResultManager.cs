@@ -71,4 +71,9 @@ public class ResultManager : MonoBehaviour
         rankText.text = rank.rankText;
         rankText.colorGradientPreset = rank.rankColor;
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.JoystickButton3)) Application.Quit();
+    }
 }
