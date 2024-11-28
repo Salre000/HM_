@@ -8,6 +8,7 @@ TagManager:
   - EnemyAttack
   - Hunter
   - ItemBox
+  - GameManager
   layers:
   - Default
   - TransparentFX
