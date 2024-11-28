@@ -866,6 +866,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3115370620048113512, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+--- !u!114 &299911649 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3115370620048113506, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+  m_PrefabInstance: {fileID: 299911648}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e69142a887bf31842b28dcaa01edaaee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &336446015
 GameObject:
   m_ObjectHideFlags: 0
@@ -4942,8 +4953,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08eaef8fe438eee4384454bcaaebe493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hunterManager: {fileID: 0}
-  playerStatus: {fileID: 0}
+  hunterManager: {fileID: 1418245116}
+  playerStatus: {fileID: 299911649}
   uiManager: {fileID: 1209621434}
   resultRetention: {fileID: 1745991055}
 --- !u!1 &1431908121

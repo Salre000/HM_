@@ -5,9 +5,9 @@ using UnityEngine;
 public class HunterHPManager : MonoBehaviour
 {
     // ハンターのHP
-    public float hp = 1000;
+    public float hp = 100;
 
-    public float maxhp = 1000;
+    public float maxhp = 100;
 
     public bool isDeadFlag = false;
 
@@ -15,7 +15,7 @@ public class HunterHPManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Damage>() == null) return;
-
+       
         if(other.gameObject.tag== "PlayerAttack"&&"Hunter"==this.tag)
         {
             Damage(other.GetComponent<Damage>().GetDamage());
@@ -25,8 +25,9 @@ public class HunterHPManager : MonoBehaviour
 
     private void Update()
     {
-        // HPが0になったら
-        if (hp < 0)
+        
+        // HPが0かつ死亡アニメーションを終了したら
+        if (hp < 0&&this.gameObject.GetComponent<Hunter_AI>().deathAnimationFinish)
         {
             hp = 0;
             // 死亡判定
