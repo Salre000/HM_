@@ -113,6 +113,10 @@ public class PlayerAttack : MonoBehaviour
         if(Input.GetKey("joystick button 4")&& Input.GetKey("joystick button 5"))
         {
             _anime.SetRoarFlag(true);
+
+            GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+
+            RadialBlur radialBlur = mainCamera.GetComponent<RadialBlur>();
         }
         else
         {
