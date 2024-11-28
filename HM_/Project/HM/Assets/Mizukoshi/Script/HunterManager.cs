@@ -51,16 +51,8 @@ public class HunterManager : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             if (!isDeath[i]) continue;
-
-            time[i] += Time.deltaTime;
-            if (time[i] <= 0.5f) continue;
-            time[i] = 0f;
             isDeath[i] = false;
-            _animator[i].SetBool("isDead", false);
-            deathAnimationNow = false;
-            Respawn(i);
-
-
+ 
         }
 
 
@@ -75,6 +67,9 @@ public class HunterManager : MonoBehaviour
     {
         gameObjects[i].transform.GetComponent<HunterHPManager>().hp = 100;
         gameObjects[i].transform.GetComponent<HunterHPManager>().isDeadFlag = false;
+        isDeath[i]=false;
+        _animator[i].SetBool("isDead", false);
+        deathAnimationNow = false;
         gameObjects[i].transform.position = respawnPosition;
     }
 }

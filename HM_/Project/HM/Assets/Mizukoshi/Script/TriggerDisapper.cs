@@ -35,7 +35,6 @@ public class TriggerDisapper : MonoBehaviour
 
         if (hit) 
         {
-
             Destroy(co);
         }
     }
