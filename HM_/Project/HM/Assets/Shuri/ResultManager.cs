@@ -58,8 +58,6 @@ public class ResultManager : MonoBehaviour
         if (result.GetClearFlag()) resultTime.text = "Time : " + result.GetClearTime().ToString();
         else resultTime.text = "Time : --:--";
 
-        backGround.sprite = Resources.Load<Sprite>("Assets/ScreenShots/img" + 1.ToString()) as Sprite;
-
         switch (result.GetClearTime())
         {
             case < timeS: rank = rankS; break;
