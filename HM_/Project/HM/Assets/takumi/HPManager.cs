@@ -91,7 +91,7 @@ public class HPManager : MonoBehaviour
     const float MaxMonsterHP = 1000;
     float GetMaxMonsterHp() { return MaxMonsterHP; }
 
-    float MonsterHp = 0;
+   [SerializeField] float MonsterHp = 0;
 
     float MonsterInvincibilityTime;
 
