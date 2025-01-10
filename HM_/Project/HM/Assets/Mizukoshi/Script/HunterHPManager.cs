@@ -18,7 +18,7 @@ public class HunterHPManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Damage>() == null) return;
+        //if (other.GetComponent<Damage>() == null) return;
 
         if (other.gameObject.tag == "PlayerAttack" && "Hunter" == this.tag)
         {

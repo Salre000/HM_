@@ -44,7 +44,7 @@ public class HPManager : MonoBehaviour
 
     public void HunterDamage(float Damage, int Number)
     {
-        if (HunterInvincibilityTime[Number] != -1) return;
+        //if (HunterInvincibilityTime[Number] != -1) return;
 
         HunterHp[Number] -= Damage;
         HunterInvincibilityTime[Number] = 0;
@@ -100,6 +100,7 @@ public class HPManager : MonoBehaviour
 
     const float MaxHunterHp = 100;
 
+    [SerializeField]
     float []HunterHp;
 
     float []HunterInvincibilityTime;

@@ -60,11 +60,16 @@ public class HunterManager : MonoBehaviour
 
     void CheckDeath(int hunterNum)
     {
-        if(gameObjects[hunterNum].transform.GetComponent<HunterHPManager>().isDeadFlag)
+        if (_hpManager.GetComponent<HPManager>().GetHunterLostNumber() == -1)return;
+        else
         {
+            Respawn(_hpManager.GetComponent<HPManager>().GetHunterLostNumber());
             deathCount++;
-            Respawn(hunterNum);
+            int errorNum = -1;
+            _hpManager.GetComponent<HPManager>().SetHunterLostNumber(errorNum);
+            _hpManager.GetComponent<HPManager>().HunterHeel(100,hunterNum);
         }
+
     }
 
     float AmountDamaged(int hunterNum)
