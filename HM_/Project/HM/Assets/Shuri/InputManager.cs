@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] TextAsset _text;
+    [SerializeField] TextAsset _keyConfig;
 
     static InputManager instance;
 
@@ -32,7 +32,7 @@ public class InputManager : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
 
-        string jsonText = _text.ToString();
+        string jsonText = _keyConfig.ToString();
 
         JsonNode json = JsonNode.Parse(jsonText);
 

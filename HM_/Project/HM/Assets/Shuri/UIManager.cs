@@ -15,8 +15,13 @@ public class UIManager : MonoBehaviour
     int _bgmVolume;
     int _seVolume;
 
+    [SerializeField] TextAsset _option;
+
     [SerializeField] Image _timer;
     [SerializeField] Slider _hpBar;
+    [SerializeField] Slider _sensibilityBar;
+    [SerializeField] Slider _bgmBar;
+    [SerializeField] Slider _seBar;
     [SerializeField] TextMeshProUGUI _textMeshProUGUI;
 
     [SerializeField] HPManager _hpManager;
@@ -27,6 +32,14 @@ public class UIManager : MonoBehaviour
         remainingTime = LimitTime;
 
         _hpBar.value = _hpBar.maxValue = _hpManager.GetMaxMonsterHp();
+
+        string jsonText = _option.ToString();
+
+        JsonNode json = JsonNode.Parse(jsonText);
+
+        _sensibilityBar.value = _sensibility = json["sensibility"].Get<int>();
+        _bgmBar.value = _bgmVolume = json["BGMvolume"].Get<int>();
+        _seBar.value = _seVolume = json["SEvolume"].Get<int>();
     }
 
     void Update()
