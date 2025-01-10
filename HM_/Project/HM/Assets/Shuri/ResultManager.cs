@@ -134,7 +134,7 @@ public class ResultManager : MonoBehaviour
         _rankText.text = rank.rankText; 
         _rankText.colorGradientPreset = rank.rankColor;
 
-        if (result.GetClearTime() < data.rank[2])
+        if (data.rank[2] <= 0 || result.GetClearTime() < data.rank[2])
         {
             data.rank[2] = result.GetClearTime();
             Array.Sort(data.rank);
