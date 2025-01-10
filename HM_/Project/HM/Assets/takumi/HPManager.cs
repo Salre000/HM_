@@ -92,6 +92,7 @@ public class HPManager : MonoBehaviour
     float GetMaxMonsterHp() { return MaxMonsterHP; }
 
    [SerializeField] float MonsterHp = 0;
+    public float GetMonsterHp() { return  MonsterHp; }
 
     float MonsterInvincibilityTime;
 

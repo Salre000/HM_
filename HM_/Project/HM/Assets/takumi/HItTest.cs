@@ -5,6 +5,7 @@ using UnityEngine;
 public class HItTest : MonoBehaviour
 {
     private HPManager _status;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,7 @@ public class HItTest : MonoBehaviour
             Damage _damage=other.GetComponent<Damage>();
 
             ////HP‚ðŒ¸‚ç‚·
-            //_status.MonsterDamage(_damage.GetDamage());
+            _status.MonsterDamage(_damage.GetDamage());
         }
     }
 }
