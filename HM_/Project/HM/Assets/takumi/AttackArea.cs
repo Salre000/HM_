@@ -12,7 +12,7 @@ public class AttackArea : MonoBehaviour
     [SerializeField] private GameObject Parent;
 
     //“–‚½‚è”»’è‚ğÁ‚·‚Ü‚Å‚ÌŠÔ
-    const int MaxTime = 20;
+    const int MaxTime = 3;
 
     int CountTime = 0;
 
@@ -22,7 +22,7 @@ public class AttackArea : MonoBehaviour
 
         SphereCollider collider = this.gameObject.AddComponent<SphereCollider>();
         collider.isTrigger = true;
-        collider.radius = 10;
+        collider.radius = 1;
 
 
     }

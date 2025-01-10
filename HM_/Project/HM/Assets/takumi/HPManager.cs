@@ -55,7 +55,7 @@ public class HPManager : MonoBehaviour
     public void HunterHeel(float Heel, int Number)
     {
 
-        MonsterHp = Heel;
+        HunterHp[Number] = Heel;
 
         if (HunterHp[Number] > MaxHunterHp) HunterHp[Number] = MaxHunterHp;
 

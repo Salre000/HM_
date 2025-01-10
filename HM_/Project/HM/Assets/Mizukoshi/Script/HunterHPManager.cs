@@ -22,7 +22,7 @@ public class HunterHPManager : MonoBehaviour
 
         if (other.gameObject.tag == "PlayerAttack" && "Hunter" == this.tag)
         {
-            //Damage(other.GetComponent<Damage>().GetDamage());
+            if (other.GetComponent<Damage>() == null) return;
             isHit = true;
             collider = other;
         }

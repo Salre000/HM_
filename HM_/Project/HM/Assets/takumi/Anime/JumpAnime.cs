@@ -39,8 +39,8 @@ public class JumpAnime : AnimeBase
         float _horizontal = Input.GetAxis("Horizontal");
         float _vertical = Input.GetAxis("Vertical");
 
-        JumpAngle=Mathf.Atan2(_horizontal, _vertical);
-
+        JumpAngle=Mathf.Atan2(_horizontal, _vertical)+this.transform.eulerAngles.y*3.14f/180;
+        Debug.Log(JumpAngle);
 
         for (int i = 0; i < 3; i++) 
         {
