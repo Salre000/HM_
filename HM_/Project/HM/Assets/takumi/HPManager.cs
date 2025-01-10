@@ -115,7 +115,6 @@ public class HPManager : MonoBehaviour
             if (HunterHp[i]<=0)HunterLostNumber = i;
 
         }
-
     }
     public void SetHunterLostNumber(int Number) 
     {

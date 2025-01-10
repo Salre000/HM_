@@ -12,6 +12,7 @@ public class JumpAnime : AnimeBase
     const float MaxTime = 0.2f;
 
     float time = 0;
+    float JumpAngle = 0;
 
     Rigidbody rb;
 
@@ -33,6 +34,12 @@ public class JumpAnime : AnimeBase
         HitGameObject[2] = GameObject.Find("Bone.022");
 
         PlayerAttack playerAttack = GetComponent<PlayerAttack>();
+
+                // ˆÚ“®—Ê‚Æ‰ñ“]—Ê‚ğ‹‚ß‚é
+        float _horizontal = Input.GetAxis("Horizontal");
+        float _vertical = Input.GetAxis("Vertical");
+
+        JumpAngle=Mathf.Atan2(_horizontal, _vertical);
 
 
         for (int i = 0; i < 3; i++) 
@@ -61,7 +68,7 @@ public class JumpAnime : AnimeBase
         FrameCount++;
         if (FrameCount < 3) return;
 
-        Vector3 Vec= new Vector3(Mathf.Sin(this.transform.eulerAngles.y*3.14f/180), 0, Mathf.Cos(this.transform.eulerAngles.y * 3.14f / 180));
+        Vector3 Vec= new Vector3(Mathf.Sin(JumpAngle), 0, Mathf.Cos(JumpAngle));
 
         if(FrameCount<30)this.gameObject.transform.position += Vec/5;
 
