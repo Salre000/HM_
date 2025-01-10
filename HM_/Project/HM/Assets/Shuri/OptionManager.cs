@@ -11,20 +11,41 @@ public class OptionManager : MonoBehaviour
 
     public int sliderIndex;
 
+    [SerializeField] TextAsset _option;
+
     [SerializeField] GameObject uiPanel;
     [SerializeField] GameObject beltText;
     [SerializeField] GameObject objective;
 
     [SerializeField] Slider[] slider;
+    [SerializeField] Slider _sensibilityBar;
+    [SerializeField] Slider _bgmBar;
+    [SerializeField] Slider _seBar;
     [SerializeField] RectTransform cursor;
 
     InputManager _inputManager;
+
+    UIManager _uiManager;
 
     void Start()
     {
         uiPanel.SetActive(false);
 
         _inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
+        _uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+
+        string jsonText = _option.ToString();
+
+        JsonNode json = JsonNode.Parse(jsonText);
+
+        _sensibilityBar.value = json["sensibility"].Get<int>();
+        _bgmBar.value = json["BGMvolume"].Get<int>();
+        _seBar.value = json["SEvolume"].Get<int>();
+
+        _uiManager.SetSliderValue(
+            (int)_sensibilityBar.value, 
+            (int)_bgmBar.value, 
+            (int)_seBar.value);
     }
 
     void Update()
@@ -32,22 +53,29 @@ public class OptionManager : MonoBehaviour
         // オプション画面の開閉
         if (Input.GetKeyDown(_inputManager.config.start))
         {
+            if (uiPanel.activeSelf)
+            {
+                _uiManager.SetSliderValue(
+                    (int)_sensibilityBar.value, 
+                    (int)_bgmBar.value, 
+                    (int)_seBar.value);
+            }
             uiPanel.SetActive(!uiPanel.activeSelf);
         }
 
         // オプション画面が開いていたら
-        if(uiPanel.activeSelf)
+        if (uiPanel.activeSelf)
         {
             Time.timeScale = 0.0f;
 
             // RB
-            if (Input.GetKeyDown(_inputManager.config.rb) && menuIndex < menuNum) 
+            if (Input.GetKeyDown(_inputManager.config.rb) && menuIndex < menuNum)
             {
                 menuIndex++;
                 StartCoroutine(UIMove(Vector3.left));
             }
             // LB
-            if (Input.GetKeyDown(_inputManager.config.lb) && menuIndex > 1) 
+            if (Input.GetKeyDown(_inputManager.config.lb) && menuIndex > 1)
             {
                 menuIndex--;
                 StartCoroutine(UIMove(Vector3.right));
@@ -57,15 +85,15 @@ public class OptionManager : MonoBehaviour
 
         switch (menuIndex)
         {
-            case 1:break;
-            case 2:Option(); break;
-            case 3:break;
+            case 1: break;
+            case 2: Option(); break;
+            case 3: break;
         }
     }
 
     IEnumerator UIMove(Vector3 dir)
     {
-        for (int i = 0; i < 20; i++) 
+        for (int i = 0; i < 20; i++)
         {
             beltText.transform.position += dir * 250 / 20;
             objective.transform.position += dir * 1500 / 20;
