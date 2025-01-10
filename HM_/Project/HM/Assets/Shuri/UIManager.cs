@@ -11,20 +11,22 @@ public class UIManager : MonoBehaviour
 
     public float remainingTime;
 
-    [SerializeField] Image timer;
-    [SerializeField] Slider hpBar;
-    [SerializeField] TextMeshProUGUI textMeshProUGUI;
+    int _sensibility;
+    int _bgmVolume;
+    int _seVolume;
 
-    [SerializeField] PlayerStatus playerStatus;
-    [SerializeField] HunterManager hunterManager;
+    [SerializeField] Image _timer;
+    [SerializeField] Slider _hpBar;
+    [SerializeField] TextMeshProUGUI _textMeshProUGUI;
+
+    [SerializeField] HPManager _hpManager;
+    [SerializeField] HunterManager _hunterManager;
 
     void Start()
     {
         remainingTime = LimitTime;
 
-
-        playerStatus = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>();
-        hpBar.value = hpBar.maxValue = playerStatus.GetMaxHP();
+        _hpBar.value = _hpBar.maxValue = _hpManager.GetMaxMonsterHp();
     }
 
     void Update()
@@ -38,23 +40,28 @@ public class UIManager : MonoBehaviour
     {
         remainingTime -= Time.deltaTime;
 
-        timer.fillAmount = remainingTime / LimitTime;
+        _timer.fillAmount = remainingTime / LimitTime;
 
         if (remainingTime <= 0) Debug.Log("I—¹");
     }
 
     void HPBar()
     {
-        hpBar.value = playerStatus.GetHP();
+        _hpBar.value = _hpManager.GetMonsterHp();
     }
 
     void ObjectiveText()
     {
-        textMeshProUGUI.text = string.Format("¥Defeat the Hunter {0}/4", hunterManager.GetHunterDeathAmount());
+        _textMeshProUGUI.text = string.Format("¥Defeat the Hunter {0}/4", _hunterManager.GetHunterDeathAmount());
     }
 
     public float GetLimitTime()
     {
         return LimitTime;
+    }
+
+    public int GetSensibility()
+    {
+        return _sensibility;
     }
 }
