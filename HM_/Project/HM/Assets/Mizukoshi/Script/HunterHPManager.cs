@@ -11,15 +11,20 @@ public class HunterHPManager : MonoBehaviour
 
     public bool isDeadFlag = false;
 
+    public bool isHit = false;
+
+    public new Collider collider;
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Damage>() == null) return;
-       
-        if(other.gameObject.tag== "PlayerAttack"&&"Hunter"==this.tag)
-        {
-            Damage(other.GetComponent<Damage>().GetDamage());
+        //if (other.GetComponent<Damage>() == null) return;
 
+        if (other.gameObject.tag == "PlayerAttack" && "Hunter" == this.tag)
+        {
+            //Damage(other.GetComponent<Damage>().GetDamage());
+            isHit = true;
+            collider = other;
         }
     }
 

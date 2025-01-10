@@ -1,5 +1,5 @@
 {
-  "sensibility": 50,
-  "BGMvolume": 50,
-  "SEvolume": 50
+  "sensibility": "50",
+  "BGMvolume": "50",
+  "SEvolume": "50"
 }

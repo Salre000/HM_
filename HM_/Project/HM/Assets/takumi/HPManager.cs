@@ -31,6 +31,7 @@ public class HPManager : MonoBehaviour
     private void FixedUpdate()
     {
         TimeCount();
+        SetHunterLostNumber();
     }
 
     //モンスターのダメージ処理
@@ -43,7 +44,7 @@ public class HPManager : MonoBehaviour
 
     public void HunterDamage(float Damage, int Number)
     {
-        if (HunterInvincibilityTime[Number] != -1) return;
+        //if (HunterInvincibilityTime[Number] != -1) return;
 
         HunterHp[Number] -= Damage;
         HunterInvincibilityTime[Number] = 0;
@@ -99,7 +100,31 @@ public class HPManager : MonoBehaviour
 
     const float MaxHunterHp = 100;
 
+    [SerializeField]
     float []HunterHp;
 
     float []HunterInvincibilityTime;
+
+    int HunterLostNumber = -1;
+
+    public void SetHunterLostNumber() 
+    {
+        for(int i = 0; i < HunterCount; i++) 
+        {
+            if (HunterLostNumber == i) continue;
+
+            if (HunterHp[i]<=0)HunterLostNumber = i;
+
+        }
+    }
+    public void SetHunterLostNumber(int Number) 
+    {
+        HunterLostNumber = Number;
+    }
+
+    public int GetHunterLostNumber() 
+    {
+
+        return HunterLostNumber;
+    }
 }

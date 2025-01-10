@@ -11,7 +11,7 @@ public class CameraManager : MonoBehaviour
 
     //プレイヤーのゲームオブジェクト
     [SerializeField] private GameObject _player;
-
+    [SerializeField]private UIManager _manager;
     //プレイヤーとカメラの距離
    [SerializeField] private float _range=10;
 
@@ -35,28 +35,27 @@ public class CameraManager : MonoBehaviour
 
         _position.x = _player.transform.position.x + Mathf.Sin(_cameraPositionAngle) * _range;
         _position.z = _player.transform.position.z + Mathf.Cos(_cameraPositionAngle) * _range;
-        _position.y = _player.transform.position.y+20;
+        _position.y = _player.transform.position.y+7;
 
         this.transform.position = _position;
 
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.LookAt(_player.transform.position+Vector3.up);
 
         // 移動量と回転量を求める
         _horizontal = Input.GetAxis("HorizontalR");
         _vertical = Input.GetAxis("VerticalR");
 
-        if (_horizontal == 0 && _vertical == 0) return;
+        if (_horizontal == 0 &&( _vertical <=0&&_vertical>=-0.5f)) return;
 
         Vector3 _position = this.transform.position;
 
-        _cameraPositionAngle +=( (_horizontal*10)/3.14f*180)*0.0001f;
+        _cameraPositionAngle +=( ((_horizontal)* _manager.GetSensibility()) /3.14f*180)*0.0001f;
 
-        _range += (_vertical)*0.1f;
+        _range+= _vertical*0.1f;
 
         //レンジの最小値を設定する
         if (_range < _minRange) { _range = _minRange; }
@@ -64,7 +63,7 @@ public class CameraManager : MonoBehaviour
         //レンジの最大値を設定する
         if (_range > _maxRange) {  _range = _maxRange; }
 
-        _position.y = _player.transform.position.y + 2;// +(_range/10);
+        _position.y =(_range/3)*2 ;
 
         _position.x = _player.transform.position.x + Mathf.Sin(_cameraPositionAngle) * _range;
         _position.z = _player.transform.position.z + Mathf.Cos(_cameraPositionAngle) * _range;
@@ -73,6 +72,7 @@ public class CameraManager : MonoBehaviour
 
 
 
+        transform.LookAt(_player.transform.position+Vector3.up);
 
 
 

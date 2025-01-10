@@ -5,6 +5,8 @@ public class HunterManager : MonoBehaviour
     private GameObject[] gameObjects;
     private GameObject _spear;
 
+    private GameObject _hpManager;
+
     int deathCount = 0;
     bool deathAnimationNow = false;
     bool[] isDeath = new bool[4];
@@ -17,6 +19,7 @@ public class HunterManager : MonoBehaviour
     void Start()
     {
         gameObjects = GameObject.FindGameObjectsWithTag("Hunter");
+        _hpManager = GameObject.FindGameObjectWithTag("GameManager");
         respawnPosition = transform.position;
     }
 
@@ -25,13 +28,10 @@ public class HunterManager : MonoBehaviour
     {
         for (int i = 0; i < gameObjects.Length; i++)
         {
-            if (gameObjects[i].transform.GetComponent<HunterHPManager>().isDeadFlag)
-            {
-
-                deathCount++;
-                Respawn(i);
-            }
+             CheckDamage(i);
+             CheckDeath(i);
         }
+
     }
 
     public int GetHunterDeathAmount()
@@ -41,9 +41,39 @@ public class HunterManager : MonoBehaviour
 
     void Respawn(int i)
     {
-        gameObjects[i].transform.GetComponent<HunterHPManager>().hp = 110;
+        gameObjects[i].transform.GetComponent<HunterHPManager>().hp = 100;
         gameObjects[i].transform.GetComponent<HunterHPManager>().isDeadFlag = false;
         gameObjects[i].transform.GetComponent<Hunter_AI>().deathAnimationFinish = false;
         gameObjects[i].transform.position = respawnPosition;
+    }
+
+    void CheckDamage(int hunterNum)
+    {
+       
+        if (gameObjects[hunterNum].GetComponent<HunterHPManager>().isHit)
+        {
+            _hpManager.GetComponent<HPManager>().HunterDamage(AmountDamaged(hunterNum), hunterNum);
+            gameObjects[hunterNum].GetComponent<HunterHPManager>().isHit=false;
+        }
+
+    }
+
+    void CheckDeath(int hunterNum)
+    {
+        if (_hpManager.GetComponent<HPManager>().GetHunterLostNumber() == -1)return;
+        else
+        {
+            Respawn(_hpManager.GetComponent<HPManager>().GetHunterLostNumber());
+            deathCount++;
+            int errorNum = -1;
+            _hpManager.GetComponent<HPManager>().SetHunterLostNumber(errorNum);
+            _hpManager.GetComponent<HPManager>().HunterHeel(100,hunterNum);
+        }
+
+    }
+
+    float AmountDamaged(int hunterNum)
+    {
+        return gameObjects[hunterNum].GetComponent<HunterHPManager>().collider.gameObject.GetComponent<Damage>().GetDamage();
     }
 }
