@@ -15,13 +15,9 @@ public class UIManager : MonoBehaviour
     int _bgmVolume;
     int _seVolume;
 
-    [SerializeField] TextAsset _option;
-
     [SerializeField] Image _timer;
     [SerializeField] Slider _hpBar;
-    [SerializeField] Slider _sensibilityBar;
-    [SerializeField] Slider _bgmBar;
-    [SerializeField] Slider _seBar;
+    
     [SerializeField] TextMeshProUGUI _textMeshProUGUI;
 
     [SerializeField] HPManager _hpManager;
@@ -33,19 +29,18 @@ public class UIManager : MonoBehaviour
 
         _hpBar.value = _hpBar.maxValue = _hpManager.GetMaxMonsterHp();
 
-        string jsonText = _option.ToString();
+        
+    }
 
-        JsonNode json = JsonNode.Parse(jsonText);
+    ~UIManager()
+    {
 
-        _sensibilityBar.value = _sensibility = json["sensibility"].Get<int>();
-        _bgmBar.value = _bgmVolume = json["BGMvolume"].Get<int>();
-        _seBar.value = _seVolume = json["SEvolume"].Get<int>();
     }
 
     void Update()
     {
         Timer();
-        HPBar();
+        SliderUpdate();
         ObjectiveText();
     }
 
@@ -58,7 +53,7 @@ public class UIManager : MonoBehaviour
         if (remainingTime <= 0) Debug.Log("I—¹");
     }
 
-    void HPBar()
+    void SliderUpdate()
     {
         _hpBar.value = _hpManager.GetMonsterHp();
     }
@@ -66,6 +61,13 @@ public class UIManager : MonoBehaviour
     void ObjectiveText()
     {
         _textMeshProUGUI.text = string.Format("¥Defeat the Hunter {0}/4", _hunterManager.GetHunterDeathAmount());
+    }
+
+    public void SetSliderValue(int sensivility, int bgm, int se)
+    {
+        _sensibility = sensivility;
+        _bgmVolume = bgm;
+        _seVolume = se;
     }
 
     public float GetLimitTime()
