@@ -38,13 +38,13 @@ public class OptionManager : MonoBehaviour
 
         JsonNode json = JsonNode.Parse(jsonText);
 
-        _sensibilityBar.value = json["sensibility"].Get<int>();
-        _bgmBar.value = json["BGMvolume"].Get<int>();
-        _seBar.value = json["SEvolume"].Get<int>();
+        _sensibilityBar.value = float.Parse(json["sensibility"].Get<string>());
+        _bgmBar.value = float.Parse(json["BGMvolume"].Get<string>());
+        _seBar.value = float.Parse(json["SEvolume"].Get<string>());
 
         _uiManager.SetSliderValue(
-            (int)_sensibilityBar.value, 
-            (int)_bgmBar.value, 
+            (int)_sensibilityBar.value,
+            (int)_bgmBar.value,
             (int)_seBar.value);
     }
 
@@ -56,8 +56,8 @@ public class OptionManager : MonoBehaviour
             if (uiPanel.activeSelf)
             {
                 _uiManager.SetSliderValue(
-                    (int)_sensibilityBar.value, 
-                    (int)_bgmBar.value, 
+                    (int)_sensibilityBar.value,
+                    (int)_bgmBar.value,
                     (int)_seBar.value);
             }
             uiPanel.SetActive(!uiPanel.activeSelf);
