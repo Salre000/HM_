@@ -139,6 +139,7 @@ public class ResultManager : MonoBehaviour
             data.rank[2] = result.GetClearTime();
             Array.Sort(data.rank);
             Array.Reverse(data.rank);
+            Save(data);
         }
     }
 
