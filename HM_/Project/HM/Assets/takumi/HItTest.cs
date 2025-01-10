@@ -9,14 +9,18 @@ public class HItTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _status = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
+        //_status = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
     }
 
     //‰½‚©‚É“–‚½‚Á‚½
     //(ƒgƒŠƒK[“¯m‚àŠl“¾‚µ‚Ä‚­‚ê‚é)
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("“–‚½‚Á‚½");
+        if (other.name == "aaa") 
+        {
+            Debug.Log("“–‚½‚Á‚½");
+
+        }
 
         //“G‚ÌUŒ‚‚ğó‚¯‚½
         if (other.gameObject.tag == "EnemyAttack")
@@ -26,8 +30,8 @@ public class HItTest : MonoBehaviour
             //“G‚ÌUŒ‚—Í‚ğ—˜—p‚µ‚½‹““®
             Damage _damage=other.GetComponent<Damage>();
 
-            //HP‚ğŒ¸‚ç‚·
-            _status.MonsterDamage(_damage.GetDamage());
+            ////HP‚ğŒ¸‚ç‚·
+            //_status.MonsterDamage(_damage.GetDamage());
         }
     }
 }
