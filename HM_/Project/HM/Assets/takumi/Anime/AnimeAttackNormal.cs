@@ -6,9 +6,7 @@ public class AnimeAttackNormal : AnimeBase
 {
      GameObject AttackObject;
     public void SetAttackObject(GameObject objects) {  AttackObject = objects; }
-    SphereCollider Sphere;
 
-    Damage damage;
 
     const float damages = 30;
 
@@ -25,13 +23,6 @@ public class AnimeAttackNormal : AnimeBase
     public void SetHitTest() 
     {
 
-        Sphere = AttackObject.AddComponent<SphereCollider>();
-        Sphere.center = Vector3.zero;
-        Sphere.radius = 0.05f;
-        Sphere.isTrigger = true;
-        damage = AttackObject.AddComponent<Damage>();
-        this.tag = TagBox.GetPlayerAttackTag();
-        damage.SetDamage(damages);
 
     }
 
@@ -46,9 +37,6 @@ public class AnimeAttackNormal : AnimeBase
     {
 
         AnimeAttackNormal animeAttackNormal = GetComponent<AnimeAttackNormal>();
-        AttackObject.tag = TagBox.GetPlayerTag();
-        Destroy(Sphere);
-        Destroy(damage);
         Destroy(animeAttackNormal);
 
 
@@ -56,11 +44,6 @@ public class AnimeAttackNormal : AnimeBase
 
     override protected void DestroyHitObject() 
     {
-
-        Destroy(Sphere);
-        damage.SetDamage(0);
-
-
     }
 
 }

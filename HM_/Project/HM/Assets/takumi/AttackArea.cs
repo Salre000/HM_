@@ -10,6 +10,7 @@ public class AttackArea : MonoBehaviour
 
     //追従先のオブジェクト
     [SerializeField] private GameObject Parent;
+    private Damage damage;
 
     //当たり判定を消すまでの時間
     const int MaxTime = 3;
@@ -23,7 +24,7 @@ public class AttackArea : MonoBehaviour
         SphereCollider collider = this.gameObject.AddComponent<SphereCollider>();
         collider.isTrigger = true;
         collider.radius = 1;
-
+        damage=GetComponent<Damage>();
 
     }
 
@@ -44,13 +45,13 @@ public class AttackArea : MonoBehaviour
     }
 
 
-    public void SetAttackArea(GameObject parent)
+    public void SetAttackArea(GameObject parent,float Damage)
     {
 
         Parent = parent;
         CountTime = 0;
         transform.gameObject.SetActive(true);
-
+        damage.SetDamage(Damage);
     }
 
 

@@ -39,9 +39,9 @@ public class AttackAreaPool : MonoBehaviour
         GameObjects[index] = GameObject.Find("Bone.015"); index++;
     }
 
-    public void SetAttack(int Number) 
+    public void SetAttack(AnimationEvent Event) 
     {
-        if (Number < 0 || GameObjects.Length <= Number) return;
+        if (Event.intParameter < 0 || GameObjects.Length <= Event.intParameter) return;
 
         for(int i = 0; i < MaxNumber; i++) 
         {
@@ -49,7 +49,7 @@ public class AttackAreaPool : MonoBehaviour
             if (objectList[i].activeSelf == false) 
             {
 
-                attackAreaList[i].SetAttackArea(GameObjects[Number]);
+                attackAreaList[i].SetAttackArea(GameObjects[Event.intParameter], Event.floatParameter);
 
                 return;
             }
