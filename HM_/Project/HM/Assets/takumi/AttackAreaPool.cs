@@ -61,7 +61,7 @@ public class AttackAreaPool : MonoBehaviour
 
     }
 
-    public void SetAttackBig()
+    public void SetAttackBig(int Damage)
     {
 
 
@@ -71,7 +71,7 @@ public class AttackAreaPool : MonoBehaviour
             if (objectList[i].activeSelf == false)
             {
 
-                attackAreaList[i].SetAttackArea(Player,50,3.0f,-60);
+                attackAreaList[i].SetAttackArea(Player, Damage, 3.0f,-60);
 
                 return;
             }

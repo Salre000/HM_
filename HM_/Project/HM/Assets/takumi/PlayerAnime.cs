@@ -19,7 +19,9 @@ public class PlayerAnime : MonoBehaviour
     private bool _startHardDown = false;
     private bool _endHardDown = false;
     private bool _downFlag = false;
+    [SerializeField] float Speed = 0;
 
+    public void SetSpped(float Spped) { _animator.SetFloat("Speed", Spped);this.Speed = Spped; }
 
     public bool GetAttackFlag() { return _attackFlag; }
     public void SetAttackFlag(bool Flag) {  _attackFlag = Flag; }

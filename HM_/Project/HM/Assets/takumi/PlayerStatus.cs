@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,14 +42,71 @@ public class PlayerStatus : MonoBehaviour
         Fatigue//疲労状態
     }
 
+    [SerializeField] int StunGage =0;
+    const int MaxStunGage =1000;
+    public void AddStunGage(int Add) 
+    {
+        if (_nowCondition != Condition.Normal) return;
+        StunGage += Add;
+        if (MaxStunGage > StunGage) return;
+        StunGage=MaxStunGage;
+        ChengeCondition(Condition.Stun);
+
+        _anime.SetSpped(1.3f);
+    }
+
+    public void SbuStunGage(int Sbu) 
+    {
+        if (_nowCondition != Condition.Stun) return;
+        StunGage -= Sbu;
+        if (StunGage > 0) return;
+        StunGage=0;
+        ChengeCondition(Condition.Fatigue);
+        _anime.SetSpped(0.8f);
+
+
+    }
+
+    [SerializeField]int StunCount = 0;
+    int MAXStunCount = 3600;
+    //ノーマルモードに変更する関数
+    private void ChengeNomale() 
+    {
+        if (_nowCondition != Condition.Fatigue) return;
+        StunCount++;
+
+        if (StunCount < MAXStunCount) return;
+
+        _anime.SetSpped(1.0f);
+        ChengeCondition(Condition.Normal);
+        StunCount = 0;
+
+    }
+
+
     private Condition _nowCondition;
     private Condition _lostCondition;
+
+    private void ChengeCondition(Condition condition) 
+    {
+        if (_nowCondition == condition) return;
+        _lostCondition=_nowCondition;
+        _nowCondition = condition;
+
+
+    }
 
     public void Start()
     {
         _anime=this.gameObject.GetComponent<PlayerAnime>();
 
         HP=MAXHP;
+    }
+    public void FixedUpdate()
+    {
+        AddStunGage(1);
+        SbuStunGage(1);
+        ChengeNomale();
     }
 
 }
