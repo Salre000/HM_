@@ -13,7 +13,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField]private UIManager _manager;
     //プレイヤーとカメラの距離
-   [SerializeField] private float _range=10;
+   [SerializeField] private float _range=2.0f;
 
     [SerializeField] private float _horizontal;
     [SerializeField] private float _vertical;
@@ -33,11 +33,26 @@ public class CameraManager : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         Vector3 _position = this.transform.position;
 
+        _cameraPositionAngle += (((_horizontal) * _manager.GetSensibility()) / 3.14f * 180) * 0.0001f;
+
+        _range += 1 * 0.1f;
+
+        //レンジの最小値を設定する
+        if (_range < _minRange) { _range = _minRange; }
+
+        //レンジの最大値を設定する
+        if (_range > _maxRange) { _range = _maxRange; }
+
+        _position.y = (_range / 3) * 2;
+
         _position.x = _player.transform.position.x + Mathf.Sin(_cameraPositionAngle) * _range;
         _position.z = _player.transform.position.z + Mathf.Cos(_cameraPositionAngle) * _range;
-        _position.y = _player.transform.position.y+7;
 
         this.transform.position = _position;
+
+
+
+        transform.LookAt(_player.transform.position + Vector3.up);
 
     }
 
