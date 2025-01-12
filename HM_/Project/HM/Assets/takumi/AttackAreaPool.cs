@@ -13,12 +13,14 @@ public class AttackAreaPool : MonoBehaviour
     [SerializeField] Tag tag;
     [Header("頭、左腕、左足、右腕、右足")]
     GameObject []GameObjects=new GameObject[5];
+    [SerializeField]GameObject Player;
 
     private void Awake()
     {
         int index = 0;
+        Player = GameObject.FindGameObjectWithTag("Player");
 
-        for(int i = 0; i < MaxNumber; i++) 
+        for (int i = 0; i < MaxNumber; i++) 
         {
             objectList.Add(new GameObject());
 
@@ -55,6 +57,27 @@ public class AttackAreaPool : MonoBehaviour
             }
 
         }
+
+
+    }
+
+    public void SetAttackBig()
+    {
+
+
+        for (int i = 0; i < MaxNumber; i++)
+        {
+
+            if (objectList[i].activeSelf == false)
+            {
+
+                attackAreaList[i].SetAttackArea(Player,50,3.0f,-60);
+
+                return;
+            }
+
+        }
+
 
 
     }

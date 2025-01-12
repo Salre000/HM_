@@ -14,7 +14,12 @@ public class PlayerAttack : MonoBehaviour
     private GameObject LeftHand;
     [SerializeField] private Tag TagBox;
     [SerializeField] RockPool rockPool;
+    RadialBlur radialBlur;
     public Tag GetTag() { return TagBox; }
+    private void Awake()
+    {
+        radialBlur=Camera.main.GetComponent<RadialBlur>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -114,9 +119,15 @@ public class PlayerAttack : MonoBehaviour
         {
             _anime.SetRoarFlag(true);
 
-            GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            AnimeAttackRoar Roar = GetComponent<AnimeAttackRoar>();
 
-            RadialBlur radialBlur = mainCamera.GetComponent<RadialBlur>();
+            if (Roar == null) 
+            {
+                Roar=transform.AddComponent<AnimeAttackRoar>();
+
+                Roar.SetRadialBlur(radialBlur);
+
+            }
         }
         else
         {

@@ -10,6 +10,7 @@ public class AttackArea : MonoBehaviour
 
     //追従先のオブジェクト
     [SerializeField] private GameObject Parent;
+    SphereCollider collider;
     private Damage damage;
 
     //当たり判定を消すまでの時間
@@ -17,11 +18,9 @@ public class AttackArea : MonoBehaviour
 
     int CountTime = 0;
 
-
-    private void Start()
+    public void Awake()
     {
-
-        SphereCollider collider = this.gameObject.AddComponent<SphereCollider>();
+        collider = this.gameObject.AddComponent<SphereCollider>();
         collider.isTrigger = true;
         collider.radius = 1;
         damage=GetComponent<Damage>();
@@ -31,9 +30,10 @@ public class AttackArea : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (CountTime > MaxTime) 
+        if (CountTime >= MaxTime) 
         {
           transform.gameObject.SetActive(false);
+          CountTime = 0;
         }
 
         transform.position =Parent.transform.position;
@@ -45,13 +45,16 @@ public class AttackArea : MonoBehaviour
     }
 
 
-    public void SetAttackArea(GameObject parent,float Damage)
+    public void SetAttackArea(GameObject parent, float Damage, float radius = 1.0f, int CountTime =0)
     {
 
+        this.CountTime = CountTime;
         Parent = parent;
         CountTime = 0;
+        collider.radius=radius;
         transform.gameObject.SetActive(true);
         damage.SetDamage(Damage);
+
     }
 
 

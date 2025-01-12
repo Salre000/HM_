@@ -8,35 +8,37 @@ public class AnimeAttackRoar :AnimeBase
     GameObject Roar;
     RadialBlur radialBlur;
     Shader shader;
+    GameObject mainCamera;
     void SetShader(Shader shader) {  this.shader = shader; }    
 
     private void Awake()
     {
         _AnimeName = "Armature|AttackRoar";
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
+    public void SetRadialBlur(RadialBlur radial) {radialBlur = radial; }
     int FrameCount = 0;
     private void FixedUpdate()
     {
-        FrameCount++;
         AnimeUPDate();
-        if (FrameCount > 20) 
-        {
-            GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+    }
+    void AnimeRoarStart() 
+    {
+        radialBlur.enabled = true;
 
-            radialBlur=mainCamera.AddComponent<RadialBlur>();
-            radialBlur._shader = shader;
-            Roar = new GameObject();
-            
-
-        }
     }
 
+
+    void AnimeRoarEnd()
+    {
+        radialBlur.enabled = false;
+    }
 
     //アニメーションコントローラー
     protected override void AnimeEnd()
     {
-        Destroy(Roar);
-        Destroy(radialBlur);
+        AnimeAttackRoar animeAttackRoar=GetComponent<AnimeAttackRoar>();
+        Destroy(animeAttackRoar);
 
     }
 
