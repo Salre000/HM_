@@ -76,4 +76,10 @@ public class HunterManager : MonoBehaviour
     {
         return gameObjects[hunterNum].GetComponent<HunterHPManager>().collider.gameObject.GetComponent<Damage>().GetDamage();
     }
+
+    void SetDisapper()
+    {
+        // ハンターについているモンスターを見つける関数を呼び出す。
+
+    }
 }

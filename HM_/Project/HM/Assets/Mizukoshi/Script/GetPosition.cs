@@ -14,6 +14,6 @@ public class GetPosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(this.transform.position);
+        Debug.Log(this.gameObject.name+"ÇÃç¿ïW"+this.transform.position);
     }
 }
