@@ -16,12 +16,12 @@ public class JumpAnime : AnimeBase
 
     Rigidbody rb;
 
-    //あたり判定を生成するオブジェクト
-    GameObject [] HitGameObject=new GameObject[3];
+    ////あたり判定を生成するオブジェクト
+    //GameObject [] HitGameObject=new GameObject[3];
 
-    SphereCollider[] Sphere = new SphereCollider[3];
+    //SphereCollider[] Sphere = new SphereCollider[3];
 
-    Damage []damage=new Damage[3];
+    //Damage []damage=new Damage[3];
 
     private void Awake()
     {
@@ -29,9 +29,9 @@ public class JumpAnime : AnimeBase
 
         _AnimeName = "Armature|jump";
 
-        HitGameObject[0] = GameObject.Find("Bone.024");
-        HitGameObject[1] = GameObject.Find("Bone.019");
-        HitGameObject[2] = GameObject.Find("Bone.022");
+        //HitGameObject[0] = GameObject.Find("Bone.024");
+        //HitGameObject[1] = GameObject.Find("Bone.019");
+        //HitGameObject[2] = GameObject.Find("Bone.022");
 
         PlayerAttack playerAttack = GetComponent<PlayerAttack>();
 
@@ -42,20 +42,20 @@ public class JumpAnime : AnimeBase
         JumpAngle=Mathf.Atan2(_horizontal, _vertical)+this.transform.eulerAngles.y*3.14f/180;
         Debug.Log(JumpAngle);
 
-        for (int i = 0; i < 3; i++) 
-        {
-            Sphere[i]=HitGameObject[i].AddComponent<SphereCollider>();
+        //for (int i = 0; i < 3; i++) 
+        //{
+        //    Sphere[i]=HitGameObject[i].AddComponent<SphereCollider>();
 
-            //HitGameObject[i].tag;
-            Sphere[i].radius = 0.01f;
-            Sphere[i].center=Vector3.zero;
-            Sphere[i].isTrigger= true;
-            HitGameObject[i].tag = playerAttack.GetTag().GetPlayerAttackTag();
+        //    //HitGameObject[i].tag;
+        //    Sphere[i].radius = 0.01f;
+        //    Sphere[i].center=Vector3.zero;
+        //    Sphere[i].isTrigger= true;
+        //    HitGameObject[i].tag = playerAttack.GetTag().GetPlayerAttackTag();
 
-            damage[i] = HitGameObject[i].AddComponent<Damage>();
-            damage[i].SetDamage(Damages);
+        //    damage[i] = HitGameObject[i].AddComponent<Damage>();
+        //    damage[i].SetDamage(Damages);
 
-        }
+        //}
 
 
     }
@@ -101,10 +101,10 @@ public class JumpAnime : AnimeBase
 
         for(int i = 0; i < 3; i++)
         {
-            HitGameObject[i].tag = TagBox.GetPlayerTag();
+            //HitGameObject[i].tag = TagBox.GetPlayerTag();
 
-            Destroy(Sphere[i]);
-            Destroy(damage[i]);
+            //Destroy(Sphere[i]);
+            //Destroy(damage[i]);
 
         }
 

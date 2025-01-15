@@ -1,15 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class HItTest : MonoBehaviour
 {
     private HPManager _status;
+    private PlayerAnime _playerAnime;
+    [SerializeField] float Hp = 300;
+    [Header("UŒ‚‚ğó‚¯‚é‚Ég‚¤ƒ_ƒ[ƒW‚Ì”{—¦")]
+    [SerializeField] float DamageRatio = 1.0f;
+
+    public enum Type 
+    {
+        Normal,
+        Hard,
+        None
+    }
+
+   [SerializeField] Type _type=Type.Hard;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        _playerAnime=GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnime>();
         _status = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
     }
 
@@ -17,8 +32,7 @@ public class HItTest : MonoBehaviour
     //(ƒgƒŠƒK[“¯m‚àŠl“¾‚µ‚Ä‚­‚ê‚é)
     private void OnTriggerEnter(Collider other)
     {
-
-      Debug.Log("“–‚½‚Á‚½");
+        UnityEngine.Debug.Log("Hit");
 
 
         //“G‚ÌUŒ‚‚ğó‚¯‚½
@@ -30,7 +44,21 @@ public class HItTest : MonoBehaviour
             Damage _damage=other.GetComponent<Damage>();
 
             ////HP‚ğŒ¸‚ç‚·
-            _status.MonsterDamage(_damage.GetDamage());
+            _status.MonsterDamage(_damage.GetDamage()* DamageRatio, ref Hp,_playerAnime.GetNowDownFlag());
+
+            if (Hp <= 0) 
+            {
+                switch (_type) 
+                {
+                    case Type.Normal: _playerAnime.SetDownFlag(true); break;
+                    case Type.Hard: _playerAnime.SetStartHardDownFlag(true); break;
+                    case Type.None:break;
+
+
+                }
+
+                Hp = 300;
+            }
         }
     }
 }

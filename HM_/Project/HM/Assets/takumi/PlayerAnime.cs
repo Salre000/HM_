@@ -49,13 +49,27 @@ public class PlayerAnime : MonoBehaviour
 
 
     public bool GetStartHardDownFlag() { return _startHardDown; }
-    public void SetStartHardDownFlag(bool Flag) { _startHardDown = Flag; }
+    public void SetStartHardDownFlag(bool Flag)
+    {
+        _startHardDown = Flag; 
+        _nowDownFlag = true;
+    }
+    public void ReSetStartHardDownFlag() { _startHardDown = false; }
 
     public bool GetEndHardDownFlag() { return _endHardDown; }
-    public void SetEndHardDownFlag(bool Flag) { _endHardDown = Flag; }
+    public void SetEndHardDownFlag(bool Flag)
+    {
+        _endHardDown = Flag;
+    }
+    public void ReSetEndHardDownFlag() { _endHardDown = false; }
 
     public bool GetDownFlag() { return _downFlag; }
     public void SetDownFlag(bool Flag) { _downFlag = Flag; }
+    public void ReSetDownFlag() { _downFlag = false; }
+
+    private bool _nowDownFlag = false;  
+    //ÉÇÉìÉXÉ^Å[
+    public bool GetNowDownFlag() { return _nowDownFlag; }
 
     public void ResetFlag()
     {
@@ -93,5 +107,16 @@ public class PlayerAnime : MonoBehaviour
         _animator.SetBool("StartHardDown", _startHardDown);
         _animator.SetBool("EndHardDown", _endHardDown);
         _animator.SetBool("DownFlag", _downFlag);
+        if (HardDownCount < 0) return;
+        HardDownCount++;
+        Debug.Log(HardDownCount);
+        if (HardDownCount <= 1000) return;
+        _endHardDown = true;
+        _nowDownFlag = false;
+        HardDownCount = -1;
     }
+
+    private int HardDownCount = -1;
+    public void HardDownCountStart() { HardDownCount = 0; }
+
 }

@@ -35,11 +35,13 @@ public class HPManager : MonoBehaviour
     }
 
     //モンスターのダメージ処理
-    public void MonsterDamage(float Damage)
+    public void MonsterDamage(float Damage,ref float PartHp,bool DownFlag)
     {
         if (MonsterInvincibilityTime != -1) return;
         MonsterHp -= Damage;
         MonsterInvincibilityTime = 0;
+        if (DownFlag) return;   
+        PartHp-= Damage;
     }
 
     public void HunterDamage(float Damage, int Number)

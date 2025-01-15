@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PartTestHit : MonoBehaviour
@@ -23,6 +24,8 @@ public class PartTestHit : MonoBehaviour
     [SerializeField] Part ThisPart = Part.None;
 
     [SerializeField] float Hp = 100;
+    [Header("UŒ‚‚ğó‚¯‚é‚Ég‚¤ƒ_ƒ[ƒW‚Ì”{—¦")]
+    [SerializeField] float DamageRatio = 1.0f;
 
     private void Start()
     {
@@ -41,7 +44,7 @@ public class PartTestHit : MonoBehaviour
 
         Hp -= damage.GetDamage();
 
-        hpManager.MonsterDamage(damage.GetDamage());
+        hpManager.MonsterDamage(damage.GetDamage()*DamageRatio, ref Hp,true);
 
         if (Hp > 0) return;
         Hp = 100;
