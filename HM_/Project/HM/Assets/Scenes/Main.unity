@@ -240,7 +240,6 @@ GameObject:
   m_Component:
   - component: {fileID: 10643030}
   - component: {fileID: 10643033}
-  - component: {fileID: 10643032}
   - component: {fileID: 10643031}
   m_Layer: 0
   m_Name: Coll.Bone.028
@@ -278,22 +277,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &10643032
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 10643029}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &10643033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +299,6 @@ GameObject:
   m_Component:
   - component: {fileID: 12088118}
   - component: {fileID: 12088121}
-  - component: {fileID: 12088120}
   - component: {fileID: 12088119}
   m_Layer: 0
   m_Name: Coll.Bone.041
@@ -354,22 +336,6 @@ CapsuleCollider:
   m_Height: 0.013680868
   m_Direction: 1
   m_Center: {x: 0.0005977759, y: 0.00017576595, z: -0.0005643326}
---- !u!54 &12088120
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12088117}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &12088121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,7 +541,6 @@ GameObject:
   m_Component:
   - component: {fileID: 47186200}
   - component: {fileID: 47186203}
-  - component: {fileID: 47186202}
   - component: {fileID: 47186201}
   m_Layer: 0
   m_Name: Coll.Bone.075
@@ -613,22 +578,6 @@ CapsuleCollider:
   m_Height: 0.024157159
   m_Direction: 2
   m_Center: {x: 0.00024412759, y: 0.00028573163, z: 0}
---- !u!54 &47186202
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 47186199}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &47186203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1076,7 +1025,6 @@ GameObject:
   m_Component:
   - component: {fileID: 73039529}
   - component: {fileID: 73039532}
-  - component: {fileID: 73039531}
   - component: {fileID: 73039530}
   m_Layer: 0
   m_Name: Coll.Bone.001
@@ -1114,22 +1062,6 @@ CapsuleCollider:
   m_Height: 0.01832411
   m_Direction: 2
   m_Center: {x: 0.00042403117, y: 0, z: -0.0010404624}
---- !u!54 &73039531
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73039528}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &73039532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1152,7 +1084,6 @@ GameObject:
   m_Component:
   - component: {fileID: 86093712}
   - component: {fileID: 86093715}
-  - component: {fileID: 86093714}
   - component: {fileID: 86093713}
   m_Layer: 0
   m_Name: Coll.Bone.034
@@ -1190,22 +1121,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: -0.00038092025, y: -0.0007631695, z: 0.00030711107}
---- !u!54 &86093714
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86093711}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &86093715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1228,7 +1143,6 @@ GameObject:
   m_Component:
   - component: {fileID: 89157497}
   - component: {fileID: 89157500}
-  - component: {fileID: 89157499}
   - component: {fileID: 89157498}
   m_Layer: 0
   m_Name: Coll.Bone.042
@@ -1266,22 +1180,6 @@ CapsuleCollider:
   m_Height: 0.01374694
   m_Direction: 1
   m_Center: {x: 0.00015875092, y: 0, z: -0.0008909907}
---- !u!54 &89157499
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89157496}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &89157500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1334,7 +1232,6 @@ GameObject:
   m_Component:
   - component: {fileID: 100959548}
   - component: {fileID: 100959551}
-  - component: {fileID: 100959550}
   - component: {fileID: 100959549}
   m_Layer: 0
   m_Name: Coll.Bone.089
@@ -1372,22 +1269,6 @@ CapsuleCollider:
   m_Height: 0.012688958
   m_Direction: 0
   m_Center: {x: -0.00026896177, y: 0.0005567833, z: -0.000178169}
---- !u!54 &100959550
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100959547}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &100959551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1447,7 +1328,6 @@ GameObject:
   m_Component:
   - component: {fileID: 105377280}
   - component: {fileID: 105377283}
-  - component: {fileID: 105377282}
   - component: {fileID: 105377281}
   m_Layer: 0
   m_Name: Coll.Bone.105
@@ -1485,22 +1365,6 @@ CapsuleCollider:
   m_Height: 0.031012287
   m_Direction: 1
   m_Center: {x: -0.0009839414, y: 0, z: 0}
---- !u!54 &105377282
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 105377279}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &105377283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2269,7 +2133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 198422370}
   - component: {fileID: 198422373}
-  - component: {fileID: 198422372}
   - component: {fileID: 198422371}
   m_Layer: 0
   m_Name: Coll.Bone.094
@@ -2307,22 +2170,6 @@ CapsuleCollider:
   m_Height: 0.014800676
   m_Direction: 2
   m_Center: {x: 0.001569022, y: -0.00023069326, z: -0.0009798077}
---- !u!54 &198422372
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198422369}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &198422373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2345,7 +2192,6 @@ GameObject:
   m_Component:
   - component: {fileID: 200401684}
   - component: {fileID: 200401687}
-  - component: {fileID: 200401686}
   - component: {fileID: 200401685}
   m_Layer: 0
   m_Name: Coll.Bone.064
@@ -2383,22 +2229,6 @@ CapsuleCollider:
   m_Height: 0.030141959
   m_Direction: 1
   m_Center: {x: -0.00022714445, y: 0, z: 0}
---- !u!54 &200401686
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 200401683}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &200401687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2564,7 +2394,6 @@ GameObject:
   m_Component:
   - component: {fileID: 216261321}
   - component: {fileID: 216261324}
-  - component: {fileID: 216261323}
   - component: {fileID: 216261322}
   m_Layer: 0
   m_Name: Coll.Bone.033
@@ -2602,22 +2431,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &216261323
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216261320}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &216261324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3068,7 +2881,6 @@ GameObject:
   m_Component:
   - component: {fileID: 258851610}
   - component: {fileID: 258851613}
-  - component: {fileID: 258851612}
   - component: {fileID: 258851611}
   m_Layer: 0
   m_Name: Coll.Bone.085
@@ -3106,22 +2918,6 @@ CapsuleCollider:
   m_Height: 0.010988317
   m_Direction: 2
   m_Center: {x: -0.00018579839, y: 0.0007925192, z: 0.0009895533}
---- !u!54 &258851612
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258851609}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &258851613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3144,7 +2940,6 @@ GameObject:
   m_Component:
   - component: {fileID: 261786143}
   - component: {fileID: 261786146}
-  - component: {fileID: 261786145}
   - component: {fileID: 261786144}
   m_Layer: 0
   m_Name: Coll.Bone.111
@@ -3182,22 +2977,6 @@ CapsuleCollider:
   m_Height: 0.039405823
   m_Direction: 2
   m_Center: {x: 0, y: -0.0029185454, z: 0.00080480427}
---- !u!54 &261786145
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261786142}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &261786146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3434,7 +3213,6 @@ GameObject:
   m_Component:
   - component: {fileID: 286130727}
   - component: {fileID: 286130730}
-  - component: {fileID: 286130729}
   - component: {fileID: 286130728}
   m_Layer: 0
   m_Name: Coll.Bone.115
@@ -3472,22 +3250,6 @@ CapsuleCollider:
   m_Height: 0.017103445
   m_Direction: 1
   m_Center: {x: -0.0011752523, y: 0.00036629196, z: 0.0015648073}
---- !u!54 &286130729
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286130726}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &286130730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3634,6 +3396,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3115370620048113512, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
     - {fileID: 3115370620048113509, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+    - {fileID: 8281536527324762479, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+    - {fileID: 3360930196117867584, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
 --- !u!1 &299911649 stripped
 GameObject:
@@ -5095,11 +4859,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3739122124557300643, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
   m_PrefabInstance: {fileID: 299911648}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &299911939 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8098065863421607904, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
-  m_PrefabInstance: {fileID: 299911648}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &299911940 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8424443272795416156, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
@@ -5370,7 +5129,7 @@ MonoBehaviour:
       mass: 1
       drag: 0
       angularDrag: 0.05
-      isKinematic: 1
+      isKinematic: 0
       useGravity: 0
       interpolation: 0
       collisionDetectionMode: 0
@@ -5424,8 +5183,39 @@ MonoBehaviour:
       isCreate: 1
       viewAdvanced: 0
     modifyNameEnabled: 0
-  modified: 0
+  modified: 1
   modifiedChildren: 0
+--- !u!54 &299911944
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299911938}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &299911945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299911938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082b4872c74fcb6429f7ba5d4b17d0df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 300
+  DamageRatio: 0.8
+  _type: 0
 --- !u!114 &311953600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5543,7 +5333,6 @@ GameObject:
   m_Component:
   - component: {fileID: 326862937}
   - component: {fileID: 326862940}
-  - component: {fileID: 326862939}
   - component: {fileID: 326862938}
   m_Layer: 0
   m_Name: Coll.Bone.082
@@ -5581,22 +5370,6 @@ CapsuleCollider:
   m_Height: 0.026385836
   m_Direction: 0
   m_Center: {x: -0.0009915098, y: -0.0017043119, z: 0.0007617697}
---- !u!54 &326862939
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326862936}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &326862940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6248,7 +6021,6 @@ GameObject:
   m_Component:
   - component: {fileID: 344935709}
   - component: {fileID: 344935712}
-  - component: {fileID: 344935711}
   - component: {fileID: 344935710}
   m_Layer: 0
   m_Name: Coll.Bone.068
@@ -6286,22 +6058,6 @@ CapsuleCollider:
   m_Height: 0.022007592
   m_Direction: 0
   m_Center: {x: -0.000111062545, y: -0.0011214948, z: 0}
---- !u!54 &344935711
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 344935708}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &344935712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6483,7 +6239,6 @@ GameObject:
   m_Component:
   - component: {fileID: 364425189}
   - component: {fileID: 364425192}
-  - component: {fileID: 364425191}
   - component: {fileID: 364425190}
   m_Layer: 0
   m_Name: Coll.Bone.078
@@ -6521,22 +6276,6 @@ CapsuleCollider:
   m_Height: 0.019369895
   m_Direction: 1
   m_Center: {x: 0.00037881406, y: -0.00046311226, z: -0.0010913394}
---- !u!54 &364425191
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364425188}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &364425192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6559,7 +6298,6 @@ GameObject:
   m_Component:
   - component: {fileID: 368354627}
   - component: {fileID: 368354630}
-  - component: {fileID: 368354629}
   - component: {fileID: 368354628}
   m_Layer: 0
   m_Name: Coll.Bone.102
@@ -6597,22 +6335,6 @@ CapsuleCollider:
   m_Height: 0.01895497
   m_Direction: 0
   m_Center: {x: 0, y: 0.00072887726, z: -0.0003606733}
---- !u!54 &368354629
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 368354626}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &368354630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6832,7 +6554,6 @@ GameObject:
   m_Component:
   - component: {fileID: 373992662}
   - component: {fileID: 373992665}
-  - component: {fileID: 373992664}
   - component: {fileID: 373992663}
   m_Layer: 0
   m_Name: Coll.Bone.026
@@ -6870,22 +6591,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: -0.00043061143, y: 0, z: -0.00069799507}
---- !u!54 &373992664
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 373992661}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &373992665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7229,7 +6934,6 @@ GameObject:
   m_Component:
   - component: {fileID: 394570428}
   - component: {fileID: 394570431}
-  - component: {fileID: 394570430}
   - component: {fileID: 394570429}
   m_Layer: 0
   m_Name: Coll.Bone.073
@@ -7267,22 +6971,6 @@ CapsuleCollider:
   m_Height: 0.013534034
   m_Direction: 2
   m_Center: {x: 0, y: 0.00055229943, z: 0}
---- !u!54 &394570430
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394570427}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &394570431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7488,7 +7176,6 @@ GameObject:
   m_Component:
   - component: {fileID: 410763195}
   - component: {fileID: 410763198}
-  - component: {fileID: 410763197}
   - component: {fileID: 410763196}
   m_Layer: 0
   m_Name: Coll.Bone.077
@@ -7526,22 +7213,6 @@ CapsuleCollider:
   m_Height: 0.031143326
   m_Direction: 1
   m_Center: {x: 0.0001706807, y: 0, z: 0.001106299}
---- !u!54 &410763197
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 410763194}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &410763198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7564,7 +7235,6 @@ GameObject:
   m_Component:
   - component: {fileID: 423193963}
   - component: {fileID: 423193966}
-  - component: {fileID: 423193965}
   - component: {fileID: 423193964}
   m_Layer: 0
   m_Name: Coll.Bone.088
@@ -7602,22 +7272,6 @@ CapsuleCollider:
   m_Height: 0.026318373
   m_Direction: 2
   m_Center: {x: 0, y: 0.00025149528, z: 0.00016141497}
---- !u!54 &423193965
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423193962}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &423193966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8096,7 +7750,6 @@ GameObject:
   m_Component:
   - component: {fileID: 451666515}
   - component: {fileID: 451666518}
-  - component: {fileID: 451666517}
   - component: {fileID: 451666516}
   m_Layer: 0
   m_Name: Coll.Bone.087
@@ -8134,22 +7787,6 @@ CapsuleCollider:
   m_Height: 0.0243125
   m_Direction: 1
   m_Center: {x: -0.0001835553, y: -0.00022087805, z: 0.00071131345}
---- !u!54 &451666517
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451666514}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &451666518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8172,7 +7809,6 @@ GameObject:
   m_Component:
   - component: {fileID: 457583539}
   - component: {fileID: 457583542}
-  - component: {fileID: 457583541}
   - component: {fileID: 457583540}
   m_Layer: 0
   m_Name: Coll.Bone.069
@@ -8210,22 +7846,6 @@ CapsuleCollider:
   m_Height: 0.030158058
   m_Direction: 2
   m_Center: {x: 0.00044534123, y: -0.001695218, z: 0.00024787756}
---- !u!54 &457583541
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457583538}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &457583542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8248,7 +7868,6 @@ GameObject:
   m_Component:
   - component: {fileID: 461759887}
   - component: {fileID: 461759890}
-  - component: {fileID: 461759889}
   - component: {fileID: 461759888}
   m_Layer: 0
   m_Name: Coll.Bone.110
@@ -8286,22 +7905,6 @@ CapsuleCollider:
   m_Height: 0.026602384
   m_Direction: 0
   m_Center: {x: -0.0012557148, y: 0.00024294108, z: -0.0019740565}
---- !u!54 &461759889
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 461759886}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &461759890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8421,6 +8024,134 @@ MonoBehaviour:
     modifyNameEnabled: 0
   modified: 0
   modifiedChildren: 0
+--- !u!1 &466966188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466966195}
+  - component: {fileID: 466966194}
+  - component: {fileID: 466966193}
+  - component: {fileID: 466966192}
+  - component: {fileID: 466966191}
+  - component: {fileID: 466966196}
+  m_Layer: 0
+  m_Name: Cube (1)
+  m_TagString: PlayerAttack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &466966191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466966188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff321e354a13e9b4e88d4a77cf5c114d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 30
+--- !u!65 &466966192
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466966188}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &466966193
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466966188}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &466966194
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466966188}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &466966195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466966188}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.4904099, y: 11.042038, z: 13.665442}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1443790223}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &466966196
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466966188}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &468100461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8538,7 +8269,6 @@ GameObject:
   m_Component:
   - component: {fileID: 472941715}
   - component: {fileID: 472941718}
-  - component: {fileID: 472941717}
   - component: {fileID: 472941716}
   m_Layer: 0
   m_Name: Coll.Bone.107
@@ -8576,22 +8306,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0.00015819864, y: 0.00081967656, z: -0.000342838}
---- !u!54 &472941717
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472941714}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &472941718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9090,7 +8804,6 @@ GameObject:
   m_Component:
   - component: {fileID: 512039643}
   - component: {fileID: 512039646}
-  - component: {fileID: 512039645}
   - component: {fileID: 512039644}
   m_Layer: 0
   m_Name: Coll.Bone.044
@@ -9128,22 +8841,6 @@ CapsuleCollider:
   m_Height: 0.01331936
   m_Direction: 1
   m_Center: {x: 0.0008624303, y: 0, z: -0.00018001627}
---- !u!54 &512039645
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512039642}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &512039646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9166,7 +8863,6 @@ GameObject:
   m_Component:
   - component: {fileID: 517909183}
   - component: {fileID: 517909186}
-  - component: {fileID: 517909185}
   - component: {fileID: 517909184}
   m_Layer: 0
   m_Name: Coll.Bone.013
@@ -9204,22 +8900,6 @@ CapsuleCollider:
   m_Height: 0.019502228
   m_Direction: 2
   m_Center: {x: -0.00053827115, y: -0.0007708091, z: -0.000202897}
---- !u!54 &517909185
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 517909182}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &517909186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9532,7 +9212,6 @@ GameObject:
   m_Component:
   - component: {fileID: 547463132}
   - component: {fileID: 547463135}
-  - component: {fileID: 547463134}
   - component: {fileID: 547463133}
   m_Layer: 0
   m_Name: Coll.Bone.100
@@ -9570,22 +9249,6 @@ CapsuleCollider:
   m_Height: 0.015662353
   m_Direction: 1
   m_Center: {x: 0.0008050781, y: 0.00082032406, z: 0}
---- !u!54 &547463134
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547463131}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &547463135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10106,7 +9769,6 @@ GameObject:
   m_Component:
   - component: {fileID: 597258728}
   - component: {fileID: 597258731}
-  - component: {fileID: 597258730}
   - component: {fileID: 597258729}
   m_Layer: 0
   m_Name: Coll.Bone.083
@@ -10144,22 +9806,6 @@ CapsuleCollider:
   m_Height: 0.038652286
   m_Direction: 1
   m_Center: {x: 0.0009788522, y: 0.00044823159, z: 0}
---- !u!54 &597258730
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597258727}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &597258731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10562,7 +10208,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 612420017}
-  - component: {fileID: 612420020}
   - component: {fileID: 612420019}
   - component: {fileID: 612420018}
   m_Layer: 0
@@ -10613,22 +10258,10 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &612420020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612420016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ef2b87818a56064b926871454f01541, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &619057222
 GameObject:
   m_ObjectHideFlags: 0
@@ -10639,7 +10272,6 @@ GameObject:
   m_Component:
   - component: {fileID: 619057223}
   - component: {fileID: 619057226}
-  - component: {fileID: 619057225}
   - component: {fileID: 619057224}
   m_Layer: 0
   m_Name: Coll.Bone.019
@@ -10677,22 +10309,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0, y: -0.00018087076, z: 0.00068797637}
---- !u!54 &619057225
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619057222}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &619057226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11171,7 +10787,6 @@ GameObject:
   m_Component:
   - component: {fileID: 674085648}
   - component: {fileID: 674085651}
-  - component: {fileID: 674085650}
   - component: {fileID: 674085649}
   m_Layer: 0
   m_Name: Coll.Bone.106
@@ -11209,22 +10824,6 @@ CapsuleCollider:
   m_Height: 0.019854924
   m_Direction: 1
   m_Center: {x: 0.0013324127, y: 0.00044033863, z: 0.0009860452}
---- !u!54 &674085650
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 674085647}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &674085651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11985,7 +11584,6 @@ GameObject:
   m_Component:
   - component: {fileID: 698719568}
   - component: {fileID: 698719571}
-  - component: {fileID: 698719570}
   - component: {fileID: 698719569}
   m_Layer: 0
   m_Name: Coll.Bone.070
@@ -12023,22 +11621,6 @@ CapsuleCollider:
   m_Height: 0.02906648
   m_Direction: 2
   m_Center: {x: 0, y: -0.0007492427, z: 0}
---- !u!54 &698719570
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698719567}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &698719571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12780,7 +12362,6 @@ GameObject:
   m_Component:
   - component: {fileID: 728092935}
   - component: {fileID: 728092938}
-  - component: {fileID: 728092937}
   - component: {fileID: 728092936}
   m_Layer: 0
   m_Name: Coll.Bone.045
@@ -12818,22 +12399,6 @@ CapsuleCollider:
   m_Height: 0.011305425
   m_Direction: 1
   m_Center: {x: 0.00023242971, y: 0, z: -0.00023242971}
---- !u!54 &728092937
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728092934}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &728092938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13149,7 +12714,6 @@ GameObject:
   m_Component:
   - component: {fileID: 753244695}
   - component: {fileID: 753244698}
-  - component: {fileID: 753244697}
   - component: {fileID: 753244696}
   m_Layer: 0
   m_Name: Coll.Bone.101
@@ -13187,22 +12751,6 @@ CapsuleCollider:
   m_Height: 0.013525892
   m_Direction: 2
   m_Center: {x: 0, y: -0.0005658781, z: 0}
---- !u!54 &753244697
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 753244694}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &753244698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13225,7 +12773,6 @@ GameObject:
   m_Component:
   - component: {fileID: 760795686}
   - component: {fileID: 760795689}
-  - component: {fileID: 760795688}
   - component: {fileID: 760795687}
   m_Layer: 0
   m_Name: Coll.Bone.016
@@ -13263,22 +12810,6 @@ CapsuleCollider:
   m_Height: 0.016854588
   m_Direction: 0
   m_Center: {x: 0.00017270586, y: -0.0017159078, z: -0.00077079865}
---- !u!54 &760795688
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 760795685}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &760795689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13374,7 +12905,6 @@ GameObject:
   m_Component:
   - component: {fileID: 771091432}
   - component: {fileID: 771091435}
-  - component: {fileID: 771091434}
   - component: {fileID: 771091433}
   m_Layer: 0
   m_Name: Coll.Bone.055
@@ -13412,22 +12942,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0.00013118889, y: 0, z: 0}
---- !u!54 &771091434
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771091431}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &771091435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13450,7 +12964,6 @@ GameObject:
   m_Component:
   - component: {fileID: 773069757}
   - component: {fileID: 773069760}
-  - component: {fileID: 773069759}
   - component: {fileID: 773069758}
   m_Layer: 0
   m_Name: Coll.Bone.043
@@ -13488,22 +13001,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0.0008262452, y: -0.000105516054, z: 0}
---- !u!54 &773069759
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773069756}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &773069760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13526,7 +13023,6 @@ GameObject:
   m_Component:
   - component: {fileID: 782195397}
   - component: {fileID: 782195400}
-  - component: {fileID: 782195399}
   - component: {fileID: 782195398}
   m_Layer: 0
   m_Name: Coll.Bone.076
@@ -13564,22 +13060,6 @@ CapsuleCollider:
   m_Height: 0.022624087
   m_Direction: 1
   m_Center: {x: 0.0014767221, y: 0, z: -0.0004002303}
---- !u!54 &782195399
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 782195396}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &782195400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13699,7 +13179,6 @@ GameObject:
   m_Component:
   - component: {fileID: 797643614}
   - component: {fileID: 797643617}
-  - component: {fileID: 797643616}
   - component: {fileID: 797643615}
   m_Layer: 0
   m_Name: Coll.Bone.114
@@ -13737,22 +13216,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0.00010003941, y: 0, z: -0.00033930503}
---- !u!54 &797643616
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 797643613}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &797643617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14044,6 +13507,37 @@ MonoBehaviour:
     modifyNameEnabled: 0
   modified: 0
   modifiedChildren: 0
+--- !u!54 &813133232
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299911850}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &813133233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299911850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082b4872c74fcb6429f7ba5d4b17d0df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 300
+  DamageRatio: 0.2
+  _type: 1
 --- !u!1 &814030348
 GameObject:
   m_ObjectHideFlags: 0
@@ -15071,7 +14565,6 @@ GameObject:
   m_Component:
   - component: {fileID: 850431062}
   - component: {fileID: 850431065}
-  - component: {fileID: 850431064}
   - component: {fileID: 850431063}
   m_Layer: 0
   m_Name: Coll.Bone.080
@@ -15109,22 +14602,6 @@ CapsuleCollider:
   m_Height: 0.017566595
   m_Direction: 0
   m_Center: {x: 0.00084733125, y: -0.0018596947, z: 0.00065223966}
---- !u!54 &850431064
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850431061}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &850431065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15598,23 +15075,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3221969772102601746, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
   m_PrefabInstance: {fileID: 299911648}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &875452110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299911800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35c811cd549460f44aa6f548167b9be9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagBox: {fileID: 0}
-  animator: {fileID: 0}
-  hpManager: {fileID: 0}
-  ThisPart: 2
-  Hp: 0
 --- !u!114 &875452111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15722,6 +15182,21 @@ MonoBehaviour:
     modifyNameEnabled: 0
   modified: 0
   modifiedChildren: 0
+--- !u!114 &875452112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299911800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082b4872c74fcb6429f7ba5d4b17d0df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 300
+  DamageRatio: 0.6
+  _type: 0
 --- !u!114 &881532538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16267,7 +15742,6 @@ GameObject:
   m_Component:
   - component: {fileID: 911979967}
   - component: {fileID: 911979970}
-  - component: {fileID: 911979969}
   - component: {fileID: 911979968}
   m_Layer: 0
   m_Name: Coll.Bone.054
@@ -16305,22 +15779,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0.00021472108, y: 0.00018539745, z: 0}
---- !u!54 &911979969
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911979966}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &911979970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16343,7 +15801,6 @@ GameObject:
   m_Component:
   - component: {fileID: 913606118}
   - component: {fileID: 913606121}
-  - component: {fileID: 913606120}
   - component: {fileID: 913606119}
   m_Layer: 0
   m_Name: Coll.Bone.006
@@ -16381,22 +15838,6 @@ CapsuleCollider:
   m_Height: 0.017360741
   m_Direction: 2
   m_Center: {x: 0.00137147, y: -0.00041572843, z: -0.0016423482}
---- !u!54 &913606120
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913606117}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &913606121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16419,7 +15860,6 @@ GameObject:
   m_Component:
   - component: {fileID: 914728458}
   - component: {fileID: 914728461}
-  - component: {fileID: 914728460}
   - component: {fileID: 914728459}
   m_Layer: 0
   m_Name: Coll.Bone.058
@@ -16457,22 +15897,6 @@ CapsuleCollider:
   m_Height: 0.030790102
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &914728460
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914728457}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &914728461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16495,7 +15919,6 @@ GameObject:
   m_Component:
   - component: {fileID: 917924721}
   - component: {fileID: 917924724}
-  - component: {fileID: 917924723}
   - component: {fileID: 917924722}
   m_Layer: 0
   m_Name: Coll.Bone.032
@@ -16533,22 +15956,6 @@ CapsuleCollider:
   m_Height: 0.010018121
   m_Direction: 1
   m_Center: {x: 0.00065380987, y: -0.000766122, z: -0.00024504773}
---- !u!54 &917924723
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 917924720}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &917924724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16678,7 +16085,6 @@ GameObject:
   m_Component:
   - component: {fileID: 920517171}
   - component: {fileID: 920517174}
-  - component: {fileID: 920517173}
   - component: {fileID: 920517172}
   m_Layer: 0
   m_Name: Coll.Bone.040
@@ -16716,22 +16122,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0.00015326915, y: 0, z: -0.001020743}
---- !u!54 &920517173
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920517170}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &920517174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16968,7 +16358,6 @@ GameObject:
   m_Component:
   - component: {fileID: 949673647}
   - component: {fileID: 949673650}
-  - component: {fileID: 949673649}
   - component: {fileID: 949673648}
   m_Layer: 0
   m_Name: Coll.Bone.039
@@ -17006,22 +16395,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0.0003677355, y: 0, z: -0.0002952614}
---- !u!54 &949673649
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 949673646}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &949673650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17190,7 +16563,6 @@ GameObject:
   m_Component:
   - component: {fileID: 957113625}
   - component: {fileID: 957113628}
-  - component: {fileID: 957113627}
   - component: {fileID: 957113626}
   m_Layer: 0
   m_Name: Coll.Bone.049
@@ -17228,22 +16600,6 @@ CapsuleCollider:
   m_Height: 0.015657526
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &957113627
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 957113624}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &957113628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17518,7 +16874,6 @@ GameObject:
   m_Component:
   - component: {fileID: 967349225}
   - component: {fileID: 967349228}
-  - component: {fileID: 967349227}
   - component: {fileID: 967349226}
   m_Layer: 0
   m_Name: Coll.Bone.030
@@ -17556,22 +16911,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &967349227
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 967349224}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &967349228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18099,7 +17438,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1007180360}
   - component: {fileID: 1007180363}
-  - component: {fileID: 1007180362}
   - component: {fileID: 1007180361}
   m_Layer: 0
   m_Name: Coll.Bone.025
@@ -18137,22 +17475,6 @@ CapsuleCollider:
   m_Height: 0.01373134
   m_Direction: 2
   m_Center: {x: -0.0016018255, y: -0.0006955266, z: 0.0010433318}
---- !u!54 &1007180362
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1007180359}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1007180363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18282,7 +17604,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1009859997}
   - component: {fileID: 1009860000}
-  - component: {fileID: 1009859999}
   - component: {fileID: 1009859998}
   m_Layer: 0
   m_Name: Coll.Bone.022
@@ -18320,22 +17641,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0, y: -0.00018087868, z: 0.0006878255}
---- !u!54 &1009859999
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009859996}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1009860000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18443,7 +17748,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1017559476}
   - component: {fileID: 1017559479}
-  - component: {fileID: 1017559478}
   - component: {fileID: 1017559477}
   m_Layer: 0
   m_Name: Coll.Bone.050
@@ -18481,22 +17785,6 @@ CapsuleCollider:
   m_Height: 0.012640727
   m_Direction: 1
   m_Center: {x: -0.00022285571, y: 0, z: 0.00022285525}
---- !u!54 &1017559478
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1017559475}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1017559479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18644,6 +17932,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082b4872c74fcb6429f7ba5d4b17d0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hp: 300
+  DamageRatio: 2
+  _type: 1
 --- !u!1 &1036326896
 GameObject:
   m_ObjectHideFlags: 0
@@ -18749,7 +18040,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1052204395}
   - component: {fileID: 1052204398}
-  - component: {fileID: 1052204397}
   - component: {fileID: 1052204396}
   m_Layer: 0
   m_Name: Coll.Bone.038
@@ -18787,22 +18077,6 @@ CapsuleCollider:
   m_Height: 0.012050318
   m_Direction: 2
   m_Center: {x: -0.0010262299, y: -0.00035412563, z: -0.00014483626}
---- !u!54 &1052204397
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052204394}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1052204398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18825,7 +18099,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1055123189}
   - component: {fileID: 1055123192}
-  - component: {fileID: 1055123191}
   - component: {fileID: 1055123190}
   m_Layer: 0
   m_Name: Coll.Bone.116
@@ -18863,22 +18136,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0, y: -0.00012811087, z: 0}
---- !u!54 &1055123191
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055123188}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1055123192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19008,7 +18265,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1068761804}
   - component: {fileID: 1068761807}
-  - component: {fileID: 1068761806}
   - component: {fileID: 1068761805}
   m_Layer: 0
   m_Name: Coll.Bone.092
@@ -19046,22 +18302,6 @@ CapsuleCollider:
   m_Height: 0.030140122
   m_Direction: 1
   m_Center: {x: 0.0005183015, y: 0, z: -0.00029544742}
---- !u!54 &1068761806
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068761803}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1068761807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19481,7 +18721,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1084248091}
   - component: {fileID: 1084248094}
-  - component: {fileID: 1084248093}
   - component: {fileID: 1084248092}
   m_Layer: 0
   m_Name: Coll.Bone.018
@@ -19519,22 +18758,6 @@ CapsuleCollider:
   m_Height: 0.019308105
   m_Direction: 1
   m_Center: {x: -0.0027078814, y: -0.001010729, z: -0.0003550211}
---- !u!54 &1084248093
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084248090}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1084248094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19557,7 +18780,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1103360553}
   - component: {fileID: 1103360556}
-  - component: {fileID: 1103360555}
   - component: {fileID: 1103360554}
   m_Layer: 0
   m_Name: Coll.Bone.071
@@ -19595,22 +18817,6 @@ CapsuleCollider:
   m_Height: 0.025373653
   m_Direction: 1
   m_Center: {x: -0.00041690003, y: 0, z: 0}
---- !u!54 &1103360555
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103360552}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1103360556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19837,6 +19043,37 @@ MonoBehaviour:
     modifyNameEnabled: 0
   modified: 0
   modifiedChildren: 0
+--- !u!54 &1125329699
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299911865}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &1125329700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299911865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082b4872c74fcb6429f7ba5d4b17d0df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 300
+  DamageRatio: 0.5
+  _type: 0
 --- !u!1 &1132318915
 GameObject:
   m_ObjectHideFlags: 0
@@ -19892,7 +19129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1134140406}
   - component: {fileID: 1134140409}
-  - component: {fileID: 1134140408}
   - component: {fileID: 1134140407}
   m_Layer: 0
   m_Name: Coll.Bone.072
@@ -19930,22 +19166,6 @@ CapsuleCollider:
   m_Height: 0.015611118
   m_Direction: 0
   m_Center: {x: -0.0013333887, y: -0.00052452786, z: -0.0003858395}
---- !u!54 &1134140408
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1134140405}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1134140409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20793,7 +20013,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1169015900}
   - component: {fileID: 1169015903}
-  - component: {fileID: 1169015902}
   - component: {fileID: 1169015901}
   m_Layer: 0
   m_Name: Coll.Bone.003
@@ -20831,22 +20050,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1169015902
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169015899}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1169015903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20869,7 +20072,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1179553688}
   - component: {fileID: 1179553691}
-  - component: {fileID: 1179553690}
   - component: {fileID: 1179553689}
   m_Layer: 0
   m_Name: Coll.Bone.035
@@ -20907,22 +20109,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0.0007803389, y: -0.0007758704, z: -0.00031989254}
---- !u!54 &1179553690
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1179553687}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1179553691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20978,7 +20164,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1201748995}
   - component: {fileID: 1201748998}
-  - component: {fileID: 1201748997}
   - component: {fileID: 1201748996}
   m_Layer: 0
   m_Name: Coll.Bone.108
@@ -21016,22 +20201,6 @@ CapsuleCollider:
   m_Height: 0.0156855
   m_Direction: 0
   m_Center: {x: -0.0019727396, y: -0.002266922, z: 0.0006776275}
---- !u!54 &1201748997
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201748994}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1201748998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21288,7 +20457,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1212710938}
   - component: {fileID: 1212710941}
-  - component: {fileID: 1212710940}
   - component: {fileID: 1212710939}
   m_Layer: 0
   m_Name: Coll.Bone.104
@@ -21326,22 +20494,6 @@ CapsuleCollider:
   m_Height: 0.022465091
   m_Direction: 0
   m_Center: {x: 0, y: 0.00025824085, z: -0.001467318}
---- !u!54 &1212710940
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1212710937}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1212710941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21547,7 +20699,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1224039595}
   - component: {fileID: 1224039598}
-  - component: {fileID: 1224039597}
   - component: {fileID: 1224039596}
   m_Layer: 0
   m_Name: Coll.Bone.096
@@ -21585,22 +20736,6 @@ CapsuleCollider:
   m_Height: 0.022030309
   m_Direction: 2
   m_Center: {x: -0.00024799583, y: -0.00096993195, z: 0.00012641354}
---- !u!54 &1224039597
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224039594}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1224039598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21669,7 +20804,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1236672416}
   - component: {fileID: 1236672419}
-  - component: {fileID: 1236672418}
   - component: {fileID: 1236672417}
   m_Layer: 0
   m_Name: Coll.Bone.004
@@ -21707,22 +20841,6 @@ CapsuleCollider:
   m_Height: 0.021288477
   m_Direction: 1
   m_Center: {x: -0.00045170682, y: 0, z: -0.0002498161}
---- !u!54 &1236672418
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1236672415}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1236672419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21852,7 +20970,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1241582625}
   - component: {fileID: 1241582628}
-  - component: {fileID: 1241582627}
   - component: {fileID: 1241582626}
   m_Layer: 0
   m_Name: Coll.Bone.015
@@ -21890,22 +21007,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0, y: -0.00047842553, z: 0}
---- !u!54 &1241582627
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1241582624}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1241582628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21928,7 +21029,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1241755416}
   - component: {fileID: 1241755419}
-  - component: {fileID: 1241755418}
   - component: {fileID: 1241755417}
   m_Layer: 0
   m_Name: Coll.Bone.067
@@ -21966,22 +21066,6 @@ CapsuleCollider:
   m_Height: 0.014419582
   m_Direction: 1
   m_Center: {x: -0.00035148067, y: 0, z: 0.00013151765}
---- !u!54 &1241755418
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1241755415}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1241755419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22111,7 +21195,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1246845397}
   - component: {fileID: 1246845400}
-  - component: {fileID: 1246845399}
   - component: {fileID: 1246845398}
   m_Layer: 0
   m_Name: Coll.Bone.084
@@ -22149,22 +21232,6 @@ CapsuleCollider:
   m_Height: 0.03204401
   m_Direction: 1
   m_Center: {x: -0.0013899803, y: 0.0007803547, z: -0.00033043232}
---- !u!54 &1246845399
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1246845396}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1246845400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22508,7 +21575,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1286006438}
   - component: {fileID: 1286006441}
-  - component: {fileID: 1286006440}
   - component: {fileID: 1286006439}
   m_Layer: 0
   m_Name: Coll.Bone.017
@@ -22546,22 +21612,6 @@ CapsuleCollider:
   m_Height: 0.03635794
   m_Direction: 1
   m_Center: {x: -0.0023336746, y: -0.0026778835, z: 0.0051003615}
---- !u!54 &1286006440
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1286006437}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1286006441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22584,7 +21634,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1288256732}
   - component: {fileID: 1288256735}
-  - component: {fileID: 1288256734}
   - component: {fileID: 1288256733}
   m_Layer: 0
   m_Name: Coll.Bone.053
@@ -22622,22 +21671,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: -0.00012898352, y: 0, z: 0.00013403082}
---- !u!54 &1288256734
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1288256731}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1288256735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23116,7 +22149,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1322861576}
   - component: {fileID: 1322861579}
-  - component: {fileID: 1322861578}
   - component: {fileID: 1322861577}
   m_Layer: 0
   m_Name: Coll.Bone.014
@@ -23154,22 +22186,6 @@ CapsuleCollider:
   m_Height: 0.010133867
   m_Direction: 1
   m_Center: {x: 0, y: 0.00016267644, z: 0.00022823364}
---- !u!54 &1322861578
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322861575}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1322861579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23327,7 +22343,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1333232448}
   - component: {fileID: 1333232451}
-  - component: {fileID: 1333232450}
   - component: {fileID: 1333232449}
   m_Layer: 0
   m_Name: Coll.Bone.059
@@ -23365,22 +22380,6 @@ CapsuleCollider:
   m_Height: 0.02433563
   m_Direction: 2
   m_Center: {x: 0.0001264275, y: -0.00023669889, z: 0}
---- !u!54 &1333232450
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1333232447}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1333232451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23617,7 +22616,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1338580222}
   - component: {fileID: 1338580225}
-  - component: {fileID: 1338580224}
   - component: {fileID: 1338580223}
   m_Layer: 0
   m_Name: Coll.Bone.066
@@ -23655,22 +22653,6 @@ CapsuleCollider:
   m_Height: 0.014764316
   m_Direction: 2
   m_Center: {x: -0.0004764134, y: -0.0010036447, z: 0}
---- !u!54 &1338580224
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338580221}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1338580225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23800,7 +22782,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1355057559}
   - component: {fileID: 1355057562}
-  - component: {fileID: 1355057561}
   - component: {fileID: 1355057560}
   m_Layer: 0
   m_Name: Coll.Bone.103
@@ -23838,22 +22819,6 @@ CapsuleCollider:
   m_Height: 0.02427489
   m_Direction: 1
   m_Center: {x: -0.0005969545, y: 0, z: -0.00024196086}
---- !u!54 &1355057561
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355057558}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1355057562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24381,7 +23346,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1380403495}
   - component: {fileID: 1380403498}
-  - component: {fileID: 1380403497}
   - component: {fileID: 1380403496}
   m_Layer: 0
   m_Name: Coll.Bone.074
@@ -24419,22 +23383,6 @@ CapsuleCollider:
   m_Height: 0.018963702
   m_Direction: 0
   m_Center: {x: 0.00012598326, y: 0.00023422064, z: 0}
---- !u!54 &1380403497
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380403494}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1380403498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24533,7 +23481,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1386441738}
   - component: {fileID: 1386441741}
-  - component: {fileID: 1386441740}
   - component: {fileID: 1386441739}
   m_Layer: 0
   m_Name: Coll.Bone.010
@@ -24571,22 +23518,6 @@ CapsuleCollider:
   m_Height: 0.0133550055
   m_Direction: 2
   m_Center: {x: -0.000641678, y: 0, z: 0}
---- !u!54 &1386441740
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386441737}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1386441741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24706,6 +23637,37 @@ MonoBehaviour:
     modifyNameEnabled: 0
   modified: 0
   modifiedChildren: 0
+--- !u!54 &1404048033
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299911873}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &1404048034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299911873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082b4872c74fcb6429f7ba5d4b17d0df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 300
+  DamageRatio: 0.5
+  _type: 0
 --- !u!114 &1409908973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25021,7 +23983,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1423780449}
   - component: {fileID: 1423780452}
-  - component: {fileID: 1423780451}
   - component: {fileID: 1423780450}
   m_Layer: 0
   m_Name: Coll.Bone.099
@@ -25059,22 +24020,6 @@ CapsuleCollider:
   m_Height: 0.02532136
   m_Direction: 2
   m_Center: {x: -0.00039953645, y: -0.00012924848, z: 0.00013128435}
---- !u!54 &1423780451
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423780448}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1423780452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25357,7 +24302,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1435722554}
   - component: {fileID: 1435722557}
-  - component: {fileID: 1435722556}
   - component: {fileID: 1435722555}
   m_Layer: 0
   m_Name: Coll.Bone.052
@@ -25395,22 +24339,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: -0.00022121565, y: 0.00014280528, z: 0}
---- !u!54 &1435722556
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435722553}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1435722557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25461,6 +24389,71 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -80}
   m_SizeDelta: {x: 1300, y: 650}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1443790221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1443790223}
+  - component: {fileID: 1443790222}
+  - component: {fileID: 1443790224}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!54 &1443790222
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443790221}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!4 &1443790223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443790221}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 32.69041, y: -1.5920382, z: 10.114558}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 466966195}
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1443790224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443790221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082b4872c74fcb6429f7ba5d4b17d0df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 300
+  DamageRatio: 1
+  _type: 1
 --- !u!114 &1447911329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25578,7 +24571,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1451169651}
   - component: {fileID: 1451169654}
-  - component: {fileID: 1451169653}
   - component: {fileID: 1451169652}
   m_Layer: 0
   m_Name: Coll.Bone.109
@@ -25616,22 +24608,6 @@ CapsuleCollider:
   m_Height: 0.020331236
   m_Direction: 2
   m_Center: {x: -0.0010043802, y: -0.00024259416, z: 0.00064746384}
---- !u!54 &1451169653
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1451169650}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1451169654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25798,7 +24774,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1471873216}
   - component: {fileID: 1471873219}
-  - component: {fileID: 1471873218}
   - component: {fileID: 1471873217}
   m_Layer: 0
   m_Name: Coll.Bone.051
@@ -25836,22 +24811,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0.00020098453, y: 0.00023397431, z: 0}
---- !u!54 &1471873218
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1471873215}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1471873219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25874,7 +24833,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1472950380}
   - component: {fileID: 1472950383}
-  - component: {fileID: 1472950382}
   - component: {fileID: 1472950381}
   m_Layer: 0
   m_Name: Coll.Bone.011
@@ -25912,22 +24870,6 @@ CapsuleCollider:
   m_Height: 0.012119432
   m_Direction: 2
   m_Center: {x: 0.00013673585, y: 0.00018129591, z: 0}
---- !u!54 &1472950382
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472950379}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1472950383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25950,7 +24892,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1474575015}
   - component: {fileID: 1474575018}
-  - component: {fileID: 1474575017}
   - component: {fileID: 1474575016}
   m_Layer: 0
   m_Name: Coll.Bone.002
@@ -25988,22 +24929,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: -0.0004770672, y: 0.00036293408, z: 0}
---- !u!54 &1474575017
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1474575014}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1474575018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26440,7 +25365,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1523500462}
   - component: {fileID: 1523500465}
-  - component: {fileID: 1523500464}
   - component: {fileID: 1523500463}
   m_Layer: 0
   m_Name: Coll.Bone.079
@@ -26478,22 +25402,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: -0.0003222595, y: -0.0003748834, z: -0.00037441356}
---- !u!54 &1523500464
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523500461}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1523500465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26623,7 +25531,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1534349296}
   - component: {fileID: 1534349299}
-  - component: {fileID: 1534349298}
   - component: {fileID: 1534349297}
   m_Layer: 0
   m_Name: Coll.Bone.062
@@ -26661,22 +25568,6 @@ CapsuleCollider:
   m_Height: 0.015983172
   m_Direction: 0
   m_Center: {x: 0.00031735655, y: 0.00089501124, z: 0}
---- !u!54 &1534349298
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1534349295}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1534349299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26806,7 +25697,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1549639278}
   - component: {fileID: 1549639281}
-  - component: {fileID: 1549639280}
   - component: {fileID: 1549639279}
   m_Layer: 0
   m_Name: Coll.Bone.063
@@ -26844,22 +25734,6 @@ CapsuleCollider:
   m_Height: 0.024834502
   m_Direction: 1
   m_Center: {x: 0.0004344224, y: 0, z: 0.0008523413}
---- !u!54 &1549639280
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1549639277}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1549639281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26882,7 +25756,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1564870086}
   - component: {fileID: 1564870089}
-  - component: {fileID: 1564870088}
   - component: {fileID: 1564870087}
   m_Layer: 0
   m_Name: Coll.Bone.093
@@ -26920,22 +25793,6 @@ CapsuleCollider:
   m_Height: 0.024910957
   m_Direction: 2
   m_Center: {x: 0.0001705112, y: 0.00012941705, z: 0}
---- !u!54 &1564870088
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564870085}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1564870089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27065,7 +25922,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1575856116}
   - component: {fileID: 1575856119}
-  - component: {fileID: 1575856118}
   - component: {fileID: 1575856117}
   m_Layer: 0
   m_Name: Coll.Bone.023
@@ -27103,22 +25959,6 @@ CapsuleCollider:
   m_Height: 0.022479163
   m_Direction: 2
   m_Center: {x: -0.0004142034, y: -0.00021476485, z: -0.00020605978}
---- !u!54 &1575856118
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1575856115}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1575856119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27248,7 +26088,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1592325503}
   - component: {fileID: 1592325506}
-  - component: {fileID: 1592325505}
   - component: {fileID: 1592325504}
   m_Layer: 0
   m_Name: Coll.Bone.056
@@ -27286,22 +26125,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0.00018629385, y: 0.00016590487, z: 0}
---- !u!54 &1592325505
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1592325502}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1592325506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27498,6 +26321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1619954213}
   - component: {fileID: 1619954214}
+  - component: {fileID: 1619954215}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -27537,6 +26361,80 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1619954215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619954211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2de671d880a7041b39cfa171e6cd19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hItTest:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  GameObject:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1624541184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28724,7 +27622,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1686522023}
   - component: {fileID: 1686522026}
-  - component: {fileID: 1686522025}
   - component: {fileID: 1686522024}
   m_Layer: 0
   m_Name: Coll.Bone.097
@@ -28762,22 +27659,6 @@ CapsuleCollider:
   m_Height: 0.030137617
   m_Direction: 0
   m_Center: {x: 0.00028528925, y: 0.0010204269, z: 0.0010078261}
---- !u!54 &1686522025
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686522022}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1686522026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28800,7 +27681,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1689475853}
   - component: {fileID: 1689475856}
-  - component: {fileID: 1689475855}
   - component: {fileID: 1689475854}
   m_Layer: 0
   m_Name: Coll.Bone.098
@@ -28838,22 +27718,6 @@ CapsuleCollider:
   m_Height: 0.02782999
   m_Direction: 1
   m_Center: {x: -0.0004919255, y: 0, z: 0.0007484087}
---- !u!54 &1689475855
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689475852}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1689475856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28876,7 +27740,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1694828123}
   - component: {fileID: 1694828126}
-  - component: {fileID: 1694828125}
   - component: {fileID: 1694828124}
   m_Layer: 0
   m_Name: Coll.Bone.113
@@ -28914,22 +27777,6 @@ CapsuleCollider:
   m_Height: 0.010983238
   m_Direction: 2
   m_Center: {x: -0.0002555633, y: -0.0009084719, z: 0.0010209393}
---- !u!54 &1694828125
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1694828122}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1694828126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29049,6 +27896,37 @@ MonoBehaviour:
     modifyNameEnabled: 0
   modified: 0
   modifiedChildren: 0
+--- !u!54 &1698009371
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299911720}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 110
+  m_CollisionDetection: 0
+--- !u!114 &1698009372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299911720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082b4872c74fcb6429f7ba5d4b17d0df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 300
+  DamageRatio: 0.6
+  _type: 0
 --- !u!1 &1702409485
 GameObject:
   m_ObjectHideFlags: 0
@@ -29059,7 +27937,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1702409486}
   - component: {fileID: 1702409489}
-  - component: {fileID: 1702409488}
   - component: {fileID: 1702409487}
   m_Layer: 0
   m_Name: Coll.Bone.065
@@ -29097,22 +27974,6 @@ CapsuleCollider:
   m_Height: 0.024848241
   m_Direction: 2
   m_Center: {x: -0.00022228039, y: -0.00022007292, z: 0}
---- !u!54 &1702409488
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1702409485}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1702409489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29135,7 +27996,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1708701648}
   - component: {fileID: 1708701651}
-  - component: {fileID: 1708701650}
   - component: {fileID: 1708701649}
   m_Layer: 0
   m_Name: Coll.Bone.024
@@ -29173,22 +28033,6 @@ CapsuleCollider:
   m_Height: 0.013927894
   m_Direction: 0
   m_Center: {x: 0, y: -0.0011355533, z: 0.0005366602}
---- !u!54 &1708701650
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708701647}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1708701651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30012,7 +28856,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1790389074}
   - component: {fileID: 1790389077}
-  - component: {fileID: 1790389076}
   - component: {fileID: 1790389075}
   m_Layer: 0
   m_Name: Coll.Bone.005
@@ -30050,22 +28893,6 @@ CapsuleCollider:
   m_Height: 0.025323212
   m_Direction: 1
   m_Center: {x: -0.00022005104, y: 0, z: -0.00012280722}
---- !u!54 &1790389076
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790389073}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1790389077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30088,7 +28915,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1803572639}
   - component: {fileID: 1803572642}
-  - component: {fileID: 1803572641}
   - component: {fileID: 1803572640}
   m_Layer: 0
   m_Name: Coll.Bone.027
@@ -30126,22 +28952,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1803572641
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803572638}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1803572642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30164,7 +28974,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1803668900}
   - component: {fileID: 1803668903}
-  - component: {fileID: 1803668902}
   - component: {fileID: 1803668901}
   m_Layer: 0
   m_Name: Coll.Bone.090
@@ -30202,22 +29011,6 @@ CapsuleCollider:
   m_Height: 0.015918748
   m_Direction: 2
   m_Center: {x: 0, y: 0.00092828274, z: -0.00033705612}
---- !u!54 &1803668902
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803668899}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1803668903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31221,7 +30014,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1863495498}
   - component: {fileID: 1863495501}
-  - component: {fileID: 1863495500}
   - component: {fileID: 1863495499}
   m_Layer: 0
   m_Name: Coll.Bone.057
@@ -31259,22 +30051,6 @@ CapsuleCollider:
   m_Height: 0.022523213
   m_Direction: 1
   m_Center: {x: -0.00025538076, y: -0.0001490172, z: 0}
---- !u!54 &1863495500
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863495497}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1863495501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32000,7 +30776,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1897619097}
   - component: {fileID: 1897619100}
-  - component: {fileID: 1897619099}
   - component: {fileID: 1897619098}
   m_Layer: 0
   m_Name: Coll.Bone.046
@@ -32038,22 +30813,6 @@ CapsuleCollider:
   m_Height: 0.015866257
   m_Direction: 2
   m_Center: {x: -0.00021560956, y: 0.00034458283, z: 0}
---- !u!54 &1897619099
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1897619096}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1897619100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32336,7 +31095,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1927663454}
   - component: {fileID: 1927663457}
-  - component: {fileID: 1927663456}
   - component: {fileID: 1927663455}
   m_Layer: 0
   m_Name: Coll.Bone.009
@@ -32374,22 +31132,6 @@ CapsuleCollider:
   m_Height: 0.014684968
   m_Direction: 1
   m_Center: {x: 0.00064365426, y: -0.00048821955, z: 0.0002931184}
---- !u!54 &1927663456
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927663453}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1927663457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32547,7 +31289,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1928324134}
   - component: {fileID: 1928324137}
-  - component: {fileID: 1928324136}
   - component: {fileID: 1928324135}
   m_Layer: 0
   m_Name: Coll.Bone.081
@@ -32585,22 +31326,6 @@ CapsuleCollider:
   m_Height: 0.020932924
   m_Direction: 1
   m_Center: {x: -0.00014667027, y: 0.00048895786, z: 0}
---- !u!54 &1928324136
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1928324133}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1928324137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32730,7 +31455,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1933185812}
   - component: {fileID: 1933185815}
-  - component: {fileID: 1933185814}
   - component: {fileID: 1933185813}
   m_Layer: 0
   m_Name: Coll.Bone.008
@@ -32768,22 +31492,6 @@ CapsuleCollider:
   m_Height: 0.020354297
   m_Direction: 2
   m_Center: {x: 0.000245929, y: 0, z: -0.0006679287}
---- !u!54 &1933185814
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933185811}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1933185815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32948,6 +31656,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 600, y: 150, z: 50}
   m_Center: {x: 0, y: 75, z: 20}
+--- !u!54 &1955710431
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299911857}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &1955710432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299911857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082b4872c74fcb6429f7ba5d4b17d0df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 300
+  DamageRatio: 0.8
+  _type: 0
 --- !u!114 &1958339341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33204,7 +31943,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1967583743}
   - component: {fileID: 1967583746}
-  - component: {fileID: 1967583745}
   - component: {fileID: 1967583744}
   m_Layer: 0
   m_Name: Coll.Bone.095
@@ -33242,22 +31980,6 @@ CapsuleCollider:
   m_Height: 0.014432544
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0.00053101406}
---- !u!54 &1967583745
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967583742}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1967583746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33280,7 +32002,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1983839263}
   - component: {fileID: 1983839266}
-  - component: {fileID: 1983839265}
   - component: {fileID: 1983839264}
   m_Layer: 0
   m_Name: Coll.Bone.012
@@ -33318,22 +32039,6 @@ CapsuleCollider:
   m_Height: 0.010569957
   m_Direction: 2
   m_Center: {x: 0.00045877486, y: -0.00019081426, z: 0.00029333774}
---- !u!54 &1983839265
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1983839262}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1983839266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33714,7 +32419,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2009613228}
   - component: {fileID: 2009613231}
-  - component: {fileID: 2009613230}
   - component: {fileID: 2009613229}
   m_Layer: 0
   m_Name: Coll.Bone.048
@@ -33752,22 +32456,6 @@ CapsuleCollider:
   m_Height: 0.012178286
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &2009613230
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009613227}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &2009613231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33780,6 +32468,134 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef2b87818a56064b926871454f01541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2010107125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2010107130}
+  - component: {fileID: 2010107129}
+  - component: {fileID: 2010107128}
+  - component: {fileID: 2010107127}
+  - component: {fileID: 2010107126}
+  - component: {fileID: 2010107131}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: EnemyAttack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &2010107126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010107125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff321e354a13e9b4e88d4a77cf5c114d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 30
+--- !u!65 &2010107127
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010107125}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &2010107128
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010107125}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2010107129
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010107125}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2010107130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010107125}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 31.2, y: -3.45, z: 23.78}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2010107131
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010107125}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &2010335349
 GameObject:
   m_ObjectHideFlags: 0
@@ -34444,7 +33260,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2029587222}
   - component: {fileID: 2029587225}
-  - component: {fileID: 2029587224}
   - component: {fileID: 2029587223}
   m_Layer: 0
   m_Name: Coll.Bone.047
@@ -34482,22 +33297,6 @@ CapsuleCollider:
   m_Height: 0.01720323
   m_Direction: 1
   m_Center: {x: -0.00036806334, y: 0, z: -0.0002526967}
---- !u!54 &2029587224
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2029587221}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &2029587225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34985,7 +33784,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2062470304}
   - component: {fileID: 2062470307}
-  - component: {fileID: 2062470306}
   - component: {fileID: 2062470305}
   m_Layer: 0
   m_Name: Coll.Bone.020
@@ -35023,22 +33821,6 @@ CapsuleCollider:
   m_Height: 0.03657466
   m_Direction: 1
   m_Center: {x: -0.00020447373, y: 0.0020733383, z: 0.0046349145}
---- !u!54 &2062470306
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062470303}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &2062470307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35061,7 +33843,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2063427154}
   - component: {fileID: 2063427157}
-  - component: {fileID: 2063427156}
   - component: {fileID: 2063427155}
   m_Layer: 0
   m_Name: Coll.Bone.112
@@ -35099,22 +33880,6 @@ CapsuleCollider:
   m_Height: 0.032065477
   m_Direction: 0
   m_Center: {x: -0.0008723312, y: 0.0011856591, z: -0.0003822674}
---- !u!54 &2063427156
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063427153}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &2063427157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35137,7 +33902,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2063931151}
   - component: {fileID: 2063931154}
-  - component: {fileID: 2063931153}
   - component: {fileID: 2063931152}
   m_Layer: 0
   m_Name: Coll.Bone.117
@@ -35175,22 +33939,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0, y: 0.00014145114, z: 0}
---- !u!54 &2063931153
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063931150}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &2063931154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35213,7 +33961,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2072267090}
   - component: {fileID: 2072267093}
-  - component: {fileID: 2072267092}
   - component: {fileID: 2072267091}
   m_Layer: 0
   m_Name: Coll.Bone.061
@@ -35251,22 +33998,6 @@ CapsuleCollider:
   m_Height: 0.013318351
   m_Direction: 1
   m_Center: {x: -0.00014150422, y: 0.00032824348, z: 0.0014845189}
---- !u!54 &2072267092
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072267089}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &2072267093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35396,7 +34127,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2076845128}
   - component: {fileID: 2076845131}
-  - component: {fileID: 2076845130}
   - component: {fileID: 2076845129}
   m_Layer: 0
   m_Name: Coll.Bone.029
@@ -35434,22 +34164,6 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &2076845130
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2076845127}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &2076845131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35556,7 +34270,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2101333443}
   - component: {fileID: 2101333446}
-  - component: {fileID: 2101333445}
   - component: {fileID: 2101333444}
   m_Layer: 0
   m_Name: Coll.Bone.091
@@ -35594,22 +34307,6 @@ CapsuleCollider:
   m_Height: 0.024873879
   m_Direction: 0
   m_Center: {x: 0, y: -0.0011934899, z: -0.0001961235}
---- !u!54 &2101333445
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2101333442}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &2101333446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35953,7 +34650,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2111152211}
   - component: {fileID: 2111152214}
-  - component: {fileID: 2111152213}
   - component: {fileID: 2111152212}
   m_Layer: 0
   m_Name: Coll.Bone.037
@@ -35991,22 +34687,6 @@ CapsuleCollider:
   m_Height: 0.013042774
   m_Direction: 0
   m_Center: {x: -0.00022689649, y: 0.00016319985, z: 0}
---- !u!54 &2111152213
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2111152210}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &2111152214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36014,82 +34694,6 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111152210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ef2b87818a56064b926871454f01541, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &2112475995
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2112475996}
-  - component: {fileID: 2112475999}
-  - component: {fileID: 2112475998}
-  - component: {fileID: 2112475997}
-  m_Layer: 0
-  m_Name: Coll.Bone
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2112475996
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112475995}
-  m_LocalRotation: {x: -0.77079016, y: 0.010602058, z: 0.010602058, w: 0.6369127}
-  m_LocalPosition: {x: -0.0051091085, y: 0.00012550177, z: -0.0011034096}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 299911939}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &2112475997
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112475995}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.0061776005
-  m_Height: 0.02003206
-  m_Direction: 0
-  m_Center: {x: 0, y: 0.00010182732, z: -0.00027380185}
---- !u!54 &2112475998
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112475995}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &2112475999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112475995}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ef2b87818a56064b926871454f01541, type: 3}
@@ -36347,7 +34951,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2123580983}
   - component: {fileID: 2123580986}
-  - component: {fileID: 2123580985}
   - component: {fileID: 2123580984}
   m_Layer: 0
   m_Name: Coll.Bone.021
@@ -36385,22 +34988,6 @@ CapsuleCollider:
   m_Height: 0.019275289
   m_Direction: 2
   m_Center: {x: 0, y: -0.0027010837, z: 0.0009706933}
---- !u!54 &2123580985
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123580982}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &2123580986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36637,7 +35224,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2137180282}
   - component: {fileID: 2137180285}
-  - component: {fileID: 2137180284}
   - component: {fileID: 2137180283}
   m_Layer: 0
   m_Name: Coll.Bone.086
@@ -36675,22 +35261,6 @@ CapsuleCollider:
   m_Height: 0.030784566
   m_Direction: 2
   m_Center: {x: 0, y: 0.00023087347, z: 0}
---- !u!54 &2137180284
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137180281}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &2137180285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36713,7 +35283,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2137642058}
   - component: {fileID: 2137642061}
-  - component: {fileID: 2137642060}
   - component: {fileID: 2137642059}
   m_Layer: 0
   m_Name: Coll.Bone.060
@@ -36751,22 +35320,6 @@ CapsuleCollider:
   m_Height: 0.026203623
   m_Direction: 2
   m_Center: {x: -0.0002153106, y: 0, z: 0.0001365291}
---- !u!54 &2137642060
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137642057}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &2137642061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37079,7 +35632,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2147384632}
   - component: {fileID: 2147384635}
-  - component: {fileID: 2147384634}
   - component: {fileID: 2147384633}
   m_Layer: 0
   m_Name: Coll.Bone.007
@@ -37117,22 +35669,6 @@ CapsuleCollider:
   m_Height: 0.017060831
   m_Direction: 0
   m_Center: {x: -0.0014428026, y: 0.0013221798, z: -0.002192432}
---- !u!54 &2147384634
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2147384631}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &2147384635
 MonoBehaviour:
   m_ObjectHideFlags: 0

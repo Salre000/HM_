@@ -135,7 +135,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         //前ジャンプ
-        if (Input.GetAxis("Vertical")>=-0.3f &&Input.GetKey("joystick button 2")) 
+        if (Input.GetAxis("Vertical")>=-0.3f &&Input.GetKey("joystick button 2")&&!_anime.GetNowDownFlag()) 
         {
             _anime.SetJumpFlag(true);
 
@@ -158,7 +158,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         //バックジャンプ
-        if (Input.GetAxis("Vertical")<-0.3f&&Input.GetKey("joystick button 2")) 
+        if (Input.GetAxis("Vertical")<-0.3f&&Input.GetKey("joystick button 2")&&!_anime.GetNowDownFlag()) 
         {
             _anime.SetBackSteppeFlag(true);
 
