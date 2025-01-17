@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AnimeAttackNormal : AnimeBase
 {
-     GameObject AttackObject;
-    public void SetAttackObject(GameObject objects) {  AttackObject = objects; }
 
 
     const float damages = 30;
@@ -14,7 +12,7 @@ public class AnimeAttackNormal : AnimeBase
     {
 
         _AnimeName = "Armature|AttackNorml";
-        PlayerAttack playerAttack =GetComponent<PlayerAttack>();
+        PlayerAttackDoragon playerAttack =GetComponent<PlayerAttackDoragon>();
 
 
 

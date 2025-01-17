@@ -20308,6 +20308,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NomaleAttackEffect: {fileID: 1960697875}
   RoarAttackEffect: {fileID: 94469106}
+--- !u!114 &1185465943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185465940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e65f76c9761687409daf67df22617ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TagBox: {fileID: 11400000, guid: 51ef161ce5aa1684e86e1d485aeeb784, type: 2}
+  rockPool: {fileID: 69537806}
 --- !u!1 &1201748994
 GameObject:
   m_ObjectHideFlags: 0
