@@ -50,8 +50,8 @@ public class HItTest : MonoBehaviour
             {
                 switch (_type) 
                 {
-                    case Type.Normal: _playerAnime.SetDownFlag(true); break;
-                    case Type.Hard: _playerAnime.SetStartHardDownFlag(true); break;
+                    case Type.Normal: _playerAnime.SetDownFlag(); break;
+                    case Type.Hard: _playerAnime.SetStartHardDownFlag(); break;
                     case Type.None:break;
 
 
