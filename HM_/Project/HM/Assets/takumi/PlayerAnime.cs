@@ -16,7 +16,6 @@ public class PlayerAnime : MonoBehaviour
     private bool _jumpFlag = false;
     private bool _backSteppeFlag = false;
     private bool _bigRoarFlag = false;
-    private bool _startHardDown = false;
     private bool _endHardDown = false;
     private bool _downFlag = false;
     [SerializeField] float Speed = 0;
@@ -48,13 +47,11 @@ public class PlayerAnime : MonoBehaviour
     public void SetBigRoarFlag(bool Flag) { _bigRoarFlag = Flag; }
 
 
-    public bool GetStartHardDownFlag() { return _startHardDown; }
-    public void SetStartHardDownFlag(bool Flag)
+    public void SetStartHardDownFlag()
     {
-        _startHardDown = Flag; 
+        _animator.SetTrigger("StartHardDown");
         _nowDownFlag = true;
     }
-    public void ReSetStartHardDownFlag() { _startHardDown = false; }
 
     public bool GetEndHardDownFlag() { return _endHardDown; }
     public void SetEndHardDownFlag(bool Flag)
@@ -64,8 +61,7 @@ public class PlayerAnime : MonoBehaviour
     public void ReSetEndHardDownFlag() { _endHardDown = false; }
 
     public bool GetDownFlag() { return _downFlag; }
-    public void SetDownFlag(bool Flag) { _downFlag = Flag; }
-    public void ReSetDownFlag() { _downFlag = false; }
+    public void SetDownFlag() { _animator.SetTrigger("DownFlag"); }
 
     private bool _nowDownFlag = false;  
     //ÉÇÉìÉXÉ^Å[
@@ -81,7 +77,6 @@ public class PlayerAnime : MonoBehaviour
         _jumpFlag = false;
         _backSteppeFlag = false;
         _bigRoarFlag = false;
-        _startHardDown = false;
         _endHardDown = false;
         _downFlag = false;
 
@@ -104,9 +99,7 @@ public class PlayerAnime : MonoBehaviour
         _animator.SetBool("JumpFlag", _jumpFlag);
         _animator.SetBool("BackSteppeFlag", _backSteppeFlag);
         _animator.SetBool("BigRoarFlag", _bigRoarFlag);
-        _animator.SetBool("StartHardDown", _startHardDown);
         _animator.SetBool("EndHardDown", _endHardDown);
-        _animator.SetBool("DownFlag", _downFlag);
         if (HardDownCount < 0) return;
         HardDownCount++;
         Debug.Log(HardDownCount);
