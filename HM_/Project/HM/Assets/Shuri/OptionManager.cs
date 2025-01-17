@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class OptionManager : MonoBehaviour
@@ -22,6 +23,8 @@ public class OptionManager : MonoBehaviour
     [SerializeField] Slider _bgmBar;
     [SerializeField] Slider _seBar;
     [SerializeField] RectTransform cursor;
+
+    float stopTime;
 
     InputManager _inputManager;
 
@@ -50,6 +53,8 @@ public class OptionManager : MonoBehaviour
 
     void Update()
     {
+        //stopTime -= Time.deltaTime;
+
         // オプション画面の開閉
         if (Input.GetKeyDown(_inputManager.config.start))
         {
@@ -62,7 +67,8 @@ public class OptionManager : MonoBehaviour
             }
             uiPanel.SetActive(!uiPanel.activeSelf);
         }
-
+        stopTime -= Time.deltaTime;
+        Debug.Log(Time.deltaTime);
         // オプション画面が開いていたら
         if (uiPanel.activeSelf)
         {
@@ -86,8 +92,8 @@ public class OptionManager : MonoBehaviour
         switch (menuIndex)
         {
             case 1: break;
-            case 2: Option(); break;
-            case 3: break;
+            case 2:  break;
+            case 3: Option(); break;
         }
     }
 
@@ -101,16 +107,37 @@ public class OptionManager : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        
+        
+    }
+
     void Option()
     {
-        if (Input.GetAxis("D_Pad_V") > 0) sliderIndex++;
-        if (Input.GetAxis("D_Pad_V") < 0) sliderIndex--;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(slider[sliderIndex].gameObject);
+
+        
+
+        if (Input.GetAxis("D_Pad_V") > 0 && stopTime <= 0)
+        {
+            sliderIndex++;
+            stopTime = 0.1f;
+        }
+        if (Input.GetAxis("D_Pad_V") < 0 && stopTime <= 0)
+        {
+            sliderIndex--;
+            stopTime = 0.1f;
+        }
+
+        
 
         if (sliderIndex > slider.Length - 1) sliderIndex = 0;
         if (sliderIndex < 0) sliderIndex = slider.Length - 1;
 
         cursor.anchoredPosition = new Vector2(cursor.anchoredPosition3D.x, (1 - sliderIndex) * 100);
-
+        
         slider[sliderIndex].value += Input.GetAxis("D_Pad_H");
     }
 }

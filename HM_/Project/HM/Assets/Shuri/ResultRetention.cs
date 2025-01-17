@@ -20,7 +20,9 @@ public class ResultRetention : MonoBehaviour
         }
         else Destroy(this.gameObject);
 
-        if (!(SceneManager.GetActiveScene().name == "Result" || SceneManager.GetActiveScene().name == "Main")) Destroy(this.gameObject);
+        if (!(SceneManager.GetActiveScene().name == "Result" ||
+            SceneManager.GetActiveScene().name == "Main Dragon" ||
+            SceneManager.GetActiveScene().name == "Main Spider")) Destroy(this.gameObject);
     }
 
     public void SetResultData(bool flag, float time)

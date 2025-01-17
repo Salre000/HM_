@@ -24850,7 +24850,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 50e0b1eacad73884a93976e008f99439, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3496fa40bae7c87489f7e15539d0a641, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -29123,7 +29123,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1782824984}
   - component: {fileID: 1782824983}
-  - component: {fileID: 1782824982}
   m_Layer: 0
   m_Name: MapCamera
   m_TagString: Untagged
@@ -29131,14 +29130,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1782824982
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782824981}
-  m_Enabled: 1
 --- !u!20 &1782824983
 Camera:
   m_ObjectHideFlags: 0
