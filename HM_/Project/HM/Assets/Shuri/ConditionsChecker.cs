@@ -10,6 +10,8 @@ public class ConditionsChecker : MonoBehaviour
     [SerializeField] UIManager uiManager;
     [SerializeField] ResultRetention resultRetention;
 
+    Coroutine finish;
+
     private void Start()
     {
         playerStatus = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>();
@@ -18,14 +20,16 @@ public class ConditionsChecker : MonoBehaviour
 
     void Update()
     {
+        if (finish != null) return;
+
         if (hunterManager.GetHunterDeathAmount() > 3)
         {
-            StartCoroutine(GoToResult(true, uiManager.GetLimitTime() - uiManager.remainingTime));
+            finish = StartCoroutine(GoToResult(true, uiManager.GetLimitTime() - uiManager.remainingTime));
         }
 
         if(playerStatus.GetHP() <= 0 || uiManager.remainingTime <= 0)
         {
-            StartCoroutine(GoToResult(false, 0));
+            finish = StartCoroutine(GoToResult(false, 0));
         }
     }
 

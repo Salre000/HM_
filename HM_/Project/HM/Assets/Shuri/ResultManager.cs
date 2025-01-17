@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ResultManager : MonoBehaviour
@@ -47,68 +48,59 @@ public class ResultManager : MonoBehaviour
     Rank rankE;
 
     [HideInInspector] public RankingData data;
-    string filepath;
-    string fileName = "Data.json";
+    
+    // ファイルパス
+    string _filepath;
+
+    // ファイル名
+    string _fileName = "Data.json";
 
     void Awake()
     {
         // パス名取得
-        filepath = Application.dataPath + "/" + fileName;
+        _filepath = Application.dataPath + "/" + _fileName;
 
         // ファイルがないとき、ファイル作成
-        if (!File.Exists(filepath))
-        {
-            Save(data);
-        }
+        if (!File.Exists(_filepath)) Save(data);
 
         // ファイルを読み込んでdataに格納
-        data = Load(filepath);
+        data = Load(_filepath);
     }
 
-    // jsonとしてデータを保存
+    // 保存
     void Save(RankingData data)
     {
-        string json = JsonUtility.ToJson(data);                 // jsonとして変換
-        StreamWriter wr = new StreamWriter(filepath, false);    // ファイル書き込み指定
-        wr.WriteLine(json);                                     // json変換した情報を書き込み
-        wr.Close();                                             // ファイル閉じる
+        // json変換
+        string json = JsonUtility.ToJson(data);
+
+        // 書き込み指定
+        StreamWriter wr = new(_filepath, false);
+
+        // 書き込み
+        wr.WriteLine(json);
+
+        // ファイルを閉じる
+        wr.Close();
     }
 
     // jsonファイル読み込み
     RankingData Load(string path)
     {
-        StreamReader rd = new StreamReader(path);               // ファイル読み込み指定
-        string json = rd.ReadToEnd();                           // ファイル内容全て読み込む
-        rd.Close();                                             // ファイル閉じる
+        // 読み込み指定
+        StreamReader rd = new(path);
 
-        return JsonUtility.FromJson<RankingData>(json);            // jsonファイルを型に戻して返す
+        // ファイル内容全て読み込む
+        string json = rd.ReadToEnd();
+
+        // ファイルを閉じる
+        rd.Close();
+
+        // jsonファイルを型に戻して返す
+        return JsonUtility.FromJson<RankingData>(json);            
     }
 
     void Start()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            float bestTime;
-            Rank bestRank = rankE;
-
-            bestTime = data.rank[i];
-
-            if (bestTime < 0) break;
-
-            _bestResultTimes[i].text = "Time : " + bestTime.ToString();
-
-            switch (bestTime)
-            {
-                case < timeS: bestRank = rankS; break;
-                case < timeA: bestRank = rankA; break;
-                case < timeB: bestRank = rankB; break;
-                case < timeC: bestRank = rankC; break;
-                case < timeD: bestRank = rankD; break;
-            }
-
-            _bestRankTexts[i].text = bestRank.rankText;
-        }
-
         rankS = new("S", new(Color.white, Gold, Gold, Gold));
         rankA = new("A", new(Color.white, Red, Red, Color.red));
         rankB = new("B", new(Color.white, Orange, Orange, Orange));
@@ -120,6 +112,43 @@ public class ResultManager : MonoBehaviour
 
         if (result.GetClearFlag()) _resultTime.text = "Time : " + result.GetClearTime().ToString();
         else _resultTime.text = "Time : --:--";
+
+        Array.Reverse(data.rank);
+
+        if (data.rank[2] <= 0 || result.GetClearTime() < data.rank[2])
+        {
+            data.rank[2] = Mathf.Ceil(result.GetClearTime() * 100) / 100;
+            Save(data);
+            
+        }
+
+        data = Load(_filepath);
+        Array.Sort(data.rank);
+
+        for (int i = 0; i < 3; i++)
+        {
+            float bestTime;
+            Rank bestRank = rankE;
+
+            bestTime = data.rank[i];
+
+            if (bestTime < 0) break;
+
+            _bestResultTimes[i].text = "Time : " + bestTime.ToString("N2");
+
+            switch (bestTime)
+            {
+                case < timeS: bestRank = rankS; break;
+                case < timeA: bestRank = rankA; break;
+                case < timeB: bestRank = rankB; break;
+                case < timeC: bestRank = rankC; break;
+                case < timeD: bestRank = rankD; break;
+            }
+
+            _bestRankTexts[i].text = bestRank.rankText;
+            _rankText.colorGradientPreset = bestRank.rankColor;
+        }
+
 
         switch (result.GetClearTime())
         {
@@ -134,17 +163,12 @@ public class ResultManager : MonoBehaviour
         _rankText.text = rank.rankText; 
         _rankText.colorGradientPreset = rank.rankColor;
 
-        if (data.rank[2] <= 0 || result.GetClearTime() < data.rank[2])
-        {
-            data.rank[2] = result.GetClearTime();
-            Array.Sort(data.rank);
-            Array.Reverse(data.rank);
-            Save(data);
-        }
+
+        
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton3)) Application.Quit();
+        if (Input.GetKeyDown(KeyCode.JoystickButton3)) SceneManager.LoadScene("Select");
     }
 }
