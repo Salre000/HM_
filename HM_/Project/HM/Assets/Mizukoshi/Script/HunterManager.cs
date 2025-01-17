@@ -82,4 +82,9 @@ public class HunterManager : MonoBehaviour
         // ハンターについているモンスターを見つける関数を呼び出す。
 
     }
+    // 強制的にゲームくりあにする。
+    public void ForceDie()
+    {
+        deathCount = 4;
+    }
 }
