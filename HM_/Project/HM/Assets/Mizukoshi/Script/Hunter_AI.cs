@@ -50,6 +50,8 @@ public class Hunter_AI : MonoBehaviour
 
     public bool deathAnimationFinish=false;
 
+    private bool restrainingFlag = false;
+
     AnimatorStateInfo animationState;
 
     // Start is called before the first frame update
@@ -176,4 +178,18 @@ public class Hunter_AI : MonoBehaviour
     {
         return animationState;
     }
+
+    // 拘束状態の開始 アニメーションの開始
+    public void StartRestraining()
+    {
+        _animator.SetBool("RestrainFlag", true);
+    }
+
+    // 拘束状態の終了　アニメーションの終了
+    public void StopRestraining()
+    {
+        _animator.SetBool("RestraingFlag", false);
+    }
+    
+
 }
