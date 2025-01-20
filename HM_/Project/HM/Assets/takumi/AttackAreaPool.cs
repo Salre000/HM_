@@ -34,11 +34,11 @@ public class AttackAreaPool : MonoBehaviour
             objectList[i].transform.gameObject.SetActive(false);
         }
 
-        GameObjects[index] = GameObject.Find("Bone.024"); index++;
-        GameObjects[index] = GameObject.Find("Bone.019"); index++;
-        GameObjects[index] = GameObject.Find("Bone.003"); index++;
-        GameObjects[index] = GameObject.Find("Bone.022"); index++;
-        GameObjects[index] = GameObject.Find("Bone.015"); index++;
+        GameObjects[index] = GameObject.Find("head"); index++;
+        GameObjects[index] = GameObject.Find("LeftArm"); index++;
+        GameObjects[index] = GameObject.Find("LeftFoot"); index++;
+        GameObjects[index] = GameObject.Find("LightArm"); index++;
+        GameObjects[index] = GameObject.Find("LightFoot"); index++;
     }
 
     public void SetAttack(AnimationEvent Event) 

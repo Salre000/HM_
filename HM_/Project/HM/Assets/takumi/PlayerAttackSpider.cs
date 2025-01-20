@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //蜘蛛のモデルの攻撃アニメーション
@@ -12,6 +13,15 @@ protected override void BarkJump()
 
 protected override void Jump()
 {
+        PlayerSpiderJump playerSpiderJump=this.GetComponent<PlayerSpiderJump>();
+        if (playerSpiderJump == null) 
+        {
+            playerSpiderJump=this.AddComponent<PlayerSpiderJump>();
+
+
+
+
+        }
 }
 
 protected override void LTAttack()
