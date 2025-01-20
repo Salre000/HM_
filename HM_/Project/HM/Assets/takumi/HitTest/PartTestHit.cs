@@ -30,7 +30,7 @@ public class PartTestHit : MonoBehaviour
     private void Start()
     {
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
-        tagBox = Player.GetComponent<PlayerAttack>().GetTag();
+        tagBox = Player.GetComponent<PlayerAttackDoragon>().GetTag();
         animator = Player.GetComponent<Animator>();
 
         hpManager = GameObject.FindWithTag("GameManager").GetComponent<HPManager>();

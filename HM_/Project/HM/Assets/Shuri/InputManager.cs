@@ -6,7 +6,7 @@ public class InputManager : MonoBehaviour
 {
     [SerializeField] TextAsset _keyConfig;
 
-    static InputManager instance;
+    public static InputManager instance;
 
     public struct UseKey
     {

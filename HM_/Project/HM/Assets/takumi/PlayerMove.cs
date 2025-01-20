@@ -75,6 +75,7 @@ public class PlayerMove : MonoBehaviour
 
         if(NowAnime == "Armature|Moves" || NowAnime == "Armature|AttackMove" || NowAnime == "Armature|AttackMoveLoops") { }
         else { _horizontal = 0;_vertical = 0 ; }
+        Debug.Log(NowAnime);
 
         _anime.SetMoveFlag(true);  
         _angle += (_horizontal) *_status.GetRotateSpeed();

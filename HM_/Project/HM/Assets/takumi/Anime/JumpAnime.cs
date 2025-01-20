@@ -33,7 +33,7 @@ public class JumpAnime : AnimeBase
         //HitGameObject[1] = GameObject.Find("Bone.019");
         //HitGameObject[2] = GameObject.Find("Bone.022");
 
-        PlayerAttack playerAttack = GetComponent<PlayerAttack>();
+        PlayerAttackDoragon playerAttack = GetComponent<PlayerAttackDoragon>();
 
                 // ˆÚ“®—Ê‚Æ‰ñ“]—Ê‚ğ‹‚ß‚é
         float _horizontal = Input.GetAxis("Horizontal");

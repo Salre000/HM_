@@ -28,8 +28,6 @@ public class UIManager : MonoBehaviour
         remainingTime = LimitTime;
 
         _hpBar.value = _hpBar.maxValue = _hpManager.GetMaxMonsterHp();
-
-        
     }
 
     ~UIManager()

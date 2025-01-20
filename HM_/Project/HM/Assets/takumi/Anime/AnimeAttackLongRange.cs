@@ -18,7 +18,7 @@ public class AnimeAttackLongRange : AnimeBase
 
         _AnimeName = "Armature|AttackLongRange";
 
-        PlayerAttack playerAttack = GetComponent<PlayerAttack>();
+        PlayerAttackDoragon playerAttack = GetComponent<PlayerAttackDoragon>();
 
         Rocks = GameObject.FindGameObjectWithTag("ItemBox");
 
