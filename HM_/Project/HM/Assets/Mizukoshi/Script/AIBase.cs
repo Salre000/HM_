@@ -5,8 +5,17 @@ using UnityEngine;
 public class AIBase 
 {
     
-    protected virtual void StartRun()
+    protected virtual void Run()
     {
         
     }
+
+    protected virtual void Attack()
+    {
+
+    }
+
+    
+
+
 }

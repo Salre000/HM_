@@ -32,22 +32,7 @@ public class NavimeshSimple : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // œpœj’†‚©Šm”F‚·‚éŠÖ”
-        if (CheckIfEnemyIsPatrolling())
-        {
-            // œpœj‚·‚éŠÖ”
-            
-            return;
-        }
-        else
-        {
-            // ‹——£‚ªË’ö”ÍˆÍ“à‚È‚ç
-            if (CheckAttackDistance())
-            {
-               // UŒ‚
-
-            }
-        }
+         agent.destination = _monster.transform.position;
     }
 
 
