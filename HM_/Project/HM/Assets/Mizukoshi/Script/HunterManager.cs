@@ -87,7 +87,17 @@ public class HunterManager : MonoBehaviour
     {
         // ハンターについているモンスターを見つける関数を呼び出す。
 
+
     }
+
+    /// <summary>
+    /// ハンターの危険状態を確認
+    /// </summary>
+    void SetDengerousState()
+    {
+        // 
+    }
+
     // 強制的にゲームくりあにする。
     public void ForceDie()
     {
