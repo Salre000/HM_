@@ -24,20 +24,20 @@ public class ConditionsChecker : MonoBehaviour
 
         if (hunterManager.GetHunterDeathAmount() > 3)
         {
-            finish = StartCoroutine(GoToResult(true, uiManager.GetLimitTime() - uiManager.remainingTime));
+            finish = StartCoroutine(GoToResult(uiManager.GetLimitTime() - uiManager.remainingTime));
         }
 
         if(playerStatus.GetHP() <= 0 || uiManager.remainingTime <= 0)
         {
-            finish = StartCoroutine(GoToResult(false, 0));
+            finish = StartCoroutine(GoToResult(0));
         }
     }
 
-    IEnumerator GoToResult(bool clearFlag,float time)
+    IEnumerator GoToResult(float time)
     {
         yield return new WaitForSeconds(3.0f);
 
-        resultRetention.SetResultData(clearFlag, time);
+        ResultRetention.SetClearTime(time);
 
         SceneManager.LoadScene("Result");
     }
