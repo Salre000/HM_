@@ -1,43 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class ResultRetention : MonoBehaviour
+public class ResultRetention
 {
-    float elapsedTime;
-    bool clearFlag;
+    private static float _clearTime { get; set; } = -1;
 
-    static ResultRetention resultRetention;
-
-    void Start()
+    public static float GetClearTime()
     {
-        if (resultRetention == null)
-        {
-            resultRetention = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else Destroy(this.gameObject);
-
-        if (!(SceneManager.GetActiveScene().name == "Result" ||
-            SceneManager.GetActiveScene().name == "Main Dragon" ||
-            SceneManager.GetActiveScene().name == "Main Spider")) Destroy(this.gameObject);
+        return _clearTime;
     }
 
-    public void SetResultData(bool flag, float time)
+    public static void SetClearTime(float time)
     {
-        clearFlag = flag;
-        elapsedTime = time;
+        _clearTime = time;
     }
 
-    public bool GetClearFlag()
+    public static bool ClearCheck()
     {
-        return clearFlag;
-    }
-
-    public float GetClearTime()
-    {
-        return elapsedTime; 
+        if(_clearTime <= 0.0f) return false;
+        return true;
     }
 }

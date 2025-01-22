@@ -7,10 +7,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+using static ResultRetention;
+using static ResultConst;
+
 public class ResultManager : MonoBehaviour
 {
-    ResultRetention result;
-
     [SerializeField] Text _resultTime;
     [SerializeField] TextMeshProUGUI _rankText;
 
@@ -18,12 +19,6 @@ public class ResultManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI[] _bestRankTexts;
 
     [SerializeField] Image _backGround;
-
-    const float timeS = 60.0f;
-    const float timeA = 180.0f;
-    const float timeB = 300.0f;
-    const float timeC = 480.0f;
-    const float timeD = 600.0f;
 
     Color32 Gold = new(255, 231, 0, 255);
     Color32 Red = new(255, 50, 150, 255);
@@ -40,6 +35,7 @@ public class ResultManager : MonoBehaviour
     }
 
     Rank rank;
+
     Rank rankS;
     Rank rankA;
     Rank rankB;
@@ -48,7 +44,7 @@ public class ResultManager : MonoBehaviour
     Rank rankE;
 
     [HideInInspector] public RankingData data;
-    
+
     // ファイルパス
     string _filepath;
 
@@ -96,10 +92,87 @@ public class ResultManager : MonoBehaviour
         rd.Close();
 
         // jsonファイルを型に戻して返す
-        return JsonUtility.FromJson<RankingData>(json);            
+        return JsonUtility.FromJson<RankingData>(json);
     }
 
     void Start()
+    {
+        // ランクの文字と色を設定
+        RankDefinition();
+
+        // クリアしていたらタイムを表示
+        if (ClearCheck()) _resultTime.text = "TIME : " + GetClearTime().ToString("N2");
+        // クリアしていなかったらタイムなしとして表示
+        else _resultTime.text = "TIME : - - : - -";
+
+        // 現在の記録のランクをセット
+        rank = RankChecker(GetClearTime());
+
+        // ランクの表示
+        _rankText.text = rank.rankText;
+        _rankText.colorGradientPreset = rank.rankColor;
+
+        // ランキングデータを昇順に並び替え
+        Array.Sort(data.rank);
+
+        for (int i = 0; i < RankingData.RankCount; i++) 
+        {
+            // ランキングデータの書き換え(小数第2位以下切り上げ)
+            if (data.rank[i] <= 0)
+            {
+                data.rank[i] = Mathf.Floor(GetClearTime() * 100) / 100;
+                break;
+            }
+            if(i == RankingData.RankCount - 1 && GetClearTime() < data.rank[i] && ClearCheck())
+            {
+                data.rank[i] = Mathf.Floor(GetClearTime() * 100) / 100;
+            }
+        }
+        // データを保存
+        Save(data);
+
+        // データの読み込み
+        data = Load(_filepath);
+
+        // 昇順にソート
+        Array.Sort(data.rank);
+
+        for (int i = 0; i < 3; i++)
+        {
+            float bestTime = data.rank[i];
+
+            // 記録なしの場合移行の処理をなしにしてスキップ
+            if (bestTime <= 0)
+            {
+                for (int j = i; j < 3; j++)
+                {
+                    _bestResultTimes[j].text = "- - : - -";
+
+                    _bestRankTexts[j].text = rankE.rankText;
+                    _rankText.colorGradientPreset = rankE.rankColor;
+                }
+                break;
+            }
+
+            // ランキングデータのランクをセット
+            Rank bestRank = RankChecker(bestTime);
+
+            // ランキングデータのタイムの表示
+            _bestResultTimes[i].text = bestTime.ToString("N2");
+
+            // ランキングデータのランクの表示
+            _bestRankTexts[i].text = bestRank.rankText;
+            _rankText.colorGradientPreset = bestRank.rankColor;
+        }
+    }
+
+    private void Update()
+    {
+        // Bボタンが押されたらセレクト画面に戻る
+        if (Input.GetKeyDown(KeyCode.JoystickButton3)) SceneManager.LoadScene("Select");
+    }
+
+    void RankDefinition()
     {
         rankS = new("S", new(Color.white, Gold, Gold, Gold));
         rankA = new("A", new(Color.white, Red, Red, Color.red));
@@ -107,68 +180,19 @@ public class ResultManager : MonoBehaviour
         rankC = new("C", new(Color.white, Green, Green, Color.gray));
         rankD = new("D", new(Color.white, Blue, Blue, Blue));
         rankE = new("E", new(Color.white, Gray, Gray, Color.black));
-
-        result = GameObject.Find("RetentionObject").GetComponent<ResultRetention>();
-
-        if (result.GetClearFlag()) _resultTime.text = "Time : " + result.GetClearTime().ToString();
-        else _resultTime.text = "Time : --:--";
-
-        Array.Reverse(data.rank);
-
-        if (data.rank[2] <= 0 || result.GetClearTime() < data.rank[2])
-        {
-            data.rank[2] = Mathf.Ceil(result.GetClearTime() * 100) / 100;
-            Save(data);
-            
-        }
-
-        data = Load(_filepath);
-        Array.Sort(data.rank);
-
-        for (int i = 0; i < 3; i++)
-        {
-            float bestTime;
-            Rank bestRank = rankE;
-
-            bestTime = data.rank[i];
-
-            if (bestTime < 0) break;
-
-            _bestResultTimes[i].text = "Time : " + bestTime.ToString("N2");
-
-            switch (bestTime)
-            {
-                case < timeS: bestRank = rankS; break;
-                case < timeA: bestRank = rankA; break;
-                case < timeB: bestRank = rankB; break;
-                case < timeC: bestRank = rankC; break;
-                case < timeD: bestRank = rankD; break;
-            }
-
-            _bestRankTexts[i].text = bestRank.rankText;
-            _rankText.colorGradientPreset = bestRank.rankColor;
-        }
-
-
-        switch (result.GetClearTime())
-        {
-            case < timeS: rank = rankS; break;
-            case < timeA: rank = rankA; break;
-            case < timeB: rank = rankB; break;
-            case < timeC: rank = rankC; break;
-            case < timeD: rank = rankD; break;
-        }
-        if (!result.GetClearFlag()) rank = rankE;
-
-        _rankText.text = rank.rankText; 
-        _rankText.colorGradientPreset = rank.rankColor;
-
-
-        
     }
 
-    private void Update()
+    Rank RankChecker(float time)
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton3)) SceneManager.LoadScene("Select");
+        switch (time)
+        {
+            case <= 0: return rankE;
+            case < RankTimeS: return rankS;
+            case < RankTimeA: return rankA;
+            case < RankTimeB: return rankB;
+            case < RankTimeC: return rankC;
+            case < RankTimeD: return rankD;
+            default: return rankE;
+        }
     }
 }
