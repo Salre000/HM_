@@ -3274,6 +3274,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1028720126139144706, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+      propertyPath: m_Name
+      value: LeftFoot
+      objectReference: {fileID: 0}
     - target: {fileID: 2853273810819939737, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3282,10 +3286,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u30C9\u30E9\u30B4\u30F3 1"
       objectReference: {fileID: 0}
+    - target: {fileID: 2976059852939093817, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+      propertyPath: m_Name
+      value: LeftArm
+      objectReference: {fileID: 0}
     - target: {fileID: 3115370620048113508, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
       propertyPath: UIManager
       value: 
       objectReference: {fileID: 1209621434}
+    - target: {fileID: 3115370620048113508, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+      propertyPath: MoveAnimeName
+      value: Moves
+      objectReference: {fileID: 0}
     - target: {fileID: 3115370620048113510, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
       propertyPath: rockPool
       value: 
@@ -3386,9 +3398,21 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 5866748631291776604, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+      propertyPath: m_Name
+      value: LightArm
+      objectReference: {fileID: 0}
     - target: {fileID: 6698577302632794303, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176249678628710780, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+      propertyPath: m_Name
+      value: LightFoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343298337871648968, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+      propertyPath: m_Name
+      value: head
       objectReference: {fileID: 0}
     - target: {fileID: 7524727689985138218, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
       propertyPath: m_Mass

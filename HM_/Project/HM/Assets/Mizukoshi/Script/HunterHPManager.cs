@@ -20,7 +20,7 @@ public class HunterHPManager : MonoBehaviour
     {
         //if (other.GetComponent<Damage>() == null) return;
 
-        if (other.gameObject.tag == "PlayerAttackDoragon" && "Hunter" == this.tag)
+        if (other.gameObject.tag == "PlayerAttack" && "Hunter" == this.tag)
         {
             if (other.GetComponent<Damage>() == null) return;
             isHit = true;

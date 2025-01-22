@@ -15,6 +15,12 @@ public class HunterManager : MonoBehaviour
 
     Vector3 respawnPosition;
 
+    enum HunterState
+    {
+        None=0,
+        Com
+    }
+
     // Start is called before the first frame update
     void Start()
     {
