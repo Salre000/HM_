@@ -29,7 +29,7 @@ public class SceneChanger : MonoBehaviour
     public void ChangeScene()
     {
         NailAnim anim = new NailAnim();
-        anim.AnimSkip();
+        anim.AnimCancel();
         SceneManager.LoadScene(sceneName);
     }
 }

@@ -4,10 +4,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 //蜘蛛のモデルの攻撃アニメーション
-public class PlayerAttackSpider :  PlayerAttack
+public class PlayerAttackSpider : PlayerAttack
 {
-protected override void BarkJump()
-{
+    [SerializeField] GameObject CaptorPosition;
+    protected override void BarkJump()
+    {
         PlayerSpiderJump playerSpiderJump = this.GetComponent<PlayerSpiderJump>();
         if (playerSpiderJump == null)
         {
@@ -21,20 +22,20 @@ protected override void BarkJump()
     }
 
     protected override void Jump()
-{
-        PlayerSpiderJump playerSpiderJump=this.GetComponent<PlayerSpiderJump>();
-        if (playerSpiderJump == null) 
+    {
+        PlayerSpiderJump playerSpiderJump = this.GetComponent<PlayerSpiderJump>();
+        if (playerSpiderJump == null)
         {
-            playerSpiderJump=this.AddComponent<PlayerSpiderJump>();
+            playerSpiderJump = this.AddComponent<PlayerSpiderJump>();
 
 
 
 
         }
-}
+    }
 
-protected override void LTAttack()
-{
+    protected override void LTAttack()
+    {
         PlayerSpiderTrap playerSpiderTrap = this.GetComponent<PlayerSpiderTrap>();
         if (playerSpiderTrap == null)
         {
@@ -48,14 +49,24 @@ protected override void LTAttack()
     }
 
     protected override void LTRTAttack()
-{
-}
+    {
+        CaptorAttackSpider Anime = this.GetComponent<CaptorAttackSpider>();
+        if (Anime == null)
+        {
+            Anime = this.AddComponent<CaptorAttackSpider>();
 
-protected override void RTAttack()
-{
-}
+            Anime.SetUp(CaptorPosition,this);
 
-private void Awake()
-{
-}
+
+        }
+
+    }
+
+    protected override void RTAttack()
+    {
+    }
+
+    private void Awake()
+    {
+    }
 }
