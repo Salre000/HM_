@@ -10,8 +10,10 @@ public class AnimeBase : MonoBehaviour
 
     public Tag TagBox;
 
+    protected List<string> _AnimeName=new List<string>(1);
 
-    protected string _AnimeName="";
+    public void AddAnimeName(string Name) {  _AnimeName.Add(Name); }    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +32,7 @@ public class AnimeBase : MonoBehaviour
 
 
         //何かの理由でアニメーションが終了したとき
-        if (NowAnime != _AnimeName)
+        if (!_AnimeName.Contains(NowAnime))
         {
 
             AnimeEnd();

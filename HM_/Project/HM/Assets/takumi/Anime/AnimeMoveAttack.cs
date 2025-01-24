@@ -13,7 +13,7 @@ public class AnimeMoveAttack : AnimeBase
     private void Awake()
     {
 
-        _AnimeName = "Armature|AttackMove";
+        AddAnimeName("Armature|AttackMove");
     }
     private void FixedUpdate()
     {
@@ -23,11 +23,11 @@ public class AnimeMoveAttack : AnimeBase
     override protected void AnimeEnd()
     {
 
-        if (_AnimeName == NestName) 
+        if (_AnimeName.Contains(NestName)) 
         {
 
 
-            _AnimeName= NestName;
+            AddAnimeName(NestName);
             return;
         }
 

@@ -16,7 +16,7 @@ public class PlayerSpiderTrap : AnimeBase
 
     private void Awake()
     {
-        _AnimeName = "Armature|CreateTrap";
+        AddAnimeName("Armature|CreateTrap");
 
         StartAngle=this.transform.eulerAngles.y;
 
@@ -55,7 +55,7 @@ public class PlayerSpiderTrap : AnimeBase
         {
 
 
-        TrapObject.transform.localScale += Vector3.one/50;
+        TrapObject.transform.localScale += Vector3.one;
 
 
 

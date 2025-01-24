@@ -16,7 +16,8 @@ public abstract class PlayerAttack : MonoBehaviour
 
     public void SetPredictionAttackFlag(bool Flag) { predictionAttackFlag = Flag; }
 
-
+    private bool ULTFlag=true;
+    public void SetULTFLag(bool Flag) { ULTFlag = Flag; }
     public Tag GetTag() { return TagBox; }
     void Start()
     {
@@ -63,7 +64,7 @@ public abstract class PlayerAttack : MonoBehaviour
         }
 
         //LR“¯Žž‰Ÿ‚µ
-        if (Input.GetKey(InputManager.instance.config.rb) && Input.GetKey(InputManager.instance.config.lb))
+        if (Input.GetKey(InputManager.instance.config.rb) && Input.GetKey(InputManager.instance.config.lb)&& ULTFlag)
         {
             _anime.SetRoarFlag(true);
 

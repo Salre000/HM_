@@ -13,7 +13,7 @@ public class BackSteppeAnime : AnimeBase
 
     private void Awake()
     {
-        _AnimeName = "Armature|BackSteppe";
+        AddAnimeName("Armature|BackSteppe");
     }
 
     //飛びたくない事前フレームのカウンター
