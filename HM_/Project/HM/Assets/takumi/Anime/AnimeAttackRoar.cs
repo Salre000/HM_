@@ -13,7 +13,7 @@ public class AnimeAttackRoar :AnimeBase
 
     private void Awake()
     {
-        _AnimeName = "Armature|AttackRoar";
+        AddAnimeName("Armature|AttackRoar");
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
     public void SetRadialBlur(RadialBlur radial) {radialBlur = radial; }

@@ -27,7 +27,7 @@ public class JumpAnime : AnimeBase
     {
         rb=this.gameObject.GetComponent<Rigidbody>();
 
-        _AnimeName = "Armature|jump";
+        AddAnimeName("Armature|jump");
 
         //HitGameObject[0] = GameObject.Find("Bone.024");
         //HitGameObject[1] = GameObject.Find("Bone.019");
