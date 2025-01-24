@@ -14,6 +14,9 @@ public class AI1Logic : MonoBehaviour
 
     public float keepDistance = 2.0f;
 
+    int avoidRatio = 7;
+
+    // 
     public float offsetX = 0;
     public float offsetY = 0;
     public float offsetZ = 2.0f;
@@ -33,8 +36,12 @@ public class AI1Logic : MonoBehaviour
 
         // プレイヤーの方向に向く
         this.transform.LookAt(targetObject.transform.position);
+
+        
+        // 回避行動関数
     }
 
+    // 目的地の取得
     Vector3 GetDestinationPosition()
     {
         Vector3 newPos=targetObject.transform.position;
@@ -44,6 +51,16 @@ public class AI1Logic : MonoBehaviour
         return newPos;
     }
 
+    void Avoid()
+    {
+        int random = Random.Range(0, 10);
+        if (random <= avoidRatio)
+        {
+            // 回避アニメーション関数
+            Debug.Log("Avoid");
+        }
+        
+    }
 
 
 }
