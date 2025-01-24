@@ -191,5 +191,43 @@ public class Hunter_AI : MonoBehaviour
         //_animator.SetBool("RestraingFlag", false);
     }
     
+    // UŒ‚ŠÖ”
+    public void Attack()
+    {
+
+    }
+
+    // ‘–‚éŠÖ”
+    public void Run()
+    {
+
+    }
+    
+    // €–SŠÖ”
+    public void Death()
+    {
+
+    }
+
+    /// <summary>
+    /// ’TõŠÖ”
+    /// </summary>
+    /// <param name="list"></param> „‰ñ‚·‚éˆÊ’u‚Ì”z—ñ
+    public void Search(Vector3[] list)
+    {
+
+    }
+
+    /// <summary>
+    /// ‹——£ŒŸ’mŠÖ”
+    /// </summary>
+    /// <param name="acceptDistance"></param>
+    /// <returns></returns>
+    public bool CheckAttackDistance(float acceptDistance)
+    {
+        return false;
+    }
+
+
 
 }

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class AIBase 
 {
-    
+    private Animator animator;
+
+
     protected virtual void Run()
     {
         
@@ -16,6 +18,10 @@ public class AIBase
     }
 
     
+    protected virtual void Update() { }
+   
+
+
 
 
 }

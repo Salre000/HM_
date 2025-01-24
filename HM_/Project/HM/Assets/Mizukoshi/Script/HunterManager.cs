@@ -93,10 +93,12 @@ public class HunterManager : MonoBehaviour
     /// <summary>
     /// ハンターの危険状態を確認
     /// </summary>
-    void SetDengerousState()
+    public void SetDengerousState()
     {
         // 
     }
+
+
 
     // 強制的にゲームくりあにする。
     public void ForceDie()
