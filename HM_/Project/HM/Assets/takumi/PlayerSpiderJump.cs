@@ -5,7 +5,6 @@ public class PlayerSpiderJump : AnimeBase
     private void Awake()
     {
         _AnimeName = "Armature|Jump";
-        PlayerAttackDoragon playerAttack = GetComponent<PlayerAttackDoragon>();
 
         // ˆÚ“®—Ê‚Æ‰ñ“]—Ê‚ğ‹‚ß‚é
         float _horizontal = Input.GetAxis("Horizontal");

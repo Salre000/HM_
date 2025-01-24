@@ -9,23 +9,32 @@ public class NailAnim : MonoBehaviour
 
     [SerializeField] int startTime = 2;
 
+    private UniTask _task;
+
     void Start()
     {
         Application.targetFrameRate = 60;
         rectTransform = GetComponent<RectTransform>();
-        Anim();
+        _task = Anim();
     }
 
     private async UniTask Anim()
     {
         await UniTask.DelayFrame(startTime * Application.targetFrameRate);
 
-        while (true) 
+        if (this.gameObject == null) return;
+
+        while (true)
         {
             if (transform.position == transform.parent.position) break;
             transform.position = Vector3.MoveTowards(transform.position, transform.parent.position, 8000 * Time.deltaTime);
 
             await UniTask.DelayFrame(1);
         }
+    }
+
+    public void AnimSkip()
+    {
+        _task = UniTask.CompletedTask;
     }
 }

@@ -8,10 +8,19 @@ public class PlayerAttackSpider :  PlayerAttack
 {
 protected override void BarkJump()
 {
+        PlayerSpiderJump playerSpiderJump = this.GetComponent<PlayerSpiderJump>();
+        if (playerSpiderJump == null)
+        {
+            playerSpiderJump = this.AddComponent<PlayerSpiderJump>();
 
-}
 
-protected override void Jump()
+
+
+        }
+
+    }
+
+    protected override void Jump()
 {
         PlayerSpiderJump playerSpiderJump=this.GetComponent<PlayerSpiderJump>();
         if (playerSpiderJump == null) 
@@ -26,9 +35,19 @@ protected override void Jump()
 
 protected override void LTAttack()
 {
-}
+        PlayerSpiderTrap playerSpiderTrap = this.GetComponent<PlayerSpiderTrap>();
+        if (playerSpiderTrap == null)
+        {
+            playerSpiderTrap = this.AddComponent<PlayerSpiderTrap>();
 
-protected override void LTRTAttack()
+
+
+
+        }
+
+    }
+
+    protected override void LTRTAttack()
 {
 }
 
