@@ -655,17 +655,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameObjectTarp: {fileID: 6683070756625469049, guid: ea1a3d7e8b80f274fbbe5cab9e5e8aa0, type: 3}
-  TarpPool:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   Player: {fileID: 1506964573}
 --- !u!1 &72699137
 GameObject:
@@ -1055,19 +1044,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuIndex: 1
-  sliderIndex: 0
   _option: {fileID: 4900000, guid: b824ef380a498fc4fae1ce12e2479516, type: 3}
-  uiPanel: {fileID: 104820200}
-  beltText: {fileID: 2032565120}
-  objective: {fileID: 1603633958}
-  slider:
+  _uiPanel: {fileID: 104820200}
+  _beltText: {fileID: 2032565120}
+  _objective: {fileID: 1603633958}
+  _slider:
   - {fileID: 1868830123}
   - {fileID: 691134128}
   - {fileID: 606780669}
   _sensibilityBar: {fileID: 1868830123}
   _bgmBar: {fileID: 691134128}
   _seBar: {fileID: 606780669}
-  cursor: {fileID: 503240485}
+  _cursor: {fileID: 503240485}
+  _buttons:
+  - {fileID: 691771724}
+  - {fileID: 814030350}
 --- !u!4 &118534736
 Transform:
   m_ObjectHideFlags: 0
@@ -11054,8 +11045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08eaef8fe438eee4384454bcaaebe493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hunterManager: {fileID: 0}
-  playerStatus: {fileID: 0}
   uiManager: {fileID: 1209621434}
 --- !u!114 &1418245120
 MonoBehaviour:
