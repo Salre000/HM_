@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 470001546}
   - component: {fileID: 470001545}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Nail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

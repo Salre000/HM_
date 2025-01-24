@@ -32,8 +32,8 @@ public class NailAnim : MonoBehaviour
 
         while (true)
         {
-            token.ThrowIfCancellationRequested();
-
+            if (token.IsCancellationRequested) return;
+            
             if (transform.position == transform.parent.position) break;
             transform.position = Vector3.MoveTowards(transform.position, transform.parent.position, 8000 * Time.deltaTime);
 
