@@ -134,6 +134,10 @@ public class OptionManager : MonoBehaviour
         {
             _buttonIndex++;
         }
+
+        if (_buttonIndex >= _buttons.Length) _buttonIndex = 0;
+        if (_buttonIndex < 0) _buttonIndex = _buttons.Length - 1;
+
         if (Input.GetAxis("D_Pad_V") == 0 && Input.GetAxis("Vertical") == 0) return;
     }
 
