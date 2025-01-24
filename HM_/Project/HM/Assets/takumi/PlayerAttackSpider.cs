@@ -51,6 +51,7 @@ public class PlayerAttackSpider : PlayerAttack
     protected override void LTRTAttack()
     {
         CaptorAttackSpider Anime = this.GetComponent<CaptorAttackSpider>();
+
         if (Anime == null)
         {
             Anime = this.AddComponent<CaptorAttackSpider>();
