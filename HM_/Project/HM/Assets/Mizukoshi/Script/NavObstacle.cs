@@ -9,13 +9,13 @@ public class NavObstacle : MonoBehaviour
     /// <summary>
     /// ナビメッシュにobstaclコンポーネントをアタッチする関数
     /// </summary>
-    public void AttachNavmeshObstacle()
+    public void AttachNavmeshObstacle(GameObject targetObject)
     {
         // NavMeshObstacleコンポーネントが既にアタッチされていない場合のみ追加
         if (GetComponent<NavMeshObstacle>() == null)
         {
             // NavMeshObstacleをオブジェクトに追加
-            NavMeshObstacle navMeshObstacle = gameObject.AddComponent<NavMeshObstacle>();
+            NavMeshObstacle navMeshObstacle = targetObject.AddComponent<NavMeshObstacle>();
 
             // 必要に応じて設定を変更
             navMeshObstacle.carving = true;

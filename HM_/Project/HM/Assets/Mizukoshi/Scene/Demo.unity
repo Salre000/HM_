@@ -24487,8 +24487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08eaef8fe438eee4384454bcaaebe493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hunterManager: {fileID: 0}
-  playerStatus: {fileID: 0}
   uiManager: {fileID: 1209621434}
 --- !u!114 &1418245120
 MonoBehaviour:
