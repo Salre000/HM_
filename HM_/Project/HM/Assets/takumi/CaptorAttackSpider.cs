@@ -60,6 +60,7 @@ public class CaptorAttackSpider : AnimeBase
     {
         CaptorAttackSpider Anime = this.gameObject.GetComponent<CaptorAttackSpider>();
 
+        this.gameObject.AddComponent<PlayerSpiderJump>();
         Destroy(Anime);
     }
 

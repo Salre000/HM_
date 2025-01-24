@@ -28,7 +28,7 @@ public class NailAnim : MonoBehaviour
     {
         await UniTask.DelayFrame(startTime * Application.targetFrameRate);
 
-        if (this.gameObject == null) return;
+        //if (this.gameObject == null) return;
 
         while (true)
         {

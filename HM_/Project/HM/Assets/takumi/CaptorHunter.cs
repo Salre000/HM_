@@ -17,7 +17,16 @@ public class CaptorHunter : MonoBehaviour
     {
         if (!activeFlag) return;
 
-        if (other.transform.tag != "Hunter") return;
+        GameObject Parent=other.gameObject;
+
+        while (true)
+        {
+            Parent=Parent.transform.parent.gameObject;
+            if (Parent.transform.parent == null) break;
+
+        }
+        Debug.Log(Parent.tag);
+        if (Parent.tag != "Hunter") return;
 
         SetObject(other.gameObject);
 
