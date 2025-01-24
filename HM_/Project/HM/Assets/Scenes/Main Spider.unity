@@ -588,7 +588,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7869974276903342849, guid: 86ddb3f7847a30e4e8e23862ff097e2d, type: 3}
       propertyPath: m_Name
-      value: DragonItem
+      value: Item
       objectReference: {fileID: 0}
     - target: {fileID: 7869974276903342854, guid: 86ddb3f7847a30e4e8e23862ff097e2d, type: 3}
       propertyPath: m_RootOrder
@@ -634,7 +634,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7869974276903342855, guid: 86ddb3f7847a30e4e8e23862ff097e2d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 86ddb3f7847a30e4e8e23862ff097e2d, type: 3}
 --- !u!1 &69537805 stripped
 GameObject:
@@ -650,9 +651,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 69537805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd596e0d7294caa41a9a7c036440ec01, type: 3}
+  m_Script: {fileID: 11500000, guid: 77653eeb133750b439f2d44da53a22fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameObjectTarp: {fileID: 6683070756625469049, guid: ea1a3d7e8b80f274fbbe5cab9e5e8aa0, type: 3}
+  TarpPool:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Player: {fileID: 1506964573}
 --- !u!1 &72699137
 GameObject:
   m_ObjectHideFlags: 0
@@ -11043,7 +11057,6 @@ MonoBehaviour:
   hunterManager: {fileID: 0}
   playerStatus: {fileID: 0}
   uiManager: {fileID: 1209621434}
-  resultRetention: {fileID: 1745991055}
 --- !u!114 &1418245120
 MonoBehaviour:
   m_ObjectHideFlags: 0

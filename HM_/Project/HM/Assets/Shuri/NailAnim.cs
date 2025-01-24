@@ -11,23 +11,33 @@ public class NailAnim : MonoBehaviour
 
     [SerializeField] int startTime = 2;
 
+<<<<<<< HEAD
     CancellationTokenSource _cancel;
+=======
+    private UniTask _task;
+>>>>>>> 283e44c025f6b5dc4f3bd4813e00a19e381c75e4
 
     void Start()
     {
         _cancel = new CancellationTokenSource(); 
         Application.targetFrameRate = 60;
         rectTransform = GetComponent<RectTransform>();
+<<<<<<< HEAD
 
         CancellationToken token = _cancel.Token;
         Anim(token);
+=======
+        _task = Anim();
+>>>>>>> 283e44c025f6b5dc4f3bd4813e00a19e381c75e4
     }
 
     private async UniTask Anim(CancellationToken token)
     {
         await UniTask.DelayFrame(startTime * Application.targetFrameRate);
 
-        while (true) 
+        if (this.gameObject == null) return;
+
+        while (true)
         {
             token.ThrowIfCancellationRequested();
 
@@ -38,8 +48,14 @@ public class NailAnim : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     public void AnimCancel()
     {
         _cancel.Cancel();
+=======
+    public void AnimSkip()
+    {
+        _task = UniTask.CompletedTask;
+>>>>>>> 283e44c025f6b5dc4f3bd4813e00a19e381c75e4
     }
 }
