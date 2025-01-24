@@ -10,7 +10,7 @@ public class SceneChanger : MonoBehaviour
 
     readonly string title = "Title";
     readonly string select = "Select";
-    readonly string main = "Main";
+    readonly string main = "Main Dragon";
     readonly string result = "Result";
 
     private void Start()

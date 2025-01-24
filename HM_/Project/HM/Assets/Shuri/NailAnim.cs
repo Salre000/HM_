@@ -1,6 +1,8 @@
 using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class NailAnim : MonoBehaviour
@@ -9,23 +11,35 @@ public class NailAnim : MonoBehaviour
 
     [SerializeField] int startTime = 2;
 
+    CancellationTokenSource _cancel;
+
     void Start()
     {
+        _cancel = new CancellationTokenSource(); 
         Application.targetFrameRate = 60;
         rectTransform = GetComponent<RectTransform>();
-        Anim();
+
+        CancellationToken token = _cancel.Token;
+        Anim(token);
     }
 
-    private async UniTask Anim()
+    private async UniTask Anim(CancellationToken token)
     {
         await UniTask.DelayFrame(startTime * Application.targetFrameRate);
 
         while (true) 
         {
+            token.ThrowIfCancellationRequested();
+
             if (transform.position == transform.parent.position) break;
             transform.position = Vector3.MoveTowards(transform.position, transform.parent.position, 8000 * Time.deltaTime);
 
             await UniTask.DelayFrame(1);
         }
+    }
+
+    public void AnimCancel()
+    {
+        _cancel.Cancel();
     }
 }

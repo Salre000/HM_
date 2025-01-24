@@ -31,6 +31,9 @@ public class OptionManager : MonoBehaviour
 
     UIManager _uiManager;
 
+    UniTask _panelMoveTask = UniTask.CompletedTask;
+    UniTask _cursorMoveTask = UniTask.CompletedTask;
+
     void Start()
     {
         uiPanel.SetActive(false);
@@ -41,6 +44,8 @@ public class OptionManager : MonoBehaviour
         string jsonText = _option.ToString();
 
         JsonNode json = JsonNode.Parse(jsonText);
+
+        cursor.anchoredPosition = new(cursor.anchoredPosition3D.x, (1 - sliderIndex) * 100);
 
         _sensibilityBar.value = float.Parse(json["sensibility"].Get<string>());
         _bgmBar.value = float.Parse(json["BGMvolume"].Get<string>());
@@ -54,8 +59,6 @@ public class OptionManager : MonoBehaviour
 
     void Update()
     {
-        //stopTime -= Time.deltaTime;
-
         // オプション画面の開閉
         if (Input.GetKeyDown(_inputManager.config.start))
         {
@@ -76,16 +79,16 @@ public class OptionManager : MonoBehaviour
             Time.timeScale = 0.0f;
 
             // RB
-            if (Input.GetKeyDown(_inputManager.config.rb) && menuIndex < menuNum)
+            if (Input.GetKeyDown(_inputManager.config.rb) && menuIndex < menuNum && _panelMoveTask.Status.IsCompleted())
             {
                 menuIndex++;
-                UIMove(Vector3.left);
+                _panelMoveTask = UIMove(Vector3.left);
             }
             // LB
-            if (Input.GetKeyDown(_inputManager.config.lb) && menuIndex > 1)
+            if (Input.GetKeyDown(_inputManager.config.lb) && menuIndex > 1 && _panelMoveTask.Status.IsCompleted())
             {
                 menuIndex--;
-                UIMove(Vector3.right);
+                _panelMoveTask = UIMove(Vector3.right);
             }
         }
         else Time.timeScale = 1.0f;
@@ -93,48 +96,68 @@ public class OptionManager : MonoBehaviour
         switch (menuIndex)
         {
             case 1: break;
-            case 2:  break;
+            case 2: break;
             case 3: Option(); break;
         }
     }
 
     private async UniTask UIMove(Vector3 dir)
     {
-        for (int i = 0; i < 20; i++)
+        Vector3 beltPos = beltText.transform.position;
+        Vector3 objectivePos = objective.transform.position;
+
+        for (int i = 0; i < 10; i++)
         {
-            beltText.transform.position += dir * 250 / 20;
-            objective.transform.position += dir * 1500 / 20;
+            beltText.transform.position += dir * 250 / 10;
+            objective.transform.position += dir * 1500 / 10;
             await UniTask.DelayFrame(1);
         }
+
+        beltText.transform.position = beltPos + dir * 250;
+        objective.transform.position = objectivePos + dir * 1500;
     }
 
-    private void FixedUpdate()
-    {
-        
-        
-    }
 
     void Option()
     {
+        if (!_cursorMoveTask.Status.IsCompleted()) return;
+
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(slider[sliderIndex].gameObject);
 
-        if (Input.GetAxis("D_Pad_V") > 0 && stopTime <= 0)
-        {
-            sliderIndex++;
-            stopTime = 0.1f;
-        }
-        if (Input.GetAxis("D_Pad_V") < 0 && stopTime <= 0)
+        slider[sliderIndex].value += Input.GetAxis("D_Pad_H");
+
+        if (Input.GetAxis("D_Pad_V") > 0 || Input.GetAxis("Vertical") > 0)
         {
             sliderIndex--;
-            stopTime = 0.1f;
         }
+        if (Input.GetAxis("D_Pad_V") < 0 || Input.GetAxis("Vertical") < 0)
+        {
+            sliderIndex++;
+        }
+        if (Input.GetAxis("D_Pad_V") == 0 && Input.GetAxis("Vertical") == 0) return;
 
         if (sliderIndex > slider.Length - 1) sliderIndex = 0;
         if (sliderIndex < 0) sliderIndex = slider.Length - 1;
 
-        cursor.anchoredPosition = new Vector2(cursor.anchoredPosition3D.x, (1 - sliderIndex) * 100);
-        
-        slider[sliderIndex].value += Input.GetAxis("D_Pad_H");
+        _cursorMoveTask = ChangeSelectSlider();
+    }
+
+    private async UniTask ChangeSelectSlider()
+    {
+        Vector2 startPos = cursor.anchoredPosition;
+        Vector2 goalPos = new(cursor.anchoredPosition3D.x, (1 - sliderIndex) * 100);
+
+        Debug.Log("WWW Start" + startPos);
+        Debug.Log("WWW Goal" + goalPos);
+        Debug.Log("WWW index" + sliderIndex);
+
+        for (float i = 0; i < 10; i++)
+        {
+            cursor.anchoredPosition = Vector2.Lerp(startPos, goalPos, (i + 1 / 10.0f));
+            Debug.Log("WWW t = " + i / 10);
+            await UniTask.DelayFrame(1);
+        }
+        cursor.anchoredPosition = goalPos;
     }
 }
