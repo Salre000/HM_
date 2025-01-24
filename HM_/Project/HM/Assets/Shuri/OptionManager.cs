@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -78,13 +79,13 @@ public class OptionManager : MonoBehaviour
             if (Input.GetKeyDown(_inputManager.config.rb) && menuIndex < menuNum)
             {
                 menuIndex++;
-                StartCoroutine(UIMove(Vector3.left));
+                UIMove(Vector3.left);
             }
             // LB
             if (Input.GetKeyDown(_inputManager.config.lb) && menuIndex > 1)
             {
                 menuIndex--;
-                StartCoroutine(UIMove(Vector3.right));
+                UIMove(Vector3.right);
             }
         }
         else Time.timeScale = 1.0f;
@@ -97,13 +98,13 @@ public class OptionManager : MonoBehaviour
         }
     }
 
-    IEnumerator UIMove(Vector3 dir)
+    private async UniTask UIMove(Vector3 dir)
     {
         for (int i = 0; i < 20; i++)
         {
             beltText.transform.position += dir * 250 / 20;
             objective.transform.position += dir * 1500 / 20;
-            yield return new WaitForEndOfFrame();
+            await UniTask.DelayFrame(1);
         }
     }
 
@@ -118,8 +119,6 @@ public class OptionManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(slider[sliderIndex].gameObject);
 
-        
-
         if (Input.GetAxis("D_Pad_V") > 0 && stopTime <= 0)
         {
             sliderIndex++;
@@ -130,8 +129,6 @@ public class OptionManager : MonoBehaviour
             sliderIndex--;
             stopTime = 0.1f;
         }
-
-        
 
         if (sliderIndex > slider.Length - 1) sliderIndex = 0;
         if (sliderIndex < 0) sliderIndex = slider.Length - 1;

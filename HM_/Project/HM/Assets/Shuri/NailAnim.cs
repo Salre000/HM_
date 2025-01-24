@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,24 +7,25 @@ public class NailAnim : MonoBehaviour
 {
     RectTransform rectTransform;
 
-    [SerializeField] float startTime = 2;
+    [SerializeField] int startTime = 2;
 
     void Start()
     {
+        Application.targetFrameRate = 60;
         rectTransform = GetComponent<RectTransform>();
-        StartCoroutine(Anim());
+        Anim();
     }
 
-    IEnumerator Anim()
+    private async UniTask Anim()
     {
-        yield return new WaitForSeconds(startTime);
+        await UniTask.DelayFrame(startTime * Application.targetFrameRate);
 
         while (true) 
         {
             if (transform.position == transform.parent.position) break;
             transform.position = Vector3.MoveTowards(transform.position, transform.parent.position, 8000 * Time.deltaTime);
 
-            yield return new WaitForEndOfFrame();
+            await UniTask.DelayFrame(1);
         }
     }
 }

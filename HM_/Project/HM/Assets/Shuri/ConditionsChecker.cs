@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,37 +6,42 @@ using UnityEngine.SceneManagement;
 
 public class ConditionsChecker : MonoBehaviour
 {
-    [SerializeField] HunterManager hunterManager;
-    [SerializeField] PlayerStatus playerStatus;
+    HunterManager hunterManager;
+    PlayerStatus playerStatus;
     [SerializeField] UIManager uiManager;
-    [SerializeField] ResultRetention resultRetention;
 
-    Coroutine finish;
+    // 終了フラグ
+    private bool _finishFlag;
 
     private void Start()
     {
+        _finishFlag = false;
+
+        // オブジェクトを探してクラスを取得
         playerStatus = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>();
-        hunterManager = GetComponent<HunterManager>();
+        hunterManager = GameObject.Find("GameManager").GetComponent<HunterManager>();
     }
 
     void Update()
     {
-        if (finish != null) return;
+        if (_finishFlag) return;
 
         if (hunterManager.GetHunterDeathAmount() > 3)
         {
-            finish = StartCoroutine(GoToResult(uiManager.GetLimitTime() - uiManager.remainingTime));
+            GoToResult(uiManager.GetLimitTime() - uiManager.remainingTime).Forget();
         }
 
         if(playerStatus.GetHP() <= 0 || uiManager.remainingTime <= 0)
         {
-            finish = StartCoroutine(GoToResult(0));
+            GoToResult(0).Forget();
         }
     }
 
-    IEnumerator GoToResult(float time)
+    private async UniTask GoToResult(float time)
     {
-        yield return new WaitForSeconds(3.0f);
+        _finishFlag = true;
+
+        await UniTask.DelayFrame(Application.targetFrameRate * 3);
 
         ResultRetention.SetClearTime(time);
 
