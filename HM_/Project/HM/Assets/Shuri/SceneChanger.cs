@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
     [SerializeField] string sceneName;
-    string _nowScene;
 
     enum GameScene
     {
@@ -18,7 +17,7 @@ public class SceneChanger : MonoBehaviour
         MAX,
     }
 
-    GameScene sceneIndex = 0;
+    GameScene _nowScene = 0;
 
     readonly string title = "Title";
     readonly string select = "Select";
@@ -27,12 +26,12 @@ public class SceneChanger : MonoBehaviour
 
     private void Start()
     {
-        sceneIndex = (GameScene)SceneManager.GetActiveScene().buildIndex;
+        _nowScene = (GameScene)SceneManager.GetActiveScene().buildIndex;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton3))
+        if (Input.GetKeyDown(KeyCode.JoystickButton3) && _nowScene == GameScene.Title)
         {
             ChangeScene();
         }
@@ -40,7 +39,7 @@ public class SceneChanger : MonoBehaviour
 
     public void ChangeScene()
     {
-        if (sceneIndex == GameScene.Title)
+        if (_nowScene == GameScene.Title)
         {
             NailAnim anim = GameObject.Find("Nail").GetComponent<NailAnim>();
             anim.AnimCancel();

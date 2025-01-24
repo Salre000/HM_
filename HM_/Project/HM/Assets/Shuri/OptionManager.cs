@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OptionManager : MonoBehaviour
@@ -26,9 +27,8 @@ public class OptionManager : MonoBehaviour
     [SerializeField] Slider _seBar;
     [SerializeField] RectTransform _cursor;
 
+    [SerializeField] Button button;
     [SerializeField] Button[] _buttons;
-
-    float stopTime;
 
     InputManager _inputManager;
 
@@ -63,19 +63,8 @@ public class OptionManager : MonoBehaviour
     void Update()
     {
         // オプション画面の開閉
-        if (Input.GetKeyDown(_inputManager.config.start))
-        {
-            if (_uiPanel.activeSelf)
-            {
-                _uiManager.SetSliderValue(
-                    (int)_sensibilityBar.value,
-                    (int)_bgmBar.value,
-                    (int)_seBar.value);
-            }
-            _uiPanel.SetActive(!_uiPanel.activeSelf);
-        }
-        stopTime -= Time.deltaTime;
-        Debug.Log(Time.deltaTime);
+        if (Input.GetKeyDown(_inputManager.config.start)) UISwitch();
+        
         // オプション画面が開いていたら
         if (_uiPanel.activeSelf)
         {
@@ -94,7 +83,6 @@ public class OptionManager : MonoBehaviour
                 _panelMoveTask = UIMove(Vector3.right);
             }
         }
-        else Time.timeScale = 1.0f;
 
         switch (menuIndex)
         {
@@ -103,6 +91,22 @@ public class OptionManager : MonoBehaviour
             case 3: Option(); break;
             case 4: break;
         }
+    }
+
+    void UISwitch()
+    {
+        if (_uiPanel.activeSelf)
+        {
+            _uiManager.SetSliderValue(
+                (int)_sensibilityBar.value,
+                (int)_bgmBar.value,
+                (int)_seBar.value);
+
+            Time.timeScale = 1.0f;
+        }
+        else Time.timeScale = 0.0f;
+
+        _uiPanel.SetActive(!_uiPanel.activeSelf);
     }
 
     private async UniTask UIMove(Vector3 dir)
@@ -123,20 +127,16 @@ public class OptionManager : MonoBehaviour
 
     void Menu()
     {
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(_buttons[_buttonIndex].gameObject);
-
-        if (Input.GetAxis("D_Pad_V") > 0 || Input.GetAxis("Vertical") > 0)
+        if (Input.GetAxis("D_Pad_V") > 0.3 || Input.GetAxis("Vertical") > 0.3)
         {
-            _buttonIndex--;
+            button.navigation.selectOnUp.Select();
+            button = button.navigation.selectOnUp.GetComponent<Button>();
         }
-        if (Input.GetAxis("D_Pad_V") < 0 || Input.GetAxis("Vertical") < 0)
+        if (Input.GetAxis("D_Pad_V") < -0.3 || Input.GetAxis("Vertical") < -0.3)
         {
-            _buttonIndex++;
+            button.navigation.selectOnDown.Select();
+            button = button.navigation.selectOnDown.GetComponent<Button>();
         }
-
-        if (_buttonIndex >= _buttons.Length) _buttonIndex = 0;
-        if (_buttonIndex < 0) _buttonIndex = _buttons.Length - 1;
 
         if (Input.GetAxis("D_Pad_V") == 0 && Input.GetAxis("Vertical") == 0) return;
     }
@@ -150,11 +150,11 @@ public class OptionManager : MonoBehaviour
 
         _slider[_sliderIndex].value += Input.GetAxis("D_Pad_H");
 
-        if (Input.GetAxis("D_Pad_V") > 0 || Input.GetAxis("Vertical") > 0)
+        if (Input.GetAxis("D_Pad_V") > 0.3 || Input.GetAxis("Vertical") > 0.3)
         {
             _sliderIndex--;
         }
-        if (Input.GetAxis("D_Pad_V") < 0 || Input.GetAxis("Vertical") < 0)
+        if (Input.GetAxis("D_Pad_V") < -0.3 || Input.GetAxis("Vertical") < -0.3)
         {
             _sliderIndex++;
         }
@@ -171,16 +171,27 @@ public class OptionManager : MonoBehaviour
         Vector2 startPos = _cursor.anchoredPosition;
         Vector2 goalPos = new(_cursor.anchoredPosition3D.x, (1 - _sliderIndex) * 100);
 
-        Debug.Log("WWW Start" + startPos);
-        Debug.Log("WWW Goal" + goalPos);
-        Debug.Log("WWW index" + _sliderIndex);
-
         for (float i = 0; i < 10; i++)
         {
             _cursor.anchoredPosition = Vector2.Lerp(startPos, goalPos, (i + 1 / 10.0f));
-            Debug.Log("WWW t = " + i / 10);
             await UniTask.DelayFrame(1);
         }
         _cursor.anchoredPosition = goalPos;
+    }
+
+    private void KeyConfig()
+    {
+
+    }
+
+    public void OnBackToTheGame()
+    {
+        UISwitch();
+    }
+
+    public void OnReturnToSelect()
+    {
+        UISwitch();
+        SceneManager.LoadScene("Select");
     }
 }
