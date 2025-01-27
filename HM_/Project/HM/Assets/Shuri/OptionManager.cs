@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OptionManager : MonoBehaviour
@@ -11,29 +12,34 @@ public class OptionManager : MonoBehaviour
     public int menuIndex = 1;
     int menuNum = 4;
 
-    public int sliderIndex;
+    private int _sliderIndex;
+    private int _buttonIndex;
 
     [SerializeField] TextAsset _option;
 
-    [SerializeField] GameObject uiPanel;
-    [SerializeField] GameObject beltText;
-    [SerializeField] GameObject objective;
+    [SerializeField] GameObject _uiPanel;
+    [SerializeField] GameObject _beltText;
+    [SerializeField] GameObject _objective;
 
-    [SerializeField] Slider[] slider;
+    [SerializeField] Slider[] _slider;
     [SerializeField] Slider _sensibilityBar;
     [SerializeField] Slider _bgmBar;
     [SerializeField] Slider _seBar;
-    [SerializeField] RectTransform cursor;
+    [SerializeField] RectTransform _cursor;
 
-    float stopTime;
+    [SerializeField] Button button;
+    [SerializeField] Button[] _buttons;
 
     InputManager _inputManager;
 
     UIManager _uiManager;
 
+    UniTask _panelMoveTask = UniTask.CompletedTask;
+    UniTask _cursorMoveTask = UniTask.CompletedTask;
+
     void Start()
     {
-        uiPanel.SetActive(false);
+        _uiPanel.SetActive(false);
 
         _inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
         _uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
@@ -41,6 +47,8 @@ public class OptionManager : MonoBehaviour
         string jsonText = _option.ToString();
 
         JsonNode json = JsonNode.Parse(jsonText);
+
+        _cursor.anchoredPosition = new(_cursor.anchoredPosition3D.x, (1 - _sliderIndex) * 100);
 
         _sensibilityBar.value = float.Parse(json["sensibility"].Get<string>());
         _bgmBar.value = float.Parse(json["BGMvolume"].Get<string>());
@@ -54,87 +62,136 @@ public class OptionManager : MonoBehaviour
 
     void Update()
     {
-        //stopTime -= Time.deltaTime;
-
         // オプション画面の開閉
-        if (Input.GetKeyDown(_inputManager.config.start))
-        {
-            if (uiPanel.activeSelf)
-            {
-                _uiManager.SetSliderValue(
-                    (int)_sensibilityBar.value,
-                    (int)_bgmBar.value,
-                    (int)_seBar.value);
-            }
-            uiPanel.SetActive(!uiPanel.activeSelf);
-        }
-        stopTime -= Time.deltaTime;
-        Debug.Log(Time.deltaTime);
+        if (Input.GetKeyDown(_inputManager.config.start)) UISwitch();
+        
         // オプション画面が開いていたら
-        if (uiPanel.activeSelf)
+        if (_uiPanel.activeSelf)
         {
             Time.timeScale = 0.0f;
 
             // RB
-            if (Input.GetKeyDown(_inputManager.config.rb) && menuIndex < menuNum)
+            if (Input.GetKeyDown(_inputManager.config.rb) && menuIndex < menuNum && _panelMoveTask.Status.IsCompleted())
             {
                 menuIndex++;
-                UIMove(Vector3.left);
+                _panelMoveTask = UIMove(Vector3.left);
             }
             // LB
-            if (Input.GetKeyDown(_inputManager.config.lb) && menuIndex > 1)
+            if (Input.GetKeyDown(_inputManager.config.lb) && menuIndex > 1 && _panelMoveTask.Status.IsCompleted())
             {
                 menuIndex--;
-                UIMove(Vector3.right);
+                _panelMoveTask = UIMove(Vector3.right);
             }
         }
-        else Time.timeScale = 1.0f;
 
         switch (menuIndex)
         {
-            case 1: break;
-            case 2:  break;
+            case 1: Menu(); break;
+            case 2: break;
             case 3: Option(); break;
+            case 4: break;
         }
+    }
+
+    void UISwitch()
+    {
+        if (_uiPanel.activeSelf)
+        {
+            _uiManager.SetSliderValue(
+                (int)_sensibilityBar.value,
+                (int)_bgmBar.value,
+                (int)_seBar.value);
+
+            Time.timeScale = 1.0f;
+        }
+        else Time.timeScale = 0.0f;
+
+        _uiPanel.SetActive(!_uiPanel.activeSelf);
     }
 
     private async UniTask UIMove(Vector3 dir)
     {
-        for (int i = 0; i < 20; i++)
+        Vector3 beltPos = _beltText.transform.position;
+        Vector3 objectivePos = _objective.transform.position;
+
+        for (int i = 0; i < 10; i++)
         {
-            beltText.transform.position += dir * 250 / 20;
-            objective.transform.position += dir * 1500 / 20;
+            _beltText.transform.position += dir * 250 / 10;
+            _objective.transform.position += dir * 1500 / 10;
             await UniTask.DelayFrame(1);
         }
+
+        _beltText.transform.position = beltPos + dir * 250;
+        _objective.transform.position = objectivePos + dir * 1500;
     }
 
-    private void FixedUpdate()
+    void Menu()
     {
-        
-        
+        if (Input.GetAxis("D_Pad_V") > 0.3 || Input.GetAxis("Vertical") > 0.3)
+        {
+            button.navigation.selectOnUp.Select();
+            button = button.navigation.selectOnUp.GetComponent<Button>();
+        }
+        if (Input.GetAxis("D_Pad_V") < -0.3 || Input.GetAxis("Vertical") < -0.3)
+        {
+            button.navigation.selectOnDown.Select();
+            button = button.navigation.selectOnDown.GetComponent<Button>();
+        }
+
+        if (Input.GetAxis("D_Pad_V") == 0 && Input.GetAxis("Vertical") == 0) return;
     }
 
     void Option()
     {
+        if (!_cursorMoveTask.Status.IsCompleted()) return;
+
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(slider[sliderIndex].gameObject);
+        EventSystem.current.SetSelectedGameObject(_slider[_sliderIndex].gameObject);
 
-        if (Input.GetAxis("D_Pad_V") > 0 && stopTime <= 0)
+        _slider[_sliderIndex].value += Input.GetAxis("D_Pad_H");
+
+        if (Input.GetAxis("D_Pad_V") > 0.3 || Input.GetAxis("Vertical") > 0.3)
         {
-            sliderIndex++;
-            stopTime = 0.1f;
+            _sliderIndex--;
         }
-        if (Input.GetAxis("D_Pad_V") < 0 && stopTime <= 0)
+        if (Input.GetAxis("D_Pad_V") < -0.3 || Input.GetAxis("Vertical") < -0.3)
         {
-            sliderIndex--;
-            stopTime = 0.1f;
+            _sliderIndex++;
         }
+        if (Input.GetAxis("D_Pad_V") == 0 && Input.GetAxis("Vertical") == 0) return;
 
-        if (sliderIndex > slider.Length - 1) sliderIndex = 0;
-        if (sliderIndex < 0) sliderIndex = slider.Length - 1;
+        if (_sliderIndex > _slider.Length - 1) _sliderIndex = 0;
+        if (_sliderIndex < 0) _sliderIndex = _slider.Length - 1;
 
-        cursor.anchoredPosition = new Vector2(cursor.anchoredPosition3D.x, (1 - sliderIndex) * 100);
-        
-        slider[sliderIndex].value += Input.GetAxis("D_Pad_H");
+        _cursorMoveTask = ChangeSelectSlider();
+    }
+
+    private async UniTask ChangeSelectSlider()
+    {
+        Vector2 startPos = _cursor.anchoredPosition;
+        Vector2 goalPos = new(_cursor.anchoredPosition3D.x, (1 - _sliderIndex) * 100);
+
+        for (float i = 0; i < 10; i++)
+        {
+            _cursor.anchoredPosition = Vector2.Lerp(startPos, goalPos, (i + 1 / 10.0f));
+            await UniTask.DelayFrame(1);
+        }
+        _cursor.anchoredPosition = goalPos;
+    }
+
+    private void KeyConfig()
+    {
+
+    }
+
+    public void OnBackToTheGame()
+    {
+        UISwitch();
+    }
+
+    public void OnReturnToSelect()
+    {
+        UISwitch();
+        SceneManager.LoadScene("Select");
     }
 }

@@ -10,8 +10,7 @@ public class AnimeAttackNormal : AnimeBase
 
     private void Awake()
     {
-
-        _AnimeName = "Armature|AttackNorml";
+        AddAnimeName("Armature|AttackNorml");
         PlayerAttackDoragon playerAttack =GetComponent<PlayerAttackDoragon>();
 
 

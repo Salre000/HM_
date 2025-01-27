@@ -88,6 +88,7 @@ namespace Cysharp.Threading.Tasks
                             break;
                         case UnityEngine.LogType.Exception:
                             UnityEngine.Debug.LogException(ex);
+
                             break;
                         default:
                             break;

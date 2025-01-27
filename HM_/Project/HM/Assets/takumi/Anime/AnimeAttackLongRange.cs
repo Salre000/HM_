@@ -16,7 +16,7 @@ public class AnimeAttackLongRange : AnimeBase
     private void Awake()
     {
 
-        _AnimeName = "Armature|AttackLongRange";
+        AddAnimeName("Armature|AttackLongRange");
 
         PlayerAttackDoragon playerAttack = GetComponent<PlayerAttackDoragon>();
 

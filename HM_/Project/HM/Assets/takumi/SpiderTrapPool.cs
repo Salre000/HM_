@@ -7,12 +7,21 @@ public class SpiderTrapPool : MonoBehaviour
 {
 
     [SerializeField] GameObject GameObjectTarp;
-    [SerializeField]GameObject []TarpPool=new GameObject[10];
+    GameObject []TarpPool=new GameObject[2];
     [SerializeField] GameObject Player;
+
+    public static SpiderTrapPool instance;
 
     public void Awake()
     {
-        Player = this.gameObject;
+        if (instance != null) 
+        {
+            Destroy(instance.gameObject);
+            return;
+        }
+
+        instance=this;
+
         for (int i = 0; i < TarpPool.Length; i++) 
         {
 
@@ -26,7 +35,7 @@ public class SpiderTrapPool : MonoBehaviour
     }
 
 
-    public void SetTarp() 
+    public GameObject SetTarp() 
     {
         for(int i = 0; i < TarpPool.Length; i++) 
         {
@@ -34,13 +43,19 @@ public class SpiderTrapPool : MonoBehaviour
 
             TarpPool[i].gameObject.SetActive(true);
 
-            TarpPool[i].transform.position=this.gameObject.transform.position;
+            TarpPool[i].transform.position=Player.transform.position;
 
 
-            return;
+            return TarpPool[i];
 
         }
 
+        return null;
+    }
+
+    public GameObject GetTrap(int i = 0)
+    {
+       return TarpPool[i];
 
     }
 

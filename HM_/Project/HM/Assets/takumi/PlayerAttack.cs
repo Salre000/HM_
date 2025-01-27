@@ -10,6 +10,15 @@ public abstract class PlayerAttack : MonoBehaviour
 
     [SerializeField] protected Tag TagBox;
 
+
+    //攻撃の判定を生成する予備動作のフラグ（ハンターの攻撃予測に使用）
+    bool predictionAttackFlag = false;
+
+    public void SetPredictionAttackFlag(bool Flag) { predictionAttackFlag = Flag; }
+
+    private bool ULTFlag=true;
+    public void SetULTFLag(bool Flag) { ULTFlag = Flag; }
+    public void ReSetULTFLag() { ULTFlag = true; }
     public Tag GetTag() { return TagBox; }
     void Start()
     {
@@ -56,9 +65,10 @@ public abstract class PlayerAttack : MonoBehaviour
         }
 
         //LR同時押し
-        if (Input.GetKey(InputManager.instance.config.rb) && Input.GetKey(InputManager.instance.config.lb))
+        if (Input.GetKey(InputManager.instance.config.rb) && Input.GetKey(InputManager.instance.config.lb)&& ULTFlag)
         {
             _anime.SetRoarFlag(true);
+            LTRTAttack();
 
         }
         else
