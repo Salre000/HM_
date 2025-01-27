@@ -8,6 +8,7 @@ public class CaptorAttackSpider : AnimeBase
     private GameObject CaptorTarget;
     private PlayerAttackSpider PlayerAttackSpider;
     private CaptorHunter CaptorHunter;
+    Hunter_AI TargetHunter=null;
     public void SetUp(GameObject SetCaptor,PlayerAttackSpider playerAttack) 
     {
 
@@ -29,10 +30,15 @@ public class CaptorAttackSpider : AnimeBase
 
     public void SetCaptorObject(GameObject gameObject) { CaptorTarget = gameObject; }
     
-    public void StartCaptor() {CaptorHunter.SetActiveFlag(true); }
+    public void StartCaptor()
+    {
+        CaptorPosition.gameObject.SetActive(true);
+        CaptorHunter.SetActiveFlag(true);
+    }
 
     public void EndTarget() 
     {
+        if (CaptorTarget == null) return;
         CaptorTarget.transform.parent = null;
 
     }
@@ -50,6 +56,16 @@ public class CaptorAttackSpider : AnimeBase
 
         CaptorTarget = gameObject;
         CaptorTarget.transform.parent=CaptorPosition.transform;
+
+        CaptorTarget.transform.localPosition=Vector3.zero;
+
+        TargetHunter = CaptorHunter.GetComponent<Hunter_AI>();
+
+        if (TargetHunter == null) return;
+        TargetHunter.StartRestraining();
+
+
+
     }
 
     void FixedUpdate()
@@ -61,6 +77,11 @@ public class CaptorAttackSpider : AnimeBase
         CaptorAttackSpider Anime = this.gameObject.GetComponent<CaptorAttackSpider>();
 
         this.gameObject.AddComponent<PlayerSpiderJump>();
+
+        EndTarget();
+        //TargetHunter.StopRestraining();
+
+        CaptorPosition.gameObject.SetActive(false);
         Destroy(Anime);
     }
 

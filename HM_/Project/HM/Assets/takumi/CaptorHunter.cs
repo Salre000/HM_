@@ -11,21 +11,22 @@ public class CaptorHunter : MonoBehaviour
 
     bool activeFlag = false;    
 
-    public void SetActiveFlag(bool Flag) {  activeFlag = Flag; }    
+    public void SetActiveFlag(bool Flag) {  activeFlag = Flag; }
+
+    private void Start()
+    {
+        this.gameObject.SetActive(activeFlag);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (!activeFlag) return;
 
         GameObject Parent=other.gameObject;
 
-        while (true)
-        {
-            Parent=Parent.transform.parent.gameObject;
-            if (Parent.transform.parent == null) break;
-
-        }
         Debug.Log(Parent.tag);
+
         if (Parent.tag != "Hunter") return;
 
         SetObject(other.gameObject);

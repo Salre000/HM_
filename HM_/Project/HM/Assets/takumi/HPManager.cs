@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
@@ -115,8 +116,12 @@ public class HPManager : MonoBehaviour
         {
             if (HunterLostNumber == i) continue;
 
-            if (HunterHp[i]<=0)HunterLostNumber = i;
+            if (HunterHp[i] <= 0)
+            {
+                HunterLostNumber = i;
 
+
+            }
         }
     }
     public void SetHunterLostNumber(int Number) 
@@ -128,5 +133,27 @@ public class HPManager : MonoBehaviour
     {
 
         return HunterLostNumber;
+    }
+
+    private bool lostNumberCountFlag=false;
+    public async UniTask TimeCountLostNumber() 
+    {
+        int Count =0;
+        while (true) 
+        {
+            if(Count>=1)break;
+
+            await UniTask.DelayFrame(1);
+            Count++;
+
+
+            if (lostNumberCountFlag) continue;
+            lostNumberCountFlag = true;
+
+            Count = 0;
+        }
+
+        HunterLostNumber = -1;
+
     }
 }
