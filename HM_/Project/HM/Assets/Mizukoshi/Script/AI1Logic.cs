@@ -42,8 +42,8 @@ public class AI1Logic :Hunter_AI
             // ƒ‚ƒ“ƒXƒ^[‚Ì•ûŒü‚ÉŒü‚­
             TurnMonser();
 
-            // ‹——£‚ª‹ß‚©‚Á‚½‚çUŒ‚
-            if (CheckAttackDistance(attackDistance,this.gameObject))
+            //‹——£‚ª‹ß‚©‚Á‚½‚çUŒ‚
+            if (CheckAttackDistance(attackDistance, this.gameObject))
             {
                 Attack();
             }

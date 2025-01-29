@@ -46,6 +46,8 @@ public class HItTest : MonoBehaviour
             ////HP‚ðŒ¸‚ç‚·
             _status.MonsterDamage(_damage.GetDamage()* DamageRatio, ref Hp,_playerAnime.GetNowDownFlag());
 
+            HitEffectManager.instance.HitEffectShow(other.transform.position, HitEffectManager.CharacterType.Monster);
+
             if (Hp <= 0) 
             {
                 switch (_type) 

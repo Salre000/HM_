@@ -37,6 +37,7 @@ public abstract class Hunter_AI : MonoBehaviour
         _animator =GetComponent<Animator>();
        
         _agent= GetComponent<NavMeshAgent>();
+        _agent.isStopped = true;
     }
 
     //------------------------------------------------
@@ -128,7 +129,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // 拘束状態の開始 アニメーションの開始
     public void StartRestraining()
     {
-        _agent.isStopped = false;
+        _agent.enabled= false;
         _animator.SetTrigger("FlatterStartTrigger");
        
     }
@@ -136,7 +137,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // 拘束状態の終了　アニメーションの終了
     public void StopRestraining()
     {
-        _agent.isStopped = true;
+        _agent.enabled = true;
         _animator.SetTrigger("FlatterFinishTrigger");
     }
     

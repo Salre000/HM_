@@ -21,6 +21,7 @@ public class HunterManager : MonoBehaviour
         gameObjects = GameObject.FindGameObjectsWithTag("Hunter");
         for (int i = 0; i < gameObjects.Length; i++)
         {
+            if (gameObjects[i].GetComponent<Hunter_AI>() == null) continue;
             gameObjects[i].GetComponent<Hunter_ID>().SetHunterID(i);
         }
         _hpManager = GameObject.FindGameObjectWithTag("GameManager");
