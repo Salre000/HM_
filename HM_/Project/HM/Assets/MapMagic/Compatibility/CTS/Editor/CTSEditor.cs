@@ -147,7 +147,7 @@ namespace MapMagic.Nodes.GUI
 						using (Cell.Row) Draw.Label("No CTS material \nis assigned as \nCustom Material in \nTerrain Settings");
 
 						using (Cell.RowPx(30))
-							if (Draw.Button("Fix"))
+							if (Draw.InputKeys("Fix"))
 							{
 								Shader shader = Shader.Find("CTS/CTS Terrain Shader Basic");
 								settings.material = new Material(shader);

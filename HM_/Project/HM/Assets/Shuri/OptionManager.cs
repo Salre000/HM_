@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+using static InputManager;
+
 public class OptionManager : MonoBehaviour
 {
     public int menuIndex = 1;
@@ -63,7 +65,7 @@ public class OptionManager : MonoBehaviour
     void Update()
     {
         // オプション画面の開閉
-        if (Input.GetKeyDown(_inputManager.config.start)) UISwitch();
+        if (Input.GetKeyDown("joystick button 11")) UISwitch();
         
         // オプション画面が開いていたら
         if (_uiPanel.activeSelf)
@@ -71,13 +73,13 @@ public class OptionManager : MonoBehaviour
             Time.timeScale = 0.0f;
 
             // RB
-            if (Input.GetKeyDown(_inputManager.config.rb) && menuIndex < menuNum && _panelMoveTask.Status.IsCompleted())
+            if (_inputManager.IsOnButton(_inputManager.keys[(int)InputKeys.RB]) && menuIndex < menuNum && _panelMoveTask.Status.IsCompleted())
             {
                 menuIndex++;
                 _panelMoveTask = UIMove(Vector3.left);
             }
             // LB
-            if (Input.GetKeyDown(_inputManager.config.lb) && menuIndex > 1 && _panelMoveTask.Status.IsCompleted())
+            if (_inputManager.IsOnButton(_inputManager.keys[(int)InputKeys.LB]) && menuIndex > 1 && _panelMoveTask.Status.IsCompleted())
             {
                 menuIndex--;
                 _panelMoveTask = UIMove(Vector3.right);
