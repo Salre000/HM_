@@ -66,7 +66,7 @@ public class OptionManager : MonoBehaviour
     {
         // オプション画面の開閉
         if (Input.GetKeyDown("joystick button 11")) UISwitch();
-        
+
         // オプション画面が開いていたら
         if (_uiPanel.activeSelf)
         {
@@ -85,6 +85,7 @@ public class OptionManager : MonoBehaviour
                 _panelMoveTask = UIMove(Vector3.right);
             }
         }
+        else menuIndex = 0;
 
         switch (menuIndex)
         {

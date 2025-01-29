@@ -30,6 +30,8 @@ public class PlayerSpiderTrap : AnimeBase
         // Unitask‚Å0.5•b‚²‚Æ‚É’wå‚Ì‘ƒ‚ÌƒTƒCƒY‚ğL‚°‚é
         task= Times();
 
+
+
         int i = 0;
 
     }

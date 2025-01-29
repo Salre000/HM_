@@ -39,7 +39,6 @@ public class HItTest : MonoBehaviour
         if (other.gameObject.tag == "EnemyAttack")
         {
 
-
             //“G‚ÌUŒ‚—Í‚ğ—˜—p‚µ‚½‹““®
             Damage _damage=other.GetComponent<Damage>();
 
@@ -47,6 +46,8 @@ public class HItTest : MonoBehaviour
             _status.MonsterDamage(_damage.GetDamage()* DamageRatio, ref Hp,_playerAnime.GetNowDownFlag());
 
             HitEffectManager.instance.HitEffectShow(other.transform.position, HitEffectManager.CharacterType.Monster);
+
+
 
             if (Hp <= 0) 
             {

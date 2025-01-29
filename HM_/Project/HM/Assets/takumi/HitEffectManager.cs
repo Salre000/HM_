@@ -108,6 +108,13 @@ public class HitEffectManager : MonoBehaviour
         {
             Effect = GetPoolObject(MonsterEffectPool);
             Effect.transform.position = pos;
+
+            Effect.transform.LookAt(Camera.main.transform.position);
+
+            ParticleSystem particle=Effect.GetComponent<ParticleSystem>();
+
+            particle.Play();
+
             InvisibleObject(Effect,time);
 
 
