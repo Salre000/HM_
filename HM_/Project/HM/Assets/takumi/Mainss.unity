@@ -1512,15 +1512,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuIndex: 1
-  sliderIndex: 0
-  uiPanel: {fileID: 104820200}
-  beltText: {fileID: 2032565120}
-  objective: {fileID: 1603633958}
-  slider:
-  - {fileID: 1868830123}
-  - {fileID: 691134128}
-  - {fileID: 606780669}
-  cursor: {fileID: 503240485}
+  _option: {fileID: 0}
+  _uiPanel: {fileID: 0}
+  _beltText: {fileID: 0}
+  _objective: {fileID: 0}
+  _slider: []
+  _sensibilityBar: {fileID: 0}
+  _bgmBar: {fileID: 0}
+  _seBar: {fileID: 0}
+  _cursor: {fileID: 0}
+  button: {fileID: 0}
+  _buttons: []
 --- !u!4 &118534736
 Transform:
   m_ObjectHideFlags: 0
@@ -15567,6 +15569,7 @@ MonoBehaviour:
   hpManager: {fileID: 0}
   ThisPart: 2
   Hp: 0
+  DamageRatio: 1
 --- !u!114 &875452111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18511,6 +18514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082b4872c74fcb6429f7ba5d4b17d0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hp: 300
+  DamageRatio: 1
+  _type: 1
 --- !u!1 &1036326896
 GameObject:
   m_ObjectHideFlags: 0
@@ -21015,11 +21021,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   remainingTime: 0
-  timer: {fileID: 815208113}
-  hpBar: {fileID: 72699139}
-  textMeshProUGUI: {fileID: 425375742}
-  playerStatus: {fileID: 0}
-  hunterManager: {fileID: 1418245116}
+  _timer: {fileID: 0}
+  _hpBar: {fileID: 0}
+  _textMeshProUGUI: {fileID: 0}
+  _hpManager: {fileID: 0}
+  _hunterManager: {fileID: 0}
 --- !u!4 &1209621435
 Transform:
   m_ObjectHideFlags: 0
@@ -24826,10 +24832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08eaef8fe438eee4384454bcaaebe493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hunterManager: {fileID: 0}
-  playerStatus: {fileID: 0}
   uiManager: {fileID: 1209621434}
-  resultRetention: {fileID: 1745991055}
 --- !u!114 &1418245120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24844,6 +24847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HunterCount: 4
   MonsterHp: 0
+  HunterHp: []
 --- !u!1 &1423780448
 GameObject:
   m_ObjectHideFlags: 0

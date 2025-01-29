@@ -7,13 +7,14 @@ using UnityEngine;
 //攻撃時のエフェクトをクラス
 public class AttackEffect : MonoBehaviour
 {
-    [Header("通常攻撃のかみつきエフェクトモデル")]
+    [Header("通常攻撃のエフェクトモデル")]
     [SerializeField] GameObject NomaleAttackEffect;
 
     [Header("咆哮時に見えるエフェクトモデル")]
     [SerializeField] GameObject RoarAttackEffect;
 
     Animator NomaleAttackAnimator;
+
 
     private void Awake()
     {
