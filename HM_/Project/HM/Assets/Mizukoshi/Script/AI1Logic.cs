@@ -17,6 +17,11 @@ public class AI1Logic :Hunter_AI
     // 回避行動頻度
     int avoidRatio = 7;
 
+    // 回避行動のクールタイム
+    public float avoidCoolTime = 6.0f;
+
+    private bool _avoidCoolFlag=false;  
+
     // 
     public float offsetX = 0;
     public float offsetY = 0;
@@ -39,6 +44,11 @@ public class AI1Logic :Hunter_AI
         }
         else
         {
+            int randomNum=Random.Range(1, 10);
+            if (randomNum <= 7)
+            {
+
+            }
             // モンスターの方向に向く
             TurnMonser();
 
