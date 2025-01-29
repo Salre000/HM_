@@ -33,6 +33,8 @@ public class CaptorHunter : MonoBehaviour
 
         activeFlag = false;
 
+       
+
 
 
     }

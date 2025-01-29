@@ -57,13 +57,13 @@ public class CaptorAttackSpider : AnimeBase
         CaptorTarget = gameObject;
         CaptorTarget.transform.parent=CaptorPosition.transform;
 
-        CaptorTarget.transform.localPosition=Vector3.zero;
 
-        TargetHunter = CaptorHunter.GetComponent<Hunter_AI>();
+        TargetHunter = CaptorTarget.GetComponent<Hunter_AI>();
 
         if (TargetHunter == null) return;
         TargetHunter.StartRestraining();
 
+        CaptorTarget.transform.localPosition=Vector3.zero;
 
 
     }
@@ -79,6 +79,7 @@ public class CaptorAttackSpider : AnimeBase
         this.gameObject.AddComponent<PlayerSpiderJump>();
 
         EndTarget();
+        if(TargetHunter!=null)
         //TargetHunter.StopRestraining();
 
         CaptorPosition.gameObject.SetActive(false);
