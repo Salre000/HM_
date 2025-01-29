@@ -5,15 +5,16 @@ using UnityEngine.AI;
 /// <summary>
 /// メイスの行動論理のクラス
 /// </summary>
-public class AI1Logic : MonoBehaviour
+public class AI1Logic :Hunter_AI
 {
-    private GameObject targetObject;
-    private NavMeshAgent agent;
-
     private Vector3 destination;
 
-    public float keepDistance = 2.0f;
+    public float keepDistance = 1.5f;
 
+    public float attackDistance = 2.0f;
+
+
+    // 回避行動頻度
     int avoidRatio = 7;
 
     // 
@@ -26,51 +27,62 @@ public class AI1Logic : MonoBehaviour
 
     private void Start()
     {
-        targetObject = GameObject.FindGameObjectWithTag("Player");
-        agent = GetComponent<NavMeshAgent>();
+        
     }
 
-    private void Update()
+    public void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        // モンスターを見つかっているかどうか
+        if (!monsterDisplay)
         {
-            agent.destination=GetDestinationPosition();
+            Search();
         }
-
-        // プレイヤーの方向に向く
-        this.transform.LookAt(targetObject.transform.position);
-
-
-        // 回避行動関数
-        if (alreadyFlag/*関数*/ )
+        else
         {
-            Avoid();
+            // モンスターの方向に向く
+            TurnMonser();
+
+            // 距離が近かったら攻撃
+            if (CheckAttackDistance(attackDistance,this.gameObject))
+            {
+                Attack();
+            }
+
+            // ナビメッシュの目的地
+            Chase();
+            SetDestination(GetDestinationPosition());
         }
+    }
+
+    public override void Search()
+    {
+        // 探索関数
+
+
+        // 視界範囲関数
+        if (IsMonsterInSight())
+        {
+            // 発見した
+            DisappearMonster();
+        }
+       
     }
 
     // 目的地の取得
     Vector3 GetDestinationPosition()
     {
-        Vector3 newPos=targetObject.transform.position;
+        Vector3 newPos=GetMonster().transform.position;
         Vector3 offset=new Vector3(offsetX, offsetY, offsetZ);
-        offset=targetObject.transform.rotation*offset;
+        offset=GetMonster().transform.rotation*offset;
         newPos=newPos+offset;
         return newPos;
     }
 
-    void Avoid()
+    // モンスターの方向に向く
+    void TurnMonser()
     {
-        int random = Random.Range(0, 10);
-
-        if (random <= avoidRatio)
-        {
-            // 回避アニメーション関数
-            Debug.Log("Avoid");
-        }
-        alreadyFlag = true;
+        this.transform.LookAt(GetMonster().transform.position);
     }
-
-
 
 
 }

@@ -15,16 +15,14 @@ public class HunterManager : MonoBehaviour
 
     Vector3 respawnPosition;
 
-    enum HunterState
-    {
-        None=0,
-        Com
-    }
-
     // Start is called before the first frame update
     void Start()
     {
         gameObjects = GameObject.FindGameObjectsWithTag("Hunter");
+        for (int i = 0; i < gameObjects.Length; i++)
+        {
+            gameObjects[i].GetComponent<Hunter_ID>().SetHunterID(i);
+        }
         _hpManager = GameObject.FindGameObjectWithTag("GameManager");
         respawnPosition = transform.position;
     }
@@ -34,9 +32,10 @@ public class HunterManager : MonoBehaviour
     {
         for (int i = 0; i < gameObjects.Length; i++)
         {
-             CheckDamage(i);
-             CheckDeath(i);
+             //CheckDamage(i);
+             //CheckDeath(i);
         }
+        DebugCommand();
 
     }
 
@@ -49,8 +48,8 @@ public class HunterManager : MonoBehaviour
     {
         gameObjects[i].transform.GetComponent<HunterHPManager>().hp = 100;
         gameObjects[i].transform.GetComponent<HunterHPManager>().isDeadFlag = false;
-        gameObjects[i].transform.GetComponent<Hunter_AI>().deathAnimationFinish = false;
         gameObjects[i].transform.position = respawnPosition;
+
     }
 
     void CheckDamage(int hunterNum)
@@ -63,7 +62,10 @@ public class HunterManager : MonoBehaviour
         }
 
     }
-
+    /// <summary>
+    /// 死にました→GetHunterLostNumber()→n秒後その値が-1   リスポーン後1秒待機
+    /// </summary>
+    /// <param name="hunterNum"></param>
     void CheckDeath(int hunterNum)
     {
         if (_hpManager.GetComponent<HPManager>().GetHunterLostNumber() == -1)return;
@@ -83,11 +85,16 @@ public class HunterManager : MonoBehaviour
         return gameObjects[hunterNum].GetComponent<HunterHPManager>().collider.gameObject.GetComponent<Damage>().GetDamage();
     }
 
-    void SetDisapper()
+    /// <summary>
+    /// ハンターがモンスターを見つけたときに呼ぶ関数
+    /// </summary>
+    public void SetDisapper()
     {
         // ハンターについているモンスターを見つける関数を呼び出す。
-
-
+        for (int i = 0; i < gameObjects.Length; i++)
+        {
+            gameObjects[i].GetComponent<Hunter_AI>().DisappearMonster();
+        }
     }
 
     /// <summary>
@@ -104,5 +111,47 @@ public class HunterManager : MonoBehaviour
     public void ForceDie()
     {
         deathCount = 4;
+    }
+
+    public void DebugCommand()
+    {
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            gameObjects[0].GetComponent<Hunter_AI>().DeathAnimation();
+            Debug.Log(gameObjects[0].GetComponent<Hunter_AI>().GetHunterID());
+        }
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            gameObjects[1].GetComponent<Hunter_AI>().DeathAnimation();
+            Debug.Log(gameObjects[1].GetComponent<Hunter_AI>().GetHunterID());
+        }
+        if (Input.GetKey(KeyCode.Alpha3))
+        {
+            gameObjects[2].GetComponent<Hunter_AI>().DeathAnimation();
+            Debug.Log(gameObjects[2].GetComponent<Hunter_AI>().GetHunterID());
+        }
+        if (Input.GetKey(KeyCode.Alpha4))
+        {
+            gameObjects[0].GetComponent<Hunter_AI>().StartRestraining();
+            Debug.Log(gameObjects[0].GetComponent<Hunter_AI>().GetHunterID());
+        }
+        if (Input.GetKey(KeyCode.Alpha5))
+        {
+            gameObjects[1].GetComponent<Hunter_AI>().StartRestraining();
+            Debug.Log(gameObjects[1].GetComponent<Hunter_AI>().GetHunterID());
+        }
+        if (Input.GetKey(KeyCode.Alpha6))
+        {
+            gameObjects[2].GetComponent<Hunter_AI>().StartRestraining();
+            Debug.Log(gameObjects[2].GetComponent<Hunter_AI>().GetHunterID());
+        }
+        if (Input.GetKey(KeyCode.R))
+        {
+            for (int i = 0; i < gameObjects.Length; i++)
+            {
+                gameObjects[i].GetComponent<Hunter_AI>().StopRestraining();
+                gameObjects[i].GetComponent<Hunter_AI>().ResetAnimation();
+            }
+        }
     }
 }

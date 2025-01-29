@@ -32,12 +32,12 @@ public class HunterHPManager : MonoBehaviour
     {
         
         // HPが0かつ死亡アニメーションを終了したら
-        if (hp < 0&&this.gameObject.GetComponent<Hunter_AI>().deathAnimationFinish)
-        {
-            hp = 0;
-            // 死亡判定
-            isDeadFlag = true;
-        }
+        //if (hp < 0&&this.gameObject.GetComponent<Hunter_AI>().deathAnimationFinish)
+        //{
+        //    hp = 0;
+        //    // 死亡判定
+        //    isDeadFlag = true;
+        //}
     }
 
     // HPの減少処理 
