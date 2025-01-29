@@ -105,7 +105,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// </summary>
     public void Chase()
     {
-        if(_agent.destination==_monster.transform.position) return;
+        if(!_agent.enabled) return;
        _agent.destination=_monster.transform.position;
     }
 
