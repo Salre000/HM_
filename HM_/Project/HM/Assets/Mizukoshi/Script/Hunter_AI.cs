@@ -24,6 +24,8 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public HunterManager manager;
 
+    public HPManager hpManager;
+
     public int HP = 100;
 
     public bool attackReady = false;
@@ -194,5 +196,10 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         _agent.isStopped = true;
         _animator.SetTrigger("Reset");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+       
     }
 }
