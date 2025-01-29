@@ -91,7 +91,7 @@ public class OptionManager : MonoBehaviour
             case 1: Menu(); break;
             case 2: break;
             case 3: Option(); break;
-            case 4: break;
+            case 4: KeyConfig(); break;
         }
     }
 

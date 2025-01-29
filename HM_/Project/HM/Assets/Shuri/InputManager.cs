@@ -133,7 +133,7 @@ public class InputManager : MonoBehaviour
 
     public async void KeyChange(int index)
     {
-        keys[index] = await KeyTestScript.ChangeKey();
+        keys[index] = await ChangeCheckKeyConfig.ChangeKey();
 
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
