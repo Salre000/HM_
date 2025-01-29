@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+using static InputManager;
 public abstract class PlayerAttack : MonoBehaviour
 {
     protected PlayerAnime _anime;
@@ -39,7 +40,7 @@ public abstract class PlayerAttack : MonoBehaviour
     void FixedUpdate()
     {
         //遠距離攻撃をするボタン
-        if (Input.GetKey(InputManager.instance.config.lt))
+        if (instance.IsOnButton(instance.keys[(int)InputKeys.LT]))
         {
             LTAttack();
             _anime.SetLoanAttackFlag(true);
@@ -52,7 +53,7 @@ public abstract class PlayerAttack : MonoBehaviour
         }
 
         //攻撃をするボタン
-        if (Input.GetKey(InputManager.instance.config.rt))
+        if (instance.IsOnButton(instance.keys[(int)InputKeys.RT]))
         {
             _anime.SetAttackFlag(true);
 
@@ -65,7 +66,7 @@ public abstract class PlayerAttack : MonoBehaviour
         }
 
         //LR同時押し
-        if (Input.GetKey(InputManager.instance.config.rb) && Input.GetKey(InputManager.instance.config.lb)&& ULTFlag)
+        if (instance.IsOnButton(instance.keys[(int)InputKeys.RB]) && instance.IsOnButton(instance.keys[(int)InputKeys.LB])&& ULTFlag)
         {
             _anime.SetRoarFlag(true);
             LTRTAttack();
@@ -77,7 +78,7 @@ public abstract class PlayerAttack : MonoBehaviour
         }
 
         //前ジャンプ
-        if (Input.GetAxis("Vertical") >= -0.3f && Input.GetKey(InputManager.instance.config.a) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
+        if (Input.GetAxis("Vertical") >= -0.3f && instance.IsOnButton(instance.keys[(int)InputKeys.A]) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
         {
             _anime.SetJumpFlag(true);
             Jump();
@@ -90,7 +91,7 @@ public abstract class PlayerAttack : MonoBehaviour
         }
 
         //バックジャンプ
-        if (Input.GetAxis("Vertical") < -0.3f && Input.GetKey(InputManager.instance.config.a) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
+        if (Input.GetAxis("Vertical") < -0.3f && instance.IsOnButton(instance.keys[(int)InputKeys.A]) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
         {
             _anime.SetBackSteppeFlag(true);
             BarkJump();
