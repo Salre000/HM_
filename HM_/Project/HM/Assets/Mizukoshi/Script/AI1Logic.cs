@@ -47,7 +47,11 @@ public class AI1Logic :Hunter_AI
             int randomNum=Random.Range(1, 10);
             if (randomNum <= 7)
             {
+                // 回避行動
+                Avoid();
 
+                // 攻撃処理などを行わない。 
+                return;
             }
             // モンスターの方向に向く
             TurnMonser();
@@ -94,5 +98,6 @@ public class AI1Logic :Hunter_AI
         this.transform.LookAt(GetMonster().transform.position);
     }
 
+    
 
 }

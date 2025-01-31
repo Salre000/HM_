@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// 剣の行動論理を表すクラス    行動の基本
 /// </summary>
-public class AI4Logic : MonoBehaviour
+public class AI4Logic : Hunter_AI
 {
     
     public bool disappear=false;
@@ -37,6 +37,7 @@ public class AI4Logic : MonoBehaviour
             else
             {
                 // 巡回する
+                
             }
         }
         else
