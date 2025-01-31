@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
@@ -22,7 +23,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public Damage damage;
 
     // モンスターの位置を発見したかどうかのフラグ
-    public bool monsterDisplay=false;
+    public bool monsterDisplay = false;
 
     public HunterManager manager;
 
@@ -30,26 +31,82 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public int HP = 100;
 
-    public bool attackReady = false;
+    protected bool attackReady = true;
 
-    private 
+    private float coolTime = 0.0f;
+
+    private float _attackCoolTime = 2.0f;
+
+    private float _attackDistance = 1.0f;
+
+    protected enum eStatus
+    {
+        None,
+        Rest,
+        Max,
+    };
+
+    protected eStatus status;
+
+    //-------------------------------------------
+    //           Unity標準関数
+    //-------------------------------------------
 
     // Start is called before the first frame update
     void Start()
     {
         // モンスターのタグ取得
         _monster = GameObject.FindGameObjectWithTag("Player");
-        _monsters=GameObject.FindGameObjectsWithTag("Player");
-        _animator =GetComponent<Animator>();
-        hpManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
-       
-        _agent= GetComponent<NavMeshAgent>();
+        _monsters = GameObject.FindGameObjectsWithTag("Player");
+        _animator = GetComponent<Animator>();
+        hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
+        status=eStatus.None;
+        _agent = GetComponent<NavMeshAgent>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag != "PlayerAttack") return;
+
+        if (other.GetComponent<Damage>() == null) return;
+
+        HitEffectManager.instance.HitEffectShow(other.transform.position, HitEffectManager.CharacterType.Monster);
+        damage = other.GetComponent<Damage>();
+
+        hpManager.HunterDamage(damage.GetDamage(), this.GetHunterID());
+    }
+
+    private void Update()
+    {
+        // 拘束状態ならスキップ
+        if(CheckRest())return;
+
+        // モンスターを見つけているなら探索してスキップ
+        if (!monsterDisplay)
+        {
+            Search();
+            return;
+        }
+
+        // モンスターの攻撃がとんできているかどうか
+        if (CheckMonsterAttack()) Avoid();
+
+        
+        // モンスターへの攻撃範囲にいるならば
+        if(!CheckAttackDistance(this.gameObject))Back();
+
+        // 攻撃
+        Attack();
+
     }
 
     //------------------------------------------------
     //                    処理
     //------------------------------------------------
-
+    /// <summary>
+    /// 目的地の設定
+    /// </summary>
+    /// <param name="pos"></param>
     public void SetDestination(Vector3 pos)
     {
         _agent.destination = pos;
@@ -58,9 +115,10 @@ public abstract class Hunter_AI : MonoBehaviour
     /// <summary>
     /// 探索関数
     /// </summary>
-    public virtual void Search()
+    protected void Search()
     {
-        
+
+        if(IsMonsterInSight())DisappearMonster();
     }
 
     // モンスターの発見した時に呼ぶ関数
@@ -80,18 +138,62 @@ public abstract class Hunter_AI : MonoBehaviour
         return calculate < acceptDistance;
     }
 
+    protected bool CheckAttackDistance(GameObject AIType)
+    {
+        float calculate = Vector3.Distance(_monster.transform.position, AIType.transform.position);
+        return calculate < _attackDistance;
+    }
+
     public bool CheckKeepDistance(float acceptDistance, GameObject AIType)
     {
-       
+
         float calculate = Vector3.Distance(_monster.transform.position, AIType.transform.position);
         //Debug.Log(calculate);
         return calculate > acceptDistance;
     }
     /// <summary>
-    /// モンスターが見える位置かどうか
+    /// モンスターが見えるかどうか
     /// </summary>
     /// <returns></returns>
     public bool IsMonsterInSight()
+    {
+        Vector3 start=this.gameObject.transform.position;
+        start.y += 0.75f;
+        RaycastHit hit;
+        if (Physics.Raycast(start, transform.forward, out hit, 20))
+        {
+            PlayerStatus ste = hit.transform.gameObject.GetComponentInParent<PlayerStatus>();
+            if (ste != null) return true;
+        }
+        return false;
+    }
+
+    protected virtual void SetAttackCoolTime(float attackCoolTime)
+    {
+        _attackCoolTime = attackCoolTime;
+    }
+
+    protected virtual void SetAttackDistance(float attackDistance)
+    {
+        _attackDistance = attackDistance;
+    }
+
+    private void WaitAttackCoolTime()
+    {
+        if (attackReady) return;
+
+        coolTime += Time.deltaTime;
+        if (coolTime > _attackCoolTime)
+        {
+            coolTime = 0;
+            attackReady = true;
+        }
+    }
+    /// <summary>
+    /// モンスターが攻撃しているかどうか
+    /// </summary>
+    /// <returns></returns>
+    bool CheckMonsterAttack()
     {
         return true;
     }
@@ -99,12 +201,13 @@ public abstract class Hunter_AI : MonoBehaviour
     //-------------------------------------------------------------------------
     //                           行動関係関数
     //-------------------------------------------------------------------------
-   
+
     /// <summary>
     /// 
     /// </summary>
     public void Attack()
     {
+        attackReady = false;
         AttackAnimation();
         Debug.Log("攻撃");
     }
@@ -113,23 +216,26 @@ public abstract class Hunter_AI : MonoBehaviour
     /// </summary>
     public void Chase()
     {
-        if(!_agent.enabled) return;
-       _agent.destination=_monster.transform.position;
+        if (!_agent.enabled) return;
+        _agent.destination = _monster.transform.position;
     }
 
     public void Run()
     {
-
+        // アニメーションを流す
     }
 
     public void Avoid()
     {
-
+        // アニメーションを流す
     }
 
-    public bool CheckAttackCoolTime()
+    /// <summary>
+    /// 少し下がる関数
+    /// </summary>
+    public void Back()
     {
-        return true;
+
     }
 
     //-------------------------------------------------------------------------
@@ -148,19 +254,20 @@ public abstract class Hunter_AI : MonoBehaviour
     // 拘束状態の開始 アニメーションの開始
     public void StartRestraining()
     {
-        
+        status=eStatus.Rest;
         _agent.enabled = false;
         _animator.SetTrigger("FlatterStartTrigger");
-       
+
     }
 
     // 拘束状態の終了　アニメーションの終了
     public void StopRestraining()
     {
+        status = eStatus.None;
         _agent.enabled = true;
         _animator.SetTrigger("FlatterFinishTrigger");
     }
-    
+
     // 攻撃アニメーション再生関数
     public void AttackAnimation()
     {
@@ -172,12 +279,12 @@ public abstract class Hunter_AI : MonoBehaviour
     {
 
     }
-    
+
     // 死亡アニメーション再生関数
     public void DeathAnimation()
     {
         _animator.SetTrigger("Death");
-        _agent.isStopped = true;
+        _agent.enabled = false;
 
     }
 
@@ -189,7 +296,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public void AvoidAnimation()
     {
-       
+
     }
 
 
@@ -198,7 +305,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         return _monster;
     }
-    
+
 
     public bool GetFlat()
     {
@@ -207,26 +314,22 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public int GetHunterID()
     {
-        return this.GetComponent<Hunter_ID>().GetHunterID(); 
+        return this.GetComponent<Hunter_ID>().GetHunterID();
     }
 
     public void ResetAnimation()
     {
-        _agent.isStopped = true;
+        _agent.enabled = true;
         _animator.SetTrigger("Reset");
     }
 
-    private void OnTriggerEnter(Collider other)
+    // 拘束状態であるかどうか
+    public bool CheckRest()
     {
-        if (other.tag != "PlayerAttack") return;
-
-        if (other.GetComponent<Damage>() == null) return;
-
-        HitEffectManager.instance.HitEffectShow(other.transform.position,HitEffectManager.CharacterType.Monster);
-        damage = other.GetComponent<Damage>();
-
-        hpManager.HunterDamage(damage.GetDamage(), this.GetHunterID());
-
-       
+        if(status == eStatus.Rest) return true;
+        return false;
     }
+
+
+
 }

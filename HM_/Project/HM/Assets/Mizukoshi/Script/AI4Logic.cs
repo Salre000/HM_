@@ -6,16 +6,6 @@ using UnityEngine;
 /// </summary>
 public class AI4Logic : Hunter_AI
 {
-    
-    public bool disappear=false;
-
-    public bool notMoveActive=false;
-
-    public bool attackDistance=false;
-
-    public bool avoidActive=false;
-
-    public bool readyAttack=false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,30 +17,32 @@ public class AI4Logic : Hunter_AI
     void Update()
     {
         // 見つかっているかみつかっていないか
-        if (!disappear)
+        if (!monsterDisplay)
         {
             // 拘束状態かどうか
-            if (notMoveActive)
+            if (CheckRest())
             {
                 // 何もしない
+                return;
             }
             else
             {
                 // 巡回する
-                
+                Search();
             }
         }
         else
         {
             // 拘束状態かどうか
-            if (notMoveActive)
+            if (CheckRest())
             {
                 // 何もしない
+                return ;
             }
             else
             {
                 // 距離が遠いかどうか
-                if (!attackDistance)
+                if (CheckAttackDistance(this.gameObject))
                 {
                     // 近くに向かう
                     Chase();
@@ -58,7 +50,7 @@ public class AI4Logic : Hunter_AI
                 else
                 {
                     // 回避する状態であれば
-                    if (avoidActive)
+                    if (attackReady)
                     {
                         // 回避する
                         Avoid();
@@ -66,14 +58,16 @@ public class AI4Logic : Hunter_AI
                     else
                     {
                         // 攻撃のクールタイムがあるかどうかを確認する
-                        if (readyAttack)
+                        if (attackReady)
                         {
                             // 攻撃する
                             Attack();
                         }
                         else
                         {
-                            // クールタイムを待つ
+                           
+                            // 後退する
+                            Back();
                         }
                     }
                 }

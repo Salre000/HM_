@@ -94,7 +94,7 @@ public class HunterManager : MonoBehaviour
         // ハンターについているモンスターを見つける関数を呼び出す。
         for (int i = 0; i < gameObjects.Length; i++)
         {
-            gameObjects[i].GetComponent<Hunter_AI>().DisappearMonster();
+            gameObjects[i].GetComponent<Hunter_AI>().monsterDisplay=true;
         }
     }
 

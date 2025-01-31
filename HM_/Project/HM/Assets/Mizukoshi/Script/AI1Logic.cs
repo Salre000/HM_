@@ -32,11 +32,14 @@ public class AI1Logic :Hunter_AI
 
     private void Start()
     {
-        
+        SetAttackCoolTime(keepDistance);
     }
 
     public void Update()
     {
+        // 拘束どうか確認
+        if(CheckRest())return;
+
         // モンスターを見つかっているかどうか
         if (!monsterDisplay)
         {
@@ -59,7 +62,16 @@ public class AI1Logic :Hunter_AI
             //距離が近かったら攻撃
             if (CheckAttackDistance(attackDistance, this.gameObject))
             {
-                Attack();
+                if (attackReady)
+                {
+                    Attack();
+                }
+                else
+                {
+                    // すこし下がる
+                    Back();
+                }
+               
             }
 
             // ナビメッシュの目的地
@@ -68,19 +80,19 @@ public class AI1Logic :Hunter_AI
         }
     }
 
-    public override void Search()
-    {
-        // 探索関数
+    //public override void Search()
+    //{
+    //    // 探索関数
 
 
-        // 視界範囲関数
-        if (IsMonsterInSight())
-        {
-            // 発見した
-            DisappearMonster();
-        }
+    //    // 視界範囲関数
+    //    if (IsMonsterInSight())
+    //    {
+    //        // 発見した
+    //        DisappearMonster();
+    //    }
        
-    }
+    //}
 
     // 目的地の取得
     Vector3 GetDestinationPosition()
