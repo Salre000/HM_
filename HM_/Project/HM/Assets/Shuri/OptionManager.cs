@@ -13,6 +13,11 @@ using static InputManager;
 public class OptionManager : MonoBehaviour
 {
     [SerializeField] GameObject panelll;
+    private RectTransform _panelllRect;
+
+    RectTransform baseRect;
+    
+
     public int menuIndex = 1;
     int menuNum = 4;
 
@@ -43,7 +48,8 @@ public class OptionManager : MonoBehaviour
 
     void Start()
     {
-        panelll.SetActive(false);
+        _panelllRect = panelll.GetComponent<RectTransform>();
+        baseRect = _panelllRect;
         _uiPanel.SetActive(false);
 
         _inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
@@ -90,25 +96,21 @@ public class OptionManager : MonoBehaviour
         }
         else menuIndex = 1;
 
+        _panelllRect = baseRect;
+
         EventSystem.current.SetSelectedGameObject(null);
 
-        panelll.SetActive(false);
         if (!Input.GetKeyDown(KeyCode.JoystickButton3)) return;
 
-        panelll.SetActive(true);
-
-        UniTask sss;
-
+        _panelllRect.anchoredPosition = new(0,-380);
+        _panelllRect.localScale = new(5,10);
         switch (menuIndex)
         {
-            case 1: Menu().Forget(); break;
+            case 1: await Menu(); break;
             case 2: break;
             case 3: await Option(); break;
-            case 4: KeyConfig().Forget(); break;
-
-
+            case 4: await KeyConfig(); break;
         }
-        int a = 0;
     }
 
     void UISwitch()
@@ -161,6 +163,7 @@ public class OptionManager : MonoBehaviour
             }
 
             await UniTask.DelayFrame(1);
+            if (Input.GetKeyDown(KeyCode.JoystickButton2)) return;
 
             if (Input.GetAxis("D_Pad_V") == 0 && Input.GetAxis("Vertical") == 0) continue;
         }
@@ -172,7 +175,9 @@ public class OptionManager : MonoBehaviour
 
         while (true)
         {
-            await UniTask.Yield();
+            await UniTask.DelayFrame(1);
+            if (Input.GetKeyDown(KeyCode.JoystickButton2)) return;
+
             if (!_cursorMoveTask.Status.IsCompleted()) continue;
 
             _slider[_sliderIndex].value += Input.GetAxis("D_Pad_H");
@@ -226,6 +231,7 @@ public class OptionManager : MonoBehaviour
             }
 
             await UniTask.DelayFrame(1);
+            if (Input.GetKeyDown(KeyCode.JoystickButton2)) return;
         }
     }
 
