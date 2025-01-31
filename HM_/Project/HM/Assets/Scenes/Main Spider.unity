@@ -1043,6 +1043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e8dd17e8b33114d804f43dd09696f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelll: {fileID: 0}
   menuIndex: 1
   _option: {fileID: 4900000, guid: b824ef380a498fc4fae1ce12e2479516, type: 3}
   _uiPanel: {fileID: 104820200}
@@ -1056,10 +1057,8 @@ MonoBehaviour:
   _bgmBar: {fileID: 691134128}
   _seBar: {fileID: 606780669}
   _cursor: {fileID: 503240485}
-  button: {fileID: 0}
-  _buttons:
-  - {fileID: 691771724}
-  - {fileID: 814030350}
+  _menuButton: {fileID: 0}
+  _configButton: {fileID: 0}
 --- !u!4 &118534736
 Transform:
   m_ObjectHideFlags: 0
@@ -12008,6 +12007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TagBox: {fileID: 11400000, guid: 51ef161ce5aa1684e86e1d485aeeb784, type: 2}
+  IsCapFlag: 0
   CaptorPosition: {fileID: 2038358591}
 --- !u!65 &1506964581
 BoxCollider:
@@ -12020,8 +12020,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: -8.77, y: 1, z: -8.99}
-  m_Center: {x: 0, y: 0, z: -2.49}
+  m_Size: {x: 8.77, y: 7.914263, z: 8.99}
+  m_Center: {x: 0, y: 3.457131, z: -2.4899998}
 --- !u!114 &1506964582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12463,7 +12463,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &1619954215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16267,6 +16267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e8dd17e8b33114d804f43dd09696f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelll: {fileID: 0}
   menuIndex: 1
   _option: {fileID: 4900000, guid: b824ef380a498fc4fae1ce12e2479516, type: 3}
   _uiPanel: {fileID: 0}
@@ -16280,10 +16281,8 @@ MonoBehaviour:
   _bgmBar: {fileID: 0}
   _seBar: {fileID: 0}
   _cursor: {fileID: 0}
-  button: {fileID: 0}
-  _buttons:
-  - {fileID: 0}
-  - {fileID: 0}
+  _menuButton: {fileID: 0}
+  _configButton: {fileID: 0}
 --- !u!4 &2112712215
 Transform:
   m_ObjectHideFlags: 0
