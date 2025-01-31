@@ -82,7 +82,10 @@ public abstract class Hunter_AI : MonoBehaviour
         //Debug.Log(calculate);
         return calculate > acceptDistance;
     }
-
+    /// <summary>
+    /// モンスターが見える位置かどうか
+    /// </summary>
+    /// <returns></returns>
     public bool IsMonsterInSight()
     {
         return true;
@@ -110,6 +113,11 @@ public abstract class Hunter_AI : MonoBehaviour
     }
 
     public void Run()
+    {
+
+    }
+
+    public void Avoid()
     {
 
     }
