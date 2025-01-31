@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,11 +12,11 @@ using static InputManager;
 
 public class OptionManager : MonoBehaviour
 {
+    [SerializeField] GameObject panelll;
     public int menuIndex = 1;
     int menuNum = 4;
 
     private int _sliderIndex;
-    private int _buttonIndex;
 
     [SerializeField] TextAsset _option;
 
@@ -29,8 +30,9 @@ public class OptionManager : MonoBehaviour
     [SerializeField] Slider _seBar;
     [SerializeField] RectTransform _cursor;
 
-    [SerializeField] Button button;
-    [SerializeField] Button[] _buttons;
+    [SerializeField] Button _menuButton;
+
+    [SerializeField] Button _configButton;
 
     InputManager _inputManager;
 
@@ -41,6 +43,7 @@ public class OptionManager : MonoBehaviour
 
     void Start()
     {
+        panelll.SetActive(false);
         _uiPanel.SetActive(false);
 
         _inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
@@ -62,10 +65,10 @@ public class OptionManager : MonoBehaviour
             (int)_seBar.value);
     }
 
-    void Update()
+    async void Update()
     {
         // オプション画面の開閉
-        if (Input.GetKeyDown("joystick button 11")) UISwitch();
+        if (Input.GetKeyDown(KeyCode.JoystickButton11)) UISwitch();
 
         // オプション画面が開いていたら
         if (_uiPanel.activeSelf)
@@ -85,15 +88,26 @@ public class OptionManager : MonoBehaviour
                 _panelMoveTask = UIMove(Vector3.right);
             }
         }
-        else menuIndex = 0;
+        else menuIndex = 1;
 
-        switch (menuIndex)
+        EventSystem.current.SetSelectedGameObject(null);
+
+        panelll.SetActive(false);
+        if (!Input.GetKeyDown(KeyCode.JoystickButton3)) return;
+
+        panelll.SetActive(true);
+
+        while (true)
         {
-            case 1: Menu(); break;
-            case 2: break;
-            case 3: Option(); break;
-            case 4: KeyConfig(); break;
+            switch (menuIndex)
+            {
+                case 1: Menu().Forget(); break;
+                case 2: break;
+                case 3: Option().Forget(); break;
+                case 4: KeyConfig().Forget(); break;
+            }
         }
+        int a = 0;
     }
 
     void UISwitch()
@@ -128,45 +142,56 @@ public class OptionManager : MonoBehaviour
         _objective.transform.position = objectivePos + dir * 1500;
     }
 
-    void Menu()
+    private async UniTask Menu()
     {
-        if (Input.GetAxis("D_Pad_V") > 0.3 || Input.GetAxis("Vertical") > 0.3)
-        {
-            button.navigation.selectOnUp.Select();
-            button = button.navigation.selectOnUp.GetComponent<Button>();
-        }
-        if (Input.GetAxis("D_Pad_V") < -0.3 || Input.GetAxis("Vertical") < -0.3)
-        {
-            button.navigation.selectOnDown.Select();
-            button = button.navigation.selectOnDown.GetComponent<Button>();
-        }
+        EventSystem.current.SetSelectedGameObject(_menuButton.gameObject);
 
-        if (Input.GetAxis("D_Pad_V") == 0 && Input.GetAxis("Vertical") == 0) return;
+        while (true)
+        {
+            if (Input.GetAxis("D_Pad_V") > 0.3 || Input.GetAxis("Vertical") > 0.3)
+            {
+                _menuButton.navigation.selectOnUp.Select();
+                _menuButton = _menuButton.navigation.selectOnUp.GetComponent<Button>();
+            }
+            if (Input.GetAxis("D_Pad_V") < -0.3 || Input.GetAxis("Vertical") < -0.3)
+            {
+                _menuButton.navigation.selectOnDown.Select();
+                _menuButton = _menuButton.navigation.selectOnDown.GetComponent<Button>();
+            }
+
+            await UniTask.DelayFrame(1);
+
+            if (Input.GetAxis("D_Pad_V") == 0 && Input.GetAxis("Vertical") == 0) continue;
+        }
     }
 
-    void Option()
+    private async UniTask Option()
     {
-        if (!_cursorMoveTask.Status.IsCompleted()) return;
+        EventSystem.current.SetSelectedGameObject(_slider[0].gameObject);
 
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(_slider[_sliderIndex].gameObject);
-
-        _slider[_sliderIndex].value += Input.GetAxis("D_Pad_H");
-
-        if (Input.GetAxis("D_Pad_V") > 0.3 || Input.GetAxis("Vertical") > 0.3)
+        while (true)
         {
-            _sliderIndex--;
-        }
-        if (Input.GetAxis("D_Pad_V") < -0.3 || Input.GetAxis("Vertical") < -0.3)
-        {
-            _sliderIndex++;
-        }
-        if (Input.GetAxis("D_Pad_V") == 0 && Input.GetAxis("Vertical") == 0) return;
+            await UniTask.DelayFrame(1);
+            if (!_cursorMoveTask.Status.IsCompleted()) continue;
 
-        if (_sliderIndex > _slider.Length - 1) _sliderIndex = 0;
-        if (_sliderIndex < 0) _sliderIndex = _slider.Length - 1;
+            _slider[_sliderIndex].value += Input.GetAxis("D_Pad_H");
 
-        _cursorMoveTask = ChangeSelectSlider();
+            if (Input.GetAxis("D_Pad_V") > 0.3 || Input.GetAxis("Vertical") > 0.3)
+            {
+                _sliderIndex--;
+            }
+            if (Input.GetAxis("D_Pad_V") < -0.3 || Input.GetAxis("Vertical") < -0.3)
+            {
+                _sliderIndex++;
+            }
+
+            if (Input.GetAxis("D_Pad_V") == 0 && Input.GetAxis("Vertical") == 0) continue;
+
+            if (_sliderIndex > _slider.Length - 1) _sliderIndex = 0;
+            if (_sliderIndex < 0) _sliderIndex = _slider.Length - 1;
+
+            _cursorMoveTask = ChangeSelectSlider();
+        }
     }
 
     private async UniTask ChangeSelectSlider()
@@ -182,9 +207,25 @@ public class OptionManager : MonoBehaviour
         _cursor.anchoredPosition = goalPos;
     }
 
-    private void KeyConfig()
+    private async UniTask KeyConfig()
     {
+        EventSystem.current.SetSelectedGameObject(_configButton.gameObject);
 
+        while (true)
+        {
+            if (Input.GetAxis("D_Pad_V") > 0.3 || Input.GetAxis("Vertical") > 0.3)
+            {
+                _configButton.navigation.selectOnUp.Select();
+                _configButton = _configButton.navigation.selectOnUp.GetComponent<Button>();
+            }
+            if (Input.GetAxis("D_Pad_V") < -0.3 || Input.GetAxis("Vertical") < -0.3)
+            {
+                _configButton.navigation.selectOnDown.Select();
+                _configButton = _configButton.navigation.selectOnDown.GetComponent<Button>();
+            }
+
+            await UniTask.DelayFrame(1);
+        }
     }
 
     public void OnBackToTheGame()
