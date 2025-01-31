@@ -40,10 +40,8 @@ public class PlayerAttackSpider : PlayerAttack
         PlayerSpiderTrap playerSpiderTrap = this.GetComponent<PlayerSpiderTrap>();
         if (playerSpiderTrap == null)
         {
+
             playerSpiderTrap = this.AddComponent<PlayerSpiderTrap>();
-
-
-
 
         }
 

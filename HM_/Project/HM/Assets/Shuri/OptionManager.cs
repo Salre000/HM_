@@ -97,15 +97,16 @@ public class OptionManager : MonoBehaviour
 
         panelll.SetActive(true);
 
-        while (true)
+        UniTask sss;
+
+        switch (menuIndex)
         {
-            switch (menuIndex)
-            {
-                case 1: Menu().Forget(); break;
-                case 2: break;
-                case 3: Option().Forget(); break;
-                case 4: KeyConfig().Forget(); break;
-            }
+            case 1: Menu().Forget(); break;
+            case 2: break;
+            case 3: await Option(); break;
+            case 4: KeyConfig().Forget(); break;
+
+
         }
         int a = 0;
     }
@@ -171,7 +172,7 @@ public class OptionManager : MonoBehaviour
 
         while (true)
         {
-            await UniTask.DelayFrame(1);
+            await UniTask.Yield();
             if (!_cursorMoveTask.Status.IsCompleted()) continue;
 
             _slider[_sliderIndex].value += Input.GetAxis("D_Pad_H");

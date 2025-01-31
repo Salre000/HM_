@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerSpiderJump : AnimeBase
 {
+    Vector3 Vec;
     private void Awake()
     {
         AddAnimeName("Armature|Jump");
@@ -11,6 +12,10 @@ public class PlayerSpiderJump : AnimeBase
         float _vertical = Input.GetAxis("Vertical");
 
         JumpAngle = Mathf.Atan2(_horizontal, _vertical) + this.transform.eulerAngles.y * 3.14f / 180;
+       Vec = new Vector3(Mathf.Sin(JumpAngle), 0, Mathf.Cos(JumpAngle));
+
+        Debug.Log(Vec+"AAAA");
+
     }
 
     const float MaxTime = 0.2f;
@@ -23,12 +28,13 @@ public class PlayerSpiderJump : AnimeBase
 
     void FixedUpdate()
     {
-        AnimeUPDate();
-
 
         if (End) return;
 
-        Vector3 Vec = new Vector3(Mathf.Sin(JumpAngle), 0, Mathf.Cos(JumpAngle));
+
+        AnimeUPDate();
+
+
 
         this.gameObject.transform.position += Vec / 6;
 

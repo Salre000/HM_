@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +9,8 @@ public class CaptorAttackSpider : AnimeBase
     private GameObject CaptorTarget;
     private PlayerAttackSpider PlayerAttackSpider;
     private CaptorHunter CaptorHunter;
-    Hunter_AI TargetHunter=null;
-    public void SetUp(GameObject SetCaptor,PlayerAttackSpider playerAttack) 
+    Hunter_AI TargetHunter = null;
+    public void SetUp(GameObject SetCaptor, PlayerAttackSpider playerAttack)
     {
 
         PlayerAttackSpider = playerAttack;
@@ -29,33 +30,41 @@ public class CaptorAttackSpider : AnimeBase
     }
 
     public void SetCaptorObject(GameObject gameObject) { CaptorTarget = gameObject; }
-    
+
     public void StartCaptor()
     {
         CaptorPosition.gameObject.SetActive(true);
         CaptorHunter.SetActiveFlag(true);
     }
 
-    public void EndTarget() 
+    public void EndTarget()
     {
-        if (CaptorTarget == null) return;
-        CaptorTarget.transform.parent = null;
+        if (CaptorTarget != null)
+        {
+            CaptorTarget.transform.parent = null;
+        }
+        CaptorPosition.gameObject.SetActive(false);
 
     }
-    public void CheckHitHunter() 
+    public void CheckHitHunter()
     {
-        if (CaptorTarget != null) return;
-
-        PlayerAttackSpider.SetULTFLag(false);
+        if (CaptorTarget != null)
+        {
+            PlayerAttackSpider.IsCapFlag = true;
+        }
+        else
+        {
+            PlayerAttackSpider.SetULTFLag(false);
+        }
 
 
     }
 
-    private void SetTarget(GameObject gameObject) 
+    private void SetTarget(GameObject gameObject)
     {
 
         CaptorTarget = gameObject;
-        CaptorTarget.transform.parent=CaptorPosition.transform;
+        CaptorTarget.transform.parent = CaptorPosition.transform;
 
 
         TargetHunter = CaptorTarget.GetComponent<Hunter_AI>();
@@ -63,7 +72,7 @@ public class CaptorAttackSpider : AnimeBase
         if (TargetHunter == null) return;
         TargetHunter.StartRestraining();
 
-        CaptorTarget.transform.localPosition=Vector3.zero;
+        CaptorTarget.transform.localPosition = Vector3.zero;
 
 
     }
@@ -71,20 +80,21 @@ public class CaptorAttackSpider : AnimeBase
     void FixedUpdate()
     {
         AnimeUPDate();
+
+        if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Armature|RestraintAttackLoop" && this.PlayerAttackSpider.IsCapFlag) this.PlayerAttackSpider.IsCapFlag = false;
     }
     override protected void AnimeEnd()
     {
-        CaptorAttackSpider Anime = this.gameObject.GetComponent<CaptorAttackSpider>();
+        this.PlayerAttackSpider.IsCapFlag = false;
+       CaptorAttackSpider Anime = this.gameObject.GetComponent<CaptorAttackSpider>();
 
-        this.gameObject.AddComponent<PlayerSpiderJump>();
+        if ("Armature|Jump" == _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name)
+            this.gameObject.AddComponent<PlayerSpiderJump>();
 
         EndTarget();
-        if(TargetHunter!=null)
-        //TargetHunter.StopRestraining();
+        if (TargetHunter != null)
+            TargetHunter.StopRestraining();
 
-        CaptorPosition.gameObject.SetActive(false);
         Destroy(Anime);
     }
-
-
 }
