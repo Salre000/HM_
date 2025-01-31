@@ -19,6 +19,8 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private Animator _animator;
 
+    public Damage damage;
+
     // モンスターの位置を発見したかどうかのフラグ
     public bool monsterDisplay=false;
 
@@ -29,6 +31,8 @@ public abstract class Hunter_AI : MonoBehaviour
     public int HP = 100;
 
     public bool attackReady = false;
+
+    private 
 
     // Start is called before the first frame update
     void Start()
@@ -122,6 +126,11 @@ public abstract class Hunter_AI : MonoBehaviour
 
     }
 
+    public bool CheckAttackCoolTime()
+    {
+        return true;
+    }
+
     //-------------------------------------------------------------------------
     //                     アニメーション関係関数
     //-------------------------------------------------------------------------
@@ -208,6 +217,6 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       
+        hpManager.HunterDamage(damage.GetDamage(), this.GetHunterID());
     }
 }
