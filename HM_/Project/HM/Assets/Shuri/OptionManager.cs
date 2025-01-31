@@ -15,8 +15,9 @@ public class OptionManager : MonoBehaviour
     [SerializeField] GameObject panelll;
     private RectTransform _panelllRect;
 
-    RectTransform baseRect;
-    
+    Vector2 baseRectPos;
+    Vector2 baseRectSize;
+
 
     public int menuIndex = 1;
     int menuNum = 4;
@@ -29,6 +30,7 @@ public class OptionManager : MonoBehaviour
     [SerializeField] GameObject _beltText;
     [SerializeField] GameObject _objective;
 
+    [SerializeField] Scrollbar _scrollBar;
     [SerializeField] Slider[] _slider;
     [SerializeField] Slider _sensibilityBar;
     [SerializeField] Slider _bgmBar;
@@ -49,7 +51,9 @@ public class OptionManager : MonoBehaviour
     void Start()
     {
         _panelllRect = panelll.GetComponent<RectTransform>();
-        baseRect = _panelllRect;
+        baseRectPos = _panelllRect.anchoredPosition;
+        baseRectSize = _panelllRect.sizeDelta;
+
         _uiPanel.SetActive(false);
 
         _inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
@@ -71,7 +75,7 @@ public class OptionManager : MonoBehaviour
             (int)_seBar.value);
     }
 
-    async void Update()
+    private async void Update()
     {
         // オプション画面の開閉
         if (Input.GetKeyDown(KeyCode.JoystickButton11)) UISwitch();
@@ -82,13 +86,13 @@ public class OptionManager : MonoBehaviour
             Time.timeScale = 0.0f;
 
             // RB
-            if (_inputManager.IsOnButton(_inputManager.keys[(int)InputKeys.RB]) && menuIndex < menuNum && _panelMoveTask.Status.IsCompleted())
+            if (Input.GetKey(KeyCode.JoystickButton5) && menuIndex < menuNum && _panelMoveTask.Status.IsCompleted())
             {
                 menuIndex++;
                 _panelMoveTask = UIMove(Vector3.left);
             }
             // LB
-            if (_inputManager.IsOnButton(_inputManager.keys[(int)InputKeys.LB]) && menuIndex > 1 && _panelMoveTask.Status.IsCompleted())
+            if (Input.GetKey(KeyCode.JoystickButton4) && menuIndex > 1 && _panelMoveTask.Status.IsCompleted())
             {
                 menuIndex--;
                 _panelMoveTask = UIMove(Vector3.right);
@@ -96,18 +100,21 @@ public class OptionManager : MonoBehaviour
         }
         else menuIndex = 1;
 
-        _panelllRect = baseRect;
+        //EventSystem.current.SetSelectedGameObject(null);
 
-        EventSystem.current.SetSelectedGameObject(null);
+        _panelllRect.anchoredPosition = baseRectPos;
+        _panelllRect.sizeDelta = baseRectSize;
 
         if (!Input.GetKeyDown(KeyCode.JoystickButton3)) return;
 
-        _panelllRect.anchoredPosition = new(0,-380);
-        _panelllRect.localScale = new(5,10);
+        _panelllRect.sizeDelta = new(1000, 600);
+        _panelllRect.anchoredPosition = new(0, -380);
+
+
         switch (menuIndex)
         {
             case 1: await Menu(); break;
-            case 2: break;
+            case 2: EventSystem.current.SetSelectedGameObject(null); break;
             case 3: await Option(); break;
             case 4: await KeyConfig(); break;
         }
@@ -171,6 +178,7 @@ public class OptionManager : MonoBehaviour
 
     private async UniTask Option()
     {
+        _sliderIndex = 0;
         EventSystem.current.SetSelectedGameObject(_slider[0].gameObject);
 
         while (true)
@@ -215,7 +223,10 @@ public class OptionManager : MonoBehaviour
 
     private async UniTask KeyConfig()
     {
-        EventSystem.current.SetSelectedGameObject(_configButton.gameObject);
+        _scrollBar.value = 1;
+        //EventSystem.current.SetSelectedGameObject(null);
+        _configButton.Select();
+        //EventSystem.current.SetSelectedGameObject(_configButton.gameObject);
 
         while (true)
         {
