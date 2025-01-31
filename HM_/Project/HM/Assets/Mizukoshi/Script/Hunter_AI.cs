@@ -41,6 +41,7 @@ public abstract class Hunter_AI : MonoBehaviour
         _monster = GameObject.FindGameObjectWithTag("Player");
         _monsters=GameObject.FindGameObjectsWithTag("Player");
         _animator =GetComponent<Animator>();
+        hpManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
        
         _agent= GetComponent<NavMeshAgent>();
     }
@@ -217,6 +218,15 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag != "PlayerAttack") return;
+
+        if (other.GetComponent<Damage>() == null) return;
+
+        HitEffectManager.instance.HitEffectShow(other.transform.position,HitEffectManager.CharacterType.Monster);
+        damage = other.GetComponent<Damage>();
+
         hpManager.HunterDamage(damage.GetDamage(), this.GetHunterID());
+
+       
     }
 }
