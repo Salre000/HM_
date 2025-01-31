@@ -19,6 +19,8 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private Animator _animator;
 
+    public Damage damage;
+
     // モンスターの位置を発見したかどうかのフラグ
     public bool monsterDisplay=false;
 
@@ -30,6 +32,8 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public bool attackReady = false;
 
+    private 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +41,7 @@ public abstract class Hunter_AI : MonoBehaviour
         _monster = GameObject.FindGameObjectWithTag("Player");
         _monsters=GameObject.FindGameObjectsWithTag("Player");
         _animator =GetComponent<Animator>();
+        hpManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
        
         _agent= GetComponent<NavMeshAgent>();
     }
@@ -82,7 +87,10 @@ public abstract class Hunter_AI : MonoBehaviour
         //Debug.Log(calculate);
         return calculate > acceptDistance;
     }
-
+    /// <summary>
+    /// モンスターが見える位置かどうか
+    /// </summary>
+    /// <returns></returns>
     public bool IsMonsterInSight()
     {
         return true;
@@ -112,6 +120,16 @@ public abstract class Hunter_AI : MonoBehaviour
     public void Run()
     {
 
+    }
+
+    public void Avoid()
+    {
+
+    }
+
+    public bool CheckAttackCoolTime()
+    {
+        return true;
     }
 
     //-------------------------------------------------------------------------
@@ -200,6 +218,15 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag != "PlayerAttack") return;
+
+        if (other.GetComponent<Damage>() == null) return;
+
+        HitEffectManager.instance.HitEffectShow(other.transform.position,HitEffectManager.CharacterType.Monster);
+        damage = other.GetComponent<Damage>();
+
+        hpManager.HunterDamage(damage.GetDamage(), this.GetHunterID());
+
        
     }
 }

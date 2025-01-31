@@ -15,6 +15,12 @@ public class HitEffectManager : MonoBehaviour
     [SerializeField] GameObject MonsterEffect;
     [Header("モンスターの攻撃エフェクトのプール")]
     [SerializeField] GameObject[] MonsterEffectPool=new GameObject[20];
+    
+    [Header("モンスターの血によるヒットエフェクトモデル")]
+    [SerializeField] GameObject BloodEffect;
+    [Header("モンスターの血による攻撃エフェクトのプール")]
+    [SerializeField] GameObject[] MonsterBloodEffectPool=new GameObject[20];
+
 
     [Header("ハンターの攻撃によるヒットエフェクトモデル")]
     [SerializeField] GameObject []HunterEffect=new GameObject[HunterCount];
@@ -24,6 +30,7 @@ public class HitEffectManager : MonoBehaviour
 
     const int HunterCount = 4;
 
+    [SerializeField] float MonsterEffectSize=1.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +53,13 @@ public class HitEffectManager : MonoBehaviour
             MonsterEffectPool[i] = Instantiate(MonsterEffect,this.transform);
             MonsterEffectPool[i].SetActive(false);  
                 MonsterEffectPool[i].name = "Monster";
+            MonsterEffectPool[i].transform.localScale = new Vector3(MonsterEffectSize, MonsterEffectSize, MonsterEffectSize);
+
+
+            MonsterBloodEffectPool[i] = Instantiate(BloodEffect, this.transform);
+            MonsterBloodEffectPool[i].SetActive(false);
+            MonsterBloodEffectPool[i].name = "MonsterBlood";
+
         }
     }
     [SerializeField] const int EffectTime = 2;
@@ -111,11 +125,11 @@ public class HitEffectManager : MonoBehaviour
 
             Effect.transform.LookAt(Camera.main.transform.position);
 
-            ParticleSystem particle=Effect.GetComponent<ParticleSystem>();
+            Effect.GetComponent<ParticleSystem>()?.Play();
 
-            particle.Play();
 
             InvisibleObject(Effect,time);
+           
 
 
             return;
@@ -124,6 +138,14 @@ public class HitEffectManager : MonoBehaviour
         {
             Effect = GetPoolObject(HunterEffectPool[(int)type]);
             Effect.transform.position = pos;
+            GameObject Blood = GetPoolObject(MonsterBloodEffectPool);
+
+            Blood.transform.position = pos;
+            Blood.transform.LookAt(Camera.main.transform.position);
+            Blood.GetComponent<ParticleSystem>()?.Play();
+
+            InvisibleObject(Blood, time);
+
             InvisibleObject(Effect,time);
 
             return;
