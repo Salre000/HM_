@@ -53,6 +53,7 @@ public class AI4Logic : Hunter_AI
                 if (!attackDistance)
                 {
                     // ãﬂÇ≠Ç…å¸Ç©Ç§
+                    Chase();
                 }
                 else
                 {
@@ -60,6 +61,7 @@ public class AI4Logic : Hunter_AI
                     if (avoidActive)
                     {
                         // âÒîÇ∑ÇÈ
+                        Avoid();
                     }
                     else
                     {
@@ -67,6 +69,7 @@ public class AI4Logic : Hunter_AI
                         if (readyAttack)
                         {
                             // çUåÇÇ∑ÇÈ
+                            Attack();
                         }
                         else
                         {
