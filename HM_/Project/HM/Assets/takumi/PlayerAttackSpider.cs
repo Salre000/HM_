@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerAttackSpider : PlayerAttack
 {
     [SerializeField] GameObject CaptorPosition;
+
     protected override void BarkJump()
     {
         PlayerSpiderJump playerSpiderJump = this.GetComponent<PlayerSpiderJump>();

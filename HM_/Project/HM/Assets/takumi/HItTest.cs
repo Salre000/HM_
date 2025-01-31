@@ -32,7 +32,6 @@ public class HItTest : MonoBehaviour
     //(ƒgƒŠƒK[“¯m‚àŠl“¾‚µ‚Ä‚­‚ê‚é)
     private void OnTriggerEnter(Collider other)
     {
-        UnityEngine.Debug.Log("Hit");
 
 
         //“G‚ÌUŒ‚‚ğó‚¯‚½
@@ -45,7 +44,8 @@ public class HItTest : MonoBehaviour
             ////HP‚ğŒ¸‚ç‚·
             _status.MonsterDamage(_damage.GetDamage()* DamageRatio, ref Hp,_playerAnime.GetNowDownFlag());
 
-            HitEffectManager.instance.HitEffectShow(other.transform.position, HitEffectManager.CharacterType.Monster);
+            int ID = other.GetComponent<TestCollision>().GetGameObject().GetComponentInParent<Hunter_AI>().GetHunterID();
+            HitEffectManager.instance.HitEffectShow(other.transform.position,(HitEffectManager.CharacterType)ID+1);
 
 
 
