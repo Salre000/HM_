@@ -25,7 +25,7 @@ public class SpiderTrapPool : MonoBehaviour
         for (int i = 0; i < TarpPool.Length; i++) 
         {
 
-            TarpPool[i] = Instantiate(GameObjectTarp);
+            TarpPool[i] = Instantiate(GameObjectTarp,this.transform);
             TarpPool [i].gameObject.SetActive(false);
 
 

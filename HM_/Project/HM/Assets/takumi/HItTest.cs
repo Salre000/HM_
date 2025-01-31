@@ -45,6 +45,12 @@ public class HItTest : MonoBehaviour
             _status.MonsterDamage(_damage.GetDamage()* DamageRatio, ref Hp,_playerAnime.GetNowDownFlag());
 
             int ID = other.GetComponent<TestCollision>().GetGameObject().GetComponentInParent<Hunter_AI>().GetHunterID();
+
+            if (other == null) 
+            {
+
+                int ss = 0;
+            }
             HitEffectManager.instance.HitEffectShow(other.transform.position,(HitEffectManager.CharacterType)ID+1);
 
 
