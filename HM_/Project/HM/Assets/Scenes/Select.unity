@@ -1090,7 +1090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa86c71283a183143a259ac4f8b12f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anime: []
 --- !u!1 &657660461
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,7 +1593,6 @@ GameObject:
   m_Component:
   - component: {fileID: 995417259}
   - component: {fileID: 995417258}
-  - component: {fileID: 995417257}
   - component: {fileID: 995417260}
   m_Layer: 0
   m_Name: DemoCamera
@@ -1603,14 +1601,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &995417257
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 995417256}
-  m_Enabled: 1
 --- !u!20 &995417258
 Camera:
   m_ObjectHideFlags: 0

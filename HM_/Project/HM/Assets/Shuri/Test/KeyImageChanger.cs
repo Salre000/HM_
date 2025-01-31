@@ -30,14 +30,12 @@ public class KeyImageChanger : MonoBehaviour
     {
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
-            //lamps[i].color = Color.white;
             if (inputManager.keys[i].type == KeyType.None) continue;
             keyImages[i].sprite = GetKeyImage(inputManager.keys[i]);
         }
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
             if (inputManager.keys[i].keyName == null || inputManager.keys[i].keyName == "") continue;
-            //if (inputManager.IsOnButton(inputManager.keys[i])) lamps[i].color = Color.red;
         }
     }
 
@@ -59,6 +57,9 @@ public class KeyImageChanger : MonoBehaviour
             case "D_Pad_V":
                 if (key.type == KeyType.AxisPlus) return keySprites[10];    // ã
                 else return keySprites[11];                                 // ‰º
+            case "joystick button 9": return keySprites[12];
+            case "joystick button 8": return keySprites[13];
+                
         }
         return null;
     }

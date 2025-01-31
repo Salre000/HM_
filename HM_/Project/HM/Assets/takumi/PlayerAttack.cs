@@ -35,7 +35,7 @@ public abstract class PlayerAttack : MonoBehaviour
     protected abstract void Jump();
     protected abstract void BarkJump();
 
-
+    public bool IsCapFlag = false;
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -66,7 +66,7 @@ public abstract class PlayerAttack : MonoBehaviour
         }
 
         //LR“¯Žž‰Ÿ‚µ
-        if (instance.IsOnButton(instance.keys[(int)InputKeys.RB]) && instance.IsOnButton(instance.keys[(int)InputKeys.LB])&& ULTFlag)
+        if ((instance.IsOnButton(instance.keys[(int)InputKeys.RB]) && instance.IsOnButton(instance.keys[(int)InputKeys.LB])&& ULTFlag)|| IsCapFlag)
         {
             _anime.SetRoarFlag(true);
             LTRTAttack();
