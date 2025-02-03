@@ -167,8 +167,12 @@ public class HunterAI_Ver : MonoBehaviour
         }
         return false;
     }
-
-    bool IsPlayerInSight(Vector3 []targetPosition)
+    /// <summary>
+    /// íwÂÅÇÃëÉ
+    /// </summary>
+    /// <param name="targetPosition"></param>
+    /// <returns></returns>
+    public bool IsPlayerInSight(Vector3 []targetPosition)
     {
         for (int i = 0; i < targetPosition.Length; i++)
         {

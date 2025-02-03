@@ -22384,6 +22384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TagBox: {fileID: 11400000, guid: 51ef161ce5aa1684e86e1d485aeeb784, type: 2}
+  IsCapFlag: 0
   rockPool: {fileID: 69537806}
 --- !u!1 &1196367615
 GameObject:
