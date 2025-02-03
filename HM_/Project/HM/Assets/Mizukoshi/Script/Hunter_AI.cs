@@ -124,7 +124,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // ƒ‚ƒ“ƒXƒ^[‚Ì”­Œ©‚µ‚½‚ÉŒÄ‚ÔŠÖ”
     public void DisappearMonster()
     {
-        manager.SetDisapper();
+        //manager.SetDisapper();
     }
 
     /// <summary>

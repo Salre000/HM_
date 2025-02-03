@@ -1049,6 +1049,7 @@ MonoBehaviour:
   _uiPanel: {fileID: 104820200}
   _beltText: {fileID: 2032565120}
   _objective: {fileID: 1603633958}
+  _scrollBar: {fileID: 0}
   _slider:
   - {fileID: 1868830123}
   - {fileID: 691134128}
@@ -4852,15 +4853,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913256928417, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913256928417, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913256928417, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913256928417, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16620,6 +16621,7 @@ MonoBehaviour:
   _uiPanel: {fileID: 0}
   _beltText: {fileID: 0}
   _objective: {fileID: 0}
+  _scrollBar: {fileID: 0}
   _slider:
   - {fileID: 0}
   - {fileID: 0}
