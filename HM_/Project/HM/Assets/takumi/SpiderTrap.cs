@@ -64,12 +64,8 @@ public class SpiderTrap : MonoBehaviour
         time = 0;
         this.gameObject.transform.localScale=Vector3.one;
 
-        //ナビメッシュのベイクのし直しをするスプリクトをデリート
+        //ナビメッシュのベイクのし直しをするスプリクトをデリート//まだ
 
-
-
-
-        
 
 
         for (int i = 0; i < NUmber; i++)

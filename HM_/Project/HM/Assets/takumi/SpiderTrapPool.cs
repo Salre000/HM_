@@ -58,6 +58,22 @@ public class SpiderTrapPool : MonoBehaviour
        return TarpPool[i];
 
     }
+    //Œ»İoŒ»‚µ‚Ä‚¢‚é’wå‚Ì‘ƒ‚ğ•Ô‚·ŠÖ”
+    public List<GameObject> GetTraps() 
+    {
+        List<GameObject> list = new List<GameObject>();
+
+        for(int i = 0; i < 2; i++) 
+        {
+            if (GetTrap(i).gameObject.activeSelf != true) continue;
+
+            list.Add(GetTrap(i));
+
+        }
+
+        return list;
+
+    } 
 
 
 
