@@ -13,7 +13,7 @@ public class AI1Logic :Hunter_AI
 
     public float attackDistance = 2.0f;
 
-    
+    public float viewAngle = 25.0f;
 
 
     // ‰ñ”ğs“®•p“x
@@ -35,6 +35,7 @@ public class AI1Logic :Hunter_AI
     private void Start()
     {
         SetAttackCoolTime(keepDistance);
+        SetViewAngle(attackDistance);
     }
 
     public void Update()
@@ -112,6 +113,6 @@ public class AI1Logic :Hunter_AI
         this.transform.LookAt(GetMonster().transform.position);
     }
 
-    
+
 
 }

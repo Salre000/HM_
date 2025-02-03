@@ -44,6 +44,7 @@ public class SimpleEnemySight : MonoBehaviour
                 if (Physics.Raycast(transform.position + Vector3.up, directionToPlayer.normalized, out hit, sightRange, playerLayer))
                 {
                     // レイがプレイヤーに当たった場合、視界内にプレイヤーがいる
+
                     return true;
                 }
             }
