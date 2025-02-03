@@ -32,8 +32,9 @@ public class AI1Logic :Hunter_AI
     // すでにオンになっているかどうか
     private bool alreadyFlag=false;
 
-    private void Start()
+   public override void Start()
     {
+        base.Start();
         SetAttackCoolTime(keepDistance);
         SetViewAngle(attackDistance);
     }
@@ -79,14 +80,21 @@ public class AI1Logic :Hunter_AI
 
             // ナビメッシュの目的地
             Chase();
-            SetDestination(GetDestinationPosition());
         }
     }
 
     public override void Search()
     {
-        // 探索関数
-
+        _agent.destination = searchPosition[searchPointIndex];
+        if (CheckKeepDistance(searchPosition[searchPointIndex], this.gameObject, 10))
+        {
+            searchPointIndex++;
+            if(searchPointIndex >= searchPosition.Length)
+            {
+                searchPointIndex = 0;
+            }
+            _agent.destination= searchPosition[searchPointIndex];   
+        }
 
         // 視界範囲関数
         if (IsMonsterInSight())
@@ -97,14 +105,10 @@ public class AI1Logic :Hunter_AI
 
     }
 
-    // 目的地の取得
-    Vector3 GetDestinationPosition()
+    public override void Chase()
     {
-        Vector3 newPos=GetMonster().transform.position;
-        Vector3 offset=new Vector3(offsetX, offsetY, offsetZ);
-        offset=GetMonster().transform.rotation*offset;
-        newPos=newPos+offset;
-        return newPos;
+        if (!_agent.enabled) return;
+        _agent.destination =GetMonsterFrontPosition();
     }
 
     // モンスターの方向に向く
