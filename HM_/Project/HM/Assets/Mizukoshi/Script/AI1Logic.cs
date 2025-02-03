@@ -13,6 +13,8 @@ public class AI1Logic :Hunter_AI
 
     public float attackDistance = 2.0f;
 
+    
+
 
     // ‰ñ”ğs“®•p“x
     int avoidRatio = 7;
@@ -80,19 +82,19 @@ public class AI1Logic :Hunter_AI
         }
     }
 
-    //public override void Search()
-    //{
-    //    // ’TõŠÖ”
+    public override void Search()
+    {
+        // ’TõŠÖ”
 
 
-    //    // ‹ŠE”ÍˆÍŠÖ”
-    //    if (IsMonsterInSight())
-    //    {
-    //        // ”­Œ©‚µ‚½
-    //        DisappearMonster();
-    //    }
-       
-    //}
+        // ‹ŠE”ÍˆÍŠÖ”
+        if (IsMonsterInSight())
+        {
+            // ”­Œ©‚µ‚½
+            DisappearMonster();
+        }
+
+    }
 
     // –Ú“I’n‚Ìæ“¾
     Vector3 GetDestinationPosition()

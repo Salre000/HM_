@@ -10,33 +10,43 @@ using UnityEngine.AI;
 /// </summary>
 public abstract class Hunter_AI : MonoBehaviour
 {
+    // モンスターのオブジェクト
     private GameObject _monster;
 
     private GameObject[] _monsters;
 
+    // ナビメッシュ
     private NavMeshAgent _agent;
 
+    // アニメーションの状態
     AnimatorStateInfo animationState;
 
+    // アニメーションコントローラー
     private Animator _animator;
 
+    // ダメージクラス
     public Damage damage;
 
     // モンスターの位置を発見したかどうかのフラグ
     public bool monsterDisplay = false;
 
+    // ハンターマネージャー
     public HunterManager manager;
 
     public HPManager hpManager;
 
     public int HP = 100;
 
+    // 攻撃準備ができているか
     protected bool attackReady = true;
 
+    // 時間経過用変数
     private float coolTime = 0.0f;
 
+    // 攻撃のクールタイム
     private float _attackCoolTime = 2.0f;
 
+    // 攻撃処理
     private float _attackDistance = 1.0f;
 
     protected enum eStatus
@@ -47,6 +57,8 @@ public abstract class Hunter_AI : MonoBehaviour
     };
 
     protected eStatus status;
+
+    public Transform[] searchPosition=new Transform[4];
 
     //-------------------------------------------
     //           Unity標準関数
@@ -62,6 +74,11 @@ public abstract class Hunter_AI : MonoBehaviour
         hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
         status=eStatus.None;
         _agent = GetComponent<NavMeshAgent>();
+        GameObject[] searchObj = GameObject.FindGameObjectsWithTag("AAA");
+        for (int i = 0; i < searchObj.Length; i++)
+        {
+            searchPosition[i] = searchObj[i].GetComponent<Transform>();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -115,10 +132,9 @@ public abstract class Hunter_AI : MonoBehaviour
     /// <summary>
     /// 探索関数
     /// </summary>
-    protected void Search()
+    public virtual void Search()
     {
-
-        if(IsMonsterInSight())DisappearMonster();
+        //if(IsMonsterInSight())DisappearMonster();
     }
 
     // モンスターの発見した時に呼ぶ関数
