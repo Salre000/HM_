@@ -96,7 +96,7 @@ public abstract class Hunter_AI : MonoBehaviour
         //{
         //    searchPosition[i] = searchObj[i].GetComponent<Transform>();
         //}
-        _trapList = SpiderTrapPool.instance.GetTraps();
+        _trapList = SpiderTrapPool.instance?.GetTraps();
     }
 
     private void OnTriggerEnter(Collider other)
