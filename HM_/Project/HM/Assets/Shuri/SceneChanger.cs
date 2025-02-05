@@ -41,12 +41,12 @@ public class SceneChanger : MonoBehaviour
                 await FadeManager.instance.FadeOutAlpha();
                 NailAnim anim = GameObject.Find("Nail").GetComponent<NailAnim>();
                 anim.AnimCancel();
-                SceneManager.LoadScene(sceneName);
+                await SceneManager.LoadSceneAsync(sceneName);
                 await FadeManager.instance.FadeInAlpha();
                 break;
             case GameScene.Select:
                 await FadeManager.instance.FadeOutSlide();
-                SceneManager.LoadScene(sceneName);
+                await SceneManager.LoadSceneAsync(sceneName);
                 await FadeManager.instance.FadeInSlide();
                 break;
             case GameScene.MainDragon:
