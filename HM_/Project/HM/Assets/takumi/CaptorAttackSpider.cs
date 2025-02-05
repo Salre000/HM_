@@ -10,6 +10,7 @@ public class CaptorAttackSpider : AnimeBase
     private PlayerAttackSpider PlayerAttackSpider;
     private CaptorHunter CaptorHunter;
     Hunter_AI TargetHunter = null;
+    private HPManager HPManager = null;
     public void SetUp(GameObject SetCaptor, PlayerAttackSpider playerAttack)
     {
 
@@ -17,7 +18,7 @@ public class CaptorAttackSpider : AnimeBase
         CaptorPosition = SetCaptor;
         CaptorHunter = CaptorPosition.GetComponent<CaptorHunter>();
         CaptorHunter.SetGameObject(SetTarget);
-
+        HPManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
 
 
     }
@@ -82,6 +83,11 @@ public class CaptorAttackSpider : AnimeBase
         AnimeUPDate();
 
         if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Armature|RestraintAttackLoop" && this.PlayerAttackSpider.IsCapFlag) this.PlayerAttackSpider.IsCapFlag = false;
+  
+        //íÕÇÒÇ≈Ç¢ÇÈÉnÉìÉ^Å[Ç™éÄÇÒÇ≈Ç¢ÇÈÇ©Çîªíf
+        if(TargetHunter.GetComponent<Hunter_AI>()?.GetHunterID()==HPManager.GetHunterLostNumber())
+        this.PlayerAttackSpider.IsCapFlag =false ;
+    
     }
     override protected void AnimeEnd()
     {

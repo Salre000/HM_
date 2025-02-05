@@ -14,8 +14,6 @@ public class PlayerSpiderJump : AnimeBase
         JumpAngle = Mathf.Atan2(_horizontal, _vertical) + this.transform.eulerAngles.y * 3.14f / 180;
        Vec = new Vector3(Mathf.Sin(JumpAngle), 0, Mathf.Cos(JumpAngle));
 
-        Debug.Log(Vec+"AAAA");
-
     }
 
     const float MaxTime = 0.2f;

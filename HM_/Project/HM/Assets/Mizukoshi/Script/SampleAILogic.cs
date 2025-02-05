@@ -6,7 +6,7 @@ public class SampleAILogic : Hunter_AI
 {
     public float attackDistance = 5.0f;
 
-    public float coolTime = 2.5f;
+    public float _coolTime = 2.5f;
 
     public float elaspedCooltime = 0;
     
@@ -26,7 +26,7 @@ public class SampleAILogic : Hunter_AI
         {
             elaspedCooltime += Time.deltaTime;
         }
-        if (elaspedCooltime >= coolTime)
+        if (elaspedCooltime >= _coolTime)
         {
             Attack();
             attackReady = false;

@@ -36,7 +36,7 @@ public class RockPool : MonoBehaviour
         for (int i=0;i<RockPools.Length;i++) 
         {
 
-            RockPools[i]= Instantiate(dragonItem.GetObjectRock());
+            RockPools[i]= Instantiate(dragonItem.GetObjectRock(),dragonItem.transform);
 
 
 

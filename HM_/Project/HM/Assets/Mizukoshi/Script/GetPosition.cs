@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetPosition : MonoBehaviour
+public class PositionGetSprict : MonoBehaviour
 {
     public const float d = 20;
     // Start is called before the first frame update

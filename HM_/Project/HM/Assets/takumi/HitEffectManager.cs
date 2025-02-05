@@ -38,8 +38,8 @@ public class HitEffectManager : MonoBehaviour
 
         for(int i = 0; i < HunterCount; i++) 
         {
-            HunterEffectPool[i]=new GameObject[10];
-            for(int j = 0; j < 10; j++) 
+            HunterEffectPool[i]=new GameObject[30];
+            for(int j = 0; j < 30; j++) 
             {
                 HunterEffectPool[i][j] = Instantiate(HunterEffect[i],this.transform);
                 HunterEffectPool[i][j].SetActive(false);
@@ -112,9 +112,8 @@ public class HitEffectManager : MonoBehaviour
 
     }
 
-
     //vector３はエフェクトを出現させる座標
-    public  void HitEffectShow(Vector3 pos,CharacterType type,int time= EffectTime) 
+    public  void HitEffectShow(Vector3 pos ,CharacterType type,int time= EffectTime) 
     {
         GameObject Effect;
 
@@ -136,7 +135,12 @@ public class HitEffectManager : MonoBehaviour
         }
         if (type != CharacterType.None)
         {
-            Effect = GetPoolObject(HunterEffectPool[(int)type]);
+            if ((int)type != 1) 
+            {
+                int ssss = 0;
+            }
+            Effect = GetPoolObject(HunterEffectPool[(int)type-1]);
+
             Effect.transform.position = pos;
             GameObject Blood = GetPoolObject(MonsterBloodEffectPool);
 
@@ -157,5 +161,6 @@ public class HitEffectManager : MonoBehaviour
 
 
     }
+
 
 }

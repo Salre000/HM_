@@ -305,6 +305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5213900826194793267}
+  - component: {fileID: 3483273914973449860}
   m_Layer: 0
   m_Name: "\u30DC\u30FC\u30F3.020_end"
   m_TagString: Untagged
@@ -327,6 +328,18 @@ Transform:
   m_Father: {fileID: 7380107230119218364}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3483273914973449860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608618646285311541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0748afda29aca294ba4be686553d2ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &650012827184840091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,13 +1898,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abdfd41a8e3da78408657dd78d8ae051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: {fileID: 0}
   monsterDisplay: 0
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
-  attackReady: 0
   attackDistance: 5
-  coolTime: 2.5
+  _coolTime: 2.5
   elaspedCooltime: 0
 --- !u!195 &541959176102767476
 NavMeshAgent:
@@ -2353,6 +2366,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4840123954761461778}
+  - component: {fileID: 4769635083105683136}
   m_Layer: 0
   m_Name: "\u30DC\u30FC\u30F3.007"
   m_TagString: Untagged
@@ -2376,6 +2390,18 @@ Transform:
   m_Father: {fileID: 2364130757798773509}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4769635083105683136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3701927395426923874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0748afda29aca294ba4be686553d2ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3712514902729452712
 GameObject:
   m_ObjectHideFlags: 0
@@ -2660,6 +2686,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1623992435206735690}
+  - component: {fileID: 7247899225712310652}
   m_Layer: 0
   m_Name: "\u30DC\u30FC\u30F3.008"
   m_TagString: Untagged
@@ -2683,6 +2710,18 @@ Transform:
   m_Father: {fileID: 2300305412857801330}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7247899225712310652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4850358893728548644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0748afda29aca294ba4be686553d2ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4911750074987948990
 GameObject:
   m_ObjectHideFlags: 0
@@ -3680,6 +3719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3730223015785980722}
+  - component: {fileID: 1710708917960711107}
   m_Layer: 0
   m_Name: "\u30DC\u30FC\u30F3.021"
   m_TagString: Untagged
@@ -3704,6 +3744,18 @@ Transform:
   m_Father: {fileID: 8951613518080422056}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1710708917960711107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7445398057739129620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0748afda29aca294ba4be686553d2ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7553864757748236631
 GameObject:
   m_ObjectHideFlags: 0

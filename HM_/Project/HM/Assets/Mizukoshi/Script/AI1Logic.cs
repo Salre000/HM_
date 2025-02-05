@@ -13,6 +13,8 @@ public class AI1Logic :Hunter_AI
 
     public float attackDistance = 2.0f;
 
+    public float viewAngle = 25.0f;
+
 
     // 回避行動頻度
     int avoidRatio = 7;
@@ -32,11 +34,15 @@ public class AI1Logic :Hunter_AI
 
     private void Start()
     {
-        
+        SetAttackCoolTime(keepDistance);
+        SetViewAngle(attackDistance);
     }
 
     public void Update()
     {
+        // 拘束どうか確認
+        if(CheckRest())return;
+
         // モンスターを見つかっているかどうか
         if (!monsterDisplay)
         {
@@ -59,7 +65,16 @@ public class AI1Logic :Hunter_AI
             //距離が近かったら攻撃
             if (CheckAttackDistance(attackDistance, this.gameObject))
             {
-                Attack();
+                if (attackReady)
+                {
+                    Attack();
+                }
+                else
+                {
+                    // すこし下がる
+                    Back();
+                }
+               
             }
 
             // ナビメッシュの目的地
@@ -79,7 +94,7 @@ public class AI1Logic :Hunter_AI
             // 発見した
             DisappearMonster();
         }
-       
+
     }
 
     // 目的地の取得
@@ -98,6 +113,6 @@ public class AI1Logic :Hunter_AI
         this.transform.LookAt(GetMonster().transform.position);
     }
 
-    
+
 
 }

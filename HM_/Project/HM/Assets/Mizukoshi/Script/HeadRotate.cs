@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HeadRotate : MonoBehaviour
 {
-    GetPosition g;
+    PositionGetSprict g;
 
     private float _turnSpeed = 15.0f;  // Šç‚Ì‰ñ“]‘¬“x
 
