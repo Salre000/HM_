@@ -4,7 +4,6 @@ public class HunterManager : MonoBehaviour
 
     private GameObject[] gameObjects;
     private GameObject _spear;
-
     private HPManager _hpManager;
 
     int deathCount = 0;
@@ -25,6 +24,7 @@ public class HunterManager : MonoBehaviour
             gameObjects[i].GetComponent<Hunter_ID>().SetHunterID(i);
         }
         respawnPosition = transform.position;
+        _hpManager = new HPManager();
     }
 
     // Update is called once per frame
@@ -54,6 +54,7 @@ public class HunterManager : MonoBehaviour
     void CheckDeath()
     {
         int deathNum=_hpManager.GetHunterLostNumber();
+        if(deathNum==-1) return;
         gameObjects[deathNum].GetComponent<Hunter_AI>().Death();
     }
 

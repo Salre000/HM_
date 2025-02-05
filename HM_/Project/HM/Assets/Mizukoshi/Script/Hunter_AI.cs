@@ -266,7 +266,7 @@ public abstract class Hunter_AI : MonoBehaviour
     }
 
     // ÉÇÉìÉXÉ^Å[Ç™éãäEì‡Ç…Ç¢ÇÈÇ©Ç«Ç§Ç©ÇÃä÷êî
-    private bool ObjectInsightPlayer()
+    public bool ObjectInsightPlayer()
     {
         Vector3 startPos = this.gameObject.transform.position;
         Vector3 monsterPos = _monster.transform.position;
@@ -280,7 +280,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
             float angleToPlayer = playerToTarget.magnitude;
             if (angleToPlayer <= _viewAngle) return false;
-
+            Debug.DrawLine(startPos,transform.forward,Color.red,_viewLength);
             if (Vector3.Distance(startPos, monsterPos) >= _viewLength)
             {
                 return false;
@@ -289,7 +289,9 @@ public abstract class Hunter_AI : MonoBehaviour
             {
                 return true;
             }
+           
         }
+        
         return false;
     }
 
@@ -306,6 +308,11 @@ public abstract class Hunter_AI : MonoBehaviour
     protected void SetViewAngle(float viewAngle)
     {
         _viewAngle = viewAngle;
+    }
+
+    protected void SetViewLength(float length)
+    {
+        _viewLength=length;
     }
 
     protected void SetAvoidRatio(float avoidRatio)
@@ -418,7 +425,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// </summary>
     public virtual void Chase()
     {
-
+        _agent.destination = _monster.transform.position;
     }
 
     public void Run()

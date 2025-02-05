@@ -13,7 +13,9 @@ public class AI1Logic :Hunter_AI
 
     public float attackDistance = 2.0f;
 
-    public float viewAngle = 25.0f;
+    public float viewAngle = 125.0f;
+
+    public float viewLength = 100;
 
 
     // ‰ñ”ğs“®•p“x
@@ -36,7 +38,9 @@ public class AI1Logic :Hunter_AI
     {
         base.Start();
         SetAttackCoolTime(keepDistance);
-        SetViewAngle(attackDistance);
+        SetViewAngle(viewAngle);
+        SetViewLength(viewLength);
+        
     }
 
     public void Update()
@@ -97,7 +101,7 @@ public class AI1Logic :Hunter_AI
         }
 
         // ‹ŠE”ÍˆÍŠÖ”
-        if (IsMonsterInSight())
+        if (ObjectInsightPlayer())
         {
             // ”­Œ©‚µ‚½
             DisappearMonster();

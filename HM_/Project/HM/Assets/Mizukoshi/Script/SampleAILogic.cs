@@ -42,5 +42,7 @@ public class SampleAILogic : Hunter_AI
             StopRestraining();
         }
 
+
+
     }
 }

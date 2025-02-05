@@ -2226,7 +2226,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1414020823119206619, guid: d326f9108771ce349853abb569d7c14e, type: 3}
   m_PrefabInstance: {fileID: 2425723118073871899}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &198985710
+--- !u!114 &198985704
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2235,24 +2235,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 198985702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f48c597c858f38f458fb24224af41102, type: 3}
+  m_Script: {fileID: 11500000, guid: 3168cd9fe8f451442a3baff2057c2f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  watchDistance: 20
-  verticalAngle: 80
-  horizonAngle: 120
---- !u!114 &198985711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198985702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b2f1a5a3e53e90479456c69215ae95d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  trap: {fileID: 0}
+  damage: {fileID: 0}
+  monsterDisplay: 0
+  manager: {fileID: 0}
+  hpManager: {fileID: 0}
+  HP: 100
+  keepDistance: 1.5
+  attackDistance: 2
+  viewAngle: 25
+  viewLength: 100
+  avoidCoolTime: 6
+  offsetX: 0
+  offsetY: 0
+  offsetZ: 2
 --- !u!1 &200401683
 GameObject:
   m_ObjectHideFlags: 0
@@ -36276,6 +36275,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1789139472528884321, guid: d326f9108771ce349853abb569d7c14e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 47.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2425723118069779115, guid: d326f9108771ce349853abb569d7c14e, type: 3}
       propertyPath: m_RootOrder
       value: 17
