@@ -236,24 +236,16 @@ public abstract class Hunter_AI : MonoBehaviour
         Vector3 startPos= this.gameObject.transform.position;
         Vector3 monsterPos=_monster.transform.position;
         Vector3 playerToTarget= _monster.transform.position-startPos;
+        Vector3 lookDir=transform.TransformDirection(Vector3.forward);
         RaycastHit hit;
 
-        if(Physics.Raycast(startPos,transform.forward,out hit, _viewLength))
+        if(Physics.Raycast(startPos,playerToTarget,out hit, _viewLength))
         {
             PlayerStatus ste = hit.transform.gameObject.GetComponentInParent<PlayerStatus>();
             if (ste != null) return false;
 
-            float angleToPlayer=playerToTarget.magnitude;
-            if (angleToPlayer <= _viewAngle) return false;
-
-            if (Vector3.Distance(startPos, monsterPos) >= _viewLength)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            float angle=Vector3.Angle(playerToTarget,lookDir);
+            if(angle<=_viewAngle)return true;
         }
         return false ;
     }
