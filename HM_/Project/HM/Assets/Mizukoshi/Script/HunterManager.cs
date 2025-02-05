@@ -91,6 +91,8 @@ public class HunterManager : MonoBehaviour
         deathCount = 4;
     }
 
+    
+
     public void DebugCommand()
     {
         if (Input.GetKey(KeyCode.Alpha1))
@@ -130,6 +132,10 @@ public class HunterManager : MonoBehaviour
                 gameObjects[i].GetComponent<Hunter_AI>().StopRestraining();
                 gameObjects[i].GetComponent<Hunter_AI>().ResetAnimation();
             }
+        }
+        if (Input.GetKey(KeyCode.L))
+        {
+            _hpManager.HunterDamage(100, 0);
         }
     }
 }

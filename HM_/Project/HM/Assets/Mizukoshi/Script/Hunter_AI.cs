@@ -116,7 +116,7 @@ public abstract class Hunter_AI : MonoBehaviour
         hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
         status = eStatus.None;
         _agent = GetComponent<NavMeshAgent>();
-        _trapList = trap.GetTraps();
+        _trapList = SpiderTrapPool.instance?.GetTraps();
         
     }
 
@@ -132,67 +132,67 @@ public abstract class Hunter_AI : MonoBehaviour
         hpManager.HunterDamage(damage.GetDamage(), this.GetHunterID());
     }
 
-    private void Update()
-    {
+    //private void Update()
+    //{
         
-        if (waitFlag)
-        {
-            elapsedTime += Time.deltaTime;
-            if(elapsedTime > waitSecond)
-            {
-                elapsedTime = 0;
-                waitFlag = false;
-            }
-            return;
-        }
+    //    if (waitFlag)
+    //    {
+    //        elapsedTime += Time.deltaTime;
+    //        if(elapsedTime > waitSecond)
+    //        {
+    //            elapsedTime = 0;
+    //            waitFlag = false;
+    //        }
+    //        return;
+    //    }
 
-        // 拘束状態ならスキップ
-        if (CheckRest()) return;
+    //    // 拘束状態ならスキップ
+    //    if (CheckRest()) return;
 
-        // モンスターを見つけているなら探索してスキップ
-        if (!monsterDisplay)
-        {
-            // 変化
-            Search();
-            return;
-        }
+    //    // モンスターを見つけているなら探索してスキップ
+    //    if (!monsterDisplay)
+    //    {
+    //        // 変化
+    //        Search();
+    //        return;
+    //    }
 
-        // モンスターの攻撃がとんできているかどうか
-        if (CheckMonsterAttack())
-        {
-            int randomNum = Random.Range(0, 10);
-            if (randomNum > _AvoidRatio)
-            {
-                Avoid();
-                return;
-            }
-        }
-
-
-        // モンスターへの攻撃範囲にいるならば
-        if (!CheckAttackDistance(this.gameObject))
-        {
-            TurnMonser();
-            // 攻撃準備ができているのならば
-            if (attackReady)
-            {
-                // 攻撃
-                Attack();
-            }
-            else
-            {
-                // 後退
-                Back();
-            }
-        }
-        else
-        {
-
-        }
+    //    // モンスターの攻撃がとんできているかどうか
+    //    if (CheckMonsterAttack())
+    //    {
+    //        int randomNum = Random.Range(0, 10);
+    //        if (randomNum > _AvoidRatio)
+    //        {
+    //            Avoid();
+    //            return;
+    //        }
+    //    }
 
 
+    //    // モンスターへの攻撃範囲にいるならば
+    //    if (!CheckAttackDistance(this.gameObject))
+    //    {
+    //        TurnMonser();
+    //        // 攻撃準備ができているのならば
+    //        if (attackReady)
+    //        {
+    //            // 攻撃
+    //            Attack();
+    //        }
+    //        else
+    //        {
+    //            // 後退
+    //            Back();
+    //        }
+    //    }
+    //    else
+    //    {
 
-    }
+    //    }
+
+
+
+    //}
 
     //------------------------------------------------
     //                    処理
@@ -255,7 +255,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public bool IsMonsterInSight()
     {
         Vector3 start = this.gameObject.transform.position;
-        start.y += 0.75f;
+        start.y += 1.75f;
         RaycastHit hit;
         if (Physics.Raycast(start, transform.forward, out hit, 20))
         {
@@ -289,9 +289,7 @@ public abstract class Hunter_AI : MonoBehaviour
             {
                 return true;
             }
-           
         }
-        
         return false;
     }
 

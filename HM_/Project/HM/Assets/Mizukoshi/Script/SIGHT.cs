@@ -17,9 +17,11 @@ public class SIGHT : MonoBehaviour
 
     Vector3 direction;
 
+    private GameObject _monster;
+
     private void Start()
     {
-
+        _monster = GameObject.FindGameObjectWithTag("Player");
         startPos.y += 0.75f;
        
     }
@@ -34,30 +36,41 @@ public class SIGHT : MonoBehaviour
 
     void Check()
     {
-        if (Physics.Raycast(startPos, transform.forward, out hit, watchDistance))
+        Vector3 dir=(_monster.transform.position - startPos).normalized;
+        //Vector3 LookDir=transform.TransformDirection(Vector3.forward);
+        float y=this.transform.eulerAngles.y;
+        //Vector3 LookDir = new Vector3(Mathf.Sin(y*Mathf.Deg2Rad)*30,0,Mathf.Cos(y*Mathf.Deg2Rad)*30);
+        Vector3 LookDir= transform.TransformDirection(Vector3.forward);
+        if (Physics.Raycast(startPos,dir, out hit, watchDistance))
         {
             if (hit.transform.gameObject.name == "HandesIK")
             {
 
             }
-                PlayerStatus ste = hit.transform.gameObject.GetComponentInParent<PlayerStatus>();
+            PlayerStatus ste = hit.transform.gameObject.GetComponentInParent<PlayerStatus>();
             if (ste != null) 
             {
                 
                 int ssz = 0;
+                Debug.Log(hit.transform.gameObject);
             }
+            
+            
+
             //if (hit.transform.gameObject.tag=="Player")
             //{
             //    Debug.Log("”­Œ©");
             //}
-            Debug.Log(hit.transform.gameObject);
+           
 
         }
         else
         {
            
         }
-        Debug.DrawLine(startPos, startPos + transform.forward*watchDistance, Color.red);
+        Debug.DrawLine(startPos, dir * watchDistance, Color.red);
+        Debug.DrawLine(startPos, startPos+LookDir*watchDistance , Color.blue);
+        Debug.Log("Šp“x:"+Vector3.Angle(dir,LookDir));
     }
 
 

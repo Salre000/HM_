@@ -9,6 +9,8 @@ public class SampleAILogic : Hunter_AI
     public float _coolTime = 2.5f;
 
     public float elaspedCooltime = 0;
+
+    
     
     // Update is called once per frame
     void FixedUpdate()

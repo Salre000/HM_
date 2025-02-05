@@ -112,7 +112,8 @@ public class AI1Logic :Hunter_AI
     public override void Chase()
     {
         if (!_agent.enabled) return;
-        _agent.destination =GetMonsterFrontPosition();
+        //_agent.destination =GetMonsterFrontPosition();
+        _agent.destination=GetMonster().transform.position;
     }
 
     // ƒ‚ƒ“ƒXƒ^[‚Ì•ûŒü‚ÉŒü‚­
