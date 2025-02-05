@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,11 +20,6 @@ public class SceneChanger : MonoBehaviour
 
     GameScene _nowScene = 0;
 
-    readonly string title = "Title";
-    readonly string select = "Select";
-    readonly string main = "Main Dragon";
-    readonly string result = "Result";
-
     private void Start()
     {
         _nowScene = (GameScene)SceneManager.GetActiveScene().buildIndex;
@@ -37,13 +33,29 @@ public class SceneChanger : MonoBehaviour
         }
     }
 
-    public void ChangeScene()
+    public async void ChangeScene()
     {
-        if (_nowScene == GameScene.Title)
+        switch (_nowScene)
         {
-            NailAnim anim = GameObject.Find("Nail").GetComponent<NailAnim>();
-            anim.AnimCancel();
+            case GameScene.Title:
+                await FadeManager.instance.FadeOutAlpha();
+                NailAnim anim = GameObject.Find("Nail").GetComponent<NailAnim>();
+                anim.AnimCancel();
+                SceneManager.LoadScene(sceneName);
+                await FadeManager.instance.FadeInAlpha();
+                break;
+            case GameScene.Select:
+                await FadeManager.instance.FadeOutSlide();
+                SceneManager.LoadScene(sceneName);
+                await FadeManager.instance.FadeInSlide();
+                break;
+            case GameScene.MainDragon:
+                break;
+            case GameScene.MainSpider:
+                break;
+            case GameScene.Result:
+                break;
         }
-        SceneManager.LoadScene(sceneName);
+        
     }
 }

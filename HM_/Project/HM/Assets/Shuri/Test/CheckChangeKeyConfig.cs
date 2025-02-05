@@ -6,7 +6,7 @@ using UnityEngine;
 
 using static InputManager;
 
-public static class ChangeCheckKeyConfig
+public static class CheckChangeKeyConfig
 {
     public static async UniTask<Key> ChangeKey()
     {
@@ -45,7 +45,7 @@ public static class ChangeCheckKeyConfig
             }
 
             if (!Input.anyKeyDown) continue;
-
+            
             // 
             for (int i = 0; i < 10; i++)
             {
