@@ -30,7 +30,7 @@ public class KeyImageChanger : MonoBehaviour
     {
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
-            if (inputManager.keys[i].type == KeyType.None) continue;
+            if (inputManager.keys[i].type == KeyType.None) { keyImages[i].sprite = null; continue; }
             keyImages[i].sprite = GetKeyImage(inputManager.keys[i]);
         }
         for (int i = 0; i < (int)InputKeys.Max; i++)

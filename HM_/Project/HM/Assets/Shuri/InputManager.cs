@@ -46,8 +46,6 @@ public class InputManager : MonoBehaviour
         public KeyType type;
     }
 
-    //public UseKey config;
-
     const float DeadZone = 0.3f;
 
     private void Awake()
@@ -83,6 +81,7 @@ public class InputManager : MonoBehaviour
         KeyType type = key.type;
         string keyName = key.keyName;
 
+        // タイプごとの取得方法で押されているか判定
         switch (type)
         {
             case KeyType.Key:
@@ -103,7 +102,7 @@ public class InputManager : MonoBehaviour
 
     public async void KeyChange(int index)
     {
-        keys[index] = await ChangeCheckKeyConfig.ChangeKey();
+        keys[index] = await CheckChangeKeyConfig.ChangeKey();
 
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
@@ -114,6 +113,15 @@ public class InputManager : MonoBehaviour
                 keys[i].type = KeyType.None;
             }
         }
+    }
+
+    public bool EnableAllKey()
+    {
+        for (int i = 0; i < (int)InputKeys.Max; i++)
+        {
+            if (keys[i].type == KeyType.None)return false;
+        }
+        return true;
     }
 
     // 保存

@@ -9,11 +9,11 @@ public class SpiderTrap : MonoBehaviour
 {
     GameObject Hunter;
 
-    Hunter_AI []Hunter_AI=new Hunter_AI[2];
+    Hunter_AI[] Hunter_AI = new Hunter_AI[2];
 
     [SerializeField] Material Material;
     [SerializeField] Gradient Gradient;
-    List<GameObject> DestroyObject=new List<GameObject>(4);
+    List<GameObject> DestroyObject = new List<GameObject>(4);
     int NUmber = 0;
 
     const float range = 3;
@@ -30,7 +30,7 @@ public class SpiderTrap : MonoBehaviour
 
         Hunter = other.gameObject;
 
-        Hunter_AI[NUmber]=Hunter.GetComponent<Hunter_AI>();
+        Hunter_AI[NUmber] = Hunter.GetComponent<Hunter_AI>();
 
 
 
@@ -40,54 +40,51 @@ public class SpiderTrap : MonoBehaviour
 
         NUmber++;
 
-        //蜘蛛の繭を生成
+        //List<Vector3> MinSpioderPos = GetSpiderPosition(other.transform.position);
+
+        //for (int i = 0; i < MinSpioderPos.Count; i++)
+        //{
+        //    GameObject game = new GameObject();
+        //    game.name = "aaa";
+
+        //    game.transform.SetParent(this.transform);
+
+        //    LineRenderer line = game.AddComponent<LineRenderer>();
+
+        //    line.positionCount = 0;
 
 
-        List<Vector3> MinSpioderPos = GetSpiderPosition(other.transform.position);
+        //    line.startWidth = line.endWidth = 0.1f;
 
-        for(int i = 0; i < MinSpioderPos.Count; i++) 
-        {
-            GameObject game = new GameObject();
-            game.name = "aaa";
+        //    line.material = Material;
+        //    line.colorGradient = Gradient;
 
-            game.transform.SetParent(this.transform);
+        //    MinSpider spider = new MinSpider(MinSpioderPos[i], other.transform.position, Instantiate(Spider), Object => Destroy(Object), (position, Start) =>
+        //    {
+        //        if (Vector3.Distance(Start, position) < 0.1f) return;
 
-            LineRenderer line= game.AddComponent<LineRenderer>();
-
-            line.positionCount = 0;
-
-
-            line.startWidth = line.endWidth = 0.1f;
-
-            line.material = Material;
-            line.colorGradient = Gradient;
-
-            MinSpider spider = new MinSpider(MinSpioderPos[i],other.transform.position, Instantiate(Spider), Object => Destroy(Object), (position,Start) => 
-            {
-                if (Vector3.Distance(Start, position) < 0.1f) return;
-
-                line.positionCount++;
-                line.SetPosition(line.positionCount-1,position);
+        //        line.positionCount++;
+        //        line.SetPosition(line.positionCount - 1, position);
 
 
-            },async INT=> 
-            {
-               await Remove(line);
+        //    }, async INT =>
+        //    {
+        //        await Remove(line);
 
 
-            }
-
-            );
-
-
-            //other.GetComponentInChildren<ChainPoint>()
-
-            DestroyObject.Add(game);
-
-            spider.StartSpider();
+        //    }
+        //    );
 
 
-        }
+
+
+
+        //    DestroyObject.Add(game);
+
+        //    spider.StartSpider();
+
+
+        //}
 
 
 
@@ -97,11 +94,11 @@ public class SpiderTrap : MonoBehaviour
 
     }
 
-    async UniTask Remove(LineRenderer line) 
+    async UniTask Remove(LineRenderer line)
     {
 
 
-        while (line.positionCount >= 1) 
+        while (line.positionCount >= 1)
         {
 
             line.positionCount--;
@@ -109,18 +106,18 @@ public class SpiderTrap : MonoBehaviour
             await UniTask.DelayFrame(1);
         }
     }
-    
 
-    private List<Vector3> GetSpiderPosition(Vector3 pos) 
+
+    private List<Vector3> GetSpiderPosition(Vector3 pos)
     {
         List<Vector3> list = new List<Vector3>();
 
-            float Rnad = Random.Range(0, 360);
+        float Rnad = Random.Range(0, 360);
 
-        for(int i = 0; i < 4; i++) 
+        for (int i = 0; i < 4; i++)
         {
 
-            Vector3 RandPos = pos + new Vector3(Mathf.Sin(Rnad+(i*90) * Mathf.Deg2Rad) * range, 0, Mathf.Cos(Rnad + (i * 90) * Mathf.Deg2Rad) * range);
+            Vector3 RandPos = pos + new Vector3(Mathf.Sin(Rnad + (i * 90) * Mathf.Deg2Rad) * range, 0, Mathf.Cos(Rnad + (i * 90) * Mathf.Deg2Rad) * range);
 
             list.Add(RandPos);
 
@@ -142,7 +139,7 @@ public class SpiderTrap : MonoBehaviour
 
     bool capacityCount = false;
 
-    [SerializeField]float time = 0;
+    [SerializeField] float time = 0;
 
     private void FixedUpdate()
     {
@@ -165,16 +162,16 @@ public class SpiderTrap : MonoBehaviour
         }
         for (int i = 0; i < DestroyObject.Count; i++) Destroy(DestroyObject[i]);
         DestroyObject.Clear();
-        
+
 
         Hunter = null;
         time = 0;
-        this.gameObject.transform.localScale=Vector3.one;
+        this.gameObject.transform.localScale = Vector3.one;
 
         //ナビメッシュのベイクのし直しをするスプリクトをデリート//まだ
 
 
-        
+
 
 
 
@@ -187,35 +184,34 @@ public class SpiderTrap : MonoBehaviour
 
 }
 
-class MinSpider 
+class MinSpider
 {
     System.Action<GameObject> DestroyObjcet;
-    System.Action<Vector3,Vector3> AddPos;
+    System.Action<Vector3, Vector3> AddPos;
     System.Action<int> RemoveLine;
-    public MinSpider(Vector3 pos,Vector3 target,GameObject Object,System.Action<GameObject> func,System.Action<Vector3,Vector3>addpos, System.Action<int> remove)
+    public MinSpider(Vector3 pos, Vector3 target, GameObject Object, System.Action<GameObject> func, System.Action<Vector3, Vector3> addpos, System.Action<int> remove)
     {
         RemoveLine = remove;
         DestroyObjcet = func;
         AddPos = addpos;
         this.Object = Object;
-        this.pos = pos;
+        startpos = this.pos = pos;
         this.Target = target;
 
-        Vec =Target-this.pos;
+        Vec = Target - this.pos;
         Vec /= 50;
-
     }
-    Vector3 pos;
+    Vector3 pos, startpos;
     Vector3 Target;
     Vector3 Vec;
     GameObject Object;
 
     float maxH = 0.8f;
 
-    public async UniTask StartSpider() 
+    public async UniTask StartSpider()
     {
 
-        while (true) 
+        while (true)
         {
 
             this.Object.transform.position = pos;
@@ -224,24 +220,24 @@ class MinSpider
 
             if (Vector3.Distance(pos, Target) <= 0.2f) break;
 
-           await UniTask.DelayFrame(1);
+            await UniTask.DelayFrame(1);
 
         }
-
+        startpos = Object.transform.position;
         await UpSpider();
-    
+
     }
 
-    private async UniTask UpSpider() 
+    private async UniTask UpSpider()
     {
         Vector3 Vecs = pos - Target;
         float Rnage = Vector3.Distance(pos, Target);
-        float Angle = Mathf.Atan2(Vecs.x,Vecs.z);
+        float Angle = Mathf.Atan2(Vecs.x, Vecs.z);
 
         while (true)
         {
-            pos.x=Target.x+Mathf.Sin(Angle)*Rnage;
-            pos.z=Target.z+Mathf.Cos(Angle)*Rnage;
+            pos.x = Target.x + Mathf.Sin(Angle) * Rnage;
+            pos.z = Target.z + Mathf.Cos(Angle) * Rnage;
 
             pos.y += 0.004f;
 
@@ -249,22 +245,23 @@ class MinSpider
             this.Object.transform.position = pos;
             AddPos(pos, Target);
 
-            if (pos.y >= maxH) break;   
+            if (pos.y >= maxH) break;
             await UniTask.DelayFrame(1);
 
         }
+
 
         await RandMove(Angle, Rnage);
 
 
     }
 
-    private async UniTask RandMove(float Angle,float Rnage) 
+    private async UniTask RandMove(float Angle, float Rnage)
     {
-        int RondCount=Random.Range(20, 50);
+        int RondCount = Random.Range(20, 50);
         int Count = 0;
-        int EndCount =0;
-        float RondUp = Random.Range(0,8)-4;
+        int EndCount = 0;
+        float RondUp = Random.Range(0, 8) - 4;
         while (true)
         {
             pos.x = Target.x + Mathf.Sin(Angle) * Rnage;
@@ -278,17 +275,17 @@ class MinSpider
             AddPos(pos, Target);
 
             await UniTask.DelayFrame(1);
-            if (EndCount >= 5) break; 
+            if (EndCount >= 5) break;
             if (Count < RondCount) continue;
 
             EndCount++;
-            RondCount= Random.Range(1, 4);
+            RondCount = Random.Range(1, 4);
             Count = 0;
-            RondUp = Random.Range(0, 8)-4;
+            RondUp = Random.Range(0, 8) - 4;
         }
 
         DestroyObjcet(this.Object);
-        await UniTask.DelayFrame(150);
+        await UniTask.DelayFrame(190);
         RemoveLine(-1);
 
     }

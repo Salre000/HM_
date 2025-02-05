@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,7 +11,7 @@ public class ChainPool : MonoBehaviour
 
     ChainObject[] ChainObjects=new ChainObject[8];
 
-    static ChainPool instance=null;
+    static public ChainPool instance=null;
     void Start()
     {
         if(instance != null)Destroy(this.gameObject);
@@ -19,7 +20,9 @@ public class ChainPool : MonoBehaviour
         {
             ChainPools[i] = Instantiate(Chain, transform);
 
-            ChainObjects[i]=ChainPools[i].GetComponent<ChainObject>(); 
+            ChainObjects[i]=ChainPools[i].GetComponent<ChainObject>();
+
+            ChainPools[i].SetActive(false);
         }
 
     }
@@ -35,15 +38,35 @@ public class ChainPool : MonoBehaviour
 
             ChainPools[i].SetActive(true);
 
+            ChainPools[i].transform.position = Start-End+Start;
+
             ChainObjects[i].SetUp(Start, End);
 
-
+            //EndChain(ChainPools[i]);
             return ChainPools[i];
 
         }
 
 
         return null;
+
+    }
+
+    async UniTask EndChain(GameObject gameObject) 
+    {
+        await UniTask.DelayFrame(150);
+
+        float x=gameObject.transform.position.x;
+        float z=gameObject.transform.position.z;
+        while (gameObject.transform.position.y>0)
+        {
+            gameObject.transform.position = new Vector3(x, gameObject.transform.position.y - 0.1f, z);
+
+            
+        }
+
+        gameObject.SetActive(false);
+
 
     }
 

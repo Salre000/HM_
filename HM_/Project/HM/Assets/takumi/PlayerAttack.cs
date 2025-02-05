@@ -39,6 +39,7 @@ public abstract class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.DrawRay(this.transform.position,new Vector3(Mathf.Sin(this.transform.eulerAngles.y*Mathf.Deg2Rad),0,Mathf.Cos(this.transform.eulerAngles.y * Mathf.Deg2Rad)));
         //‰“‹——£UŒ‚‚ğ‚·‚éƒ{ƒ^ƒ“
         if (instance.IsOnButton(instance.keys[(int)InputKeys.LT]))
         {

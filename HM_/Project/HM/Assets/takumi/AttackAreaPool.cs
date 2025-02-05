@@ -23,6 +23,9 @@ public class AttackAreaPool : MonoBehaviour
         for (int i = 0; i < MaxNumber; i++) 
         {
             objectList.Add(new GameObject());
+            objectList[i].transform.SetParent(this.transform);
+
+            objectList[i].name = "attackArea";
 
             objectList[i].tag = tag.GetPlayerAttackTag();
 
