@@ -23,7 +23,7 @@ public class PlayerSpiderTrap : AnimeBase
         //’wå‚Ì‘ƒ‚ğ¶¬‚·‚é
         TrapObject=SpiderTrapPool.instance.SetTarp();
 
-        if(TrapObject==null)AnimeEnd();
+        if (TrapObject == null) { AnimeEnd(); return; }
         Trap=TrapObject.GetComponent<SpiderTrap>();
 
 
