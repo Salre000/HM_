@@ -362,11 +362,12 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         return animationState;
     }
-
+    int restrainingCount = 0;
     // 拘束状態の開始 アニメーションの開始
     public void StartRestraining()
     {
         status=eStatus.Rest;
+        restrainingCount++;
         _agent.enabled = false;
         _animator.SetTrigger("FlatterStartTrigger");
 
@@ -375,6 +376,8 @@ public abstract class Hunter_AI : MonoBehaviour
     // 拘束状態の終了　アニメーションの終了
     public void StopRestraining()
     {
+        restrainingCount--;
+        if (restrainingCount > 0) return;
         status = eStatus.None;
         _agent.enabled = true;
         _animator.SetTrigger("FlatterFinishTrigger");

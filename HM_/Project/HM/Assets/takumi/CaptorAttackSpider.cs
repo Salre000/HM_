@@ -85,7 +85,7 @@ public class CaptorAttackSpider : AnimeBase
         if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Armature|RestraintAttackLoop" && this.PlayerAttackSpider.IsCapFlag) this.PlayerAttackSpider.IsCapFlag = false;
   
         //’Í‚ñ‚Å‚¢‚éƒnƒ“ƒ^[‚ª€‚ñ‚Å‚¢‚é‚©‚ğ”»’f
-        if(TargetHunter.GetComponent<Hunter_AI>()?.GetHunterID()==HPManager.GetHunterLostNumber())
+       // if(TargetHunter.GetComponent<Hunter_AI>()?.GetHunterID()==HPManager.GetHunterLostNumber())
         this.PlayerAttackSpider.IsCapFlag =false ;
     
     }
