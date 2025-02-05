@@ -79,6 +79,9 @@ public class SpiderTrap : MonoBehaviour
 
             );
 
+
+            //other.GetComponentInChildren<ChainPoint>()
+
             DestroyObject.Add(game);
 
             spider.StartSpider();
@@ -147,7 +150,7 @@ public class SpiderTrap : MonoBehaviour
 
         time += Time.deltaTime;
 
-        if (time < 10) return;
+        if (time < 13) return;
 
         capacityCount = false;
         capacity = 1;
@@ -171,6 +174,7 @@ public class SpiderTrap : MonoBehaviour
         //ナビメッシュのベイクのし直しをするスプリクトをデリート//まだ
 
 
+        
 
 
 
@@ -284,7 +288,7 @@ class MinSpider
         }
 
         DestroyObjcet(this.Object);
-
+        await UniTask.DelayFrame(150);
         RemoveLine(-1);
 
     }

@@ -16,7 +16,7 @@ public abstract class Hunter_AI : MonoBehaviour
     private GameObject[] _monsters;
 
     // トラップリスト
-    private List<GameObject> _trapList;
+    private List<GameObject> _trapList=new List<GameObject>();
 
     // トラップ感知
     public SpiderTrapPool trap;
@@ -73,7 +73,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     protected eStatus status;
 
-    public Transform[] searchPosition=new Transform[4];
+    //public Transform[] searchPosition=new Transform[4];
 
     
 
@@ -91,12 +91,12 @@ public abstract class Hunter_AI : MonoBehaviour
         hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
         status=eStatus.None;
         _agent = GetComponent<NavMeshAgent>();
-        GameObject[] searchObj = GameObject.FindGameObjectsWithTag("AAA");
-        for (int i = 0; i < searchObj.Length; i++)
-        {
-            searchPosition[i] = searchObj[i].GetComponent<Transform>();
-        }
-        _trapList = trap.GetTraps();
+        //GameObject[] searchObj = GameObject.FindGameObjectsWithTag("AAA");
+        //for (int i = 0; i < searchObj.Length; i++)
+        //{
+        //    searchPosition[i] = searchObj[i].GetComponent<Transform>();
+        //}
+        _trapList = SpiderTrapPool.instance.GetTraps();
     }
 
     private void OnTriggerEnter(Collider other)
