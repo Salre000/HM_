@@ -54,7 +54,7 @@ public abstract class Hunter_AI : MonoBehaviour
     private float elapsedTime = 0;
 
     // 待機フラグ
-    private bool waitFlag=false;
+    private bool waitFlag = false;
 
     // 攻撃準備ができているか
     protected bool attackReady = true;
@@ -113,12 +113,13 @@ public abstract class Hunter_AI : MonoBehaviour
         // モンスターのタグ取得
         _monster = GameObject.FindGameObjectWithTag("Player");
         _monsters = GameObject.FindGameObjectsWithTag("Player");
+        manager = new HunterManager();
         _animator = GetComponent<Animator>();
         hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
         status = eStatus.None;
         _agent = GetComponent<NavMeshAgent>();
         _trapList = SpiderTrapPool.instance?.GetTraps();
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -135,7 +136,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     //private void Update()
     //{
-        
+
     //    if (waitFlag)
     //    {
     //        elapsedTime += Time.deltaTime;
@@ -212,7 +213,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// </summary>
     public virtual void Search()
     {
-       
+
     }
 
     // モンスターの発見した時に呼ぶ関数
@@ -245,7 +246,7 @@ public abstract class Hunter_AI : MonoBehaviour
         //Debug.Log(calculate);
         return calculate > acceptDistance;
     }
-    public bool CheckKeepDistance(Vector3 pos, GameObject AIType,float distance)
+    public bool CheckKeepDistance(Vector3 pos, GameObject AIType, float distance)
     {
         return Vector3.Distance(pos, AIType.transform.position) < distance;
     }
@@ -272,18 +273,18 @@ public abstract class Hunter_AI : MonoBehaviour
         Vector3 startPos = this.gameObject.transform.position;
         Vector3 monsterPos = _monster.transform.position;
         Vector3 playerToTarget = (_monster.transform.position - startPos).normalized;
-        Vector3 lookDir= transform.TransformDirection(Vector3.forward).normalized;
+        Vector3 lookDir = transform.TransformDirection(Vector3.forward).normalized;
         RaycastHit hit;
 
-        if (Physics.Raycast(startPos,playerToTarget*_viewLength, out hit, _viewLength))
+        if (Physics.Raycast(startPos, playerToTarget * _viewLength, out hit, _viewLength))
         {
             // 当たったRayがモンスターでないなら飛ばす
             PlayerStatus ste = hit.transform.gameObject.GetComponentInParent<PlayerStatus>();
-            if(ste != null) return false;
+            if (ste != null) return false;
 
             // かつ視野角が
             float angle = Vector3.Angle(playerToTarget, lookDir);
-            if (angle<=_viewAngle/2)return true;
+            if (angle <= _viewAngle / 2) return true;
 
         }
         return false;
@@ -306,7 +307,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     protected void SetViewLength(float length)
     {
-        _viewLength=length;
+        _viewLength = length;
     }
 
     protected void SetAvoidRatio(float avoidRatio)
@@ -388,7 +389,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // やや後ろに下がる位置を取得
     protected Vector3 GetBackPosition()
     {
-        Vector3 dir = this.transform.position-_monster.transform.position;
+        Vector3 dir = this.transform.position - _monster.transform.position;
         dir *= 3;
         float offsetX = dir.x;
         float offsetY = dir.y;
@@ -400,6 +401,7 @@ public abstract class Hunter_AI : MonoBehaviour
         return newPos;
     }
 
+    
 
     //-------------------------------------------------------------------------
     //                           行動関係関数
@@ -464,12 +466,12 @@ public abstract class Hunter_AI : MonoBehaviour
 
     }
 
-    public void WaitForCount(float length=1)
+    public void WaitForCount(float length = 1)
     {
-        waitSecond=length;
-        if(waitFlag)return;
-        waitFlag=true;
-        
+        waitSecond = length;
+        if (waitFlag) return;
+        waitFlag = true;
+
     }
 
     //-------------------------------------------------------------------------
@@ -567,6 +569,8 @@ public abstract class Hunter_AI : MonoBehaviour
         if (status == eStatus.Rest) return true;
         return false;
     }
+
+
 
 
 

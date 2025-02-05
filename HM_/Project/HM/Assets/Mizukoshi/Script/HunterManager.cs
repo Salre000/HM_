@@ -42,7 +42,7 @@ public class HunterManager : MonoBehaviour
 
     public void Respawn(int i)
     {
-        _hpManager.HunterHeel(100, i);  
+        _hpManager.HunterHeel(100, i);
         gameObjects[i].transform.position = respawnPosition;
         gameObjects[i].GetComponent<Hunter_AI>().WaitForCount();
     }
@@ -53,8 +53,8 @@ public class HunterManager : MonoBehaviour
     /// <param name="hunterNum"></param>
     void CheckDeath()
     {
-        int deathNum=_hpManager.GetHunterLostNumber();
-        if(deathNum==-1) return;
+        int deathNum = _hpManager.GetHunterLostNumber();
+        if (deathNum == -1) return;
         gameObjects[deathNum].GetComponent<Hunter_AI>().Death();
     }
 
@@ -71,7 +71,7 @@ public class HunterManager : MonoBehaviour
         // ハンターについているモンスターを見つける関数を呼び出す。
         for (int i = 0; i < gameObjects.Length; i++)
         {
-            gameObjects[i].GetComponent<Hunter_AI>().monsterDisplay=true;
+            gameObjects[i].GetComponent<Hunter_AI>().monsterDisplay = true;
         }
     }
 
@@ -91,7 +91,7 @@ public class HunterManager : MonoBehaviour
         deathCount = 4;
     }
 
-    
+
 
     public void DebugCommand()
     {
