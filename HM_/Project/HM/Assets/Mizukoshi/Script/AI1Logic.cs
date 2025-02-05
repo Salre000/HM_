@@ -13,7 +13,7 @@ public class AI1Logic :Hunter_AI
 
     public float attackDistance = 2.0f;
 
-    public float viewAngle = 125.0f;
+    public float viewAngle = 180.0f;
 
     public float viewLength = 100;
 

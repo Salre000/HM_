@@ -1,3 +1,4 @@
+using Den.Tools.GUI;
 using MapMagic.Nodes;
 using System.Collections;
 using System.Collections.Generic;
@@ -270,25 +271,20 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         Vector3 startPos = this.gameObject.transform.position;
         Vector3 monsterPos = _monster.transform.position;
-        Vector3 playerToTarget = _monster.transform.position - startPos;
+        Vector3 playerToTarget = (_monster.transform.position - startPos).normalized;
+        Vector3 lookDir= transform.TransformDirection(Vector3.forward).normalized;
         RaycastHit hit;
 
-        if (Physics.Raycast(startPos, transform.forward, out hit, _viewLength))
+        if (Physics.Raycast(startPos,playerToTarget*_viewLength, out hit, _viewLength))
         {
+            // 当たったRayがモンスターでないなら飛ばす
             PlayerStatus ste = hit.transform.gameObject.GetComponentInParent<PlayerStatus>();
-            if (ste != null) return false;
+            if(ste != null) return false;
 
-            float angleToPlayer = playerToTarget.magnitude;
-            if (angleToPlayer <= _viewAngle) return false;
-            Debug.DrawLine(startPos,transform.forward,Color.red,_viewLength);
-            if (Vector3.Distance(startPos, monsterPos) >= _viewLength)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            // かつ視野角が
+            float angle = Vector3.Angle(playerToTarget, lookDir);
+            if (angle<=_viewAngle/2)return true;
+
         }
         return false;
     }
@@ -480,6 +476,8 @@ public abstract class Hunter_AI : MonoBehaviour
     //                     アニメーション関係関数
     //-------------------------------------------------------------------------
 
+    int restrainCount = 0;
+
     /// <summary>
     /// 現在のアニメーションの状態を取得
     /// </summary>
@@ -492,15 +490,17 @@ public abstract class Hunter_AI : MonoBehaviour
     // 拘束状態の開始 アニメーションの開始
     public void StartRestraining()
     {
+        restrainCount++;
         status = eStatus.Rest;
         _agent.enabled = false;
         _animator.SetTrigger("FlatterStartTrigger");
-
     }
 
     // 拘束状態の終了　アニメーションの終了
     public void StopRestraining()
     {
+        restrainCount--;
+        if (restrainCount < 0) return;
         status = eStatus.None;
         _agent.enabled = true;
         _animator.SetTrigger("FlatterFinishTrigger");

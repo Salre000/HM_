@@ -2246,7 +2246,7 @@ MonoBehaviour:
   HP: 100
   keepDistance: 1.5
   attackDistance: 2
-  viewAngle: 25
+  viewAngle: 120
   viewLength: 100
   avoidCoolTime: 6
   offsetX: 0
@@ -36329,7 +36329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3530852229951458955, guid: d326f9108771ce349853abb569d7c14e, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3530852229951458957, guid: d326f9108771ce349853abb569d7c14e, type: 3}
       propertyPath: m_Enabled
