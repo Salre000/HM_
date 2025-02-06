@@ -30,7 +30,7 @@ public class InputManager : MonoBehaviour
         RT,
         LT,
         RB,
-        LB,
+          LB,
         Right,
         Left,
         Up,
