@@ -127,11 +127,11 @@ public class InputManager : MonoBehaviour
     // •Û‘¶
     public void Save(ConfigData data)
     {
-        for (int i = 0; i < ConfigData.ButtonNum; i++)
-        {
-            data.name[i]=keys[i].keyName;
-            data.types[i] = ((int)keys[i].type).ToString();
-        }
+        //for (int i = 0; i < ConfigData.ButtonNum; i++)
+        //{
+        //    data.name[i]=keys[i].keyName;
+        //    data.types[i] = ((int)keys[i].type).ToString();
+        //}
         // json•ÏŠ·
         string json = JsonUtility.ToJson(data);
 
