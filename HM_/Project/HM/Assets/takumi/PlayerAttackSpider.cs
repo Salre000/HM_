@@ -60,7 +60,7 @@ public class PlayerAttackSpider : PlayerAttack
         {
            // _status.PlaySound(SoundListManager.instance.GetAudioClip((int)main.Spider,(int)Spider.SpiderAttackHIt));
 
-            SoundListManager.instance.PlaySound((int)main.Spider, (int)Spider.SpiderAttackHIt);
+            SoundListManager.instance.PlaySound((int)main.monster, (int)Spider.SpiderAttackHIt);
 
             Anime = this.AddComponent<CaptorAttackSpider>();
 

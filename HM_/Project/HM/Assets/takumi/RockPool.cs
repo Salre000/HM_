@@ -6,13 +6,6 @@ public class RockPool : MonoBehaviour
 {
     GameObject []RockPools= new GameObject[21];
 
-    int activeCount = 0;
-
-    public int GetActiveCount() { return activeCount; }
-
-    public void SbuActiveCount() {  activeCount--; }    
-    public void AddActiveCount() {  activeCount++; }    
-
     GameObject Items;
 
     public GameObject GetRockPool() 

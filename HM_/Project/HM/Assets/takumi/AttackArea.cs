@@ -22,7 +22,7 @@ public class AttackArea : MonoBehaviour
     {
         collider = this.gameObject.AddComponent<SphereCollider>();
         collider.isTrigger = true;
-        collider.radius = 0.05f;
+        collider.radius = 0.1f;
         damage=GetComponent<Damage>();
 
     }
@@ -45,7 +45,7 @@ public class AttackArea : MonoBehaviour
     }
 
 
-    public void SetAttackArea(GameObject parent, float Damage, float radius = 0.05f, int CountTime =0)
+    public void SetAttackArea(GameObject parent, float Damage, float radius = 0.1f, int CountTime =0)
     {
 
         this.CountTime = CountTime;

@@ -22,6 +22,8 @@ public abstract class PlayerAttack : MonoBehaviour
     public void SetULTFLag(bool Flag) { ULTFlag = Flag; }
     public void ReSetULTFLag() { ULTFlag = true; }
     public Tag GetTag() { return TagBox; }
+
+    [SerializeField] protected AnimeBase nowAnime = null;
     void Start()
     {
         _anime = GetComponent<PlayerAnime>();
