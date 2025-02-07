@@ -58,7 +58,9 @@ public class PlayerAttackSpider : PlayerAttack
 
         if (Anime == null)
         {
-            _status.PlaySound(SoundListManager.instance.GetAudioClip((int)main.Spider,(int)Spider.SpiderAttackHIt));
+           // _status.PlaySound(SoundListManager.instance.GetAudioClip((int)main.Spider,(int)Spider.SpiderAttackHIt));
+
+            SoundListManager.instance.PlaySound((int)main.Spider, (int)Spider.SpiderAttackHIt);
 
             Anime = this.AddComponent<CaptorAttackSpider>();
 
