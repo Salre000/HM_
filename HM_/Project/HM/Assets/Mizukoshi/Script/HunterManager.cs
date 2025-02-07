@@ -4,8 +4,7 @@ public class HunterManager : MonoBehaviour
 
     private GameObject[] gameObjects;
     private GameObject _spear;
-
-    private GameObject _hpManager;
+    private HPManager _hpManager;
 
     int deathCount = 0;
     bool deathAnimationNow = false;
@@ -24,18 +23,14 @@ public class HunterManager : MonoBehaviour
             if (gameObjects[i].GetComponent<Hunter_AI>() == null) continue;
             gameObjects[i].GetComponent<Hunter_ID>().SetHunterID(i);
         }
-        _hpManager = GameObject.FindGameObjectWithTag("GameManager");
         respawnPosition = transform.position;
+        _hpManager = new HPManager();
     }
 
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < gameObjects.Length; i++)
-        {
-             //CheckDamage(i);
-             //CheckDeath(i);
-        }
+        CheckDeath();
         DebugCommand();
 
     }
@@ -45,40 +40,22 @@ public class HunterManager : MonoBehaviour
         return deathCount;
     }
 
-    void Respawn(int i)
+    public void Respawn(int i)
     {
-        gameObjects[i].transform.GetComponent<HunterHPManager>().hp = 100;
-        gameObjects[i].transform.GetComponent<HunterHPManager>().isDeadFlag = false;
+        _hpManager.HunterHeel(100, i);
         gameObjects[i].transform.position = respawnPosition;
-
+        gameObjects[i].GetComponent<Hunter_AI>().WaitForCount();
     }
 
-    void CheckDamage(int hunterNum)
-    {
-       
-        if (gameObjects[hunterNum].GetComponent<HunterHPManager>().isHit)
-        {
-            _hpManager.GetComponent<HPManager>().HunterDamage(AmountDamaged(hunterNum), hunterNum);
-            gameObjects[hunterNum].GetComponent<HunterHPManager>().isHit=false;
-        }
-
-    }
     /// <summary>
     /// 死にました→GetHunterLostNumber()→n秒後その値が-1   リスポーン後1秒待機
     /// </summary>
     /// <param name="hunterNum"></param>
-    void CheckDeath(int hunterNum)
+    void CheckDeath()
     {
-        if (_hpManager.GetComponent<HPManager>().GetHunterLostNumber() == -1)return;
-        else
-        {
-            Respawn(_hpManager.GetComponent<HPManager>().GetHunterLostNumber());
-            deathCount++;
-            int errorNum = -1;
-            _hpManager.GetComponent<HPManager>().SetHunterLostNumber(errorNum);
-            _hpManager.GetComponent<HPManager>().HunterHeel(100,hunterNum);
-        }
-
+        int deathNum = _hpManager.GetHunterLostNumber();
+        if (deathNum == -1) return;
+        gameObjects[deathNum].GetComponent<Hunter_AI>().Death();
     }
 
     float AmountDamaged(int hunterNum)
@@ -94,7 +71,7 @@ public class HunterManager : MonoBehaviour
         // ハンターについているモンスターを見つける関数を呼び出す。
         for (int i = 0; i < gameObjects.Length; i++)
         {
-            gameObjects[i].GetComponent<Hunter_AI>().monsterDisplay=true;
+            gameObjects[i].GetComponent<Hunter_AI>().monsterDisplay = true;
         }
     }
 
@@ -113,6 +90,8 @@ public class HunterManager : MonoBehaviour
     {
         deathCount = 4;
     }
+
+
 
     public void DebugCommand()
     {
@@ -153,6 +132,10 @@ public class HunterManager : MonoBehaviour
                 gameObjects[i].GetComponent<Hunter_AI>().StopRestraining();
                 gameObjects[i].GetComponent<Hunter_AI>().ResetAnimation();
             }
+        }
+        if (Input.GetKey(KeyCode.L))
+        {
+            _hpManager.HunterDamage(100, 0);
         }
     }
 }

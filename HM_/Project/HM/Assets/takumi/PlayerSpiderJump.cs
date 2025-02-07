@@ -34,7 +34,7 @@ public class PlayerSpiderJump : AnimeBase
 
 
 
-        this.gameObject.transform.position += Vec / 6;
+        this.gameObject.transform.position += Vec / 60;
 
 
     }

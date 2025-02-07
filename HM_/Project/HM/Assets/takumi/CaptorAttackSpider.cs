@@ -52,6 +52,7 @@ public class CaptorAttackSpider : AnimeBase
         if (CaptorTarget != null)
         {
             PlayerAttackSpider.IsCapFlag = true;
+            PlayerAttackSpider.IsCap();
         }
         else
         {
@@ -83,9 +84,17 @@ public class CaptorAttackSpider : AnimeBase
         AnimeUPDate();
 
         if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Armature|RestraintAttackLoop" && this.PlayerAttackSpider.IsCapFlag) this.PlayerAttackSpider.IsCapFlag = false;
-  
+
         //’Í‚ñ‚Å‚¢‚éƒnƒ“ƒ^[‚ª€‚ñ‚Å‚¢‚é‚©‚ğ”»’f
-       // if(TargetHunter.GetComponent<Hunter_AI>()?.GetHunterID()==HPManager.GetHunterLostNumber())
+        if (TargetHunter == null) return;
+
+        Hunter_AI hunter = TargetHunter.GetComponent<Hunter_AI>();
+
+        if (hunter == null) return;
+
+        if (hunter.GetHunterID() != HPManager.GetHunterLostNumber()) return;
+
+      // if(TargetHunter?.GetComponent<Hunter_AI>()?.GetHunterID()==HPManager.GetHunterLostNumber())
         this.PlayerAttackSpider.IsCapFlag =false ;
     
     }

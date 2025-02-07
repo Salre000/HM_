@@ -85,6 +85,7 @@ public class PlayerMove : MonoBehaviour
 
         pos = this.transform.position;
 
+        _vertical /= 10;
 
         //ƒvƒŒƒCƒ„[‚ÌˆÚ“®
         pos.x += Mathf.Sin(_angle*3.14f/180) *( _vertical * _status.GetSpeed());

@@ -8,6 +8,7 @@ public abstract class PlayerAttack : MonoBehaviour
 {
     protected PlayerAnime _anime;
     protected Vector3 position;
+    protected PlayerStatus _status;
 
     [SerializeField] protected Tag TagBox;
 
@@ -17,34 +18,35 @@ public abstract class PlayerAttack : MonoBehaviour
 
     public void SetPredictionAttackFlag(bool Flag) { predictionAttackFlag = Flag; }
 
-    private bool ULTFlag=true;
+    private bool ULTFlag = true;
     public void SetULTFLag(bool Flag) { ULTFlag = Flag; }
     public void ReSetULTFLag() { ULTFlag = true; }
     public Tag GetTag() { return TagBox; }
     void Start()
     {
         _anime = GetComponent<PlayerAnime>();
+        _status = GetComponent<PlayerStatus>();
 
         Application.targetFrameRate = 60;
     }
 
-    
-    protected abstract void LTAttack();
-    protected abstract void RTAttack();
-    protected abstract void LTRTAttack();
-    protected abstract void Jump();
-    protected abstract void BarkJump();
+
+    protected abstract int LTAttack();
+    protected abstract int RTAttack();
+    protected abstract int LTRTAttack();
+    protected abstract int Jump();
+    protected abstract int BarkJump();
 
     public bool IsCapFlag = false;
+    public void IsCap() { _anime.SetRoarFlag(true);}
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.DrawRay(this.transform.position,new Vector3(Mathf.Sin(this.transform.eulerAngles.y*Mathf.Deg2Rad),0,Mathf.Cos(this.transform.eulerAngles.y * Mathf.Deg2Rad)));
+        Debug.DrawRay(this.transform.position, new Vector3(Mathf.Sin(this.transform.eulerAngles.y * Mathf.Deg2Rad), 0, Mathf.Cos(this.transform.eulerAngles.y * Mathf.Deg2Rad)));
         //遠距離攻撃をするボタン
         if (instance.IsOnButton(instance.keys[(int)InputKeys.LT]))
         {
-            LTAttack();
-            _anime.SetLoanAttackFlag(true);
+            if (LTAttack() > 0) _anime.SetLoanAttackFlag(true);
 
         }
         else
@@ -56,6 +58,7 @@ public abstract class PlayerAttack : MonoBehaviour
         //攻撃をするボタン
         if (instance.IsOnButton(instance.keys[(int)InputKeys.RT]))
         {
+
             _anime.SetAttackFlag(true);
 
 
@@ -67,11 +70,10 @@ public abstract class PlayerAttack : MonoBehaviour
         }
 
         //LR同時押し
-        if ((instance.IsOnButton(instance.keys[(int)InputKeys.RB]) && instance.IsOnButton(instance.keys[(int)InputKeys.LB])&& ULTFlag)|| IsCapFlag)
+        if ((instance.IsOnButton(instance.keys[(int)InputKeys.RB]) && instance.IsOnButton(instance.keys[(int)InputKeys.LB]) && ULTFlag) || IsCapFlag)
         {
-            _anime.SetRoarFlag(true);
-            LTRTAttack();
-
+            if (LTRTAttack() > 0) _anime.SetRoarFlag(true);
+            Debug.Log("Anime");
         }
         else
         {
@@ -81,8 +83,7 @@ public abstract class PlayerAttack : MonoBehaviour
         //前ジャンプ
         if (Input.GetAxis("Vertical") >= -0.3f && instance.IsOnButton(instance.keys[(int)InputKeys.A]) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
         {
-            _anime.SetJumpFlag(true);
-            Jump();
+            if (Jump() > 0) _anime.SetJumpFlag(true);
 
         }
         else
@@ -94,8 +95,7 @@ public abstract class PlayerAttack : MonoBehaviour
         //バックジャンプ
         if (Input.GetAxis("Vertical") < -0.3f && instance.IsOnButton(instance.keys[(int)InputKeys.A]) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
         {
-            _anime.SetBackSteppeFlag(true);
-            BarkJump();
+            if (BarkJump() > 0) _anime.SetBackSteppeFlag(true);
 
 
 

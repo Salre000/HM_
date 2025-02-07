@@ -7,12 +7,12 @@ using UnityEngine.Assertions.Must;
 
 public class PlayerAttackDoragon : PlayerAttack
 {
-   
+
     private GameObject LeftHand;
     [SerializeField] RockPool rockPool;
     RadialBlur radialBlur;
 
-    protected override void BarkJump()
+    protected override int BarkJump()
     {
         BackSteppeAnime backSteppeAnime = this.gameObject.GetComponent<BackSteppeAnime>();
 
@@ -21,13 +21,14 @@ public class PlayerAttackDoragon : PlayerAttack
             backSteppeAnime = this.gameObject.AddComponent<BackSteppeAnime>();
 
             backSteppeAnime.TagBox = TagBox;
+            return 1;
 
         }
 
-
+        return -1;
     }
 
-    protected override void Jump()
+    protected override int Jump()
     {
         JumpAnime jumpAnime = this.gameObject.GetComponent<JumpAnime>();
 
@@ -36,14 +37,17 @@ public class PlayerAttackDoragon : PlayerAttack
             jumpAnime = this.gameObject.AddComponent<JumpAnime>();
 
             jumpAnime.TagBox = TagBox;
+            return 1;
+
 
         }
 
+        return -1;
 
 
     }
 
-    protected override void LTAttack()
+    protected override int LTAttack()
     {
         AnimeAttackLongRange animeAttackLongRange = this.gameObject.GetComponent<AnimeAttackLongRange>();
 
@@ -57,12 +61,15 @@ public class PlayerAttackDoragon : PlayerAttack
             animeAttackLongRange.StartObject = LeftHand;
 
             animeAttackLongRange.RockPool = rockPool;
+            return 1;
+
         }
 
+        return -1;
 
     }
 
-    protected override void LTRTAttack()
+    protected override int LTRTAttack()
     {
         AnimeAttackRoar Roar = GetComponent<AnimeAttackRoar>();
 
@@ -71,12 +78,14 @@ public class PlayerAttackDoragon : PlayerAttack
             Roar = transform.AddComponent<AnimeAttackRoar>();
 
             Roar.SetRadialBlur(radialBlur);
+            return 1;
 
         }
+        return -1;
 
     }
 
-    protected override void RTAttack()
+    protected override int RTAttack()
     {
         AnimeAttackNormal AttackNormalAnime = this.gameObject.GetComponent<AnimeAttackNormal>();
 
@@ -86,21 +95,23 @@ public class PlayerAttackDoragon : PlayerAttack
 
             AttackNormalAnime.TagBox = TagBox;
             AttackNormalAnime.SetHitTest();
+            return 1;
 
         }
+        return -1;
 
     }
 
     private void Awake()
     {
-        radialBlur=Camera.main.GetComponent<RadialBlur>();
+        radialBlur = Camera.main.GetComponent<RadialBlur>();
         LeftHand = GameObject.Find("Bone.019");
     }
     // Start is called before the first frame update
 
 
 
-    void ResetObject() 
+    void ResetObject()
     {
 
     }

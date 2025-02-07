@@ -9,9 +9,11 @@ public class HPManager : MonoBehaviour
 {
 
     [SerializeField] int HunterCount = 4;
+    [SerializeField] UIManager uiManager;
     //引数はハンターの数
     void Start()
     {
+       // uiManager=GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         MonsterHp = MaxMonsterHP;
 
         //ハンターの数を指定する
@@ -36,13 +38,17 @@ public class HPManager : MonoBehaviour
     }
 
     //モンスターのダメージ処理
-    public void MonsterDamage(float Damage,ref float PartHp,bool DownFlag)
+    public int MonsterDamage(float Damage,ref float PartHp,bool DownFlag)
     {
-        if (MonsterInvincibilityTime != -1) return;
+        if (MonsterInvincibilityTime != -1) return -1;
         MonsterHp -= Damage;
         MonsterInvincibilityTime = 0;
-        if (DownFlag) return;   
+        //uiManager.SliderUpdate();
+        if (DownFlag) return 1;   
         PartHp-= Damage;
+
+        return 1;
+
     }
 
     public void HunterDamage(float Damage, int Number)
@@ -90,7 +96,7 @@ public class HPManager : MonoBehaviour
     }
 
     //無敵時間の最大の時間
-    const float MaxInvincibilityTim = 2;
+    const float MaxInvincibilityTim = 0.5f;
 
     const float MaxMonsterHP = 1000;
     public float GetMaxMonsterHp() { return MaxMonsterHP; }
