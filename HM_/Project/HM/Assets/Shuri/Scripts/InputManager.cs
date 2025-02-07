@@ -71,8 +71,8 @@ public class InputManager : MonoBehaviour
 
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
-            keys[i].keyName = json["name" + (i + 1).ToString()].Get<string>();
-            keys[i].type = (KeyType)int.Parse(json["types" + (i + 1).ToString()].Get<string>());
+            keys[i].keyName = json["name"][i].Get<string>();
+            keys[i].type = (KeyType)int.Parse(json["types"][i].Get<string>());
         }
     }
 
