@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Sound", menuName = "SoundClipList")]
 public class SoundList : ScriptableObject
 {
     [Header("各シーンに必要なサウンドデータの格納先")]

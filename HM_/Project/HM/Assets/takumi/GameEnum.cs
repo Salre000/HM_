@@ -37,9 +37,7 @@ namespace SceneSound
 
 
     }
-    /// <summary>
-    /// ///////////////////////////////////////////////////////////////////////////
-    /// </summary>
+
     enum Dragon 
     {
         DragonAttackHit,

@@ -51,7 +51,7 @@ public class UIManager : MonoBehaviour
         if (remainingTime <= 0) Debug.Log("I—¹");
     }
 
-    void SliderUpdate()
+     void SliderUpdate()
     {
         _hpBar.value = _hpManager.GetMonsterHp();
     }
