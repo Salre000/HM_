@@ -39,8 +39,4 @@ public class AnimeAttackNormal : AnimeBase
 
     }
 
-    override protected void DestroyHitObject() 
-    {
-    }
-
 }

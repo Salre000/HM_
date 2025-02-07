@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -10,18 +11,36 @@ public class AnimeBase : MonoBehaviour
 
     public Tag TagBox;
 
-    protected List<string> _AnimeName=new List<string>(1);
+    protected List<string> _AnimeName = new List<string>(1);
 
-    public void AddAnimeName(string Name) {  _AnimeName.Add(Name); }    
+    private System.Action<int> EndAnimation;
+   
+    public 
+
+    public void AddAnimeName(string Name) { _AnimeName.Add(Name); }
 
     // Start is called before the first frame update
     void Start()
     {
         _animator = this.gameObject.GetComponent<Animator>();
+        DestroyThis();
     }
-    float TimeCount =0;
+
+
+
+    async UniTask DestroyThis()
+    {
+
+
+        await UniTask.WaitForSeconds(10);
+
+        AnimeBase animeBase = this.gameObject.GetComponent<AnimeBase>();
+
+        AnimeEnd();
+    }
+    float TimeCount = 0;
     // Update is called once per frame
-    protected void AnimeUPDate() 
+    protected void AnimeUPDate()
     {
         TimeCount += Time.deltaTime;
 
@@ -45,32 +64,7 @@ public class AnimeBase : MonoBehaviour
 
     virtual protected void AnimeEnd()
     {
-        
-    }
-
-    //ìGÇ…çUåÇÇÇ†ÇƒÇΩÇ∆Ç´Ç…Ç†ÇΩÇËîªíËÇçÌèúÇ∑ÇÈâºëzä÷êî
-    virtual protected void DestroyHitObject() 
-    {
 
     }
-
-    private void OnTriggerStay(Collider other)
-    {
-
-
-        if (other.transform.tag == TagBox.GetEnemyTag()) 
-        {
-
-        DestroyHitObject();
-            this.tag = "Player";
-
-        }
-
-
-
-
-
-    }
-
 
 }

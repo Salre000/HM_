@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,36 +17,30 @@ public class RockAttack : MonoBehaviour
     float TimeCount = 0;
     // Start is called before the first frame update
 
-    RockPool RockPool;
-
-    private void Start()
-    {
-
-        RockPool=GameObject.FindGameObjectWithTag("ItemBox").GetComponent<RockPool>();
-
-    }
-
     private void FixedUpdate()
     {
 
-        TimeCount += Time.deltaTime;
-        this.transform.position+=MoveVec/10;
+        this.transform.position+=MoveVec/100;
 
-        this.transform.position += new Vector3(0,StartUpVec,0);
+        this.transform.position += new Vector3(0,StartUpVec/10,0);
 
         StartUpVec += DVec;
 
-        if (TimeCount > 1) 
-        {
-            TimeCount = 0;
-            RockPool.AddActiveCount();
+        
+    }
+
+    public async UniTask ActiveChenge() 
+    {
+        await UniTask.WaitForSeconds(5);
+
             StartUpVec = 0.05f;
             
             this.gameObject.SetActive(false);
 
 
-        }
-        
+
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -53,7 +48,6 @@ public class RockAttack : MonoBehaviour
 
         if (other.tag == TagBox.GetEnemyTag())
         {
-            RockPool.AddActiveCount();
             this.gameObject.SetActive(false);
 
         }

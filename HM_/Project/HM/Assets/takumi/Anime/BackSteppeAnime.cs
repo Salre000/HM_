@@ -26,11 +26,11 @@ public class BackSteppeAnime : AnimeBase
 
         Vector3 Vec = new Vector3(-Mathf.Sin(this.transform.eulerAngles.y * 3.14f / 180), 0, -Mathf.Cos(this.transform.eulerAngles.y * 3.14f / 180));
 
-        if (FrameCount < 30) this.gameObject.transform.position += Vec / 5;
+        if (FrameCount < 30) this.gameObject.transform.position += Vec / 50;
 
         if (time < MaxTime)
         {
-            this.gameObject.transform.position += Vector3.up / 12;
+            this.gameObject.transform.position += Vector3.up / 120;
 
 
 

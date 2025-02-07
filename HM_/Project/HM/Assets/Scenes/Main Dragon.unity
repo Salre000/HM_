@@ -20972,7 +20972,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1000}
+  m_AnchoredPosition: {x: 0, y: 1000.0001}
   m_SizeDelta: {x: 0, y: 1600}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1059510303
@@ -28874,6 +28874,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485663264}
   m_CullTransparentMesh: 1
+--- !u!1001 &1494106657
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8327452617400256931, guid: fe1e11d9fd845ab42bd2322891d71c41, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327452617400256931, guid: fe1e11d9fd845ab42bd2322891d71c41, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.7405024
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327452617400256931, guid: fe1e11d9fd845ab42bd2322891d71c41, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.361826
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327452617400256931, guid: fe1e11d9fd845ab42bd2322891d71c41, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 69.15797
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327452617400256931, guid: fe1e11d9fd845ab42bd2322891d71c41, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327452617400256931, guid: fe1e11d9fd845ab42bd2322891d71c41, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327452617400256931, guid: fe1e11d9fd845ab42bd2322891d71c41, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327452617400256931, guid: fe1e11d9fd845ab42bd2322891d71c41, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327452617400256931, guid: fe1e11d9fd845ab42bd2322891d71c41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327452617400256931, guid: fe1e11d9fd845ab42bd2322891d71c41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327452617400256931, guid: fe1e11d9fd845ab42bd2322891d71c41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327452617400256933, guid: fe1e11d9fd845ab42bd2322891d71c41, type: 3}
+      propertyPath: m_Name
+      value: EffectPool
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe1e11d9fd845ab42bd2322891d71c41, type: 3}
 --- !u!114 &1501079285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37062,8 +37119,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 884124513}
   m_HandleRect: {fileID: 884124512}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.3749993
+  m_Value: -0.00000012207032
+  m_Size: 0.37487754
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

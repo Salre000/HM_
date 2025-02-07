@@ -25,8 +25,7 @@ namespace SceneSound
     enum main 
     {
         
-        Dragon,
-        Spider,
+        monster,
         system
 
 
