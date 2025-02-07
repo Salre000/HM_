@@ -13,7 +13,9 @@ public class AnimeBase : MonoBehaviour
 
     protected List<string> _AnimeName = new List<string>(1);
 
-    private System.Action<int> EndAnimation; 
+    private System.Func<int> EndAnimation;
+   
+    public void SetEndAnimation(System.Func<int> EndAnimation) { this.EndAnimation = EndAnimation; }
 
     public void AddAnimeName(string Name) { _AnimeName.Add(Name); }
 
@@ -62,7 +64,7 @@ public class AnimeBase : MonoBehaviour
 
     virtual protected void AnimeEnd()
     {
-
+        EndAnimation();
     }
 
 }
