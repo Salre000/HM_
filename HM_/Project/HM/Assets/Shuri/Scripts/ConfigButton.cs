@@ -10,7 +10,7 @@ public class ConfigButton : MonoBehaviour
 
     [SerializeField] InputManager.InputKeys _keys;
 
-    private void Awake()
+    private void Start()
     {
         _inputManager = InputManager.instance.GetComponent<InputManager>();
         _button = GetComponent<Button>();
