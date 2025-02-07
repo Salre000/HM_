@@ -36,11 +36,12 @@ public abstract class Hunter_AI : MonoBehaviour
     public Damage damage;
 
     // モンスターの位置を発見したかどうかのフラグ
-    public bool monsterDisplay = false;
+    private bool _monsterDisplay = false;
 
     // ハンターマネージャー
     public HunterManager manager;
 
+    // HP マネージャ-の接続
     public HPManager hpManager;
 
     private GameObject terrian;
@@ -63,7 +64,7 @@ public abstract class Hunter_AI : MonoBehaviour
     private float coolTime = 0.0f;
 
     // 攻撃のクールタイム
-    private float _attackCoolTime = 2.0f;
+    private float _attackCoolTime = 10.0f;
 
     // 攻撃距離
     private float _attackDistance = 1.0f;
@@ -94,15 +95,13 @@ public abstract class Hunter_AI : MonoBehaviour
         new Vector3(74.0f,0.5f,14.0f),
         new Vector3(74,2.5f,75),
     };
-
+    // 捜索位置の指定
     protected int searchPointIndex = 0;
 
+    // 時計周りかどうか
     protected bool CloclWise = false;
 
     private Collider myCollider;
-
-
-
     //-------------------------------------------
     //           Unity標準関数
     //-------------------------------------------
@@ -110,17 +109,8 @@ public abstract class Hunter_AI : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
-        // モンスターのタグ取得
-        _monster = GameObject.FindGameObjectWithTag("Player");
-        _monsters = GameObject.FindGameObjectsWithTag("Player");
-        manager = new HunterManager();
-        _animator = GetComponent<Animator>();
-        hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
-        status = eStatus.None;
-        _agent = GetComponent<NavMeshAgent>();
-        _trapList = SpiderTrapPool.instance?.GetTraps();
-       myCollider = GetComponent<Collider>();
-
+         Initialize();
+        _agent.destination = _monster.transform.position;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -135,71 +125,110 @@ public abstract class Hunter_AI : MonoBehaviour
         hpManager.HunterDamage(damage.GetDamage(), this.GetHunterID());
     }
 
-    //private void Update()
-    //{
-
-    //    if (waitFlag)
-    //    {
-    //        elapsedTime += Time.deltaTime;
-    //        if(elapsedTime > waitSecond)
-    //        {
-    //            elapsedTime = 0;
-    //            waitFlag = false;
-    //        }
-    //        return;
-    //    }
-
-    //    // 拘束状態ならスキップ
-    //    if (CheckRest()) return;
-
-    //    // モンスターを見つけているなら探索してスキップ
-    //    if (!monsterDisplay)
-    //    {
-    //        // 変化
-    //        Search();
-    //        return;
-    //    }
-
-    //    // モンスターの攻撃がとんできているかどうか
-    //    if (CheckMonsterAttack())
-    //    {
-    //        int randomNum = Random.Range(0, 10);
-    //        if (randomNum > _AvoidRatio)
-    //        {
-    //            Avoid();
-    //            return;
-    //        }
-    //    }
+    private void Update()
+    {
+        Attack();
+        //Debug.Log(Vector3.Distance(this.transform.position,_monster.transform.position));
+        //// 拘束状態なら停止
+        //if (CheckRest()) return;
 
 
-    //    // モンスターへの攻撃範囲にいるならば
-    //    if (!CheckAttackDistance(this.gameObject))
-    //    {
-    //        TurnMonser();
-    //        // 攻撃準備ができているのならば
-    //        if (attackReady)
-    //        {
-    //            // 攻撃
-    //            Attack();
-    //        }
-    //        else
-    //        {
-    //            // 後退
-    //            Back();
-    //        }
-    //    }
-    //    else
-    //    {
+        //////　ハンターをみつけていないなら定位置に捜索しながら移動
+        ////if (!_monsterDisplay)
+        ////{
+        ////    // 視界を確認
+        ////    if (ObjectInsightPlayer())
+        ////    {
+        ////        // 見つけた関数を呼ぶ
+        ////        DisappearMonster();
+        ////    }
 
-    //    }
+        ////    // 定位置との距離を確認
+        ////    if (CheckNearDestination(searchPosition[searchPointIndex]))
+        ////    {
+        ////        if (CloclWise)
+        ////        {
+        ////            searchPointIndex++;
+        ////            if (searchPointIndex >= searchPosition.Length)
+        ////            {
+        ////                searchPointIndex = 0;
+        ////            }
+        ////        }
+        ////        else
+        ////        {
+        ////            searchPointIndex--;
+        ////            if (searchPointIndex<=-1)
+        ////            {
+        ////                searchPointIndex = searchPosition.Length-1;
+        ////            }
+        ////        }
+        ////        // 目的地を更新
+        ////        SetDestination(searchPosition[searchPointIndex]);
+        ////        return;
+        ////    }
+        ////}
 
+        
 
+        //// ハンターの攻撃がとんできているかどうかを確認
+        //if (CheckMonsterAttack())
+        //{
+        //    // 視界内の距離に入っていないならスルー
+        //    if (GetMonstersDistance() <= _viewLength)
+        //    {
+        //        // 行動理念により回避の確率を変動
+        //        int avoidNum = Random.Range(0, 10);
+        //        if (avoidNum <= _AvoidRatio)
+        //        {
+        //            Avoid();
+        //            return;
+        //        }
+        //    }
+        //}
 
-    //}
+        //// 攻撃できる距離にいないなら
+        //if (!CheckAttackDistance(_attackDistance, this.gameObject))
+        //{
+        //    if(CheckAttack()) return;
+        //    _agent.isStopped = false;
+        //    Chase();
+        //    return;
+        //}
+        //_agent.isStopped = true;
 
+        //if (attackReady)
+        //{
+        //    attackReady = false;
+        //    Attack();
+        //}
+        //if (!attackReady)
+        //{
+        //    WaitAttackCoolTime();
+        //}
+    }
     //------------------------------------------------
     //                    処理
     //------------------------------------------------
+   
+    void Initialize()
+    {
+        // モンスターのタグ取得
+        _monster = GameObject.FindGameObjectWithTag("Player");
+        _monsters = GameObject.FindGameObjectsWithTag("Player");
+        manager = new HunterManager();
+        _animator = GetComponent<Animator>();
+        hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
+        status = eStatus.None;
+        _agent = GetComponent<NavMeshAgent>();
+        if (CloclWise)
+        {
+            _agent.destination = searchPosition[searchPosition.Length - 1];
+        }
+        else { _agent.destination = searchPosition[0]; }
+        _trapList = SpiderTrapPool.instance?.GetTraps();
+        myCollider = GetComponent<Collider>();
+    }
+    
     /// <summary>
     /// 目的地の設定
     /// </summary>
@@ -212,14 +241,20 @@ public abstract class Hunter_AI : MonoBehaviour
     /// <summary>
     /// 探索関数
     /// </summary>
-    public virtual void Search()
+    protected void Search()
     {
 
+    }
+
+    protected void SetClockwise(bool on)
+    {
+        CloclWise = on;
     }
 
     // モンスターの発見した時に呼ぶ関数
     public void DisappearMonster()
     {
+        if(manager==null) return;
         manager.SetDisapper();
     }
 
@@ -251,19 +286,22 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         return Vector3.Distance(pos, AIType.transform.position) < distance;
     }
-    /// <summary>
-    /// モンスターが見えるかどうか
-    /// </summary>
-    /// <returns></returns>
-    public bool IsMonsterInSight()
+
+    // モンスターとの距離を確認
+    private float GetMonstersDistance()
     {
-        Vector3 start = this.gameObject.transform.position;
-        start.y += 1.75f;
-        RaycastHit hit;
-        if (Physics.Raycast(start, transform.forward, out hit, 20))
+        return Vector3.Distance(_monster.transform.position,this.transform.position);
+    }
+    /// <summary>
+    /// 距離を確認する関数
+    /// </summary>
+    /// <param name="targetPos"></param>
+    /// <returns></returns>
+    private bool CheckNearDestination(Vector3 targetPos)
+    {
+        if (Vector3.Distance(this.transform.position, targetPos) <= 5.0f)
         {
-            PlayerStatus ste = hit.transform.gameObject.GetComponentInParent<PlayerStatus>();
-            if (ste != null) return true;
+            return true;
         }
         return false;
     }
@@ -273,24 +311,46 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         Vector3 startPos = this.gameObject.transform.position;
         Vector3 monsterPos = _monster.transform.position;
+
+        // プレイヤーとモンスターの方向を取得
         Vector3 playerToTarget = (_monster.transform.position - startPos).normalized;
+
+        // プレイヤーが見ている方向を取得
         Vector3 lookDir = transform.TransformDirection(Vector3.forward).normalized;
         RaycastHit hit;
 
-        if (Physics.Raycast(startPos, playerToTarget * _viewLength, out hit, _viewLength))
+        // モンスターに向けてRayを発射
+        if (Physics.Raycast(startPos, playerToTarget, out hit, _viewLength))
         {
             // 当たったRayがモンスターでないなら飛ばす
             PlayerStatus ste = hit.transform.gameObject.GetComponentInParent<PlayerStatus>();
-            if (ste != null) return false;
+            if (ste == null) return false;
 
-            // かつ視野角が
+            // かつ視野角が範囲内なら
             float angle = Vector3.Angle(playerToTarget, lookDir);
             if (angle <= _viewAngle / 2) return true;
-
         }
         return false;
     }
 
+    public void DrawRay()
+    {
+        Vector3 startPos = this.gameObject.transform.position;
+        startPos.y += 0.75f;
+        Vector3 monsterPos = _monster.transform.position;
+
+        // プレイヤーとモンスターの方向を取得
+        Vector3 playerToTarget = (_monster.transform.position - startPos).normalized;
+
+        // プレイヤーが見ている方向を取得
+        Vector3 lookDir = transform.TransformDirection(Vector3.forward).normalized;
+
+        Debug.DrawRay(startPos, playerToTarget, Color.red, _viewLength);
+        Debug.DrawRay(startPos,lookDir, Color.blue, _viewLength);
+    }
+
+
+    // 
     protected void SetAttackCoolTime(float attackCoolTime)
     {
         _attackCoolTime = attackCoolTime;
@@ -316,10 +376,8 @@ public abstract class Hunter_AI : MonoBehaviour
         _AvoidRatio = avoidRatio;
     }
 
-    private void WaitAttackCoolTime()
+    protected void WaitAttackCoolTime()
     {
-        if (attackReady) return;
-
         coolTime += Time.deltaTime;
         if (coolTime > _attackCoolTime)
         {
@@ -331,9 +389,16 @@ public abstract class Hunter_AI : MonoBehaviour
     /// モンスターが攻撃しているかどうか
     /// </summary>
     /// <returns></returns>
-    bool CheckMonsterAttack()
+    protected bool CheckMonsterAttack()
     {
         return true;
+    }
+
+    private bool CheckAttack()
+    {
+        animationState=GetAnimState();
+        if(animationState.IsName("アーマチュア|Attack1"))return true;
+        return false;
     }
 
     // モンスターの正面の位置を取得
@@ -401,17 +466,21 @@ public abstract class Hunter_AI : MonoBehaviour
         newPos = newPos + offset;
         return newPos;
     }
-
-    void CheckAvoid()
+    /// <summary>
+    /// 回避のフレーム数になっているか。
+    /// </summary>
+    /// <returns></returns>
+    bool CheckAvoid()
     {
-        
         animationState=GetAnimState();
 
         // 回避アニメーションかどうか
         if(animationState.IsName("アーマチュア|Avoid") && animationState.normalizedTime >= 0.5f && animationState.normalizedTime < 0.8)
         {
-            
+            return true;
         }
+
+        return false;
     }
 
     //-------------------------------------------------------------------------
@@ -424,8 +493,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public void Attack()
     {
         attackReady = false;
-        AttackAnimation();
-        Debug.Log("攻撃");
+        StartAttack();
     }
     /// <summary>
     /// 追跡関数
@@ -433,6 +501,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public virtual void Chase()
     {
         _agent.destination = _monster.transform.position;
+
     }
 
     public void Run()
@@ -485,6 +554,11 @@ public abstract class Hunter_AI : MonoBehaviour
 
     }
 
+    // モンスターオブジェクトの取得
+    public GameObject GetMonster()
+    {
+        return _monster;
+    }
     //-------------------------------------------------------------------------
     //                     アニメーション関係関数
     //-------------------------------------------------------------------------
@@ -497,7 +571,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// <returns></returns>
     public AnimatorStateInfo GetAnimState()
     {
-        return animationState;
+        return _animator.GetCurrentAnimatorStateInfo(0);
     }
 
     // 拘束状態の開始 アニメーションの開始
@@ -525,6 +599,16 @@ public abstract class Hunter_AI : MonoBehaviour
         _animator.SetTrigger("AttackTrigger");
     }
 
+    private void StartAttack()
+    {
+        _animator.SetBool("Attack",true);
+    }
+
+    public void FinishAttack()
+    {
+        _animator.SetBool("Attack",false);
+    }
+
     // 走るアニメーション再生関数
     public void RunAnimation()
     {
@@ -549,15 +633,6 @@ public abstract class Hunter_AI : MonoBehaviour
     {
 
     }
-
-
-    // モンスターオブジェクトの取得
-    public GameObject GetMonster()
-    {
-        return _monster;
-    }
-
-
     public bool GetFlat()
     {
         return (_animator.GetBool("FlatterStartTrigger") && !_animator.GetBool("FlatterFinishTrigger"));
