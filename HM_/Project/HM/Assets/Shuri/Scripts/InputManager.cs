@@ -30,7 +30,7 @@ public class InputManager : MonoBehaviour
         RT,
         LT,
         RB,
-          LB,
+        LB,
         Right,
         Left,
         Up,
@@ -127,11 +127,11 @@ public class InputManager : MonoBehaviour
     // 保存
     public void Save(ConfigData data)
     {
-        //for (int i = 0; i < ConfigData.ButtonNum; i++)
-        //{
-        //    data.name[i]=keys[i].keyName;
-        //    data.types[i] = ((int)keys[i].type).ToString();
-        //}
+        for (int i = 0; i < ConfigData.ButtonNum; i++)
+        {
+            data.name[i] = keys[i].keyName;
+            data.types[i] = ((int)keys[i].type).ToString();
+        }
         // json変換
         string json = JsonUtility.ToJson(data);
 
@@ -146,7 +146,7 @@ public class InputManager : MonoBehaviour
     }
 
     // jsonファイル読み込み
-    ConfigData Load(string path)
+    public ConfigData Load(string path)
     {
         // 読み込み指定
         StreamReader rd = new(path);

@@ -4,17 +4,28 @@ using UnityEngine;
 /// <summary>
 /// やりで攻撃するハンターの行動論理をまとめたクラス
 /// </summary>
-public class AI3Logic : MonoBehaviour
+public class AI3Logic : Hunter_AI
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float keepDistance = 1.5f;
 
-    // Update is called once per frame
-    void Update()
+    public float attackDistance = 2.0f;
+
+    public float viewAngle = 180.0f;
+
+    public float viewLength = 100;
+
+    // 回避行動頻度
+    int avoidRatio = 7;
+
+    // 回避行動のクールタイム
+    public float avoidCoolTime = 6.0f;
+
+    public override void Start()
     {
-        
+        base.Start();
+        SetAttackCoolTime(keepDistance);
+        SetViewAngle(viewAngle);
+        SetViewLength(viewLength);
+        SetAvoidRatio(avoidRatio);
     }
 }

@@ -5,6 +5,7 @@ public class HunterManager : MonoBehaviour
     private GameObject[] gameObjects;
     private GameObject _spear;
     private HPManager _hpManager;
+    public UIManager uiManager;
 
     int deathCount = 0;
     bool deathAnimationNow = false;
@@ -45,6 +46,7 @@ public class HunterManager : MonoBehaviour
         _hpManager.HunterHeel(100, i);
         gameObjects[i].transform.position = respawnPosition;
         gameObjects[i].GetComponent<Hunter_AI>().WaitForCount();
+        //uiManager.ObjectiveText();
     }
 
     /// <summary>
@@ -71,7 +73,7 @@ public class HunterManager : MonoBehaviour
         // ハンターについているモンスターを見つける関数を呼び出す。
         for (int i = 0; i < gameObjects.Length; i++)
         {
-            gameObjects[i].GetComponent<Hunter_AI>().monsterDisplay = true;
+            //gameObjects[i].GetComponent<Hunter_AI>().monsterDisplay = true;
         }
     }
 
