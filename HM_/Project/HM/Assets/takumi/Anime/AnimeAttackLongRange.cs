@@ -43,6 +43,7 @@ public class AnimeAttackLongRange : AnimeBase
     }
     override protected void AnimeEnd()
     {
+        base.AnimeEnd();
         AnimeAttackLongRange animeAttackLongRange = GetComponent<AnimeAttackLongRange>();
 
 

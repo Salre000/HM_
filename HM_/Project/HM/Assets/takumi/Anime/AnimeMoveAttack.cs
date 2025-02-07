@@ -22,6 +22,7 @@ public class AnimeMoveAttack : AnimeBase
     }
     override protected void AnimeEnd()
     {
+        base.AnimeEnd();
 
         if (_AnimeName.Contains(NestName)) 
         {
