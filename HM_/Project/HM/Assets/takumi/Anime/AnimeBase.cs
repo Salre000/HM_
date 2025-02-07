@@ -13,9 +13,7 @@ public class AnimeBase : MonoBehaviour
 
     protected List<string> _AnimeName = new List<string>(1);
 
-    private System.Action<int> EndAnimation;
-   
-    public 
+    private System.Action<int> EndAnimation; 
 
     public void AddAnimeName(string Name) { _AnimeName.Add(Name); }
 
