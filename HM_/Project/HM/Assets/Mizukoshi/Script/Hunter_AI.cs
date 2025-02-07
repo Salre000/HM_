@@ -127,84 +127,73 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void Update()
     {
-        Attack();
-        //Debug.Log(Vector3.Distance(this.transform.position,_monster.transform.position));
-        //// 拘束状態なら停止
-        //if (CheckRest()) return;
-
-
-        //////　ハンターをみつけていないなら定位置に捜索しながら移動
-        ////if (!_monsterDisplay)
-        ////{
-        ////    // 視界を確認
-        ////    if (ObjectInsightPlayer())
-        ////    {
-        ////        // 見つけた関数を呼ぶ
-        ////        DisappearMonster();
-        ////    }
-
-        ////    // 定位置との距離を確認
-        ////    if (CheckNearDestination(searchPosition[searchPointIndex]))
-        ////    {
-        ////        if (CloclWise)
-        ////        {
-        ////            searchPointIndex++;
-        ////            if (searchPointIndex >= searchPosition.Length)
-        ////            {
-        ////                searchPointIndex = 0;
-        ////            }
-        ////        }
-        ////        else
-        ////        {
-        ////            searchPointIndex--;
-        ////            if (searchPointIndex<=-1)
-        ////            {
-        ////                searchPointIndex = searchPosition.Length-1;
-        ////            }
-        ////        }
-        ////        // 目的地を更新
-        ////        SetDestination(searchPosition[searchPointIndex]);
-        ////        return;
-        ////    }
-        ////}
-
-        
-
-        //// ハンターの攻撃がとんできているかどうかを確認
-        //if (CheckMonsterAttack())
+        // 拘束状態なら停止
+        if (CheckRest()) return;
+        ////　ハンターをみつけていないなら定位置に捜索しながら移動
+        //if (!_monsterDisplay)
         //{
-        //    // 視界内の距離に入っていないならスルー
-        //    if (GetMonstersDistance() <= _viewLength)
+        //    // 視界を確認
+        //    if (ObjectInsightPlayer())
         //    {
-        //        // 行動理念により回避の確率を変動
-        //        int avoidNum = Random.Range(0, 10);
-        //        if (avoidNum <= _AvoidRatio)
+        //        // 見つけた関数を呼ぶ
+        //        DisappearMonster();
+        //    }
+
+        //    // 定位置との距離を確認
+        //    if (CheckNearDestination(searchPosition[searchPointIndex]))
+        //    {
+        //        if (CloclWise)
         //        {
-        //            Avoid();
-        //            return;
+        //            searchPointIndex++;
+        //            if (searchPointIndex >= searchPosition.Length)
+        //            {
+        //                searchPointIndex = 0;
+        //            }
         //        }
+        //        else
+        //        {
+        //            searchPointIndex--;
+        //            if (searchPointIndex<=-1)
+        //            {
+        //                searchPointIndex = searchPosition.Length-1;
+        //            }
+        //        }
+        //        // 目的地を更新
+        //        SetDestination(searchPosition[searchPointIndex]);
+        //        return;
         //    }
         //}
 
-        //// 攻撃できる距離にいないなら
-        //if (!CheckAttackDistance(_attackDistance, this.gameObject))
-        //{
-        //    if(CheckAttack()) return;
-        //    _agent.isStopped = false;
-        //    Chase();
-        //    return;
-        //}
-        //_agent.isStopped = true;
+        // ハンターの攻撃がとんできているかどうかを確認
+        if (CheckMonsterAttack())
+        {
+            // 視界内の距離に入っていないならスルー
+            if (GetMonstersDistance() <= _viewLength)
+            {
+                // 行動理念により回避の確率を変動
+                int avoidNum = Random.Range(0, 10);
+                if (avoidNum <= _AvoidRatio)
+                {
+                    Avoid();
+                    return;
+                }
+            }
+        }
 
-        //if (attackReady)
-        //{
-        //    attackReady = false;
-        //    Attack();
-        //}
-        //if (!attackReady)
-        //{
-        //    WaitAttackCoolTime();
-        //}
+        // 攻撃できる距離にいないなら
+        if (!CheckAttackDistance(_attackDistance, this.gameObject))
+        {
+            if (CheckAttack()) return;
+            _agent.isStopped = false;
+            Chase();
+            return;
+        }
+        _agent.isStopped = true;
+
+        if (attackReady)
+        {
+            Attack();
+        }
     }
     //------------------------------------------------
     //                    処理
