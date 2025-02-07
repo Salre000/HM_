@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -38,27 +39,38 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         Timer();
-        SliderUpdate();
-        ObjectiveText();
     }
 
     void Timer()
     {
         remainingTime -= Time.deltaTime;
 
-        _timer.fillAmount = remainingTime / LimitTime;
+        //_timer.fillAmount = remainingTime / LimitTime;
+
+        _timer.transform.eulerAngles = new Vector3(0, 0, remainingTime / LimitTime * 360.0f);
 
         if (remainingTime <= 0) Debug.Log("終了");
     }
 
-     void SliderUpdate()
+    public async UniTask HPSliderUpdate()
     {
-        _hpBar.value = _hpManager.GetMonsterHp();
+        float currentHp = _hpBar.value;
+        float elapsedTime = 0;
+        float targetHp = _hpManager.GetMonsterHp();
+
+        while (elapsedTime < 0.5f)
+        {
+            elapsedTime += Time.deltaTime;
+
+            _hpBar.value = Mathf.Lerp(currentHp, targetHp, elapsedTime / 0.5f);
+
+            await UniTask.DelayFrame(1);
+        }
     }
 
-    void ObjectiveText()
+    public void ObjectiveText()
     {
-        _textMeshProUGUI.text = string.Format("▼Defeat the Hunter {0}/4", _hunterManager.GetHunterDeathAmount());
+        _textMeshProUGUI.text = string.Format("▼ハンターを4体倒す {0}/4", _hunterManager.GetHunterDeathAmount());
     }
 
     public void SetSliderValue(int sensivility, int bgm, int se)

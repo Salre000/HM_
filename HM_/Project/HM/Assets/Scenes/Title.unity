@@ -909,32 +909,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169c66b9ca8dd9c4394c8e9e8c2d6ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyConfig: {fileID: 4900000, guid: 6dd1554ee98c4e2438ab146c13b7733b, type: 3}
+  _keyConfig: {fileID: 4900000, guid: 220d2960fd38bf04aa8a4191aa75a0b9, type: 3}
   data:
-    name1: 
-    name2: 
-    name3: 
-    name4: 
-    name5: 
-    name6: 
-    name7: 
-    name8: 
-    name9: 
-    name10: 
-    name11: 
-    name12: 
-    type1: 0
-    type2: 0
-    type3: 0
-    type4: 0
-    type5: 0
-    type6: 0
-    type7: 0
-    type8: 0
-    type9: 0
-    type10: 0
-    type11: 0
-    type12: 0
+    name:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    types:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
 --- !u!4 &868224470
 Transform:
   m_ObjectHideFlags: 0

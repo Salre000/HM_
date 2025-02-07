@@ -14,8 +14,6 @@ public class KeyImageChanger : MonoBehaviour
 
     [SerializeField] Sprite[] keySprites;
 
-    [SerializeField] Image[] lamps = new Image[(int)InputKeys.Max];
-
     private void Awake()
     {
         inputManager = instance.GetComponent<InputManager>();
@@ -57,8 +55,8 @@ public class KeyImageChanger : MonoBehaviour
             case "D_Pad_V":
                 if (key.type == KeyType.AxisPlus) return keySprites[10];    // 上
                 else return keySprites[11];                                 // 下
-            case "joystick button 9": return keySprites[12];
-            case "joystick button 8": return keySprites[13];
+            case "joystick button 9": return keySprites[12]; // 右スティック押し込み 
+            case "joystick button 8": return keySprites[13]; // 左スティック押し込み
                 
         }
         return null;

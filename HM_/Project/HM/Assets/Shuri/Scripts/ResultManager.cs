@@ -102,6 +102,7 @@ public class ResultManager : MonoBehaviour
 
         // クリアしていたらタイムを表示
         if (ClearCheck()) _resultTime.text = "TIME : " + GetClearTime().ToString("N2");
+        //_resultTime.text = string.Format("TIME : {0}", GetClearTime());
         // クリアしていなかったらタイムなしとして表示
         else _resultTime.text = "TIME : - - : - -";
 

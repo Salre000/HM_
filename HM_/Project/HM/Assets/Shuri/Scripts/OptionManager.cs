@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.Linq;
+using Den.Tools;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -266,6 +267,8 @@ public class OptionManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
 
         _selected = false;
+
+        instance.Save(instance.data);
     }
 
     public void OnBackToTheGame()

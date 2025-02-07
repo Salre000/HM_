@@ -71,8 +71,8 @@ public class InputManager : MonoBehaviour
 
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
-            keys[i].keyName = json["Name" + (i + 1).ToString()].Get<string>();
-            keys[i].type = (KeyType)int.Parse(json["Type" + (i + 1).ToString()].Get<string>());
+            keys[i].keyName = json["name" + (i + 1).ToString()].Get<string>();
+            keys[i].type = (KeyType)int.Parse(json["types" + (i + 1).ToString()].Get<string>());
         }
     }
 
@@ -119,14 +119,19 @@ public class InputManager : MonoBehaviour
     {
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
-            if (keys[i].type == KeyType.None)return false;
+            if (keys[i].type == KeyType.None) return false;
         }
         return true;
     }
 
     // •Û‘¶
-    void Save(ConfigData data)
+    public void Save(ConfigData data)
     {
+        for (int i = 0; i < ConfigData.ButtonNum; i++)
+        {
+            data.name[i]=keys[i].keyName;
+            data.types[i] = ((int)keys[i].type).ToString();
+        }
         // json•ÏŠ·
         string json = JsonUtility.ToJson(data);
 
