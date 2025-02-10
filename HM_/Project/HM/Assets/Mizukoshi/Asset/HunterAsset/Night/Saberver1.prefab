@@ -1878,6 +1878,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
+  speed: 0.1
   keepDistance: 1.5
   attackDistance: 2
   viewAngle: 180
@@ -2530,7 +2531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff321e354a13e9b4e88d4a77cf5c114d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
+  _damage: 20
 --- !u!1 &6082403060884735806
 GameObject:
   m_ObjectHideFlags: 0

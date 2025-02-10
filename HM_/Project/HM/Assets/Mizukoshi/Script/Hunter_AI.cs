@@ -48,7 +48,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public int HP = 100;
 
-    public float speed=0.1f;
+    public float speed=0.6f;
 
     // ‘Ò‹@ŠÔ
     private float waitSecond = 1.0f;
