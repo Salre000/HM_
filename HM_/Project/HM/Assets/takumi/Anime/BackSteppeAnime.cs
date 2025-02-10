@@ -42,6 +42,7 @@ public class BackSteppeAnime : AnimeBase
     override protected void AnimeEnd()
     {
 
+        base.AnimeEnd();
 
 
         BackSteppeAnime backSteppeAnime = this.gameObject.GetComponent<BackSteppeAnime>();

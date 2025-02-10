@@ -55,6 +55,7 @@ public class PlayerSpiderJump : AnimeBase
 
     override protected void AnimeEnd()
     {
+        base.AnimeEnd();
         PlayerSpiderJump jumpAnime = this.gameObject.GetComponent<PlayerSpiderJump>();
 
         Destroy(jumpAnime);

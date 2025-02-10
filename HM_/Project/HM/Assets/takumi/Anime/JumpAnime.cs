@@ -68,10 +68,11 @@ public class JumpAnime : AnimeBase
 
     override protected void AnimeEnd()
     {
+        base.AnimeEnd();
 
 
 
-        JumpAnime jumpAnime=this.gameObject.GetComponent<JumpAnime>();
+        JumpAnime jumpAnime =this.gameObject.GetComponent<JumpAnime>();
 
         Destroy(jumpAnime);
 
