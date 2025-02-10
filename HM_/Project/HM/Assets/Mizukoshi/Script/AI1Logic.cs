@@ -9,13 +9,13 @@ public class AI1Logic :Hunter_AI
 {
     private Vector3 destination;
 
-    public float keepDistance = 1.5f;
+    public float keepDistance = 1.5f/10/4;
 
-    public float attackDistance = 2.0f;
+    public float attackDistance = 2.0f/10/4;
 
     public float viewAngle = 180.0f;
 
-    public float viewLength = 100;
+    public float viewLength = 100 / 10/4;
 
     // ‰ñ”ğs“®•p“x
     int avoidRatio = 7;

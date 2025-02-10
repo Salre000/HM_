@@ -188,11 +188,12 @@ public abstract class Hunter_AI : MonoBehaviour
             Chase();
             return;
         }
-        _agent.isStopped = true;
-
+        
         if (attackReady)
         {
             Attack();
+
+
         }
     }
     //------------------------------------------------
