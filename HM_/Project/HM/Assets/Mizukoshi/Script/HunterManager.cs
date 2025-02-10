@@ -8,6 +8,7 @@ public class HunterManager : MonoBehaviour
     public UIManager uiManager;
 
     int deathCount = 0;
+    private int preDeathNum = -1;
     bool deathAnimationNow = false;
     bool[] isDeath = new bool[4];
     float[] time = new float[4];
@@ -25,7 +26,7 @@ public class HunterManager : MonoBehaviour
             gameObjects[i].GetComponent<Hunter_ID>().SetHunterID(i);
         }
         respawnPosition = transform.position;
-        _hpManager = new HPManager();
+        _hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
     }
 
     // Update is called once per frame
@@ -57,6 +58,8 @@ public class HunterManager : MonoBehaviour
     {
         int deathNum = _hpManager.GetHunterLostNumber();
         if (deathNum == -1) return;
+        if(preDeathNum==deathNum) return;
+        preDeathNum = deathNum;
         gameObjects[deathNum].GetComponent<Hunter_AI>().Death();
     }
 
