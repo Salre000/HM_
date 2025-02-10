@@ -252,6 +252,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
+  speed: 0.1
   keepDistance: 0.0375
   attackDistance: 0.05
   viewAngle: 180
@@ -24266,10 +24267,15 @@ MonoBehaviour:
   remainingTime: 0
   _timer: {fileID: 1385907548}
   _hpBar: {fileID: 72699139}
-  conditionImage: {fileID: 0}
+  conditionImage: {fileID: 1450918469}
   _textMeshProUGUI: {fileID: 425375742}
   _hpManager: {fileID: 1418245120}
   _hunterManager: {fileID: 1418245116}
+  _conditionSprites:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 3496fa40bae7c87489f7e15539d0a641, type: 3}
+  - {fileID: 21300000, guid: 50e0b1eacad73884a93976e008f99439, type: 3}
+  - {fileID: 21300000, guid: bfa859add11e5a4479d38f218ae0afde, type: 3}
 --- !u!4 &1209621435
 Transform:
   m_ObjectHideFlags: 0
