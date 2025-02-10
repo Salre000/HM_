@@ -21,6 +21,7 @@ public class PlayerAttackDoragon : PlayerAttack
             backSteppeAnime = this.gameObject.AddComponent<BackSteppeAnime>();
 
             backSteppeAnime.TagBox = TagBox;
+            nowAnime=backSteppeAnime;
             return 1;
 
         }
@@ -105,10 +106,11 @@ public class PlayerAttackDoragon : PlayerAttack
     private void Awake()
     {
         radialBlur = Camera.main.GetComponent<RadialBlur>();
-        LeftHand = GameObject.Find("Bone.019");
+        LeftHand = GameObject.Find("Bone.019_end");
     }
     // Start is called before the first frame update
 
+    public GameObject GetStartPositionn() { return LeftHand; }
 
 
     void ResetObject()

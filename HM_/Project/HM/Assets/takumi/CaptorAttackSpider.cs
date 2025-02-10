@@ -100,6 +100,8 @@ public class CaptorAttackSpider : AnimeBase
     }
     override protected void AnimeEnd()
     {
+        base.AnimeEnd();
+
         this.PlayerAttackSpider.IsCapFlag = false;
        CaptorAttackSpider Anime = this.gameObject.GetComponent<CaptorAttackSpider>();
 

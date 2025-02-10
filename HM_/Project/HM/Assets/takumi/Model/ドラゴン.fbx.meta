@@ -993,7 +993,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.6657407
+        functionName: SetPredictionAttackFlag
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -1051,6 +1058,20 @@ ModelImporter:
         floatParameter: 20
         intParameter: 1
         messageOptions: 0
+      - time: 0.175
+        functionName: SetPredictionAttackFlag
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7046296
+        functionName: SetPredictionAttackFlag
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -1107,6 +1128,20 @@ ModelImporter:
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 20
         intParameter: 1
+        messageOptions: 0
+      - time: 0.086111106
+        functionName: SetPredictionAttackFlag
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 20
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.73703706
+        functionName: SetPredictionAttackFlag
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
         messageOptions: 0
       transformMask: []
       maskType: 3
@@ -1167,6 +1202,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.98219883
         functionName: RoarEnd
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.34526926
+        functionName: SetPredictionAttackFlag
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

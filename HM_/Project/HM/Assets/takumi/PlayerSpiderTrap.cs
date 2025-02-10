@@ -45,6 +45,8 @@ public class PlayerSpiderTrap : AnimeBase
 
     override protected void AnimeEnd()
     {
+        base.AnimeEnd();
+
         PlayerSpiderTrap TrapAnime = this.gameObject.GetComponent<PlayerSpiderTrap>();
         Flag = false;
         Destroy(TrapAnime);

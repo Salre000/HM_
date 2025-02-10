@@ -23,7 +23,7 @@ public class AnimeAttackLongRange : AnimeBase
         Rocks = GameObject.FindGameObjectWithTag("ItemBox");
 
 
-
+        StartObject = playerAttack.GetStartPositionn();
 
 
         
@@ -43,6 +43,7 @@ public class AnimeAttackLongRange : AnimeBase
     }
     override protected void AnimeEnd()
     {
+        base.AnimeEnd();
         AnimeAttackLongRange animeAttackLongRange = GetComponent<AnimeAttackLongRange>();
 
 
@@ -76,7 +77,7 @@ public class AnimeAttackLongRange : AnimeBase
 
             RockAttack rockAttack = Rock.GetComponent<RockAttack>();
 
-
+            rockAttack.ActiveChenge();
 
             rockAttack.SetMoveVec(new Vector3( Mathf.Sin(Angle+((i*15)*3.14f/180)),0,Mathf.Cos(Angle + ((i * 15) * 3.14f / 180))));
 
@@ -85,7 +86,6 @@ public class AnimeAttackLongRange : AnimeBase
 
             damage.SetDamage(30);
 
-            RockPool.SbuActiveCount();
 
 
         }

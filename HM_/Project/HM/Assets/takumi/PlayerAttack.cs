@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -16,12 +17,26 @@ public abstract class PlayerAttack : MonoBehaviour
     //攻撃の判定を生成する予備動作のフラグ（ハンターの攻撃予測に使用）
     bool predictionAttackFlag = false;
 
-    public void SetPredictionAttackFlag(bool Flag) { predictionAttackFlag = Flag; }
+    public void SetPredictionAttackFlag() {predictionAttackFlag = true; ResetPredictionAttackFlag(); }
+
+    private async UniTask ResetPredictionAttackFlag() 
+    {
+
+        await UniTask.DelayFrame(14);
+
+
+        predictionAttackFlag = false;
+
+    }
+
+    public bool GetPredictionAttackFlag() {  return predictionAttackFlag; }
 
     private bool ULTFlag = true;
     public void SetULTFLag(bool Flag) { ULTFlag = Flag; }
     public void ReSetULTFLag() { ULTFlag = true; }
     public Tag GetTag() { return TagBox; }
+
+    [SerializeField] protected AnimeBase nowAnime = null;
     void Start()
     {
         _anime = GetComponent<PlayerAnime>();

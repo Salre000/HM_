@@ -32,15 +32,12 @@ public class AnimeAttackNormal : AnimeBase
     }
     override protected void AnimeEnd()
     {
+        base.AnimeEnd();
 
         AnimeAttackNormal animeAttackNormal = GetComponent<AnimeAttackNormal>();
         Destroy(animeAttackNormal);
 
 
-    }
-
-    override protected void DestroyHitObject() 
-    {
     }
 
 }

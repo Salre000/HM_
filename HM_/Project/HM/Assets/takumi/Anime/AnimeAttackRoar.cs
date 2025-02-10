@@ -37,6 +37,7 @@ public class AnimeAttackRoar :AnimeBase
     //アニメーションコントローラー
     protected override void AnimeEnd()
     {
+        base.AnimeEnd();
         AnimeAttackRoar animeAttackRoar=GetComponent<AnimeAttackRoar>();
         Destroy(animeAttackRoar);
 
