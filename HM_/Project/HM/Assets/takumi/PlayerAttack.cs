@@ -15,7 +15,7 @@ public abstract class PlayerAttack : MonoBehaviour
 
 
     //攻撃の判定を生成する予備動作のフラグ（ハンターの攻撃予測に使用）
-    bool predictionAttackFlag = false;
+    [SerializeField]bool predictionAttackFlag = false;
 
     public void SetPredictionAttackFlag() {predictionAttackFlag = true; ResetPredictionAttackFlag(); }
 

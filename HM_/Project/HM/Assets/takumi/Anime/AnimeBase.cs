@@ -14,6 +14,8 @@ public class AnimeBase : MonoBehaviour
     protected List<string> _AnimeName = new List<string>(1);
 
     private System.Func<int> EndAnimation;
+
+    private GameObject GameObject;
    
     public void SetEndAnimation(System.Func<int> EndAnimation) { this.EndAnimation = EndAnimation; }
 
@@ -23,7 +25,8 @@ public class AnimeBase : MonoBehaviour
     void Start()
     {
         _animator = this.gameObject.GetComponent<Animator>();
-        DestroyThis();
+        this.GameObject = this.gameObject;
+       // DestroyThis();
     }
 
 
@@ -34,9 +37,11 @@ public class AnimeBase : MonoBehaviour
 
         await UniTask.WaitForSeconds(10);
 
-        AnimeBase animeBase = this.gameObject.GetComponent<AnimeBase>();
 
-        AnimeEnd();
+
+        AnimeBase animeBase = this.GameObject.GetComponent<AnimeBase>();
+
+     
     }
     float TimeCount = 0;
     // Update is called once per frame
@@ -64,7 +69,7 @@ public class AnimeBase : MonoBehaviour
 
     virtual protected void AnimeEnd()
     {
-        EndAnimation();
+        //EndAnimation();
     }
 
 }

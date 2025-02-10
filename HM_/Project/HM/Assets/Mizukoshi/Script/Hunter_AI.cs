@@ -80,6 +80,8 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private bool deathAnimNow = false;
 
+    static PlayerAttack playerAttack;
+
     protected enum eStatus
     {
         None,
@@ -127,11 +129,9 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (CheckAttack())
         {
             Avoid();
-            //int random=Random.Range(0, 10);
-            //if (random <= _AvoidRatio) Avoid();
         }
 
         //SetDestination(_monster.transform.position);
@@ -198,6 +198,7 @@ public abstract class Hunter_AI : MonoBehaviour
         else { _agent.destination = searchPosition[0]; }
         _trapList = SpiderTrapPool.instance?.GetTraps();
         myCollider = GetComponent<Collider>();
+        playerAttack=_monster.GetComponent<PlayerAttack>();
     }
     
     /// <summary>
@@ -364,8 +365,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// 
     protected bool CheckMonsterAttack()
     {
-        //
-        return true;
+        return playerAttack.GetPredictionAttackFlag();
     }
 
     protected void WaitAvoidCoolTime()

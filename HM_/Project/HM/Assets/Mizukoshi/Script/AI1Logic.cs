@@ -21,9 +21,7 @@ public class AI1Logic :Hunter_AI
     int avoidRatio = 7;
 
     // 回避行動のクールタイム
-    public float avoidCoolTime = 6.0f;
-
-    private bool _avoidCoolFlag=false;  
+    public float attackCoolTime = 6.0f;
 
     // すでにオンになっているかどうか
     private bool alreadyFlag=false;
@@ -31,7 +29,7 @@ public class AI1Logic :Hunter_AI
    public override void Start()
    {
         base.Start();
-        SetAttackCoolTime(keepDistance);
+        SetAttackCoolTime(attackCoolTime);
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);    
    }
