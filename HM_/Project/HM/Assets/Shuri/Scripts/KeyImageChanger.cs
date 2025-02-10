@@ -14,7 +14,7 @@ public class KeyImageChanger : MonoBehaviour
 
     [SerializeField] Sprite[] keySprites;
 
-    private void Awake()
+    private void Start()
     {
         inputManager = instance.GetComponent<InputManager>();
 
@@ -30,10 +30,6 @@ public class KeyImageChanger : MonoBehaviour
         {
             if (inputManager.keys[i].type == KeyType.None) { keyImages[i].sprite = null; continue; }
             keyImages[i].sprite = GetKeyImage(inputManager.keys[i]);
-        }
-        for (int i = 0; i < (int)InputKeys.Max; i++)
-        {
-            if (inputManager.keys[i].keyName == null || inputManager.keys[i].keyName == "") continue;
         }
     }
 
