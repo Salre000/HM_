@@ -58,6 +58,10 @@ public class HPManager : MonoBehaviour
         HunterHp[Number] -= Damage;
         HunterInvincibilityTime[Number] = 0;
 
+        if (HunterHp[Number] < 0)
+        {
+            Debug.Log("AAA");
+        }
     }
 
     //ハンターの回復の処理 引数１はHPを上書きする値
@@ -83,8 +87,6 @@ public class HPManager : MonoBehaviour
             HunterInvincibilityTime[i] = Time.deltaTime;
 
             if (HunterInvincibilityTime[i] > MaxInvincibilityTim) HunterInvincibilityTime[i] = -1;
-
-
 
         }
 

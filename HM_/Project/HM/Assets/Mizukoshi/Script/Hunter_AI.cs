@@ -48,6 +48,8 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public int HP = 100;
 
+    public float speed=0.1f;
+
     // ë“ã@éûä‘
     private float waitSecond = 1.0f;
 
@@ -129,10 +131,14 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void Update()
     {
-        if (CheckAttack())
-        {
-            Avoid();
-        }
+        //if (CheckMonsterAttack())
+        //{
+        //    Debug.Log("çUåÇÇ™Ç´ÇΩ");
+        //    Avoid();
+        //}
+        SetDestination(_monster.transform.position);
+        Attack();
+        WaitAttackCoolTime();
 
         //SetDestination(_monster.transform.position);
 
@@ -191,6 +197,7 @@ public abstract class Hunter_AI : MonoBehaviour
         hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
         status = eStatus.None;
         _agent = GetComponent<NavMeshAgent>();
+        _agent.speed=speed;
         if (CloclWise)
         {
             _agent.destination = searchPosition[searchPosition.Length - 1];
@@ -198,7 +205,7 @@ public abstract class Hunter_AI : MonoBehaviour
         else { _agent.destination = searchPosition[0]; }
         _trapList = SpiderTrapPool.instance?.GetTraps();
         myCollider = GetComponent<Collider>();
-        playerAttack=_monster.GetComponent<PlayerAttack>();
+        playerAttack=GameObject.FindAnyObjectByType<PlayerAttack>();
     }
     
     /// <summary>
