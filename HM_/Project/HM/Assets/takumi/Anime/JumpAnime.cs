@@ -46,11 +46,11 @@ public class JumpAnime : AnimeBase
 
         Vector3 Vec= new Vector3(Mathf.Sin(JumpAngle), 0, Mathf.Cos(JumpAngle));
 
-        if(FrameCount<30)this.gameObject.transform.position += Vec/50;
+        if(FrameCount<30)this.gameObject.transform.position += Vec/60;
 
         if (time < MaxTime) 
         {
-            this.gameObject.transform.position+=Vector3.up/ 10;
+            this.gameObject.transform.position+=Vector3.up/ 30;
 
 
 
