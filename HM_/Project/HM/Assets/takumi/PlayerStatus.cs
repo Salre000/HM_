@@ -91,12 +91,16 @@ public class PlayerStatus : MonoBehaviour
     private Condition _nowCondition;
     private Condition _lostCondition;
 
+    System.Action<Condition> ChengeConditionMode; 
+
+    public void SetCallBackCondition(System.Action<Condition>action) { ChengeConditionMode = action; }
+
     private void ChengeCondition(Condition condition)
     {
         if (_nowCondition == condition) return;
         _lostCondition = _nowCondition;
         _nowCondition = condition;
-
+        ChengeConditionMode(condition);
 
     }
 
