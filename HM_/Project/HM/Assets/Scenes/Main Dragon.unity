@@ -4159,6 +4159,14 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3115370620691858456, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+      propertyPath: far clip plane
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115370620691858456, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+      propertyPath: near clip plane
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115370620691858456, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 119
       objectReference: {fileID: 0}
@@ -21000,7 +21008,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1000.0004}
+  m_AnchoredPosition: {x: 0, y: 1000.0001}
   m_SizeDelta: {x: 0, y: 1600}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1059510303
@@ -23111,6 +23119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TagBox: {fileID: 11400000, guid: 51ef161ce5aa1684e86e1d485aeeb784, type: 2}
+  predictionAttackFlag: 0
   nowAnime: {fileID: 0}
   IsCapFlag: 0
   rockPool: {fileID: 69537806}
@@ -37149,8 +37158,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 884124513}
   m_HandleRect: {fileID: 884124512}
   m_Direction: 2
-  m_Value: -0.0000004882813
-  m_Size: 0.3677799
+  m_Value: -0.00000012207032
+  m_Size: 0.37498993
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
