@@ -10,10 +10,13 @@ public class BackSteppeAnime : AnimeBase
 
     float time = 0;
 
+    float JumpAngle;
 
     private void Awake()
     {
         AddAnimeName("Armature|BackSteppe");
+
+        JumpAngle = (this.transform.eulerAngles.y - 180) * Mathf.Deg2Rad;
     }
 
     //飛びたくない事前フレームのカウンター
@@ -22,19 +25,14 @@ public class BackSteppeAnime : AnimeBase
     {
         time += Time.deltaTime;
         FrameCount++;
-        if (FrameCount < 3) return;
+        if (FrameCount < 15) return;
 
-        Vector3 Vec = new Vector3(-Mathf.Sin(this.transform.eulerAngles.y * 3.14f / 180), 0, -Mathf.Cos(this.transform.eulerAngles.y * 3.14f / 180));
-
-        if (FrameCount < 30) this.gameObject.transform.position += Vec / 50;
-
-        if (time < MaxTime)
-        {
-            this.gameObject.transform.position += Vector3.up / 120;
+        Vector3 Vec = new Vector3(Mathf.Sin(JumpAngle), 0.75f, Mathf.Cos(JumpAngle)) / 20.0f;
 
 
+        if (FrameCount <= 30)
+            this.transform.position += Vec;
 
-        }
         AnimeUPDate();
 
     }

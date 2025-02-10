@@ -9,7 +9,7 @@ public class JumpAnime : AnimeBase
 
     const float Damages=30.0f;
 
-    const float MaxTime = 0.2f;
+    const float MaxTime = 0.3f;
 
     float time = 0;
     float JumpAngle = 0;
@@ -42,25 +42,13 @@ public class JumpAnime : AnimeBase
     {
         time += Time.deltaTime;
         FrameCount++;
-        if (FrameCount < 3) return;
+        if (FrameCount < 15) return;
 
-        Vector3 Vec= new Vector3(Mathf.Sin(JumpAngle), 0, Mathf.Cos(JumpAngle));
-
-        if(FrameCount<30)this.gameObject.transform.position += Vec/60;
-
-        if (time < MaxTime) 
-        {
-            this.gameObject.transform.position+=Vector3.up/ 30;
+        Vector3 Vec= new Vector3(Mathf.Sin(JumpAngle), 0.75f, Mathf.Cos(JumpAngle))/20.0f;
 
 
-
-        }
-        else 
-        {
-
-
-
-        }
+        if(FrameCount<=30)
+        this.transform.position += Vec;
 
         AnimeUPDate();
 
