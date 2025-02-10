@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,6 +32,11 @@ public class KeyImageChanger : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 渡されたキーに対応するスプライトを返す
+    /// </summary>
+    /// <param name="key"></param>
+    /// <returns></returns>
     Sprite GetKeyImage(Key key)
     {
         switch(key.keyName)

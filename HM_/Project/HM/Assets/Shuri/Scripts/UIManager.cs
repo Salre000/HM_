@@ -18,7 +18,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Image _timer;
     [SerializeField] Slider _hpBar;
-    
+    [SerializeField] Image conditionImage;
+
     [SerializeField] TextMeshProUGUI _textMeshProUGUI;
 
     [SerializeField] HPManager _hpManager;
@@ -29,6 +30,8 @@ public class UIManager : MonoBehaviour
         remainingTime = LimitTime;
 
         _hpBar.value = _hpBar.maxValue = _hpManager.GetMaxMonsterHp();
+
+        GameObject.FindWithTag("Player").GetComponent<PlayerStatus>().SetCallBackCondition(ChangeConditionSprite);
     }
 
     ~UIManager()
@@ -44,8 +47,6 @@ public class UIManager : MonoBehaviour
     void Timer()
     {
         remainingTime -= Time.deltaTime;
-
-        //_timer.fillAmount = remainingTime / LimitTime;
 
         _timer.transform.eulerAngles = new Vector3(0, 0, remainingTime / LimitTime * 360.0f);
 
@@ -78,6 +79,21 @@ public class UIManager : MonoBehaviour
         _sensibility = sensivility;
         _bgmVolume = bgm;
         _seVolume = se;
+    }
+
+    private void ChangeConditionSprite(PlayerStatus.Condition condition)
+    {
+        switch (condition)
+        {
+            case PlayerStatus.Condition.Normal:
+                conditionImage.sprite = null; break;
+            case PlayerStatus.Condition.Stun:
+                conditionImage.sprite = null; break;
+            case PlayerStatus.Condition.Anger:
+                conditionImage.sprite = null; break;
+            case PlayerStatus.Condition.Fatigue:
+                conditionImage.sprite = null; break;
+        }
     }
 
     public float GetLimitTime()
