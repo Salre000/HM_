@@ -1,28 +1,6 @@
 {
-  "Name1": "joystick button 2",
-  "Type1": "1",
-  "Name2": "joystick button 3",
-  "Type2": "1",
-  "Name3": "joystick button 0",
-  "Type3": "1",
-  "Name4": "joystick button 1",
-  "Type4": "1",
-  "Name5": "joystick button 7",
-  "Type5": "1",
-  "Name6": "joystick button 6",
-  "Type6": "1",
-  "Name7": "joystick button 5",
-  "Type7": "1",
-  "Name8": "joystick button 4",
-  "Type8": "1",
-  "Name9": "D_Pad_H",
-  "Type9": "2",
-  "Name10": "D_Pad_H",
-  "Type10": "3",
-  "Name11": "D_Pad_V",
-  "Type11": "2",
-  "Name12": "D_Pad_V",
-  "Type12": "3"
+  "name": [ "joystick button 3", "joystick button 2", "joystick button 0", "joystick button 1", "joystick button 7", "joystick button 6", "joystick button 5", "joystick button 4", "D_Pad_H", "D_Pad_H", "D_Pad_V", "D_Pad_V" ],
+  "types": [ "1", "1", "1", "1", "1", "1", "1", "1", "2", "3", "2", "3" ]
 }
 
 // 初期値

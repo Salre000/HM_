@@ -21,10 +21,13 @@ public class AI4Logic : Hunter_AI
     // 回避行動のクールタイム
     public float avoidCoolTime = 6.0f;
 
+    private float attackCoolTime = 6.0f;
+
     public override void Start()
     {
         base.Start();
-        SetAttackCoolTime(keepDistance);
+        SetAttackCoolTime(attackCoolTime);
+        SetAvoidRatio(avoidRatio);
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);
     }
