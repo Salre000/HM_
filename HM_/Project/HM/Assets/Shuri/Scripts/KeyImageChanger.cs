@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +13,7 @@ public class KeyImageChanger : MonoBehaviour
 
     [SerializeField] Sprite[] keySprites;
 
-    private void Awake()
+    private void Start()
     {
         inputManager = instance.GetComponent<InputManager>();
 
@@ -31,12 +30,13 @@ public class KeyImageChanger : MonoBehaviour
             if (inputManager.keys[i].type == KeyType.None) { keyImages[i].sprite = null; continue; }
             keyImages[i].sprite = GetKeyImage(inputManager.keys[i]);
         }
-        for (int i = 0; i < (int)InputKeys.Max; i++)
-        {
-            if (inputManager.keys[i].keyName == null || inputManager.keys[i].keyName == "") continue;
-        }
     }
 
+    /// <summary>
+    /// 渡されたキーに対応するスプライトを返す
+    /// </summary>
+    /// <param name="key"></param>
+    /// <returns></returns>
     Sprite GetKeyImage(Key key)
     {
         switch(key.keyName)

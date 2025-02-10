@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
-public class PlayerAttackDoragon : PlayerAttack
+public class PlayerAttackDoragon :PlayerAttack
 {
 
     private GameObject LeftHand;
@@ -107,6 +107,7 @@ public class PlayerAttackDoragon : PlayerAttack
     {
         radialBlur = Camera.main.GetComponent<RadialBlur>();
         LeftHand = GameObject.Find("Bone.019_end");
+
     }
     // Start is called before the first frame update
 

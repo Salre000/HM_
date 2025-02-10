@@ -2,6 +2,7 @@ using Den.Tools;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -43,6 +44,7 @@ public class PlayerStatus : MonoBehaviour
         Anger,//ì{ÇËèÛë‘
         Fatigue//îÊòJèÛë‘
     }
+    public Condition GetNowCondition() { return _nowCondition; }
 
     [SerializeField] int StunGage = 0;
     const int MaxStunGage = 1000;
@@ -89,12 +91,16 @@ public class PlayerStatus : MonoBehaviour
     private Condition _nowCondition;
     private Condition _lostCondition;
 
+    System.Action<Condition> ChengeConditionMode; 
+
+    public void SetCallBackCondition(System.Action<Condition>action) { ChengeConditionMode = action; }
+
     private void ChengeCondition(Condition condition)
     {
         if (_nowCondition == condition) return;
         _lostCondition = _nowCondition;
         _nowCondition = condition;
-
+        ChengeConditionMode(condition);
 
     }
 
