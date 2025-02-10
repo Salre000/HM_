@@ -2,9 +2,14 @@ using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 using static InputManager;
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(PlayerAttack))]
+#endif
 public abstract class PlayerAttack : MonoBehaviour
 {
     protected PlayerAnime _anime;

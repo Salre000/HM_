@@ -50,7 +50,7 @@ public class JumpAnime : AnimeBase
 
         if (time < MaxTime) 
         {
-            this.gameObject.transform.position+=Vector3.up/ 120;
+            this.gameObject.transform.position+=Vector3.up/ 10;
 
 
 

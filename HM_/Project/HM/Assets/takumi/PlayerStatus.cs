@@ -2,6 +2,7 @@ using Den.Tools;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -43,6 +44,7 @@ public class PlayerStatus : MonoBehaviour
         Anger,//“{‚èó‘Ô
         Fatigue//”æ˜Jó‘Ô
     }
+    public Condition GetNowCondition() { return _nowCondition; }
 
     [SerializeField] int StunGage = 0;
     const int MaxStunGage = 1000;

@@ -21,6 +21,9 @@ public class AttackEffect : MonoBehaviour
 
         NomaleAttackAnimator=NomaleAttackEffect.GetComponent<Animator>();
 
+        GameObject eeee = GameObject.FindGameObjectWithTag("Player");
+
+        PlayerAttackDoragon sss = eeee.GetComponentInParent<PlayerAttackDoragon>();
     }
 
     //通常攻撃エフェクトの描画をする関数
