@@ -78,6 +78,27 @@ ModelImporter:
         floatParameter: 10
         intParameter: 0
         messageOptions: 0
+      - time: 0.1712963
+        functionName: SetPredictionAttackFlag
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 10
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.35277778
+        functionName: SetPredictionAttackFlag
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 10
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5462963
+        functionName: SetPredictionAttackFlag
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 10
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -481,6 +502,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.37592593
+        functionName: SetPredictionAttackFlag
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -530,6 +558,20 @@ ModelImporter:
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 10
         intParameter: 3
+        messageOptions: 0
+      - time: 0.27222222
+        functionName: SetPredictionAttackFlag
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.73796296
+        functionName: SetPredictionAttackFlag
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
         messageOptions: 0
       transformMask: []
       maskType: 3
