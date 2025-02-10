@@ -268,7 +268,7 @@ public class OptionManager : MonoBehaviour
 
         _selected = false;
 
-        instance.Save(instance.data);
+        instance.Save();
     }
 
     public void OnBackToTheGame()

@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] TextAsset _keyConfig;
-
     public static InputManager instance;
 
     [HideInInspector] public ConfigData data;
 
-    string _filepath;
+    private string _filepath;
+
+    private string _configBasePath;
 
     public enum KeyType
     {
@@ -57,22 +57,19 @@ public class InputManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         // パス名取得
-        _filepath = Application.dataPath + "/KeyConfig2.json";
+        _filepath = Application.dataPath + "/KeyConfig.json";
+        _configBasePath = Application.dataPath + "/KeyConfig_Base.json";
 
         // ファイルがないとき、ファイル作成
-        if (!File.Exists(_filepath)) Save(data);
+        if (!File.Exists(_filepath)) Save();
 
         // ファイルを読み込んでdataに格納
         data = Load(_filepath);
 
-        string jsonText = _keyConfig.ToString();
-
-        JsonNode json = JsonNode.Parse(jsonText);
-
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
-            keys[i].keyName = json["name"][i].Get<string>();
-            keys[i].type = (KeyType)int.Parse(json["types"][i].Get<string>());
+            keys[i].keyName = data.name[i];
+            keys[i].type = (KeyType)int.Parse(data.types[i]);
         }
     }
 
@@ -125,7 +122,7 @@ public class InputManager : MonoBehaviour
     }
 
     // 保存
-    public void Save(ConfigData data)
+    public void Save()
     {
         for (int i = 0; i < ConfigData.ButtonNum; i++)
         {
@@ -146,7 +143,7 @@ public class InputManager : MonoBehaviour
     }
 
     // jsonファイル読み込み
-    public ConfigData Load(string path)
+    private ConfigData Load(string path)
     {
         // 読み込み指定
         StreamReader rd = new(path);
@@ -159,5 +156,16 @@ public class InputManager : MonoBehaviour
 
         // jsonファイルを型に戻して返す
         return JsonUtility.FromJson<ConfigData>(json);
+    }
+
+    public void ConfigReset()
+    {
+        data = Load(_configBasePath);
+        for (int i = 0; i < (int)InputKeys.Max; i++)
+        {
+            keys[i].keyName = data.name[i];
+            keys[i].type = (KeyType)int.Parse(data.types[i]);
+        }
+        Save();
     }
 }
