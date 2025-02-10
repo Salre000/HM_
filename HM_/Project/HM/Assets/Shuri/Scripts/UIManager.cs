@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] HPManager _hpManager;
     [SerializeField] HunterManager _hunterManager;
 
+    [SerializeField] Sprite[] _conditionSprites;
+
     void Start()
     {
         remainingTime = LimitTime;
@@ -86,13 +88,13 @@ public class UIManager : MonoBehaviour
         switch (condition)
         {
             case PlayerStatus.Condition.Normal:
-                conditionImage.sprite = null; break;
+                conditionImage.sprite = _conditionSprites[(int)PlayerStatus.Condition.Normal]; break;
             case PlayerStatus.Condition.Stun:
-                conditionImage.sprite = null; break;
+                conditionImage.sprite = _conditionSprites[(int)PlayerStatus.Condition.Stun]; break;
             case PlayerStatus.Condition.Anger:
-                conditionImage.sprite = null; break;
+                conditionImage.sprite = _conditionSprites[(int)PlayerStatus.Condition.Anger]; break;
             case PlayerStatus.Condition.Fatigue:
-                conditionImage.sprite = null; break;
+                conditionImage.sprite = _conditionSprites[(int)PlayerStatus.Condition.Fatigue]; break;
         }
     }
 
