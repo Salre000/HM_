@@ -23589,6 +23589,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Saberver1
       objectReference: {fileID: 0}
+    - target: {fileID: 4871138377209748040, guid: b55bef1e92efee84b89e2459e6138f59, type: 3}
+      propertyPath: m_TagString
+      value: Hunter
+      objectReference: {fileID: 0}
     - target: {fileID: 5247276475289977074, guid: b55bef1e92efee84b89e2459e6138f59, type: 3}
       propertyPath: m_RootOrder
       value: 1
