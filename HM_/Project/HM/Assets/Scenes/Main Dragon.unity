@@ -4315,6 +4315,14 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3115370620691858456, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+      propertyPath: far clip plane
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115370620691858456, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+      propertyPath: near clip plane
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115370620691858456, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 119
       objectReference: {fileID: 0}
@@ -24258,6 +24266,7 @@ MonoBehaviour:
   remainingTime: 0
   _timer: {fileID: 1385907548}
   _hpBar: {fileID: 72699139}
+  conditionImage: {fileID: 0}
   _textMeshProUGUI: {fileID: 425375742}
   _hpManager: {fileID: 1418245120}
   _hunterManager: {fileID: 1418245116}
