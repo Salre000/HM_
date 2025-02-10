@@ -44,8 +44,9 @@ public class HItTest : MonoBehaviour
             ////HP‚ðŒ¸‚ç‚·
            int hitCheck= _status.MonsterDamage(_damage.GetDamage()* DamageRatio, ref Hp,_playerAnime.GetNowDownFlag());
 
+            TestCollision test = other.GetComponent<TestCollision>();
 
-            Hunter_AI AI = other.GetComponent<TestCollision>().GetGameObject().GetComponentInParent<Hunter_AI>();
+            Hunter_AI AI = test.GetGameObject().GetComponentInParent<Hunter_AI>();
 
             int ID = AI.GetHunterID();
 
