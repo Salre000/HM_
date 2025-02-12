@@ -12,20 +12,14 @@ using static ResultConst;
 
 public class ResultManager : MonoBehaviour
 {
+    // 現在のランクとタイムを表示するテキスト
     [SerializeField] Text _resultTime;
     [SerializeField] TextMeshProUGUI _rankText;
+    [SerializeField] Text _toNextRankTimeText;
 
+    // ハイスコアを表示するテキスト
     [SerializeField] Text[] _bestResultTimes;
     [SerializeField] TextMeshProUGUI[] _bestRankTexts;
-
-    [SerializeField] Image _backGround;
-
-    Color32 Gold = new(255, 231, 0, 255);
-    Color32 Red = new(255, 50, 150, 255);
-    Color32 Orange = new(220, 155, 45, 255);
-    Color32 Green = new(0, 255, 128, 255);
-    Color32 Blue = new(64, 128, 255, 255);
-    Color32 Gray = new(128, 128, 128, 255);
 
     struct Rank
     {
@@ -49,7 +43,7 @@ public class ResultManager : MonoBehaviour
     string _filepath;
 
     // ファイル名
-    string _fileName = "Data.json";
+    private readonly string _fileName = "Data.json";
 
     void Awake()
     {
@@ -101,8 +95,7 @@ public class ResultManager : MonoBehaviour
         RankDefinition();
 
         // クリアしていたらタイムを表示
-        if (ClearCheck()) _resultTime.text = "TIME : " + GetClearTime().ToString("N2");
-        //_resultTime.text = string.Format("TIME : {0}", GetClearTime());
+        if (ClearCheck()) _resultTime.text = "TIME : " + GetClearTime().ToString("N2") + "s";
         // クリアしていなかったらタイムなしとして表示
         else _resultTime.text = "TIME : - - : - -";
 
@@ -113,10 +106,13 @@ public class ResultManager : MonoBehaviour
         _rankText.text = rank.rankText;
         _rankText.colorGradientPreset = rank.rankColor;
 
+        if (ClearCheck()) _toNextRankTimeText.text = "次のランクまで " + ToNextRankTime(GetClearTime()).ToString("N2") + "s";
+        else _toNextRankTimeText.text = "次のランクまで - - : - -";
+
         // ランキングデータを昇順に並び替え
         Array.Sort(data.rank);
 
-        for (int i = 0; i < RankingData.RankCount; i++) 
+        for (int i = 0; i < RankingData.RankCount; i++)
         {
             // ランキングデータの書き換え(小数第2位以下切り上げ)
             if (data.rank[i] <= 0)
@@ -124,7 +120,7 @@ public class ResultManager : MonoBehaviour
                 data.rank[i] = Mathf.Floor(GetClearTime() * 100) / 100;
                 break;
             }
-            if(i == RankingData.RankCount - 1 && GetClearTime() < data.rank[i] && ClearCheck())
+            if (i == RankingData.RankCount - 1 && GetClearTime() < data.rank[i] && ClearCheck())
             {
                 data.rank[i] = Mathf.Floor(GetClearTime() * 100) / 100;
             }
@@ -159,7 +155,7 @@ public class ResultManager : MonoBehaviour
             Rank bestRank = RankChecker(bestTime);
 
             // ランキングデータのタイムの表示
-            _bestResultTimes[i].text = bestTime.ToString("N2");
+            _bestResultTimes[i].text = bestTime.ToString("N2") + "s";
 
             // ランキングデータのランクの表示
             _bestRankTexts[i].text = bestRank.rankText;
@@ -173,6 +169,9 @@ public class ResultManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.JoystickButton3)) SceneManager.LoadScene("Select");
     }
 
+    /// <summary>
+    /// ランクの定義
+    /// </summary>
     void RankDefinition()
     {
         rankS = new("S", new(Color.white, Gold, Gold, Gold));
@@ -183,17 +182,35 @@ public class ResultManager : MonoBehaviour
         rankE = new("E", new(Color.white, Gray, Gray, Color.black));
     }
 
+    /// <summary>
+    /// タイムに応じたランクを返す
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
     Rank RankChecker(float time)
     {
         switch (time)
         {
             case <= 0: return rankE;
-            case < RankTimeS: return rankS;
-            case < RankTimeA: return rankA;
-            case < RankTimeB: return rankB;
-            case < RankTimeC: return rankC;
-            case < RankTimeD: return rankD;
+            case <= RankTimeS: return rankS;
+            case <= RankTimeA: return rankA;
+            case <= RankTimeB: return rankB;
+            case <= RankTimeC: return rankC;
+            case <= RankTimeD: return rankD;
             default: return rankE;
         }
+    }
+
+    float ToNextRankTime(float time)
+    {
+        switch (time)
+        {
+            case <= RankTimeS: return 0;
+            case <= RankTimeA: return RankTimeS - time;
+            case <= RankTimeB: return RankTimeA - time;
+            case <= RankTimeC: return RankTimeB - time;
+            case <= RankTimeD: return RankTimeC - time;
+        }
+        return -1;
     }
 }

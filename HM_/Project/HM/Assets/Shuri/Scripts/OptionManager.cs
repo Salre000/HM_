@@ -82,7 +82,7 @@ public class OptionManager : MonoBehaviour
     private async void Update()
     {
         if (_selected) return;
-     
+
         // オプション画面の開閉
         if (Input.GetKeyDown(KeyCode.JoystickButton11)) UISwitch();
 
@@ -111,7 +111,7 @@ public class OptionManager : MonoBehaviour
 
         if (!Input.GetKeyDown(KeyCode.JoystickButton3)) return;
 
-        _panelRect.sizeDelta = new(1300, 700);
+        _panelRect.sizeDelta = new(1300, 640);
         _panelRect.anchoredPosition = new(0, -380);
 
         _selected = true;
@@ -246,24 +246,8 @@ public class OptionManager : MonoBehaviour
     {
         _configButton.Select();
 
-        float scrollValue = 11;
-
         while (true)
         {
-            //if (Input.GetAxis("D_Pad_V") > 0.3 || Input.GetAxis("Vertical") > 0.3)
-            //{
-            //    _configButton.navigation.selectOnUp.Select();
-            //    _configButton = _configButton.navigation.selectOnUp.GetComponent<Button>();
-            //    if (scrollValue < 12) scrollValue++;
-            //    await UniTask.DelayFrame(10);
-            //}
-            //if (Input.GetAxis("D_Pad_V") < -0.3 || Input.GetAxis("Vertical") < -0.3)
-            //{
-            //    _configButton.navigation.selectOnDown.Select();
-            //    _configButton = _configButton.navigation.selectOnDown.GetComponent<Button>();
-            //    if (scrollValue >= 0) scrollValue--;
-            //    await UniTask.DelayFrame(10);
-            //}
             await UniTask.DelayFrame(1);
 
             if (!_inputManager.EnableAllKey()) continue;

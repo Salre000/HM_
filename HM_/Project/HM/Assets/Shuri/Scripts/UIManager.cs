@@ -12,9 +12,9 @@ public class UIManager : MonoBehaviour
 
     public float remainingTime;
 
-    int _sensibility;
-    int _bgmVolume;
-    int _seVolume;
+    public int sensibility { get; private set; } = 50;
+    public int bgmVolume { get; private set; } = 50;
+    public int seVolume { get; private set; } = 50;
 
     [SerializeField] Image _timer;
     [SerializeField] Slider _hpBar;
@@ -78,9 +78,9 @@ public class UIManager : MonoBehaviour
 
     public void SetSliderValue(int sensivility, int bgm, int se)
     {
-        _sensibility = sensivility;
-        _bgmVolume = bgm;
-        _seVolume = se;
+        sensibility = sensivility;
+        bgmVolume = bgm;
+        seVolume = se;
     }
 
     private void ChangeConditionSprite(PlayerStatus.Condition condition)
@@ -105,6 +105,6 @@ public class UIManager : MonoBehaviour
 
     public int GetSensibility()
     {
-        return _sensibility;
+        return sensibility;
     }
 }
