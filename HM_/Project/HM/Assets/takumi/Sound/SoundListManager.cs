@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -43,8 +44,5 @@ public class SoundListManager : MonoBehaviour
         if (soundList[type].GetAudioSoundList().Count < index) return null;
         return soundList[type].GetAudioSound(index);
     }
-
-
-
 
 }

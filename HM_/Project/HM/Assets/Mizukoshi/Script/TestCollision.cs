@@ -5,9 +5,11 @@ using UnityEngine;
 public class TestCollision : MonoBehaviour
 {
     [SerializeField] private GameObject m_gameObject;
+
+    private AudioSource _audioSource;
     void Start()
     {
-        
+        _audioSource = this.gameObject.AddComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -22,4 +24,6 @@ public class TestCollision : MonoBehaviour
     }
 
     public GameObject GetGameObject() {  return m_gameObject; }
+
+    public AudioSource GetAudioSource() { return _audioSource; }
 }
