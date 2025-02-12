@@ -11,7 +11,7 @@ public class AnimeAttackNormal : AnimeBase
     private void Awake()
     {
         AddAnimeName("Armature|AttackNorml");
-        PlayerAttackDoragon playerAttack =GetComponent<PlayerAttackDoragon>();
+        PlayerAttackDragon playerAttack =GetComponent<PlayerAttackDragon>();
 
 
 

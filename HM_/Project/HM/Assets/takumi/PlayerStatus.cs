@@ -1,5 +1,6 @@
 using Den.Tools;
 using JetBrains.Annotations;
+using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -120,11 +121,9 @@ public class PlayerStatus : MonoBehaviour
         ChengeNomale();
     }
 
-    public void PlaySound(AudioClip clip)
+    public void NormalVoice() 
     {
-        if (clip == null) return;
-        _audioSource.clip = clip;
-        _audioSource.Play();
+        _audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, 3));
 
 
     }

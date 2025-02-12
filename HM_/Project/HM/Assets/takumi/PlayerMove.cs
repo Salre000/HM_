@@ -1,3 +1,4 @@
+using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,14 +8,14 @@ public class PlayerMove : MonoBehaviour
 
     Vector3 PlayerPosition;
 
-   [SerializeField]  private float _horizontal;
+    [SerializeField] private float _horizontal;
     [SerializeField] private float _vertical;
 
 
     //プレイヤーの角度
     [SerializeField] private float _angle;
 
-    private string MoveAnimeName="Armature|Move";
+    private string MoveAnimeName = "Armature|Move";
 
     //角度の差
     [SerializeField] private float _angleDifference;
@@ -24,28 +25,41 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private CameraManager _manager;
 
     public Vector3 pos;
-   
+
     //角度を与える関数
-    public void SetAngle(float angle) {  _angle = angle; }
+    public void SetAngle(float angle) { _angle = angle; }
+    private AudioSource audioSource;
 
     private bool _moveFlag = true;
     Animator _animator;
     private PlayerAnime _anime;
+
+    public void MoveSound()
+    {
+        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, 0));
+    }
+    public void MoveVoice()
+    {
+        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, 1));
+
+    }
     void Start()
     {
-        _animator=this.gameObject.GetComponent<Animator>();
+        _animator = this.gameObject.GetComponent<Animator>();
 
         //座標を今の座標に更新するプログラム
-        PlayerPosition=this.transform.position;
+        PlayerPosition = this.transform.position;
 
-       // this.Roar.AddComponent<PlayerStatus>();
+        // this.Roar.AddComponent<PlayerStatus>();
 
         _status = this.GetComponent<PlayerStatus>();
 
 
         _angle = _manager.Get_CameraPositionAngle() * 180 / 3.14f;
-    
-        _anime=this.gameObject.GetComponent<PlayerAnime>();
+
+        _anime = this.gameObject.GetComponent<PlayerAnime>();
+
+        audioSource=GetComponent<AudioSource>();
     }
 
     private bool Flag = false;
@@ -53,7 +67,7 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
 
-        string NowAnime= _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        string NowAnime = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
         pos = Vector3.zero;
         _horizontal = _vertical = 0;
@@ -74,26 +88,26 @@ public class PlayerMove : MonoBehaviour
 
         if (_horizontal == 0 && _vertical == 0) return;
 
-        if(NowAnime == "Armature|Moves" || NowAnime == "Armature|AttackMove" || NowAnime == "Armature|AttackMoveLoops"||NowAnime== MoveAnimeName) { }
-        else { _horizontal = 0;_vertical = 0 ; }
-       // Debug.Log(NowAnime);
+        if (NowAnime == "Armature|Moves" || NowAnime == "Armature|AttackMove" || NowAnime == "Armature|AttackMoveLoops" || NowAnime == MoveAnimeName) { }
+        else { _horizontal = 0; _vertical = 0; }
+        // Debug.Log(NowAnime);
 
-        _anime.SetMoveFlag(true);  
-        _angle += (_horizontal) *_status.GetRotateSpeed();
+        _anime.SetMoveFlag(true);
+        _angle += (_horizontal) * _status.GetRotateSpeed();
 
-        _manager.Add_CameraPositionAngle((_horizontal * _status.GetRotateSpeed()) *3.14f/180);
+        _manager.Add_CameraPositionAngle((_horizontal * _status.GetRotateSpeed()) * 3.14f / 180);
 
         pos = this.transform.position;
 
         _vertical /= 10;
 
         //プレイヤーの移動
-        pos.x += Mathf.Sin(_angle*3.14f/180) *( _vertical * _status.GetSpeed());
-        pos.z += Mathf.Cos(_angle * 3.14f / 180) *(_vertical * _status.GetSpeed());
+        pos.x += Mathf.Sin(_angle * 3.14f / 180) * (_vertical * _status.GetSpeed());
+        pos.z += Mathf.Cos(_angle * 3.14f / 180) * (_vertical * _status.GetSpeed());
 
 
 
-        this.transform.position=pos;
+        this.transform.position = pos;
 
     }
 }
