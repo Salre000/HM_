@@ -67,6 +67,10 @@ public class JumpAnime : AnimeBase
         JumpAnime jumpAnime =this.gameObject.GetComponent<JumpAnime>();
 
 
+        if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
+            this.audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonJumpEnd));
+
+
         Destroy(jumpAnime);
 
     }

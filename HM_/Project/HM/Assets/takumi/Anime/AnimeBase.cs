@@ -23,16 +23,16 @@ public class AnimeBase : MonoBehaviour
 
     protected AudioClip startClip;
 
-    protected AudioSource AudioSource;
+    protected AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         _animator = this.gameObject.GetComponent<Animator>();
         this.GameObject = this.gameObject;
-        AudioSource=GetComponent<AudioSource>();
+        audioSource=GetComponent<AudioSource>();
 
-        if(startClip != null)AudioSource.PlayOneShot(startClip);
+        if(startClip != null)audioSource.PlayOneShot(startClip);
        // DestroyThis();
     }
 
@@ -60,7 +60,7 @@ public class AnimeBase : MonoBehaviour
 
         string NowAnime = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
-
+        
 
         //何かの理由でアニメーションが終了したとき
         if (!_AnimeName.Contains(NowAnime))
