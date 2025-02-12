@@ -1,3 +1,4 @@
+using SceneSound;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,6 +35,9 @@ public class JumpAnime : AnimeBase
 
         JumpAngle=Mathf.Atan2(_horizontal, _vertical)+this.transform.eulerAngles.y*3.14f/180;
 
+        startClip = SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonJumpStart);
+
+
     }
 
     //飛びたくない事前フレームのカウンター
@@ -61,6 +65,7 @@ public class JumpAnime : AnimeBase
 
 
         JumpAnime jumpAnime =this.gameObject.GetComponent<JumpAnime>();
+
 
         Destroy(jumpAnime);
 

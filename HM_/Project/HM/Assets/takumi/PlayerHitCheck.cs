@@ -1,9 +1,10 @@
+using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 
-public class HItTest : MonoBehaviour
+public class PlayerHitCheck : MonoBehaviour
 {
     private HPManager _status;
     private PlayerAnime _playerAnime;
@@ -51,6 +52,12 @@ public class HItTest : MonoBehaviour
             int ID = AI.GetHunterID();
 
             if(hitCheck>=0) HitEffectManager.instance.HitEffectShow(other.transform.position, (HitEffectManager.CharacterType)ID + 1);
+
+            //ハンターごとの攻撃を当てた時の音を呼び出す
+
+
+
+            SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonAttackHit);
 
 
             if (other == null) 

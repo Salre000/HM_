@@ -13,8 +13,6 @@ public class SoundListManager : MonoBehaviour
     AudioSource _audioSourceBGM;
 
     public static SoundListManager instance;
-
-
     private void Start()
     {
         _audioSource = this.transform.AddComponent<AudioSource>();
@@ -31,9 +29,9 @@ public class SoundListManager : MonoBehaviour
     public void PlaySound(int type, int index)
     {
         if (soundList[type].GetAudioSoundList().Count < index) return;
-        _audioSource.clip = soundList[type].GetAudioSound(index);
+        
 
-        _audioSource?.Play();
+        _audioSource?.PlayOneShot(soundList[type].GetAudioSound(index));
 
     }
 
@@ -43,6 +41,8 @@ public class SoundListManager : MonoBehaviour
         if (soundList[type].GetAudioSoundList().Count < index) return null;
         return soundList[type].GetAudioSound(index);
     }
+
+
 
 
 

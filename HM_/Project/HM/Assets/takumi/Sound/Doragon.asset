@@ -12,4 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a3eb6436f8f6645a847094201cd856, type: 3}
   m_Name: Doragon
   m_EditorClassIdentifier: 
-  soundList: []
+  soundList:
+  - {fileID: 8300000, guid: 313c39448fec9da479cac57941a59ab5, type: 3}
+  - {fileID: 8300000, guid: eaabdbff44f91014a9ce26bbf804fb72, type: 3}
+  - {fileID: 8300000, guid: b7dd1d06116bec64c8bb3969c31e79c6, type: 3}
+  - {fileID: 8300000, guid: 20c9468cfed5ea94a8e802c350e39925, type: 3}
+  - {fileID: 8300000, guid: 9d3d21ecf9a881d44973c08d1e49b1de, type: 3}
+  - {fileID: 8300000, guid: 9d3d21ecf9a881d44973c08d1e49b1de, type: 3}
+  - {fileID: 8300000, guid: a836202684f3be3479f4247cd2eea3a0, type: 3}
+  - {fileID: 8300000, guid: b724398b0b7d85543b588d1654d201b9, type: 3}
+  - {fileID: 8300000, guid: 3f5aede0a8074ec4a8eda9da7b947881, type: 3}
+  - {fileID: 8300000, guid: 3f5aede0a8074ec4a8eda9da7b947881, type: 3}
+  - {fileID: 8300000, guid: 74917d1aedf98ce49a06616c5e9934e7, type: 3}
+  - {fileID: 8300000, guid: 72c818e0f384a554eb9eaa7192f4dbef, type: 3}
+  - {fileID: 8300000, guid: 74917d1aedf98ce49a06616c5e9934e7, type: 3}
+  - {fileID: 8300000, guid: 72c818e0f384a554eb9eaa7192f4dbef, type: 3}
+  - {fileID: 8300000, guid: aefaf7b85a67a774ca39084f79ac67dc, type: 3}

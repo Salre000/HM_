@@ -21,11 +21,18 @@ public class AnimeBase : MonoBehaviour
 
     public void AddAnimeName(string Name) { _AnimeName.Add(Name); }
 
+    protected AudioClip startClip;
+
+    protected AudioSource AudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         _animator = this.gameObject.GetComponent<Animator>();
         this.GameObject = this.gameObject;
+        AudioSource=GetComponent<AudioSource>();
+
+        if(startClip != null)AudioSource.PlayOneShot(startClip);
        // DestroyThis();
     }
 
