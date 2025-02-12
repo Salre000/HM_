@@ -1,3 +1,4 @@
+using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,7 @@ public class AnimeAttackRoar :AnimeBase
     void AnimeRoarStart() 
     {
         radialBlur.enabled = true;
+        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonRoar));
 
     }
 

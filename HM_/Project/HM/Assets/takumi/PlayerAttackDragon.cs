@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
-public class PlayerAttackDoragon :PlayerAttack
+public class PlayerAttackDragon :PlayerAttack
 {
 
     private GameObject LeftHand;
@@ -118,4 +119,5 @@ public class PlayerAttackDoragon :PlayerAttack
     {
 
     }
+
 }

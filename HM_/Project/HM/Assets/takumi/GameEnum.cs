@@ -39,12 +39,12 @@ namespace SceneSound
 
     enum Dragon 
     {
-        DragonAttackHit,
-        DragonJumpStart,
-        DragonJumpEnd,
         DragonMove,
         DragonMoveVoice,
         DragonVoice,
+        DragonAttackHit,
+        DragonJumpStart,
+        DragonJumpEnd,
         DragonLongAttack,
         DragonBite,
         DragonRoar,
@@ -60,6 +60,8 @@ namespace SceneSound
     }
     enum Spider 
     {
+        SpiderMove,
+        SpiderHitVoice,//攻撃を食らった後の声
         SpiderAttackHIt,
         SpiderJumpStart,
         SpiderJumpSpace,
@@ -71,8 +73,6 @@ namespace SceneSound
         SpiderTrapSnagged,//トラップに引っかかった音
         SpiderTrapLoop,//トラップに引っかかっている時の音
         SpiderTrapEnd,//トラップが無くなる音
-        SpiderMove,
-        SpiderHitVoice,//攻撃を食らった後の声
         SpiderNormalDown,
         SpiderNormalDownVoice,
         SpiderHardDown,//ダウン時の物音

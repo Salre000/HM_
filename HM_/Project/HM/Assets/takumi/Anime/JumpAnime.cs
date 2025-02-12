@@ -27,7 +27,7 @@ public class JumpAnime : AnimeBase
     {
 
         AddAnimeName("Armature|jump");
-        PlayerAttackDoragon playerAttack = GetComponent<PlayerAttackDoragon>();
+        PlayerAttackDragon playerAttack = GetComponent<PlayerAttackDragon>();
 
                 // ˆÚ“®—Ê‚Æ‰ñ“]—Ê‚ğ‹‚ß‚é
         float _horizontal = Input.GetAxis("Horizontal");

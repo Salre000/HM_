@@ -24,7 +24,7 @@ public class AttackEffect : MonoBehaviour
     }
 
     //通常攻撃エフェクトの描画をする関数
-    public void NormalAttackEffectShow()
+    public void NomaleAttadkEffectShow()
     {
         NomaleAttackEffect.SetActive(true);
         NomaleAttackAnimator.SetTrigger("AttackTrigger");

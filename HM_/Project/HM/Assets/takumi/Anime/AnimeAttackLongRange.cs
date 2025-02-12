@@ -1,3 +1,4 @@
+using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class AnimeAttackLongRange : AnimeBase
 
         AddAnimeName("Armature|AttackLongRange");
 
-        PlayerAttackDoragon playerAttack = GetComponent<PlayerAttackDoragon>();
+        PlayerAttackDragon playerAttack = GetComponent<PlayerAttackDragon>();
 
         Rocks = GameObject.FindGameObjectWithTag("ItemBox");
 
@@ -58,6 +59,7 @@ public class AnimeAttackLongRange : AnimeBase
         Flag = true;
 
         float Angle=this.transform.eulerAngles.y*3.14f/180;
+        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonLongAttack));
 
         for (int i=-1;i<2;i++) 
         {
