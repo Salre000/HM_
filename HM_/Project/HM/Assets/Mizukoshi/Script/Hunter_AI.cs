@@ -126,6 +126,8 @@ public abstract class Hunter_AI : MonoBehaviour
         HitEffectManager.instance.HitEffectShow(other.transform.position, HitEffectManager.CharacterType.Monster);
         damage = other.GetComponent<Damage>();
 
+
+
         hpManager.HunterDamage(damage.GetDamage(), this.GetHunterID());
     }
 

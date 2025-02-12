@@ -932,6 +932,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 638252157531322417, guid: 4eccee68d5ab52a4caa7af7048d53e40, type: 3}
+      propertyPath: m_TagString
+      value: EnemyAttack
+      objectReference: {fileID: 0}
     - target: {fileID: 638252158415741840, guid: 4eccee68d5ab52a4caa7af7048d53e40, type: 3}
       propertyPath: m_Name
       value: HunterSword

@@ -107,10 +107,10 @@ NavMeshSettings:
     serializedVersion: 2
     agentTypeID: 0
     agentRadius: 0.05
-    agentHeight: 10.08
+    agentHeight: 1
     agentSlope: 45
     agentClimb: 1
-    ledgeDropHeight: 0
+    ledgeDropHeight: 2
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
@@ -9606,7 +9606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &466966191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23611,15 +23611,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5247276475289977074, guid: b55bef1e92efee84b89e2459e6138f59, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.757
+      value: 2.76
       objectReference: {fileID: 0}
     - target: {fileID: 5247276475289977074, guid: b55bef1e92efee84b89e2459e6138f59, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0157
       objectReference: {fileID: 0}
     - target: {fileID: 5247276475289977074, guid: b55bef1e92efee84b89e2459e6138f59, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.65
+      value: 7.86
       objectReference: {fileID: 0}
     - target: {fileID: 5247276475289977074, guid: b55bef1e92efee84b89e2459e6138f59, type: 3}
       propertyPath: m_LocalRotation.w
@@ -23653,7 +23653,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5717508130744212951, guid: b55bef1e92efee84b89e2459e6138f59, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b55bef1e92efee84b89e2459e6138f59, type: 3}
 --- !u!1 &1179553687
 GameObject:
@@ -29216,7 +29217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &1443790222
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31665,7 +31666,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619954211}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.961, y: 0.455, z: 1.382}
+  m_LocalPosition: {x: 7.12, y: 0.455, z: 7.92}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -39790,7 +39791,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6b05f38f8df4d40b503b2e407a52fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  g: {fileID: 1185465940}
 --- !u!1 &2050942329
 GameObject:
   m_ObjectHideFlags: 0

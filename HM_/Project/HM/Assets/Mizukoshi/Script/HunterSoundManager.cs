@@ -39,6 +39,11 @@ public class HunterSoundManager : MonoBehaviour
     public void SoundHunmerAttack(float volume=1.0f)
     {
         PlaySound(audioSourceHunmerAttack, clipHunmerAttackSE);
+
+        /// シーンと鳴らしたい音を選ぶ　オブジェクトプール
+        /// 
+
+        
     }
 
     public void SoundSwordAttack(float volume = 1.0f)
