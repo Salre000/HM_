@@ -7,11 +7,12 @@ public class NavMeshPlayer : MonoBehaviour
 {
 
     NavMeshAgent nav;
-    public GameObject g;
+    private GameObject g;
     // Start is called before the first frame update
     void Start()
     {
         nav=GetComponent<NavMeshAgent>();
+        g = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
