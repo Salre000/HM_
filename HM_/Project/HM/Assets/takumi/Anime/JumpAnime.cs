@@ -1,3 +1,4 @@
+using SceneSound;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ public class JumpAnime : AnimeBase
 
     const float Damages=30.0f;
 
-    const float MaxTime = 0.2f;
+    const float MaxTime = 0.3f;
 
     float time = 0;
     float JumpAngle = 0;
@@ -34,6 +35,9 @@ public class JumpAnime : AnimeBase
 
         JumpAngle=Mathf.Atan2(_horizontal, _vertical)+this.transform.eulerAngles.y*3.14f/180;
 
+        startClip = SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonJumpStart);
+
+
     }
 
     //飛びたくない事前フレームのカウンター
@@ -42,25 +46,13 @@ public class JumpAnime : AnimeBase
     {
         time += Time.deltaTime;
         FrameCount++;
-        if (FrameCount < 3) return;
+        if (FrameCount < 15) return;
 
-        Vector3 Vec= new Vector3(Mathf.Sin(JumpAngle), 0, Mathf.Cos(JumpAngle));
-
-        if(FrameCount<30)this.gameObject.transform.position += Vec/60;
-
-        if (time < MaxTime) 
-        {
-            this.gameObject.transform.position+=Vector3.up/ 30;
+        Vector3 Vec= new Vector3(Mathf.Sin(JumpAngle), 0.75f, Mathf.Cos(JumpAngle))/20.0f;
 
 
-
-        }
-        else 
-        {
-
-
-
-        }
+        if(FrameCount<=30)
+        this.transform.position += Vec;
 
         AnimeUPDate();
 
@@ -73,6 +65,11 @@ public class JumpAnime : AnimeBase
 
 
         JumpAnime jumpAnime =this.gameObject.GetComponent<JumpAnime>();
+
+
+        if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
+            this.audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonJumpEnd));
+
 
         Destroy(jumpAnime);
 

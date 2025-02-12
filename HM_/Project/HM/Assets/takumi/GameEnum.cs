@@ -54,6 +54,7 @@ namespace SceneSound
         DragonNormalDownVoice,
         DragonHardDown,//ダウン時の物音
         DragonHardDownVoice,//ダウン時の叫び声
+        Max
         //ここまでどらごん
 
     }

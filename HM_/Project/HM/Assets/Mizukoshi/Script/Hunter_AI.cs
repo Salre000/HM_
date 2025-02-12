@@ -48,7 +48,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public int HP = 100;
 
-    public float speed=0.1f;
+    private float speed=0.5f;
 
     // ‘Ò‹@ŽžŠÔ
     private float waitSecond = 1.0f;
@@ -125,6 +125,8 @@ public abstract class Hunter_AI : MonoBehaviour
 
         HitEffectManager.instance.HitEffectShow(other.transform.position, HitEffectManager.CharacterType.Monster);
         damage = other.GetComponent<Damage>();
+
+
 
         hpManager.HunterDamage(damage.GetDamage(), this.GetHunterID());
     }
@@ -214,6 +216,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// <param name="pos"></param>
     public void SetDestination(Vector3 pos)
     {
+        if(_agent.enabled==false)return;
         _agent.destination = pos;
     }
 

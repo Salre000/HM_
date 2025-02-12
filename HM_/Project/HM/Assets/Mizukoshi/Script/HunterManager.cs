@@ -60,7 +60,9 @@ public class HunterManager : MonoBehaviour
         if (deathNum == -1) return;
         if(preDeathNum==deathNum) return;
         preDeathNum = deathNum;
-        gameObjects[deathNum].GetComponent<Hunter_AI>().Death();
+        Hunter_AI sss =gameObjects[deathNum].GetComponent<Hunter_AI>();
+
+        sss.Death();
     }
 
     float AmountDamaged(int hunterNum)

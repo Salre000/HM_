@@ -110,11 +110,12 @@ MonoBehaviour:
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
+  speed: 0.6
   keepDistance: 1.5
   attackDistance: 2
   viewAngle: 180
   viewLength: 100
-  avoidCoolTime: 6
+  attackCoolTime: 6
 --- !u!1001 &17510163231804196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199,11 +200,12 @@ MonoBehaviour:
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
+  speed: 0.6
   keepDistance: 1.5
   attackDistance: 2
   viewAngle: 180
   viewLength: 100
-  avoidCoolTime: 6
+  attackCoolTime: 6
 --- !u!4 &3345908591581965500 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3337513963969554328, guid: 1a65d67eaeacc9043891a8f1756b629b, type: 3}
