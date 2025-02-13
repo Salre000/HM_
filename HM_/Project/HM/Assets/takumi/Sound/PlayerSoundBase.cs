@@ -26,4 +26,6 @@ public class PlayerSoundBase : MonoBehaviour
     {
 
     }
+    public virtual void MoveSound() { }
+    public virtual void MoveVoice() { }
 }

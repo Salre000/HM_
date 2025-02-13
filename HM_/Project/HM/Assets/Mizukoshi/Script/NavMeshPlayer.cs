@@ -12,12 +12,14 @@ public class NavMeshPlayer : MonoBehaviour
     void Start()
     {
         nav=GetComponent<NavMeshAgent>();
-        g = GameObject.FindGameObjectWithTag("Player");
+        g = GameObject.Find("Cubes");
+
+        //g = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        nav.destination = g.transform.position;
+        nav.SetDestination(g.transform.position);
     }
 }
