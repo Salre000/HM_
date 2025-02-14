@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a3eb6436f8f6645a847094201cd856, type: 3}
+  m_Name: HunterSoundList
+  m_EditorClassIdentifier: 
+  soundList:
+  - {fileID: 8300000, guid: 0cb2faadc2ed27942adacfb8dd59a729, type: 3}
+  - {fileID: 8300000, guid: f85ee42c3074d2f48a261f93c28b00a8, type: 3}
+  - {fileID: 8300000, guid: f33e284a9169add4eb55f4951d8f4c70, type: 3}
+  - {fileID: 8300000, guid: ffd893f2f1207174f8385b7fea8debdc, type: 3}
+  - {fileID: 8300000, guid: c85287fa7767f4540a4f6a9597501850, type: 3}
+  - {fileID: 8300000, guid: 6ffeb1d6280f54746b4f26880fcfd2a8, type: 3}

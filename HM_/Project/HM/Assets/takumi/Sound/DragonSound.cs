@@ -22,6 +22,13 @@ public class DragonSound :PlayerSoundBase
         audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonHardDownVoice));
     }
 
+    public override void MoveSound()
+    {
+    audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int) main.monster, (int)Dragon.DragonMove));
+    }
 
-
+    public override void MoveVoice()
+    {
+        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonMoveVoice) ,0.3f);
+    }
 }
