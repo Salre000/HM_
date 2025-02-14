@@ -26,15 +26,8 @@ namespace SceneSound
     {
         
         monster,
-        system
-
-
-
-
-
-
-
-
+        system,
+        hunter
     }
 
     enum Dragon 
@@ -86,6 +79,17 @@ namespace SceneSound
         BGM,
         Decision,
     }
+
+    enum HunterSE
+    {
+       WalkSE,
+       SwordAttackSE,
+       PreArechSE,
+       ArechSE,
+       SpearSE,
+       HunmerAttackSE,
+    }
+
 
 
 }

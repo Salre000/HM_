@@ -401,6 +401,11 @@ Transform:
   m_Father: {fileID: 1205888278}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &391308508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 638252157531322417, guid: 4eccee68d5ab52a4caa7af7048d53e40, type: 3}
+  m_PrefabInstance: {fileID: 638252158367753710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &441324022 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7340893606190111935, guid: c49171e4fcc9d6449a7617b83897c76b, type: 3}
@@ -486,6 +491,7 @@ GameObject:
   - component: {fileID: 816551950}
   - component: {fileID: 816551952}
   - component: {fileID: 816551951}
+  - component: {fileID: 816551953}
   m_Layer: 0
   m_Name: MusicManager
   m_TagString: Untagged
@@ -539,6 +545,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 816551948}
+--- !u!114 &816551953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816551948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f764d19571194c4aba9bbfc3568d195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectA: {fileID: 391308508}
+  objectB: {fileID: 3598611378145743428, guid: cac9511c718ea7f479ccf5359d2db984, type: 3}
 --- !u!1 &932038258
 GameObject:
   m_ObjectHideFlags: 0
