@@ -44,7 +44,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // HP マネージャ-の接続
     public HPManager hpManager;
 
-    private GameObject terrian;
+    private GameObject effect;
 
     public int HP = 100;
 
@@ -115,6 +115,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
          Initialize();
         _agent.destination = _monster.transform.position;
+        
     }
 
     private void OnTriggerEnter(Collider other)

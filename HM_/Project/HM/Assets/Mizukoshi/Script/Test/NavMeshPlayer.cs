@@ -7,19 +7,27 @@ public class NavMeshPlayer : MonoBehaviour
 {
 
     NavMeshAgent nav;
-    [SerializeField]private GameObject g;
+    private GameObject g;
+    NavMeshHit hit;
+    private Vector3 vector;
+   
     // Start is called before the first frame update
     void Start()
     {
         nav=GetComponent<NavMeshAgent>();
-       // g = GameObject.Find("Cubes");
+        //g = GameObject.Find("Cubes");
+        
+        g = GameObject.FindWithTag("Player");
 
-        //g = GameObject.FindWithTag("Player");
+
+        nav.SetDestination(g.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        nav.SetDestination(g.transform.position);
+       
+        nav.destination=g.transform.position;
+    
     }
 }

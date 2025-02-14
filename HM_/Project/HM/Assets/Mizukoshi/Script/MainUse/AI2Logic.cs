@@ -30,4 +30,6 @@ public class AI2Logic :Hunter_AI
         SetClockwise(true);
         base.Start();
     }
+
+    
 }
