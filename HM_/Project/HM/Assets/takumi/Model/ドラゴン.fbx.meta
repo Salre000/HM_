@@ -1172,6 +1172,13 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.34526926
+        functionName: SetPredictionAttackFlag
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.38156188
         functionName: AnimeRoarStart
         data: 
@@ -1186,13 +1193,6 @@ ModelImporter:
         floatParameter: 0
         intParameter: 50
         messageOptions: 0
-      - time: 0.9671865
-        functionName: AnimeRoarEnd
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 0.41109943
         functionName: RoarShow
         data: 
@@ -1200,15 +1200,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.98219883
+      - time: 0.9607511
         functionName: RoarEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.34526926
-        functionName: SetPredictionAttackFlag
+      - time: 0.9671865
+        functionName: AnimeRoarEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
