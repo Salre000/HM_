@@ -17,7 +17,7 @@ public class DemoCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = new Vector3(Mathf.Sin(_angle) * Distance, 25, Mathf.Cos(_angle) * Distance);
+        transform.localPosition = new Vector3(Mathf.Sin(_angle) * Distance, 25, Mathf.Cos(_angle) * Distance);
 
         _angle -= 0.3f * Mathf.PI / 180.0f;
     }
