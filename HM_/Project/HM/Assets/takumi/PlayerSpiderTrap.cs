@@ -5,6 +5,16 @@ using UnityEngine;
 
 public class PlayerSpiderTrap : AnimeBase
 {
+
+    public PlayerSpiderTrap(GameObject Object, AudioSource source, Animator animator, System.Action<bool> animeFlagReset) : base(Object, source, animator, animeFlagReset)
+    {
+        AddAnimeName("Armature|CreateTrap");
+
+
+
+
+    }
+
     float StartAngle = 0;
 
     const int MaxSize = 30;
@@ -14,11 +24,11 @@ public class PlayerSpiderTrap : AnimeBase
     GameObject TrapObject = null;
     SpiderTrap Trap = null;
 
-    private void Awake()
+    public override void Start()
     {
-        AddAnimeName("Armature|CreateTrap");
-
-        StartAngle=this.transform.eulerAngles.y;
+        base.Start();
+    
+        StartAngle=this.GameObject.transform.eulerAngles.y;
 
         //’wå‚Ì‘ƒ‚ğ¶¬‚·‚é
         TrapObject=SpiderTrapPool.instance.SetTarp();
@@ -29,10 +39,6 @@ public class PlayerSpiderTrap : AnimeBase
 
         // Unitask‚Å0.5•b‚²‚Æ‚É’wå‚Ì‘ƒ‚ÌƒTƒCƒY‚ğL‚°‚é
         task= Times();
-
-
-
-        int i = 0;
 
     }
     bool Flag=true;
@@ -47,9 +53,10 @@ public class PlayerSpiderTrap : AnimeBase
     {
         base.AnimeEnd();
 
-        PlayerSpiderTrap TrapAnime = this.gameObject.GetComponent<PlayerSpiderTrap>();
         Flag = false;
-        Destroy(TrapAnime);
+
+        useFlag = false;
+
     }
 
     async UniTask Times() 

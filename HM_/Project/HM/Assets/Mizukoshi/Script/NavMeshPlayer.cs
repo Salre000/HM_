@@ -7,12 +7,12 @@ public class NavMeshPlayer : MonoBehaviour
 {
 
     NavMeshAgent nav;
-    private GameObject g;
+    [SerializeField]private GameObject g;
     // Start is called before the first frame update
     void Start()
     {
         nav=GetComponent<NavMeshAgent>();
-        g = GameObject.Find("Cubes");
+       // g = GameObject.Find("Cubes");
 
         //g = GameObject.FindWithTag("Player");
     }

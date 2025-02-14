@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class AnimeMoveAttack : AnimeBase
 {
-
-
-
-    string NestName= "Armature|AttackMoveLoops";
-
-
-    private void Awake()
+    public AnimeMoveAttack(GameObject Object, AudioSource source, Animator animator, System.Action<bool> animeFlagReset) : base(Object, source, animator, animeFlagReset)
     {
-
         AddAnimeName("Armature|AttackMove");
+
+
     }
-    private void FixedUpdate()
+
+
+
+    string NestName = "Armature|AttackMoveLoops";
+    public override void Action()
     {
         AnimeUPDate();
 
@@ -32,11 +31,8 @@ public class AnimeMoveAttack : AnimeBase
             return;
         }
 
-        AnimeMoveAttack jumpAnime = this.gameObject.GetComponent<AnimeMoveAttack>();
 
-        Destroy(jumpAnime);
-
-
+        useFlag = false;
 
     }
 
@@ -44,3 +40,4 @@ public class AnimeMoveAttack : AnimeBase
 
 
 }
+

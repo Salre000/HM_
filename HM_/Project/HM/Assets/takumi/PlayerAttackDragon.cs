@@ -15,99 +15,71 @@ public class PlayerAttackDragon :PlayerAttack
 
     protected override int BarkJump()
     {
-        BackSteppeAnime backSteppeAnime = this.gameObject.GetComponent<BackSteppeAnime>();
 
-        if (backSteppeAnime == null)
-        {
-            backSteppeAnime = this.gameObject.AddComponent<BackSteppeAnime>();
-
-            backSteppeAnime.TagBox = TagBox;
-            nowAnime=backSteppeAnime;
-            return 1;
-
-        }
-
-        return -1;
+        nowMode = actionMode.backJump;
+        AnimeBase.useFlag = true;
+        anime[(int)nowMode].Start();
+        return 1;
     }
 
     protected override int Jump()
     {
-        JumpAnime jumpAnime = this.gameObject.GetComponent<JumpAnime>();
+        nowMode = actionMode.jump;
+        AnimeBase.useFlag = true;
+        anime[(int)nowMode].Start();
 
-        if (jumpAnime == null)
-        {
-            jumpAnime = this.gameObject.AddComponent<JumpAnime>();
-
-            jumpAnime.TagBox = TagBox;
-            return 1;
-
-
-        }
-
-        return -1;
+        return 1;
 
 
     }
 
     protected override int LTAttack()
     {
-        AnimeAttackLongRange animeAttackLongRange = this.gameObject.GetComponent<AnimeAttackLongRange>();
+        nowMode = actionMode.skill;
+        AnimeBase.useFlag = true;
+        anime[(int)nowMode].Start();
 
-        if (animeAttackLongRange == null)
-        {
-
-            animeAttackLongRange = this.gameObject.AddComponent<AnimeAttackLongRange>();
-
-            animeAttackLongRange.TagBox = TagBox;
-
-            animeAttackLongRange.StartObject = LeftHand;
-
-            animeAttackLongRange.RockPool = rockPool;
-            return 1;
-
-        }
-
-        return -1;
+        return 1;
 
     }
 
     protected override int LTRTAttack()
     {
-        AnimeAttackRoar Roar = GetComponent<AnimeAttackRoar>();
+        nowMode = actionMode.special;
+        AnimeBase.useFlag = true;
+        anime[(int)nowMode].Start();
 
-        if (Roar == null)
-        {
-            Roar = transform.AddComponent<AnimeAttackRoar>();
-
-            Roar.SetRadialBlur(radialBlur);
-            return 1;
-
-        }
-        return -1;
+        return 1;
 
     }
 
     protected override int RTAttack()
     {
-        AnimeAttackNormal AttackNormalAnime = this.gameObject.GetComponent<AnimeAttackNormal>();
 
-        if (AttackNormalAnime == null)
-        {
-            AttackNormalAnime = this.gameObject.AddComponent<AnimeAttackNormal>();
+        nowMode = actionMode.normal;
+        AnimeBase.useFlag = true;
+        anime[(int)nowMode].Start();
 
-            AttackNormalAnime.TagBox = TagBox;
-            AttackNormalAnime.SetHitTest();
-            return 1;
 
-        }
-        return -1;
+        return 1;
 
     }
 
-    private void Awake()
+    private void Start()
     {
         radialBlur = Camera.main.GetComponent<RadialBlur>();
         LeftHand = GameObject.Find("Bone.019_end");
+
+        AudioSource source=GetComponent<AudioSource>();
+        Animator animator=GetComponent<Animator>();
+        anime[(int)actionMode.skill] = new AnimeAttackLongRange(this.gameObject, source, animator,_anime.SetLoanAttackFlag);
+        anime[(int)actionMode.normal]=new AnimeAttackNormal(this.gameObject, source, animator, _anime.SetAttackFlag);
+        anime[(int)actionMode.special]=new AnimeAttackRoar(this.gameObject, source, animator, _anime.SetRoarFlag);
+        anime[(int)actionMode.jump]=new JumpAnime(this.gameObject, source, animator,_anime.SetJumpFlag);
+        anime[(int)actionMode.backJump]=new BackSteppeAnime(this.gameObject, source, animator,_anime.SetBackSteppeFlag);
+        
+        AnimeAttackRoar animeAttackRoar =(AnimeAttackRoar)anime[(int)actionMode.special];
+        animeAttackRoar.SetRadialBlur(radialBlur);
 
     }
     // Start is called before the first frame update

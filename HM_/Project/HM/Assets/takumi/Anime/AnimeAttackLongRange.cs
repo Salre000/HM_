@@ -14,52 +14,45 @@ public class AnimeAttackLongRange : AnimeBase
 
     public RockPool RockPool;
 
-    private void Awake()
+    public AnimeAttackLongRange(GameObject Object, AudioSource source, Animator animator, System.Action<bool> animeFlagReset) : base(Object,source,animator,animeFlagReset)
     {
-
         AddAnimeName("Armature|AttackLongRange");
-
-        PlayerAttackDragon playerAttack = GetComponent<PlayerAttackDragon>();
 
         Rocks = GameObject.FindGameObjectWithTag("ItemBox");
 
+        StartObject =Object.GetComponent<PlayerAttackDragon>().GetStartPositionn();
 
-        StartObject = playerAttack.GetStartPositionn();
-
-
-        
+        RockPool=Rocks.GetComponent<RockPool>();
     }
+    public override void Start()
+    {
+        _AnimeFlagReset(false);
+    }
+
+
     private bool Flag = false;
     public float time = 0;
-    private void FixedUpdate()
+    public override void Action()
     {
-
-        time += Time.deltaTime;
-
-        if (time > 2.0f&&!Flag) 
-        {
-            SetRocks();
-        }
         AnimeUPDate();
     }
     override protected void AnimeEnd()
     {
         base.AnimeEnd();
-
-        AnimeAttackLongRange animeAttackLongRange = GetComponent<AnimeAttackLongRange>();
-
-
-        Destroy(animeAttackLongRange );
-
-
+    
+        useFlag = false;
     }
 
+    public override void AnimeEvent()
+    {
+        SetRocks();
+    }
     void SetRocks() 
     {
         Flag = true;
 
-        float Angle=this.transform.eulerAngles.y*3.14f/180;
-        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonLongAttack));
+        float Angle=this.GameObject.transform.eulerAngles.y*3.14f/180;
+        //audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonLongAttack));
 
         for (int i=-1;i<2;i++) 
         {

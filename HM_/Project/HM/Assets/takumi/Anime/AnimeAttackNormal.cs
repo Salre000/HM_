@@ -1,29 +1,33 @@
+using MapMagic.Locks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimeAttackNormal : AnimeBase
 {
-
-
-    const float damages = 30;
-
-    private void Awake()
+    public AnimeAttackNormal(GameObject Object, AudioSource source, Animator animator,System.Action<bool> animeFlagReset) : base(Object, source, animator ,animeFlagReset)
     {
         AddAnimeName("Armature|AttackNorml");
-        PlayerAttackDragon playerAttack =GetComponent<PlayerAttackDragon>();
-
-
 
 
     }
-    public void SetHitTest() 
+
+    public override void Start()
+    {
+        _AnimeFlagReset(false);
+        ResetFlag();
+
+    }
+    const float damages = 30;
+
+    public void SetHitTest()
     {
 
 
     }
 
-    private void FixedUpdate()
+    public override void Action()
     {
 
 
@@ -33,11 +37,9 @@ public class AnimeAttackNormal : AnimeBase
     override protected void AnimeEnd()
     {
         base.AnimeEnd();
-
-        AnimeAttackNormal animeAttackNormal = GetComponent<AnimeAttackNormal>();
-        Destroy(animeAttackNormal);
-
+        useFlag = false;
 
     }
 
 }
+

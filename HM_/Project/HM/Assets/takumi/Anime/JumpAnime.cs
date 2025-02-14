@@ -7,8 +7,15 @@ using UnityEngine;
 
 public class JumpAnime : AnimeBase
 {
+    public JumpAnime(GameObject Object, AudioSource source, Animator animator, System.Action<bool> animeFlagReset) : base(Object, source, animator, animeFlagReset)
+    {
+        AddAnimeName("Armature|jump");
 
-    const float Damages=30.0f;
+        //startClip = SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonJumpStart);
+
+    }
+
+    const float Damages = 30.0f;
 
     const float MaxTime = 0.3f;
 
@@ -23,36 +30,31 @@ public class JumpAnime : AnimeBase
 
     //Damage []damage=new Damage[3];
 
-    private void Awake()
+    public override void Start()
     {
-
-        AddAnimeName("Armature|jump");
-        PlayerAttackDragon playerAttack = GetComponent<PlayerAttackDragon>();
-
-                // 移動量と回転量を求める
+        // 移動量と回転量を求める
         float _horizontal = Input.GetAxis("Horizontal");
         float _vertical = Input.GetAxis("Vertical");
 
-        JumpAngle=Mathf.Atan2(_horizontal, _vertical)+this.transform.eulerAngles.y*3.14f/180;
+        JumpAngle = Mathf.Atan2(_horizontal, _vertical) + this.GameObject.transform.eulerAngles.y * 3.14f / 180;
 
-        startClip = SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonJumpStart);
-
-
+        ResetFlag();
     }
 
     //飛びたくない事前フレームのカウンター
     int FrameCount = 0;
-    void FixedUpdate()
+
+    public override void Action()
     {
         time += Time.deltaTime;
         FrameCount++;
         if (FrameCount < 15) return;
 
-        Vector3 Vec= new Vector3(Mathf.Sin(JumpAngle), 0.75f, Mathf.Cos(JumpAngle))/20.0f;
+        Vector3 Vec = new Vector3(Mathf.Sin(JumpAngle), 0.75f, Mathf.Cos(JumpAngle)) / 20.0f;
 
 
-        if(FrameCount<=30)
-        this.transform.position += Vec;
+        if (FrameCount <= 30)
+            this.GameObject.transform.position += Vec;
 
         AnimeUPDate();
 
@@ -60,18 +62,20 @@ public class JumpAnime : AnimeBase
 
     override protected void AnimeEnd()
     {
-        base.AnimeEnd();
+        base.AnimeEnd(); 
+        _AnimeFlagReset(false);
 
 
 
-        JumpAnime jumpAnime =this.gameObject.GetComponent<JumpAnime>();
 
 
-        if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
-            this.audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonJumpEnd));
 
 
-        Destroy(jumpAnime);
+        //if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
+        //    this.audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonJumpEnd));
+
+        useFlag = false;
 
     }
 }
+
