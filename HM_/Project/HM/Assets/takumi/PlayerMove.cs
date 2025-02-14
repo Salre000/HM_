@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     //プレイヤーの角度
     [SerializeField] private float _angle;
 
-    private string MoveAnimeName = "Armature|Move";
+    private string MoveAnimeName = "Armature|MoveSound";
 
     //角度の差
     [SerializeField] private float _angleDifference;
@@ -34,15 +34,6 @@ public class PlayerMove : MonoBehaviour
     Animator _animator;
     private PlayerAnime _anime;
 
-    public void MoveSound()
-    {
-        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, 0));
-    }
-    public void MoveVoice()
-    {
-        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, 1));
-
-    }
     void Start()
     {
         _animator = this.gameObject.GetComponent<Animator>();
