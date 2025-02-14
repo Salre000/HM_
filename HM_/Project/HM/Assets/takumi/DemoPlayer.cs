@@ -11,6 +11,14 @@ public class DemoPlayer : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    public void ResetAnime()
+    {
+
+        animator.SetTrigger("6");
+
+        time = 0;
+    }
+
     public float MaxTime=10;
 
     public float  time = 0;
@@ -24,7 +32,7 @@ public class DemoPlayer : MonoBehaviour
         {
             time = 0;
 
-            int rand=Random.Range(1, 5);
+            int rand=Random.Range(1, 6);
 
 
             switch (rand) 
