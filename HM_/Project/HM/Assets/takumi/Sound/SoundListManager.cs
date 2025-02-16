@@ -7,11 +7,11 @@ public class SoundListManager : MonoBehaviour
     [Header("各シーンのサウンドリストを入れる")]
     [SerializeField] List<SoundList> soundList;
 
-
     AudioSource _audioSource;
     AudioSource _audioSourceBGM;
 
     public static SoundListManager instance;
+
     private void Start()
     {
         _audioSource = this.transform.AddComponent<AudioSource>();
@@ -19,6 +19,7 @@ public class SoundListManager : MonoBehaviour
 
         instance = this;
         //距離をなくす
+
         _audioSource.spatialBlend = 0;
         _audioSourceBGM.spatialBlend = 0;
 

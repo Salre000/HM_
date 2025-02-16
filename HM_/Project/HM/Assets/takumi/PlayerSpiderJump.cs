@@ -3,17 +3,26 @@ using UnityEngine;
 
 public class PlayerSpiderJump : AnimeBase
 {
-    Vector3 Vec;
-    private void Awake()
+
+    public PlayerSpiderJump(GameObject Object, AudioSource source, Animator animator, System.Action<bool> animeFlagReset) : base(Object, source, animator, animeFlagReset)
     {
         AddAnimeName("Armature|Jump");
+
+
+    }
+
+    Vector3 Vec;
+    public override void Start()
+    {
+        base.Start();
+    
 
         // à⁄ìÆó Ç∆âÒì]ó ÇãÅÇﬂÇÈ
         float _horizontal = Input.GetAxis("Horizontal");
         float _vertical = Input.GetAxis("Vertical");
 
-        JumpAngle = Mathf.Atan2(_horizontal, _vertical) + this.transform.eulerAngles.y * 3.14f / 180;
-       Vec = new Vector3(Mathf.Sin(JumpAngle), 0, Mathf.Cos(JumpAngle));
+        JumpAngle = Mathf.Atan2(_horizontal, _vertical) + this.GameObject.transform.eulerAngles.y * 3.14f / 180;
+        Vec = new Vector3(Mathf.Sin(JumpAngle), 0, Mathf.Cos(JumpAngle));
         stopTime();
     }
 
@@ -28,11 +37,12 @@ public class PlayerSpiderJump : AnimeBase
     {
         await UniTask.DelayFrame(100);
 
-        End = false;    
+        End = false;
     }
 
-    void FixedUpdate()
+    public override void Action()
     {
+    
 
         if (End) return;
 
@@ -41,14 +51,16 @@ public class PlayerSpiderJump : AnimeBase
 
 
 
-        this.gameObject.transform.position += Vec / 60;
+        this.GameObject.transform.position += Vec / 60;
 
 
     }
 
-    bool End = true;   
-    void JumpStart() 
+    bool End = true;
+    public override void AnimeEvent()
     {
+        base.AnimeEvent();
+
         End = false;
     }
 
@@ -56,9 +68,7 @@ public class PlayerSpiderJump : AnimeBase
     override protected void AnimeEnd()
     {
         base.AnimeEnd();
-        PlayerSpiderJump jumpAnime = this.gameObject.GetComponent<PlayerSpiderJump>();
-
-        Destroy(jumpAnime);
+        useFlag = false;
     }
 
 
