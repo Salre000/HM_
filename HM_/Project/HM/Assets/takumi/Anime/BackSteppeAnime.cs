@@ -51,6 +51,7 @@ public class BackSteppeAnime : AnimeBase
     {
 
         base.AnimeEnd();
+        FrameCount = 0;
 
         useFlag = false;
 
