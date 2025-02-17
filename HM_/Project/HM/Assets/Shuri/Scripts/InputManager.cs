@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-
+using static DataModule;
 public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
@@ -60,11 +60,17 @@ public class InputManager : MonoBehaviour
         _filepath = Application.dataPath + "/KeyConfig.json";
         _configBasePath = Application.dataPath + "/KeyConfig_Base.json";
 
+        for (int i = 0; i < ConfigData.ButtonNum; i++)
+        {
+            data.name[i] = keys[i].keyName;
+            data.types[i] = ((int)keys[i].type).ToString();
+        }
+
         // ファイルがないとき、ファイル作成
-        if (!File.Exists(_filepath)) Save();
+        if (!File.Exists(_filepath)) Save(data,_filepath);
 
         // ファイルを読み込んでdataに格納
-        data = Load(_filepath);
+        data = Load<ConfigData>(_filepath);
 
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
@@ -123,51 +129,51 @@ public class InputManager : MonoBehaviour
         return true;
     }
 
-    // 保存
-    public void Save()
-    {
-        for (int i = 0; i < ConfigData.ButtonNum; i++)
-        {
-            data.name[i] = keys[i].keyName;
-            data.types[i] = ((int)keys[i].type).ToString();
-        }
-        // json変換
-        string json = JsonUtility.ToJson(data);
+    //// 保存
+    //public void Save()
+    //{
+    //    for (int i = 0; i < ConfigData.ButtonNum; i++)
+    //    {
+    //        data.name[i] = keys[i].keyName;
+    //        data.types[i] = ((int)keys[i].type).ToString();
+    //    }
+    //    // json変換
+    //    string json = JsonUtility.ToJson(data);
 
-        // 書き込み指定
-        StreamWriter wr = new(_filepath, false);
+    //    // 書き込み指定
+    //    StreamWriter wr = new(_filepath, false);
 
-        // 書き込み
-        wr.WriteLine(json);
+    //    // 書き込み
+    //    wr.WriteLine(json);
 
-        // ファイルを閉じる
-        wr.Close();
-    }
+    //    // ファイルを閉じる
+    //    wr.Close();
+    //}
 
-    // jsonファイル読み込み
-    private ConfigData Load(string path)
-    {
-        // 読み込み指定
-        StreamReader rd = new(path);
+    //// jsonファイル読み込み
+    //private ConfigData Load(string path)
+    //{
+    //    // 読み込み指定
+    //    StreamReader rd = new(path);
 
-        // ファイル内容全て読み込む
-        string json = rd.ReadToEnd();
+    //    // ファイル内容全て読み込む
+    //    string json = rd.ReadToEnd();
 
-        // ファイルを閉じる
-        rd.Close();
+    //    // ファイルを閉じる
+    //    rd.Close();
 
-        // jsonファイルを型に戻して返す
-        return JsonUtility.FromJson<ConfigData>(json);
-    }
+    //    // jsonファイルを型に戻して返す
+    //    return JsonUtility.FromJson<ConfigData>(json);
+    //}
 
     public void ConfigReset()
     {
-        data = Load(_configBasePath);
+        data = Load<ConfigData>(_configBasePath);
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
             keys[i].keyName = data.name[i];
             keys[i].type = (KeyType)int.Parse(data.types[i]);
         }
-        Save();
+        Save(data, _filepath);
     }
 }

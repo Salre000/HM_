@@ -12,10 +12,6 @@ public class UIManager : MonoBehaviour
 
     public float remainingTime;
 
-    public int sensibility { get; private set; } = 50;
-    public int bgmVolume { get; private set; } = 50;
-    public int seVolume { get; private set; } = 50;
-
     [SerializeField] Image _timer;
     [SerializeField] Slider _hpBar;
     [SerializeField] Image conditionImage;
@@ -76,13 +72,6 @@ public class UIManager : MonoBehaviour
         _textMeshProUGUI.text = string.Format("¥ƒnƒ“ƒ^[‚ğ4‘Ì“|‚· {0}/4", _hunterManager.GetHunterDeathAmount());
     }
 
-    public void SetSliderValue(int sensivility, int bgm, int se)
-    {
-        sensibility = sensivility;
-        bgmVolume = bgm;
-        seVolume = se;
-    }
-
     private void ChangeConditionSprite(PlayerStatus.Condition condition)
     {
         switch (condition)
@@ -101,10 +90,5 @@ public class UIManager : MonoBehaviour
     public float GetLimitTime()
     {
         return LimitTime;
-    }
-
-    public int GetSensibility()
-    {
-        return sensibility;
     }
 }

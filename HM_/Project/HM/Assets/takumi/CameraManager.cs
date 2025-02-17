@@ -26,6 +26,8 @@ public class CameraManager : MonoBehaviour
 
     [SerializeField] GameObject risuPos;
 
+    [HideInInspector] OptionData data;
+
     public float Get_CameraPositionAngle() { return _cameraPositionAngle + (180 * 3.14f / 180); }
 
     public void Add_CameraPositionAngle(float angle) { _cameraPositionAngle += angle; }
@@ -128,7 +130,7 @@ public class CameraManager : MonoBehaviour
 
         Vector3 _position = this.transform.position;
 
-        _cameraPositionAngle += (((_horizontal) * _manager.GetSensibility()) / 3.14f * 180) * 0.0001f;
+        _cameraPositionAngle += (((_horizontal) * data.sensibility) / 3.14f * 180) * 0.0001f;
 
         _range += _vertical * 0.01f;
 

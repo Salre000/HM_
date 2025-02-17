@@ -4,13 +4,14 @@ using Den.Tools;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-using static InputManager;
+using static DataModule;
 
 public class OptionManager : MonoBehaviour
 {
@@ -25,8 +26,6 @@ public class OptionManager : MonoBehaviour
     int _menuNum;
 
     private int _sliderIndex;
-
-    [SerializeField] TextAsset _option;
 
     [SerializeField] GameObject _uiPanel;
     [SerializeField] GameObject _beltText;
@@ -51,8 +50,12 @@ public class OptionManager : MonoBehaviour
     UniTask _panelMoveTask = UniTask.CompletedTask;
     UniTask _cursorMoveTask = UniTask.CompletedTask;
 
+    private string _filepath;
+
     void Start()
     {
+        _filepath = Application.dataPath + "/Option.json";
+
         _panelRect = selectPanel.GetComponent<RectTransform>();
         baseRectPos = _panelRect.anchoredPosition;
         baseRectSize = _panelRect.sizeDelta;
@@ -66,22 +69,17 @@ public class OptionManager : MonoBehaviour
 
         _cursor.anchoredPosition = new(_cursor.anchoredPosition3D.x, (1 - _sliderIndex) * 100);
 
-        //string jsonText = _option.ToString();
+        data.sensibility = data.volumeBGM = data.volumeSE = 50;
 
-        //JsonNode json = JsonNode.Parse(jsonText);
+        // ファイルがないとき、ファイル作成
+        if (!File.Exists(_filepath)) Save(data, _filepath);
 
-        //_sensibilityBar.value = float.Parse(json["sensibility"].Get<string>());
-        //_bgmBar.value = float.Parse(json["BGMvolume"].Get<string>());
-        //_seBar.value = float.Parse(json["SEvolume"].Get<string>());
+        // ファイルを読み込んでdataに格納
+        data = Load<OptionData>(_filepath);
 
         _sensibilityBar.value = data.sensibility;
         _bgmBar.value = data.volumeBGM;
         _seBar.value = data.volumeSE;
-
-        _uiManager.SetSliderValue(
-            (int)_sensibilityBar.value,
-            (int)_bgmBar.value,
-            (int)_seBar.value);
     }
 
     private async void Update()
@@ -138,11 +136,6 @@ public class OptionManager : MonoBehaviour
     {
         if (_uiPanel.activeSelf)
         {
-            _uiManager.SetSliderValue(
-                (int)_sensibilityBar.value,
-                (int)_bgmBar.value,
-                (int)_seBar.value);
-
             EventSystem.current.SetSelectedGameObject(null);
             _selected = false;
 
@@ -263,7 +256,7 @@ public class OptionManager : MonoBehaviour
 
         _selected = false;
 
-        instance.Save();
+        //instance.Save();
     }
 
     public void OnBackToTheGame()
