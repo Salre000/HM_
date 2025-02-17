@@ -7,7 +7,7 @@ public class Archrelate : WeaponBase
 {
     protected override void SetSound()
     {
-        soundListManager.PlaySound((int)Main.hunter, (int)HunterSE.ArechSE);
+        soundListManager.PlaySound((int)HunterSE.ArechSE, (int)Main.Hunter);
     }
     public override void SetEffect()
     {

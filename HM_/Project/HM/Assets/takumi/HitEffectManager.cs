@@ -42,7 +42,7 @@ public class HitEffectManager : MonoBehaviour
             {
                 HunterEffectPool[i][j] = Instantiate(HunterEffect[i],this.transform);
                 HunterEffectPool[i][j].SetActive(false);
-                HunterEffectPool[i][j].name = "hunter";
+                HunterEffectPool[i][j].name = "Hunter";
             }
         }
 

@@ -7,7 +7,7 @@ public class Hunmerrelate : WeaponBase
 {
     protected override void SetSound()
     {
-        soundListManager.PlaySound((int)Main.hunter, (int)HunterSE.HunmerAttackSE);
+        soundListManager.PlaySound((int)HunterSE.HunmerAttackSE, (int)Main.Hunter);
     }
     public override void SetEffect()
     {

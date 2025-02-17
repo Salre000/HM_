@@ -7,38 +7,39 @@ namespace SceneSound
     //タイトル画面の音の番号の列挙体
     enum Title
     {
-        system
+        System
     }
 
     //セレクト画面の音の番号の列挙体
     enum Select
     {
-        system,
+        System,
 
 
     }
-
-    enum Titlesystem
-    {
-        start,
-        anim,
-        bgm,
-    }
-
-    //enum Select
-    //{
-    //    System,
-    //}
 
     //インゲームで使う音の列挙体
     enum Main 
     {
         
-        monster,
-        system,
-        hunter
+        Monster,
+        System,
+        Hunter
     }
 
+
+    enum TitleSystem
+    {
+        Start,
+        Anim,
+        BGM,
+    }
+
+    enum SelectSystem
+    {
+        Start,
+        Change,
+    }
     enum Dragon 
     {
         DragonMove,
@@ -83,9 +84,10 @@ namespace SceneSound
 
     }
 
-    enum System
+    enum MainSystem
     {
         BGM,
+        Open,
         Decision,
     }
 

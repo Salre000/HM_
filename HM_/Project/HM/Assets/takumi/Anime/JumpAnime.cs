@@ -11,7 +11,7 @@ public class JumpAnime : AnimeBase
     {
         AddAnimeName("Armature|jump");
 
-        //startClip = SoundListManager.instance.GetAudioClip((int)Main.monster, (int)Dragon.DragonJumpStart);
+        //startClip = SoundListManager.instance.GetAudioClip((int)Main.Monster, (int)Dragon.DragonJumpStart);
 
     }
 
@@ -72,7 +72,7 @@ public class JumpAnime : AnimeBase
 
 
         //if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
-        //    this.audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.monster, (int)Dragon.DragonJumpEnd));
+        //    this.audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.Monster, (int)Dragon.DragonJumpEnd));
 
         useFlag = false;
 

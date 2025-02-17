@@ -1,3 +1,4 @@
+using SceneSound;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -26,8 +27,10 @@ public class SoundListManager : MonoBehaviour
     }
 
     //していのサウンドを再生する関数
-    public void PlaySound(int type, int index)
+    public void PlaySound( int index, int type=0)
     {
+        
+
         if (soundList[type].GetAudioSoundList().Count < index) return;
         
 
@@ -36,7 +39,7 @@ public class SoundListManager : MonoBehaviour
     }
 
     //指定のサウンドを返す関数
-    public AudioClip GetAudioClip(int type, int index)
+    public AudioClip GetAudioClip(int index, int type=0)
     {
         if (soundList[type].GetAudioSoundList().Count < index) return null;
         return soundList[type].GetAudioSound(index);

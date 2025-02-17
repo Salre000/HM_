@@ -14,7 +14,7 @@ public class NormalAttackSound : MonoBehaviour
      public void BiteSound() 
     {
 
-        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.monster,(int)Dragon.DragonBite));
+        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Dragon.DragonBite, (int)Main.Monster));
 
     }
 }

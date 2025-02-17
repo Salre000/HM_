@@ -52,7 +52,7 @@ public class AnimeAttackLongRange : AnimeBase
         Flag = true;
 
         float Angle=this.GameObject.transform.eulerAngles.y*3.14f/180;
-        //audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.monster, (int)Dragon.DragonLongAttack));
+        //audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.Monster, (int)Dragon.DragonLongAttack));
 
         for (int i=-1;i<2;i++) 
         {

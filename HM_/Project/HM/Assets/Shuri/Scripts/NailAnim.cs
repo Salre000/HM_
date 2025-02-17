@@ -29,7 +29,7 @@ public class NailAnim : MonoBehaviour
     {
         await UniTask.DelayFrame(startTime * Application.targetFrameRate);
 
-        SoundListManager.instance.PlaySound(0, (int)Title.anim);
+        SoundListManager.instance.PlaySound((int)TitleSystem.Anim);
 
         while (true)
         {

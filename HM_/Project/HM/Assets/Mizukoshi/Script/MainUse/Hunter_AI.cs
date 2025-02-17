@@ -29,6 +29,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // アニメーションの状態
     AnimatorStateInfo animationState;
 
+    [SerializeField]
     // アニメーションコントローラー
     private Animator _animator;
 
@@ -48,7 +49,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public int HP = 100;
 
-    private float speed=0.5f;
+    private float speed = 0.5f;
 
     // 待機時間
     private float waitSecond = 1.0f;
@@ -84,6 +85,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     static PlayerAttack playerAttack;
 
+    
     protected enum eStatus
     {
         None,
@@ -113,9 +115,9 @@ public abstract class Hunter_AI : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
-         Initialize();
+        Initialize();
         _agent.destination = _monster.transform.position;
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -131,10 +133,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void Update()
     {
-        if (CheckAttackDistance(this.gameObject))
-        {
-            Attack();
-        }
+        Debug.Log(Vector3.Distance(_monster.transform.position, this.transform.position));
 
         WaitAttackCoolTime();
 
@@ -157,8 +156,10 @@ public abstract class Hunter_AI : MonoBehaviour
             }
         }
 
+        TurnMonser();
+
         // 攻撃できる距離にいないなら
-        if (!CheckAttackDistance(_attackDistance, this.gameObject))
+        if (!CheckAttackDistance(this.gameObject))
         {
             // 攻撃中ならスキップ
             if (CheckAttack()) return;
@@ -166,21 +167,25 @@ public abstract class Hunter_AI : MonoBehaviour
             return;
         }
 
+        // 攻撃準備ができているのならば
         if (attackReady)
         {
+            // 攻撃
             Attack();
         }
         else
         {
+            if (CheckAttack()) return;
+
             // 少し距離をとる。
-            Back();
+            //Back();
         }
 
     }
     //------------------------------------------------
     //                    処理
     //------------------------------------------------
-   
+
     void Initialize()
     {
         // モンスターのタグ取得
@@ -191,7 +196,7 @@ public abstract class Hunter_AI : MonoBehaviour
         hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
         status = eStatus.None;
         _agent = GetComponent<NavMeshAgent>();
-        _agent.speed=speed;
+        _agent.speed = speed;
         if (CloclWise)
         {
             _agent.destination = searchPosition[searchPosition.Length - 1];
@@ -199,16 +204,16 @@ public abstract class Hunter_AI : MonoBehaviour
         else { _agent.destination = searchPosition[0]; }
         _trapList = SpiderTrapPool.instance?.GetTraps();
         myCollider = GetComponent<Collider>();
-        playerAttack=GameObject.FindAnyObjectByType<PlayerAttack>();
+        playerAttack = GameObject.FindAnyObjectByType<PlayerAttack>();
     }
-    
+
     /// <summary>
     /// 目的地の設定
     /// </summary>
     /// <param name="pos"></param>
     public void SetDestination(Vector3 pos)
     {
-        if(!CheckNavmeshEnable())return;
+        if (!CheckNavmeshEnable()) return;
         _agent.destination = pos;
     }
 
@@ -228,7 +233,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // モンスターの発見した時に呼ぶ関数
     public void DisappearMonster()
     {
-        if(manager==null) return;
+        if (manager == null) return;
         manager.SetDisapper();
     }
 
@@ -264,7 +269,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // モンスターとの距離を確認
     private float GetMonstersDistance()
     {
-        return Vector3.Distance(_monster.transform.position,this.transform.position);
+        return Vector3.Distance(_monster.transform.position, this.transform.position);
     }
     /// <summary>
     /// 距離を確認する関数
@@ -320,7 +325,7 @@ public abstract class Hunter_AI : MonoBehaviour
         Vector3 lookDir = transform.TransformDirection(Vector3.forward).normalized;
 
         Debug.DrawRay(startPos, playerToTarget, Color.red, _viewLength);
-        Debug.DrawRay(startPos,lookDir, Color.blue, _viewLength);
+        Debug.DrawRay(startPos, lookDir, Color.blue, _viewLength);
     }
 
 
@@ -352,7 +357,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     protected void WaitAttackCoolTime()
     {
-        if(attackReady)return;
+        if (attackReady) return;
         coolTime += Time.deltaTime;
         if (coolTime > _attackCoolTime)
         {
@@ -383,8 +388,8 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private bool CheckAttack()
     {
-        animationState=GetAnimState();
-        if(animationState.IsName("アーマチュア|Attack1"))return true;
+        animationState = GetAnimState();
+        if (animationState.IsName("アーマチュア|Attack1")) return true;
         return false;
     }
 
@@ -443,13 +448,14 @@ public abstract class Hunter_AI : MonoBehaviour
     protected Vector3 GetBackPosition()
     {
         Vector3 dir = this.transform.position - _monster.transform.position;
-        dir *= 3;
+        dir.Normalize();
+        dir *= 5;
         float offsetX = dir.x;
         float offsetY = dir.y;
         float offsetZ = dir.z;
-        Vector3 newPos = GetMonster().transform.position;
+        Vector3 newPos = this.transform.position;
         Vector3 offset = new Vector3(offsetX, offsetY, offsetZ);
-        offset = GetMonster().transform.rotation * offset;
+        offset = this.transform.rotation * offset;
         newPos = newPos + offset;
         return newPos;
     }
@@ -459,10 +465,10 @@ public abstract class Hunter_AI : MonoBehaviour
     /// <returns></returns>
     bool CheckAvoid()
     {
-        animationState=GetAnimState();
+        animationState = GetAnimState();
 
         // 回避アニメーションかどうか
-        if(animationState.IsName("アーマチュア|Avoid") && animationState.normalizedTime >= 0.5f && animationState.normalizedTime < 0.8)
+        if (animationState.IsName("アーマチュア|Avoid") && animationState.normalizedTime >= 0.5f && animationState.normalizedTime < 0.8)
         {
             return true;
         }
@@ -480,19 +486,20 @@ public abstract class Hunter_AI : MonoBehaviour
     public void Attack()
     {
         // ナビメーションによる移動をなくす。
-        SetOffNavmesh();
+        //SetOffNavmesh();
         if (attackReady)
         {
             AttackAnimation();
             attackReady = false;
         }
+
     }
     /// <summary>
     /// 追跡関数
     /// </summary>
     public virtual void Chase()
     {
-       SetDestination(_monster.transform.position);
+        
     }
 
     public void Run()
@@ -511,7 +518,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// </summary>
     public void Back()
     {
-        _agent.destination=GetBackPosition();
+        SetDestination(GetBackPosition());
     }
 
     public void Death()
@@ -593,12 +600,12 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void StartAttack()
     {
-        _animator.SetBool("Attack",true);
+        _animator.SetBool("Attack", true);
     }
 
     public void FinishAttack()
     {
-        _animator.SetBool("Attack",false);
+        _animator.SetBool("Attack", false);
     }
 
     // 走るアニメーション再生関数
@@ -650,12 +657,12 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public void SetNavmesh()
     {
-       if(!_agent.enabled)_agent.enabled = true;
+        if (!_agent.enabled) _agent.enabled = true;
     }
 
     public void SetOffNavmesh()
     {
-        if(_agent.enabled)_agent.enabled = false;
+        if (_agent.enabled) _agent.enabled = false;
     }
 
     // ナビメッシュが有効かどうかを確認
