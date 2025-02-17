@@ -5,24 +5,33 @@ using UnityEngine;
 namespace SceneSound 
 {
     //タイトル画面の音の番号の列挙体
-    enum Title 
+    enum Title
     {
-
-        system,
-
-
+        system
     }
 
     //セレクト画面の音の番号の列挙体
-    enum Select 
+    enum Select
     {
         system,
 
 
     }
 
+    enum Titlesystem
+    {
+        start,
+        anim,
+        bgm,
+    }
+
+    //enum Select
+    //{
+    //    System,
+    //}
+
     //インゲームで使う音の列挙体
-    enum main 
+    enum Main 
     {
         
         monster,
@@ -89,7 +98,5 @@ namespace SceneSound
        SpearSE,
        HunmerAttackSE,
     }
-
-
 
 }

@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,15 +39,33 @@ public class SceneChanger : MonoBehaviour
         switch (_nowScene)
         {
             case GameScene.Title:
+                // SEの再生
+                SoundListManager.instance.PlaySound(0, (int)Title.start);
+                
+                // フェードアウト
                 await FadeManager.instance.FadeOutAlpha();
+
+                // アニメーションのキャンセル
                 NailAnim anim = GameObject.Find("Nail").GetComponent<NailAnim>();
                 anim.AnimCancel();
+
+                // SEの再生が終わるまで待機
+                await UniTask.Delay((int)SoundListManager.instance.GetAudioClip(,(int)Title.start).length * 1000);
+                
+                // シーンの読み込み
                 await SceneManager.LoadSceneAsync(sceneName);
+                
+                // フェードイン
                 await FadeManager.instance.FadeInAlpha();
                 break;
             case GameScene.Select:
+                // フェードアウト
                 await FadeManager.instance.FadeOutSlide();
+
+                // シーンの読み込み
                 await SceneManager.LoadSceneAsync(sceneName);
+
+                // フェードイン
                 await FadeManager.instance.FadeInSlide();
                 break;
             case GameScene.MainDragon:
