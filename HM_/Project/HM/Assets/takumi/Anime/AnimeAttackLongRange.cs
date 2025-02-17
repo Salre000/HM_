@@ -26,7 +26,8 @@ public class AnimeAttackLongRange : AnimeBase
     }
     public override void Start()
     {
-        _AnimeFlagReset(false);
+
+        ResetFlag();
     }
 
 
