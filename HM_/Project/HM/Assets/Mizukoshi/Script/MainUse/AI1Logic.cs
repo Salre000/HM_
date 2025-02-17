@@ -34,4 +34,9 @@ public class AI1Logic :Hunter_AI
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);    
    }
+
+    public override void Chase()
+    {
+        SetDestination(GetMonsterFrontPosition());
+    }
 }

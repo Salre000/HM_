@@ -27,8 +27,14 @@ public class AI4Logic : Hunter_AI
     {
         base.Start();
         SetAttackCoolTime(attackCoolTime);
+        SetAttackDistance(attackDistance);
         SetAvoidRatio(avoidRatio);
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);
+    }
+
+    public override void Chase()
+    {
+        SetDestination(GetMonster().transform.position);
     }
 }
