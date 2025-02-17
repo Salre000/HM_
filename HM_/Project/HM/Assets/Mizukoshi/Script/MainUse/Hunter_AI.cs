@@ -605,7 +605,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public void FinishAttack()
     {
-        _animator.SetBool("Attack", false);
+        //_animator.SetBool("Attack", false);
     }
 
     // 走るアニメーション再生関数
