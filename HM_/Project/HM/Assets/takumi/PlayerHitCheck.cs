@@ -57,7 +57,7 @@ public class PlayerHitCheck : MonoBehaviour
 
 
 
-            SoundListManager.instance.GetAudioClip((int)main.monster, (int)Dragon.DragonAttackHit);
+            SoundListManager.instance.GetAudioClip((int)Main.monster, (int)Dragon.DragonAttackHit);
 
 
             if (other == null) 

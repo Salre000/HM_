@@ -11,6 +11,6 @@ public class ST : MonoBehaviour
 
     private void Start()
     {
-        soundListManager.PlaySound((int)main.hunter, (int)HunterSE.WalkSE);
+        soundListManager.PlaySound((int)Main.hunter, (int)HunterSE.WalkSE);
     }
 }

@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using SceneSound;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +28,8 @@ public class NailAnim : MonoBehaviour
     private async UniTask Anim(CancellationToken token)
     {
         await UniTask.DelayFrame(startTime * Application.targetFrameRate);
+
+        SoundListManager.instance.PlaySound(0, (int)Title.anim);
 
         while (true)
         {

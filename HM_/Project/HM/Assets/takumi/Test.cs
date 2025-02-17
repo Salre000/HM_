@@ -22,11 +22,11 @@ public class Test : MonoBehaviour
 //    void Update()
 //    {
 
-//        if(Input.GetKeyDown(KeyCode.LeftArrow))audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, 0));
-//        if(Input.GetKeyDown(KeyCode.RightArrow))audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, 1));
-//        if(Input.GetKeyDown(KeyCode.UpArrow))audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, 3));
-//        if(Input.GetKeyDown(KeyCode.DownArrow))audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, 2));
+//        if(Input.GetKeyDown(KeyCode.LeftArrow))audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.monster, 0));
+//        if(Input.GetKeyDown(KeyCode.RightArrow))audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.monster, 1));
+//        if(Input.GetKeyDown(KeyCode.UpArrow))audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.monster, 3));
+//        if(Input.GetKeyDown(KeyCode.DownArrow))audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.monster, 2));
 
-//        //audioSource.clip=SoundListManager.instance.GetAudioClip((int)main.monster,i)
+//        //audioSource.clip=SoundListManager.instance.GetAudioClip((int)Main.monster,i)
 //    }
 //}

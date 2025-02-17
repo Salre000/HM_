@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,34 +40,38 @@ public class DemoPlayer : MonoBehaviour
             {
                  
                 case 1:
-                    animator.SetBool("1", true);
+                    animator.SetBool("1", true); DexireiFrame();
                     break;
                 case 2:
-                    animator.SetBool("2", true);
+                    animator.SetBool("2", true); DexireiFrame();
                     break;
                 case 3:
-                    animator.SetBool("3", true);
+                    animator.SetBool("3", true); DexireiFrame();
                     break;
                 case 4:
-                    animator.SetBool("4", true);
+                    animator.SetBool("4", true); DexireiFrame();
                     break;
                 case 5:
-                    animator.SetBool("5", true);
+                    animator.SetBool("5", true); DexireiFrame();
                     break;
 
 
             }
 
         }
-        else if(time>1)
-        {
-            animator.SetBool("1", false);
-            animator.SetBool("2", false);
-            animator.SetBool("3", false);
-            animator.SetBool("4", false);
-            animator.SetBool("5", false);
 
-        }
+    }
+
+    private async UniTask DexireiFrame() 
+    {
+        await UniTask.DelayFrame(1);
+        animator.SetBool("1", false);
+        animator.SetBool("2", false);
+        animator.SetBool("3", false);
+        animator.SetBool("4", false);
+        animator.SetBool("5", false);
+
+
 
 
     }

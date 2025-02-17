@@ -123,7 +123,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void NormalVoice() 
     {
-        _audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)main.monster, 3));
+        _audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.monster, 3));
 
 
     }

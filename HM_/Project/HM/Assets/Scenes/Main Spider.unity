@@ -5332,6 +5332,14 @@ PrefabInstance:
       propertyPath: _manager
       value: 
       objectReference: {fileID: 146294604}
+    - target: {fileID: 6801594656135392137, guid: 7afa8793cc482854c9826ecae80ef398, type: 3}
+      propertyPath: m_Size.x
+      value: 5.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801594656135392137, guid: 7afa8793cc482854c9826ecae80ef398, type: 3}
+      propertyPath: m_Size.z
+      value: 6.88
+      objectReference: {fileID: 0}
     - target: {fileID: 6801594656264373225, guid: 7afa8793cc482854c9826ecae80ef398, type: 3}
       propertyPath: m_Name
       value: GameKumo
@@ -8835,6 +8843,10 @@ PrefabInstance:
     - target: {fileID: 4871138377209748040, guid: b55bef1e92efee84b89e2459e6138f59, type: 3}
       propertyPath: m_Name
       value: Saberver1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871138377209748040, guid: b55bef1e92efee84b89e2459e6138f59, type: 3}
+      propertyPath: m_TagString
+      value: Hunter
       objectReference: {fileID: 0}
     - target: {fileID: 5247276475289977074, guid: b55bef1e92efee84b89e2459e6138f59, type: 3}
       propertyPath: m_RootOrder

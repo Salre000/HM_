@@ -12,6 +12,6 @@ public class SwordRelate : WeaponBase
 
     protected override void SetSound()
     {
-        //soundListManager.PlaySound((int)main.hunter, (int)HunterSE.SwordAttackSE);
+        //soundListManager.PlaySound((int)Main.hunter, (int)HunterSE.SwordAttackSE);
     }
 }
