@@ -66,17 +66,14 @@ public class OptionManager : MonoBehaviour
 
         _cursor.anchoredPosition = new(_cursor.anchoredPosition3D.x, (1 - _sliderIndex) * 100);
 
-        //string jsonText = _option.ToString();
+        string jsonText = _option.ToString();
 
-        //JsonNode json = JsonNode.Parse(jsonText);
+        JsonNode json = JsonNode.Parse(jsonText);
 
-        //_sensibilityBar.value = float.Parse(json["sensibility"].Get<string>());
-        //_bgmBar.value = float.Parse(json["BGMvolume"].Get<string>());
-        //_seBar.value = float.Parse(json["SEvolume"].Get<string>());
+        _sensibilityBar.value = float.Parse(json["sensibility"].Get<string>());
+        _bgmBar.value = float.Parse(json["BGMvolume"].Get<string>());
+        _seBar.value = float.Parse(json["SEvolume"].Get<string>());
 
-        _sensibilityBar.value = data.sensibility;
-        _bgmBar.value = data.volumeBGM;
-        _seBar.value = data.volumeSE;
 
         _uiManager.SetSliderValue(
             (int)_sensibilityBar.value,

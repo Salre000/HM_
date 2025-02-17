@@ -1629,6 +1629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e8dd17e8b33114d804f43dd09696f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
   selectPanel: {fileID: 1660595296}
   menuIndex: 1
   _option: {fileID: 4900000, guid: b824ef380a498fc4fae1ce12e2479516, type: 3}
@@ -4443,6 +4444,7 @@ PrefabInstance:
     - {fileID: 8281536527324762479, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
     - {fileID: 3360930196117867584, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
     - {fileID: 3115370620048113510, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+    - {fileID: 3115370620048113511, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
 --- !u!1 &299911649 stripped
 GameObject:
