@@ -11,76 +11,78 @@ public class PlayerAttackSpider : PlayerAttack
 
     protected override int BarkJump()
     {
-        PlayerSpiderJump playerSpiderJump = this.GetComponent<PlayerSpiderJump>();
-        if (playerSpiderJump == null)
-        {
-            playerSpiderJump = this.AddComponent<PlayerSpiderJump>();
 
-            return 1;
+        nowMode = actionMode.jump;
+        AnimeBase.useFlag = true;
+        anime[(int)nowMode].Start();
 
 
-
-        }
-        return -1;
+        return 1;
     }
 
     protected override int Jump()
     {
-        PlayerSpiderJump playerSpiderJump = this.GetComponent<PlayerSpiderJump>();
-        if (playerSpiderJump == null)
-        {
-            playerSpiderJump = this.AddComponent<PlayerSpiderJump>();
+        nowMode = actionMode.jump;
+        AnimeBase.useFlag = true;
+        anime[(int)nowMode].Start();
+
+        return 1;
 
 
-            return 1;
-
-
-        }
-        return -1;
     }
 
     protected override int LTAttack()
     {
-        PlayerSpiderTrap playerSpiderTrap = this.GetComponent<PlayerSpiderTrap>();
-        if (playerSpiderTrap == null)
-        {
+        nowMode = actionMode.skill;
+        AnimeBase.useFlag = true;
+        anime[(int)nowMode].Start();
 
-            playerSpiderTrap = this.AddComponent<PlayerSpiderTrap>();
-            return 1;
+        return 1;
 
-        }
-        return -1;
     }
 
     protected override int LTRTAttack()
     {
-        CaptorAttackSpider Anime = this.GetComponent<CaptorAttackSpider>();
+        nowMode = actionMode.special;
+        AnimeBase.useFlag = true;
+        anime[(int)nowMode].Start();
 
-        if (Anime == null)
-        {
-           // _status.PlaySound(SoundListManager.instance.GetAudioClip((int)main.Spider,(int)Spider.SpiderAttackHIt));
-
-            SoundListManager.instance.PlaySound((int)main.monster, (int)Spider.SpiderAttackHIt);
-
-            Anime = this.AddComponent<CaptorAttackSpider>();
-
-            Anime.SetUp(CaptorPosition,this);
-            return 1;
-
-
-        }
-        return -1;
-
+        return 1;
 
     }
 
     protected override int RTAttack()
     {
+
+        nowMode = actionMode.normal;
+        AnimeBase.useFlag = true;
+        anime[(int)nowMode].Start();
+
         return 1;
 
     }
 
-    private void Awake()
+    public void Start()
     {
+        AudioSource source = GetComponent<AudioSource>();
+        Animator animator = GetComponent<Animator>();
+        anime[(int)actionMode.skill] = new PlayerSpiderTrap(this.gameObject, source, animator, _anime.SetLoanAttackFlag);
+        anime[(int)actionMode.normal] = new AnimeBase(this.gameObject, source, animator, _anime.SetAttackFlag);
+        anime[(int)actionMode.special] = new CaptorAttackSpider(this.gameObject, source, animator, _anime.SetRoarFlag, ChengeJumpAnime, CaptorPosition);
+        anime[(int)actionMode.jump] = new PlayerSpiderJump(this.gameObject, source, animator, _anime.SetJumpFlag);
+        anime[(int)actionMode.backJump] = new PlayerSpiderJump(this.gameObject, source, animator, _anime.SetBackSteppeFlag);
+
+
+
     }
+
+    void ChengeJumpAnime() 
+    {
+        nowMode = actionMode.jump;
+        anime[(int)nowMode].Start();
+
+        _anime.SetJumpFlag(true);
+
+    }
+
 }

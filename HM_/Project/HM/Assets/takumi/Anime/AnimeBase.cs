@@ -4,8 +4,36 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
-public class AnimeBase : MonoBehaviour
+public class AnimeBase
 {
+
+    public static bool useFlag = false; 
+    protected System.Action<bool> _AnimeFlagReset;
+
+    public AnimeBase(GameObject Object,AudioSource source,Animator animator,System.Action<bool> animeFlagReset) 
+    {
+
+        audioSource = source;
+
+        _animator = animator;
+
+        this.GameObject = Object;
+
+        _AnimeFlagReset = animeFlagReset;
+
+
+
+    }
+
+    protected async UniTask ResetFlag() 
+    {
+
+
+        await UniTask.DelayFrame(10);
+
+        _AnimeFlagReset(false);
+    } 
+
 
     protected Animator _animator;
 
@@ -15,7 +43,7 @@ public class AnimeBase : MonoBehaviour
 
     private System.Func<int> EndAnimation;
 
-    private GameObject GameObject;
+    protected GameObject GameObject;
    
     public void SetEndAnimation(System.Func<int> EndAnimation) { this.EndAnimation = EndAnimation; }
 
@@ -26,30 +54,14 @@ public class AnimeBase : MonoBehaviour
     protected AudioSource audioSource;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
-        _animator = this.gameObject.GetComponent<Animator>();
-        this.GameObject = this.gameObject;
-        audioSource=GetComponent<AudioSource>();
-
         if(startClip != null)audioSource.PlayOneShot(startClip);
-       // DestroyThis();
     }
+   
 
+    public virtual void Action() { }
 
-
-    async UniTask DestroyThis()
-    {
-
-
-        await UniTask.WaitForSeconds(10);
-
-
-
-        AnimeBase animeBase = this.GameObject.GetComponent<AnimeBase>();
-
-     
-    }
     float TimeCount = 0;
     // Update is called once per frame
     protected void AnimeUPDate()
@@ -60,7 +72,8 @@ public class AnimeBase : MonoBehaviour
 
         string NowAnime = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
-        
+
+        Debug.Log(NowAnime + "SSS");
 
         //何かの理由でアニメーションが終了したとき
         if (!_AnimeName.Contains(NowAnime))
@@ -73,6 +86,8 @@ public class AnimeBase : MonoBehaviour
 
 
     }
+
+    virtual public void AnimeEvent() { }
 
     virtual protected void AnimeEnd()
     {

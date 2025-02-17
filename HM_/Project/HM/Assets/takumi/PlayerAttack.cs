@@ -42,12 +42,20 @@ public abstract class PlayerAttack : MonoBehaviour
     public Tag GetTag() { return TagBox; }
 
     [SerializeField] protected AnimeBase nowAnime = null;
-    void Start()
+    void Awake()
     {
         _anime = GetComponent<PlayerAnime>();
         _status = GetComponent<PlayerStatus>();
 
+        
         Application.targetFrameRate = 60;
+    }
+
+    protected async UniTask ResetFlag(System.Action<bool> action) 
+    {
+        await UniTask.DelayFrame(10);
+        action(false);
+
     }
 
 
@@ -59,24 +67,49 @@ public abstract class PlayerAttack : MonoBehaviour
 
     public bool IsCapFlag = false;
     public void IsCap() { _anime.SetRoarFlag(true);}
+
+    protected enum actionMode 
+    {
+        normal,
+        skill,
+        special,
+        jump,
+        backJump,
+        max
+
+
+    }
+    [SerializeField]protected actionMode nowMode = actionMode.normal;
+    [SerializeField]protected AnimeBase []anime=new AnimeBase[(int)actionMode.max];
+
+    public void NowAnimeEvent() 
+    {
+        anime[(int)nowMode].AnimeEvent();
+
+
+    }
+
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.DrawRay(this.transform.position, new Vector3(Mathf.Sin(this.transform.eulerAngles.y * Mathf.Deg2Rad), 0, Mathf.Cos(this.transform.eulerAngles.y * Mathf.Deg2Rad)));
+
+        if (AnimeBase.useFlag) 
+        {
+
+            anime[(int)nowMode].Action();
+
+            return;
+        }
+
         //遠距離攻撃をするボタン
-        if (instance.IsOnButton(instance.keys[(int)InputKeys.LT]))
+        if (instance.IsOnButton(InputKeys.LT))
         {
             if (LTAttack() > 0) _anime.SetLoanAttackFlag(true);
 
         }
-        else
-        {
-            _anime.SetLoanAttackFlag(false);
-
-        }
-
         //攻撃をするボタン
-        if (instance.IsOnButton(instance.keys[(int)InputKeys.RT]))
+        if (instance.IsOnButton(InputKeys.RT))
         {
 
             _anime.SetAttackFlag(true);
@@ -90,7 +123,7 @@ public abstract class PlayerAttack : MonoBehaviour
         }
 
         //LR同時押し
-        if ((instance.IsOnButton(instance.keys[(int)InputKeys.RB]) && instance.IsOnButton(instance.keys[(int)InputKeys.LB]) && ULTFlag) || IsCapFlag)
+        if ((instance.IsOnButton(InputKeys.RB) && instance.IsOnButton(InputKeys.LB) && ULTFlag) || IsCapFlag)
         {
             if (LTRTAttack() > 0) _anime.SetRoarFlag(true);
             Debug.Log("Anime");
@@ -101,7 +134,7 @@ public abstract class PlayerAttack : MonoBehaviour
         }
 
         //前ジャンプ
-        if (Input.GetAxis("Vertical") >= -0.3f && instance.IsOnButton(instance.keys[(int)InputKeys.A]) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
+        if (Input.GetAxis("Vertical") >= -0.3f && instance.IsOnButton(InputKeys.A) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
         {
             if (Jump() > 0) _anime.SetJumpFlag(true);
 
@@ -113,7 +146,7 @@ public abstract class PlayerAttack : MonoBehaviour
         }
 
         //バックジャンプ
-        if (Input.GetAxis("Vertical") < -0.3f && instance.IsOnButton(instance.keys[(int)InputKeys.A]) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
+        if (Input.GetAxis("Vertical") < -0.3f && instance.IsOnButton(InputKeys.A) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
         {
             if (BarkJump() > 0) _anime.SetBackSteppeFlag(true);
 

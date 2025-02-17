@@ -1,34 +1,41 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static InputManager;
 
 public class CaptorAttackSpider : AnimeBase
 {
-    private GameObject CaptorPosition;
-    private GameObject CaptorTarget;
-    private PlayerAttackSpider PlayerAttackSpider;
-    private CaptorHunter CaptorHunter;
-    Hunter_AI TargetHunter = null;
-    private HPManager HPManager = null;
-    public void SetUp(GameObject SetCaptor, PlayerAttackSpider playerAttack)
-    {
 
-        PlayerAttackSpider = playerAttack;
-        CaptorPosition = SetCaptor;
-        CaptorHunter = CaptorPosition.GetComponent<CaptorHunter>();
-        CaptorHunter.SetGameObject(SetTarget);
-        HPManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
-
-
-    }
-    private void Awake()
+    System.Action _NestJump;
+    //このアクションは拘束攻撃を辞めるアクション二つめはジャンプに切り替えるアクション
+    public CaptorAttackSpider(GameObject Object, AudioSource source, Animator animator,
+        System.Action<bool> animeFlagReset, System.Action nestJump, GameObject setPosition)
+        : base(Object, source, animator, animeFlagReset)
     {
         AddAnimeName("Armature|RestraintAttackStart");
         AddAnimeName("Armature|RestraintAttackSuccess");
         AddAnimeName("Armature|RestraintAttackLoop");
 
+        CaptorPosition = setPosition;
+        HPManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
+        CaptorHunter = CaptorPosition.GetComponent<CaptorHunter>();
+        CaptorHunter.SetGameObject(SetTarget);
+        _NestJump = nestJump;
+
     }
+
+    public override void Start()
+    {
+        base.Start();
+        eventNumber = 0;
+    }
+    private GameObject CaptorPosition;
+    private GameObject CaptorTarget;
+    private CaptorHunter CaptorHunter;
+    Hunter_AI TargetHunter = null;
+    private HPManager HPManager = null;
 
     public void SetCaptorObject(GameObject gameObject) { CaptorTarget = gameObject; }
 
@@ -49,19 +56,28 @@ public class CaptorAttackSpider : AnimeBase
     }
     public void CheckHitHunter()
     {
-        if (CaptorTarget != null)
+        if (CaptorTarget == null)
         {
-            PlayerAttackSpider.IsCapFlag = true;
-            PlayerAttackSpider.IsCap();
+            _AnimeFlagReset(false);
         }
-        else
-        {
-            PlayerAttackSpider.SetULTFLag(false);
-        }
-
 
     }
+    int eventNumber = 0;
+    public override void AnimeEvent()
+    {
+        switch (eventNumber)
+        {
 
+            case 0:
+                StartCaptor();
+                break;
+            case 1:
+                CheckHitHunter();
+                break;
+        }
+
+        eventNumber++;
+    }
     private void SetTarget(GameObject gameObject)
     {
 
@@ -79,11 +95,13 @@ public class CaptorAttackSpider : AnimeBase
 
     }
 
-    void FixedUpdate()
+    public override void Action()
     {
         AnimeUPDate();
 
-        if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Armature|RestraintAttackLoop" && this.PlayerAttackSpider.IsCapFlag) this.PlayerAttackSpider.IsCapFlag = false;
+        if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Armature|RestraintAttackLoop" && !instance.IsOnButton(InputKeys.RT))
+            _AnimeFlagReset(false);
+
 
         //掴んでいるハンターが死んでいるかを判断
         if (TargetHunter == null) return;
@@ -94,24 +112,29 @@ public class CaptorAttackSpider : AnimeBase
 
         if (hunter.GetHunterID() != HPManager.GetHunterLostNumber()) return;
 
-      // if(TargetHunter?.GetComponent<Hunter_AI>()?.GetHunterID()==HPManager.GetHunterLostNumber())
-        this.PlayerAttackSpider.IsCapFlag =false ;
-    
+
     }
+
     override protected void AnimeEnd()
     {
         base.AnimeEnd();
 
-        this.PlayerAttackSpider.IsCapFlag = false;
-       CaptorAttackSpider Anime = this.gameObject.GetComponent<CaptorAttackSpider>();
 
         if ("Armature|Jump" == _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name)
-            this.gameObject.AddComponent<PlayerSpiderJump>();
+        {
+            _NestJump();
+        }
+        else
+        {
+            useFlag = false;
+        }
 
         EndTarget();
+
         if (TargetHunter != null)
             TargetHunter.StopRestraining();
 
-        Destroy(Anime);
+
+
     }
 }

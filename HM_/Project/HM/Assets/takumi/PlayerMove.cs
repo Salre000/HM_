@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     //プレイヤーの角度
     [SerializeField] private float _angle;
 
-    private string MoveAnimeName = "Armature|MoveSound";
+    [SerializeField]private string MoveAnimeName = "Armature|Move";
 
     //角度の差
     [SerializeField] private float _angleDifference;
@@ -59,6 +59,7 @@ public class PlayerMove : MonoBehaviour
     {
 
         string NowAnime = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        Debug.Log(NowAnime + "SSS");
 
         pos = Vector3.zero;
         _horizontal = _vertical = 0;
@@ -79,7 +80,10 @@ public class PlayerMove : MonoBehaviour
 
         if (_horizontal == 0 && _vertical == 0) return;
 
-        if (NowAnime == "Armature|Moves" || NowAnime == "Armature|AttackMove" || NowAnime == "Armature|AttackMoveLoops" || NowAnime == MoveAnimeName) { }
+        if (NowAnime == "Armature|Moves" || NowAnime == "Armature|AttackMove" || NowAnime == "Armature|AttackMoveLoops" || NowAnime == MoveAnimeName) 
+        {
+            int sss = 0;
+        }
         else { _horizontal = 0; _vertical = 0; }
         // Debug.Log(NowAnime);
 

@@ -5,6 +5,16 @@ using UnityEngine;
 
 public class PlayerSpiderTrap : AnimeBase
 {
+
+    public PlayerSpiderTrap(GameObject Object, AudioSource source, Animator animator, System.Action<bool> animeFlagReset) : base(Object, source, animator, animeFlagReset)
+    {
+        AddAnimeName("Armature|CreateTrap");
+
+
+
+
+    }
+
     float StartAngle = 0;
 
     const int MaxSize = 30;
@@ -14,32 +24,29 @@ public class PlayerSpiderTrap : AnimeBase
     GameObject TrapObject = null;
     SpiderTrap Trap = null;
 
-    private void Awake()
+    public override void Start()
     {
-        AddAnimeName("Armature|CreateTrap");
+        base.Start();
 
-        StartAngle=this.transform.eulerAngles.y;
+        StartAngle = this.GameObject.transform.eulerAngles.y;
 
         //íwÂÅÇÃëÉÇê∂ê¨Ç∑ÇÈ
-        TrapObject=SpiderTrapPool.instance.SetTarp();
+        TrapObject = SpiderTrapPool.instance.SetTarp();
 
         if (TrapObject == null) { AnimeEnd(); return; }
-        Trap=TrapObject.GetComponent<SpiderTrap>();
+        Trap = TrapObject.GetComponent<SpiderTrap>();
 
 
         // UnitaskÇ≈0.5ïbÇ≤Ç∆Ç…íwÂÅÇÃëÉÇÃÉTÉCÉYÇçLÇ∞ÇÈ
-        task= Times();
-
-
-
-        int i = 0;
+        task = Times();
 
     }
-    bool Flag=true;
+    bool Flag = true;
     UniTask task;
-    void FixedUpdate()
+    public override void Action()
     {
         AnimeUPDate();
+        if (!InputManager.instance.IsOnButton(InputManager.InputKeys.LT)) _AnimeFlagReset(false);
 
     }
 
@@ -47,23 +54,29 @@ public class PlayerSpiderTrap : AnimeBase
     {
         base.AnimeEnd();
 
-        PlayerSpiderTrap TrapAnime = this.gameObject.GetComponent<PlayerSpiderTrap>();
+        _AnimeFlagReset(false);
+
         Flag = false;
-        Destroy(TrapAnime);
+
+        useFlag = false;
+
     }
 
-    async UniTask Times() 
+
+    async UniTask Times()
     {
 
-        while (Flag) 
+        while (Flag)
         {
 
 
-        TrapObject.transform.localScale += Vector3.one;
+            TrapObject.transform.localScale += Vector3.one;
 
+            TrapObject.GetComponent<SpiderTrap>().ResetTime();
 
+            await UniTask.DelayFrame(Application.targetFrameRate / 2);
 
-            await UniTask.DelayFrame(Application.targetFrameRate/2);
+            if (TrapObject.transform.localScale.x >= MaxSize) break;
         }
 
 

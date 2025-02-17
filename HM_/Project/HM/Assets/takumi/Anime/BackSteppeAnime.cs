@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class BackSteppeAnime : AnimeBase
 {
+    public BackSteppeAnime(GameObject Object, AudioSource source, Animator animator, System.Action<bool> animeFlagReset) : base(Object, source, animator, animeFlagReset)
+    {
+        AddAnimeName("Armature|BackSteppe");
+
+
+
+    }
+
 
 
     const float MaxTime = 0.2f;
@@ -12,16 +20,18 @@ public class BackSteppeAnime : AnimeBase
 
     float JumpAngle;
 
-    private void Awake()
+    public override void Start()
     {
-        AddAnimeName("Armature|BackSteppe");
 
-        JumpAngle = (this.transform.eulerAngles.y - 180) * Mathf.Deg2Rad;
+        JumpAngle = (this.GameObject.transform.eulerAngles.y - 180) * Mathf.Deg2Rad;
+        Debug.Log(JumpAngle);
+        ResetFlag();
+
     }
 
     //飛びたくない事前フレームのカウンター
     int FrameCount = 0;
-    void FixedUpdate()
+    public override void Action()
     {
         time += Time.deltaTime;
         FrameCount++;
@@ -31,7 +41,7 @@ public class BackSteppeAnime : AnimeBase
 
 
         if (FrameCount <= 30)
-            this.transform.position += Vec;
+            this.GameObject.transform.position += Vec;
 
         AnimeUPDate();
 
@@ -41,13 +51,9 @@ public class BackSteppeAnime : AnimeBase
     {
 
         base.AnimeEnd();
+        FrameCount = 0;
 
-
-        BackSteppeAnime backSteppeAnime = this.gameObject.GetComponent<BackSteppeAnime>();
-
-        Destroy(backSteppeAnime);
-
-
+        useFlag = false;
 
     }
 }
