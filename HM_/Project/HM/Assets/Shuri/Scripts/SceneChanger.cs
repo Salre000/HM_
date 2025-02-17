@@ -50,7 +50,7 @@ public class SceneChanger : MonoBehaviour
                 anim.AnimCancel();
 
                 // SEの再生が終わるまで待機
-                await UniTask.Delay((int)SoundListManager.instance.GetAudioClip((int)Title.System, (int)TitleSystem.Start).length * 1000);
+                await UniTask.Delay((int)SoundListManager.instance.GetAudioClip((int)TitleSystem.Start).length * 1000);
                 
                 // シーンの読み込み
                 await SceneManager.LoadSceneAsync(sceneName);
