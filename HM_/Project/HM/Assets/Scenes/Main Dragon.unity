@@ -2919,6 +2919,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef2b87818a56064b926871454f01541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &205614884 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2012985913334869372, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
+  m_PrefabInstance: {fileID: 1196990155}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff321e354a13e9b4e88d4a77cf5c114d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &210122905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23638,7 +23649,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3015698871520949969, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
   m_PrefabInstance: {fileID: 1196990155}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1196990157
+--- !u!114 &1196990164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23647,9 +23658,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1196990156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b6b05f38f8df4d40b503b2e407a52fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 3168cd9fe8f451442a3baff2057c2f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trap: {fileID: 0}
+  damage: {fileID: 205614884}
+  manager: {fileID: 0}
+  hpManager: {fileID: 0}
+  HP: 100
+  keepDistance: 0.0375
+  attackDistance: 0.05
+  viewAngle: 180
+  viewLength: 2
+  attackCoolTime: 6
 --- !u!1 &1201748994
 GameObject:
   m_ObjectHideFlags: 0
