@@ -28746,7 +28746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HunterCount: 4
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 1209621434}
   MonsterHp: 0
   HunterHp: []
 --- !u!114 &1418245121
