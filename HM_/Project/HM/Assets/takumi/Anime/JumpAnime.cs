@@ -68,7 +68,7 @@ public class JumpAnime : AnimeBase
 
 
 
-
+        FrameCount = 0;
 
 
         //if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
