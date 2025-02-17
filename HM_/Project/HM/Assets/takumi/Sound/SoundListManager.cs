@@ -19,10 +19,18 @@ public class SoundListManager : MonoBehaviour
         _audioSourceBGM = this.transform.AddComponent<AudioSource>();
 
         instance = this;
-        //‹——£‚ð‚È‚­‚·
 
+        //‰¹—Ê‚ðŽæ“¾
+
+
+
+
+        //‹——£‚ð‚È‚­‚·
         _audioSource.spatialBlend = 0;
         _audioSourceBGM.spatialBlend = 0;
+
+
+        _audioSourceBGM.loop = true;
 
     }
 
@@ -43,6 +51,23 @@ public class SoundListManager : MonoBehaviour
     {
         if (soundList[type].GetAudioSoundList().Count < index) return null;
         return soundList[type].GetAudioSound(index);
+    }
+
+
+    public void PlayBGM(int index, int type = 0)
+    {
+
+        _audioSourceBGM.clip = GetAudioClip(index, type);
+
+        _audioSourceBGM.Play();
+
+
+
+    }
+
+    public void StopBGM() 
+    {
+
     }
 
 
