@@ -35,7 +35,7 @@ public class AnimeAttackRoar : AnimeBase
     public override void AnimeEvent()
     {
         radialBlur.enabled = true;
-        //audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.monster, (int)Dragon.DragonRoar));
+        //audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.Monster, (int)Dragon.DragonRoar));
 
         AnimeRoarEnd();
         _AnimeFlagReset(false);

@@ -7,7 +7,7 @@ public class SpearRelate : WeaponBase
 {
     protected override void SetSound()
     {
-        soundListManager.PlaySound((int)Main.hunter, (int)HunterSE.SpearSE);
+        soundListManager.PlaySound((int)HunterSE.SpearSE, (int)Main.Hunter);
     }
     public override void SetEffect()
     {

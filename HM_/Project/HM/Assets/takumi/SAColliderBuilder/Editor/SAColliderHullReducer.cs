@@ -256,7 +256,7 @@ namespace SAColliderHullReducer
 		public class HalfEdge
 		{
 			public short ea;         // the other half of the edge (index into edges list)
-			public byte v;  // the vertex at the start of this edge (index into vertices list)
+			public byte v;  // the vertex at the Start of this edge (index into vertices list)
 			public byte p;  // the facet on which this edge lies (index into facets list)
 			public HalfEdge(){}
 			HalfEdge(short _ea,byte _v, byte _p)

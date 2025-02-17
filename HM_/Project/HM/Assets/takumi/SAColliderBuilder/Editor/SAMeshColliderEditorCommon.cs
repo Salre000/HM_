@@ -1163,7 +1163,7 @@ public class SAMeshColliderEditorCommon
 			if( collider.bounds.size == Vector3.zero ) {
 				System.Text.StringBuilder str = new System.Text.StringBuilder();
 				str.AppendLine( "Zero bounds. " + meshCollider.gameObject.name );
-				str.AppendLine( "Collider is too minimum. Please change Shape Type or Mesh Type." );
+				str.AppendLine( "Collider is too minimum. Please Change Shape Type or Mesh Type." );
 				SAColliderBuilderEditorCommon.DumpHierarchy( str, gameObject );
 				Debug.LogWarning( str.ToString() );
 			}
