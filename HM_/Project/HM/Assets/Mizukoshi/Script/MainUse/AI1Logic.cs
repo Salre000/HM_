@@ -30,6 +30,7 @@ public class AI1Logic :Hunter_AI
    {
         base.Start();
         SetAttackCoolTime(attackCoolTime);
+        SetAttackDistance(attackDistance);
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);    
    }

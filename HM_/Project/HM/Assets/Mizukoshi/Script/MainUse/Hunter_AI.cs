@@ -131,9 +131,6 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void Update()
     {
-
-        SetDestination(_monster.transform.position);
-
         if (CheckAttackDistance(this.gameObject))
         {
             Attack();
@@ -163,6 +160,7 @@ public abstract class Hunter_AI : MonoBehaviour
         // 攻撃できる距離にいないなら
         if (!CheckAttackDistance(_attackDistance, this.gameObject))
         {
+            // 攻撃中ならスキップ
             if (CheckAttack()) return;
             Chase();
             return;
@@ -172,6 +170,12 @@ public abstract class Hunter_AI : MonoBehaviour
         {
             Attack();
         }
+        else
+        {
+            // 少し距離をとる。
+            Back();
+        }
+
     }
     //------------------------------------------------
     //                    処理
@@ -204,7 +208,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// <param name="pos"></param>
     public void SetDestination(Vector3 pos)
     {
-        if(_agent.enabled==false)return;
+        if(!CheckNavmeshEnable())return;
         _agent.destination = pos;
     }
 
@@ -475,9 +479,11 @@ public abstract class Hunter_AI : MonoBehaviour
     /// </summary>
     public void Attack()
     {
+        // ナビメーションによる移動をなくす。
+        SetOffNavmesh();
         if (attackReady)
         {
-            StartAttack();
+            AttackAnimation();
             attackReady = false;
         }
     }
@@ -486,8 +492,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// </summary>
     public virtual void Chase()
     {
-        _agent.destination = _monster.transform.position;
-
+       SetDestination(_monster.transform.position);
     }
 
     public void Run()
@@ -498,7 +503,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public void Avoid()
     {
         // アニメーションを流す
-        _animator.SetTrigger("Avoid");
+        _animator.SetTrigger("AvoidTrigger");
     }
 
     /// <summary>
@@ -605,7 +610,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // 死亡アニメーション再生関数
     public void DeathAnimation()
     {
-        _animator.SetTrigger("Death");
+        _animator.SetTrigger("DeathTrigger");
         _agent.enabled = false;
 
     }
@@ -643,8 +648,21 @@ public abstract class Hunter_AI : MonoBehaviour
         return false;
     }
 
+    public void SetNavmesh()
+    {
+       if(!_agent.enabled)_agent.enabled = true;
+    }
 
+    public void SetOffNavmesh()
+    {
+        if(_agent.enabled)_agent.enabled = false;
+    }
 
+    // ナビメッシュが有効かどうかを確認
+    protected bool CheckNavmeshEnable()
+    {
+        return _agent.enabled;
+    }
 
 
 }
