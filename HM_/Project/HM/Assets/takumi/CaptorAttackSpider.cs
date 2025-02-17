@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static InputManager;
 
@@ -10,7 +11,7 @@ public class CaptorAttackSpider : AnimeBase
     System.Action _NestJump;
     //このアクションは拘束攻撃を辞めるアクション二つめはジャンプに切り替えるアクション
     public CaptorAttackSpider(GameObject Object, AudioSource source, Animator animator,
-        System.Action<bool> animeFlagReset,System.Action nestJump, GameObject setPosition )
+        System.Action<bool> animeFlagReset, System.Action nestJump, GameObject setPosition)
         : base(Object, source, animator, animeFlagReset)
     {
         AddAnimeName("Armature|RestraintAttackStart");
@@ -64,7 +65,18 @@ public class CaptorAttackSpider : AnimeBase
     int eventNumber = 0;
     public override void AnimeEvent()
     {
-        CheckHitHunter();
+        switch (eventNumber)
+        {
+
+            case 0:
+                StartCaptor();
+                break;
+            case 1:
+                CheckHitHunter();
+                break;
+        }
+
+        eventNumber++;
     }
     private void SetTarget(GameObject gameObject)
     {
@@ -87,7 +99,7 @@ public class CaptorAttackSpider : AnimeBase
     {
         AnimeUPDate();
 
-        if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Armature|RestraintAttackLoop" && !instance.IsOnButton(instance.keys[(int)InputKeys.RT]))
+        if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Armature|RestraintAttackLoop" && !instance.IsOnButton(InputKeys.RT))
             _AnimeFlagReset(false);
 
 

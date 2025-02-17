@@ -14,7 +14,7 @@ public class SpiderTrap : MonoBehaviour
     [SerializeField] Material Material;
     [SerializeField] Gradient Gradient;
     List<GameObject> DestroyObject = new List<GameObject>(4);
-    int NUmber = 0;
+    int Number = 0;
 
     const float range = 3;
 
@@ -30,15 +30,15 @@ public class SpiderTrap : MonoBehaviour
 
         Hunter = other.gameObject;
 
-        Hunter_AI[NUmber] = Hunter.GetComponent<Hunter_AI>();
+        Hunter_AI[Number] = Hunter.GetComponent<Hunter_AI>();
 
 
 
 
         //S‘©‚ÌŠÖ”‚ğŒÄ‚Ô
-        Hunter_AI[NUmber].StartRestraining();
+        Hunter_AI[Number].StartRestraining();
 
-        NUmber++;
+        Number++;
 
         //List<Vector3> MinSpioderPos = GetSpiderPosition(other.transform.position);
 
@@ -93,6 +93,7 @@ public class SpiderTrap : MonoBehaviour
 
 
     }
+    public void ResetTime() {time = 0;}
 
     async UniTask Remove(LineRenderer line)
     {
@@ -155,7 +156,7 @@ public class SpiderTrap : MonoBehaviour
 
         //ƒnƒ“ƒ^[‚ÌS‘©UŒ‚‚ğI—¹‚·‚éˆ—‚ğ‚©‚­
 
-        for (int i = 0; i < NUmber; i++)
+        for (int i = 0; i < Number; i++)
         {
             Hunter_AI[i].StopRestraining();
 
@@ -175,7 +176,7 @@ public class SpiderTrap : MonoBehaviour
 
 
 
-        NUmber = 0;
+        Number = 0;
 
         this.gameObject.SetActive(false);
 

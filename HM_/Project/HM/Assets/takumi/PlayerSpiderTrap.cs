@@ -27,25 +27,26 @@ public class PlayerSpiderTrap : AnimeBase
     public override void Start()
     {
         base.Start();
-    
-        StartAngle=this.GameObject.transform.eulerAngles.y;
+
+        StartAngle = this.GameObject.transform.eulerAngles.y;
 
         //íwÂÅÇÃëÉÇê∂ê¨Ç∑ÇÈ
-        TrapObject=SpiderTrapPool.instance.SetTarp();
+        TrapObject = SpiderTrapPool.instance.SetTarp();
 
         if (TrapObject == null) { AnimeEnd(); return; }
-        Trap=TrapObject.GetComponent<SpiderTrap>();
+        Trap = TrapObject.GetComponent<SpiderTrap>();
 
 
         // UnitaskÇ≈0.5ïbÇ≤Ç∆Ç…íwÂÅÇÃëÉÇÃÉTÉCÉYÇçLÇ∞ÇÈ
-        task= Times();
+        task = Times();
 
     }
-    bool Flag=true;
+    bool Flag = true;
     UniTask task;
-    void FixedUpdate()
+    public override void Action()
     {
         AnimeUPDate();
+        if (!InputManager.instance.IsOnButton(InputManager.InputKeys.LT)) _AnimeFlagReset(false);
 
     }
 
@@ -53,24 +54,29 @@ public class PlayerSpiderTrap : AnimeBase
     {
         base.AnimeEnd();
 
+        _AnimeFlagReset(false);
+
         Flag = false;
 
         useFlag = false;
 
     }
 
-    async UniTask Times() 
+
+    async UniTask Times()
     {
 
-        while (Flag) 
+        while (Flag)
         {
 
 
-        TrapObject.transform.localScale += Vector3.one;
+            TrapObject.transform.localScale += Vector3.one;
 
+            TrapObject.GetComponent<SpiderTrap>().ResetTime();
 
+            await UniTask.DelayFrame(Application.targetFrameRate / 2);
 
-            await UniTask.DelayFrame(Application.targetFrameRate/2);
+            if (TrapObject.transform.localScale.x >= MaxSize) break;
         }
 
 
