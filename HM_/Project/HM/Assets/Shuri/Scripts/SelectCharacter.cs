@@ -27,6 +27,8 @@ public class SelectCharacter : MonoBehaviour
     eSelectCharacter _selectCharacter;
     eSelectCharacter _selectBuf;
 
+    const float DeadZone = 0.5f;
+
     // キャラクター選択用ボタン
     [SerializeField] private Button[] _charaSelectButtons;
 
@@ -61,12 +63,12 @@ public class SelectCharacter : MonoBehaviour
     {
         _selectBuf = _selectCharacter;
 
-        if (Input.GetAxis("D_Pad_H") > 0 || Input.GetAxis("Horizontal") > 0)
+        if (Input.GetAxis("D_Pad_H") > DeadZone || Input.GetAxis("Horizontal") > DeadZone)
         {
             if (_selectCharacter != eSelectCharacter.Max - 1)
                 _selectCharacter++;
         }
-        if (Input.GetAxis("D_Pad_H") < 0 || Input.GetAxis("Horizontal") < 0)
+        if (Input.GetAxis("D_Pad_H") < -DeadZone || Input.GetAxis("Horizontal") < -DeadZone)
         {
             if (_selectCharacter != eSelectCharacter.Dragon)
                 _selectCharacter--;
