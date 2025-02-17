@@ -8,7 +8,7 @@ public class AI3Logic : Hunter_AI
 {
     public float keepDistance = 1.5f;
 
-    public float attackDistance = 2.0f;
+    public float attackDistance = 0.30f;
 
     public float viewAngle = 180.0f;
 
@@ -24,8 +24,14 @@ public class AI3Logic : Hunter_AI
     {
         base.Start();
         SetAttackCoolTime(keepDistance);
+        SetAttackDistance(attackDistance);
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);
         SetAvoidRatio(avoidRatio);
+    }
+
+    public override void Chase()
+    {
+        SetDestination(GetMonsterLeftPosition());
     }
 }
