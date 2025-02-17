@@ -73,8 +73,10 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public bool IsOnButton(Key key)
+    public bool IsOnButton(InputKeys inputKey)
     {
+        Key key = keys[(int)inputKey];
+
         KeyType type = key.type;
         string keyName = key.keyName;
 
