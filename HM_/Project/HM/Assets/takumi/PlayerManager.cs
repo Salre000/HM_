@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         //Xƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚ç
-        if (Input.GetKeyUp("joystick button 0"))
+        if (Input.GetKeyUp("joystick _button 0"))
         {
 
             _playerMove.SetAngle(_cameraManager.Get_CameraPositionAngle() * 180 / 3.14f);

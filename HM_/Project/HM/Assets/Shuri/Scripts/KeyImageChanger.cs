@@ -41,22 +41,22 @@ public class KeyImageChanger : MonoBehaviour
     {
         switch(key.keyName)
         {
-            case "joystick button 2": return keySprites[0]; // A
-            case "joystick button 3": return keySprites[1]; // B
-            case "joystick button 0": return keySprites[2]; // X
-            case "joystick button 1": return keySprites[3]; // Y
-            case "joystick button 7": return keySprites[4]; // RT
-            case "joystick button 6": return keySprites[5]; // LT
-            case "joystick button 5": return keySprites[6]; // RB
-            case "joystick button 4": return keySprites[7]; // LB
+            case "joystick _button 2": return keySprites[0]; // A
+            case "joystick _button 3": return keySprites[1]; // B
+            case "joystick _button 0": return keySprites[2]; // X
+            case "joystick _button 1": return keySprites[3]; // Y
+            case "joystick _button 7": return keySprites[4]; // RT
+            case "joystick _button 6": return keySprites[5]; // LT
+            case "joystick _button 5": return keySprites[6]; // RB
+            case "joystick _button 4": return keySprites[7]; // LB
             case "D_Pad_H": 
                 if(key.type == KeyType.AxisPlus) return keySprites[8];      // 右
                 else return keySprites[9];                                  // 左
             case "D_Pad_V":
                 if (key.type == KeyType.AxisPlus) return keySprites[10];    // 上
                 else return keySprites[11];                                 // 下
-            case "joystick button 9": return keySprites[12]; // 右スティック押し込み 
-            case "joystick button 8": return keySprites[13]; // 左スティック押し込み
+            case "joystick _button 9": return keySprites[12]; // 右スティック押し込み 
+            case "joystick _button 8": return keySprites[13]; // 左スティック押し込み
                 
         }
         return null;
