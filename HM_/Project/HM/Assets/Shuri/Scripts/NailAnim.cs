@@ -28,6 +28,8 @@ public class NailAnim : MonoBehaviour
     private async UniTask Anim(CancellationToken token)
     {
         await UniTask.DelayFrame(startTime * Application.targetFrameRate);
+        
+        if (token.IsCancellationRequested) return;
 
         SoundListManager.instance.PlaySound((int)TitleSystem.Anim);
 
