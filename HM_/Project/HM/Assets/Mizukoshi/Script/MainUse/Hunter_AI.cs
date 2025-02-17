@@ -126,65 +126,52 @@ public abstract class Hunter_AI : MonoBehaviour
 
         HitEffectManager.instance.HitEffectShow(other.transform.position, HitEffectManager.CharacterType.Monster);
         damage = other.GetComponent<Damage>();
-
-
-
         hpManager.HunterDamage(damage.GetDamage(), this.GetHunterID());
     }
 
     private void Update()
     {
-        //if (CheckMonsterAttack())
-        //{
-        //    Debug.Log("UŒ‚‚ª‚«‚½");
-        //    Avoid();
-        //}
+
         SetDestination(_monster.transform.position);
-        Attack();
+
+        if (CheckAttackDistance(this.gameObject))
+        {
+            Attack();
+        }
+
         WaitAttackCoolTime();
 
-        //SetDestination(_monster.transform.position);
+        // S‘©ó‘Ô‚È‚ç’â~
+        if (CheckRest()) return;
 
-        //if (CheckAttackDistance(this.gameObject))
-        //{
-        //    Attack();
-        //}
-    
-        //WaitAttackCoolTime();
+        // ƒnƒ“ƒ^[‚ÌUŒ‚‚ª‚Æ‚ñ‚Å‚«‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğŠm”F
+        if (CheckMonsterAttack())
+        {
+            // ‹ŠE“à‚Ì‹——£‚É“ü‚Á‚Ä‚¢‚È‚¢‚È‚çƒXƒ‹[
+            if (GetMonstersDistance() <= _viewLength)
+            {
+                // s“®—”O‚É‚æ‚è‰ñ”ğ‚ÌŠm—¦‚ğ•Ï“®
+                int avoidNum = Random.Range(0, 10);
+                if (avoidNum <= _AvoidRatio)
+                {
+                    Avoid();
+                    return;
+                }
+            }
+        }
 
+        // UŒ‚‚Å‚«‚é‹——£‚É‚¢‚È‚¢‚È‚ç
+        if (!CheckAttackDistance(_attackDistance, this.gameObject))
+        {
+            if (CheckAttack()) return;
+            Chase();
+            return;
+        }
 
-        //// S‘©ó‘Ô‚È‚ç’â~
-        //if (CheckRest()) return;
-
-        //// ƒnƒ“ƒ^[‚ÌUŒ‚‚ª‚Æ‚ñ‚Å‚«‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğŠm”F
-        //if (CheckMonsterAttack())
-        //{
-        //    // ‹ŠE“à‚Ì‹——£‚É“ü‚Á‚Ä‚¢‚È‚¢‚È‚çƒXƒ‹[
-        //    if (GetMonstersDistance() <= _viewLength)
-        //    {
-        //        // s“®—”O‚É‚æ‚è‰ñ”ğ‚ÌŠm—¦‚ğ•Ï“®
-        //        int avoidNum = Random.Range(0, 10);
-        //        if (avoidNum <= _AvoidRatio)
-        //        {
-        //            Avoid();
-        //            return;
-        //        }
-        //    }
-        //}
-
-        //// UŒ‚‚Å‚«‚é‹——£‚É‚¢‚È‚¢‚È‚ç
-        //if (!CheckAttackDistance(_attackDistance, this.gameObject))
-        //{
-        //    if (CheckAttack()) return;
-        //    _agent.isStopped = false;
-        //    Chase();
-        //    return;
-        //}
-        
-        //if (attackReady)
-        //{
-        //    Attack();
-        //}
+        if (attackReady)
+        {
+            Attack();
+        }
     }
     //------------------------------------------------
     //                    ˆ—
@@ -519,7 +506,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// </summary>
     public void Back()
     {
-
+        _agent.destination=GetBackPosition();
     }
 
     public void Death()
