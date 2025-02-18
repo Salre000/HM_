@@ -139,7 +139,6 @@ public class HPManager : MonoBehaviour
 
     public int GetHunterLostNumber() 
     {
-
         return HunterLostNumber;
     }
 

@@ -34,7 +34,10 @@ public class HunterManager : MonoBehaviour
     {
         CheckDeath();
         DebugCommand();
-
+        if (_hpManager == null)
+        {
+            Debug.Log("AAA");
+        }
     }
 
     public int GetHunterDeathAmount()
