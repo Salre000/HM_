@@ -30,12 +30,13 @@ public class MoveAnddestory : MonoBehaviour
 
     public void SetDirection()
     {
-        _dir=(-_object.transform.localPosition+_object2.transform.localPosition).normalized;
+        //_dir=(-_object.transform.localPosition+_object2.transform.localPosition).normalized;
+        _dir=(_turn.transform.position-transform.position).normalized;
     }
 
     public void Turn()
     {
         if(_turn==null) return;
-        this.transform.LookAt(_turn.transform.position);
+        this.transform.LookAt(_turn.transform);
     }
 }
