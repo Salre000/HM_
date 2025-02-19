@@ -27,4 +27,9 @@ public class Hide : MonoBehaviour
     {
         this .gameObject.SetActive(true);
     }
+
+    public void Hiding()
+    {
+        this .gameObject.SetActive(false);
+    }
 }

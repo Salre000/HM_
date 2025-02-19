@@ -1629,10 +1629,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e8dd17e8b33114d804f43dd09696f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data:
+    sensibility: 0
+    volumeBGM: 0
+    volumeSE: 0
   selectPanel: {fileID: 1660595296}
   menuIndex: 1
-  _option: {fileID: 4900000, guid: b824ef380a498fc4fae1ce12e2479516, type: 3}
   _uiPanel: {fileID: 2130507311}
   _beltText: {fileID: 2032565120}
   _objective: {fileID: 1603633958}
@@ -28696,6 +28698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiManager: {fileID: 0}
+  deathCount: 0
 --- !u!114 &1418245117
 MonoBehaviour:
   m_ObjectHideFlags: 0
