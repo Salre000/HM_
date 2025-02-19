@@ -43,4 +43,9 @@ public class AI1Logic :Hunter_AI
     {
         SetDestination(GetMonsterFrontPosition());
     }
+
+    public override void Attack()
+    {
+        base.Attack();
+    }
 }

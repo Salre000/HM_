@@ -34,4 +34,9 @@ public class AI3Logic : Hunter_AI
     {
         SetDestination(GetMonsterLeftPosition());
     }
+
+    public override void Attack()
+    {
+        base.Attack();
+    }
 }

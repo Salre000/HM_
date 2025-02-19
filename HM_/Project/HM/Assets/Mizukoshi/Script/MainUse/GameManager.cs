@@ -5,21 +5,21 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    private GameObject player;
+    private GameObject _hpmanager;
 
     public int defeatCountTrigger = 4;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        _hpmanager = GameObject.FindGameObjectWithTag("GameManager");
     }
 
     // Update is called once per frame
     void Update()
     {
         // ÉvÉåÉCÉÑÅ[ÇÃHPÇ™0Ç»ÇÁÇŒ
-        if (player.GetComponent<PlayerStatus>().GetHP() <= 0)
+        if (_hpmanager.GetComponent<HPManager>().GetMonsterHp()<=0)
         {
             Debug.Log("GameOver");
         }

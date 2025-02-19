@@ -158,7 +158,7 @@ public abstract class Hunter_AI : MonoBehaviour
             }
         }
 
-        //TurnMonser();
+        TurnMonser();
 
         // 攻撃できる距離にいないなら
         if (!CheckAttackDistance(this.gameObject))
@@ -485,7 +485,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    public void Attack()
+    public virtual void Attack()
     {
         // ナビメーションによる移動をなくす。
         //SetOffNavmesh();
@@ -682,6 +682,11 @@ public abstract class Hunter_AI : MonoBehaviour
             this.transform.position = pos;
         }
         this.transform.position = _spwnPosition;
+    }
+
+    protected void SetSpeed(float speed)
+    {
+        this.speed = speed;
     }
 
 }

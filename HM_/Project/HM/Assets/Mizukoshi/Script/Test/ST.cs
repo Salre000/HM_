@@ -13,11 +13,11 @@ public class ST : MonoBehaviour
     private void Start()
     {
         //source = GetComponent<AudioSource>();
-        //soundListManager.PlaySound((int)HunterSE.WalkSE, (int)Main.Hunter);
+        soundListManager.PlaySound((int)HunterSE.WalkSE, (int)Main.Hunter);
         //SoundListManager.instance.GetAudioClip((int)HunterSE.WalkSE, (int)Main.Hunter);
 
         //// 
         //source.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.WalkSE, (int)Main.Hunter));
-    
+
     }
 }

@@ -25,11 +25,21 @@ public class AI2Logic :Hunter_AI
     {
         SetAttackDistance(attackDistance);
         SetAttackCoolTime(attackCoolTime);
+        SetAvoidRatio(0);
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);
-        SetClockwise(true);
         base.Start();
     }
 
-    
+    public override void Attack()
+    {
+        base.Attack();
+
+    }
+
+    public override void Chase()
+    {
+        base.Chase();
+    }
+
 }

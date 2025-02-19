@@ -37,4 +37,9 @@ public class AI4Logic : Hunter_AI
     {
         SetDestination(GetMonster().transform.position);
     }
+
+    public override void Attack()
+    {
+        base.Attack();
+    }
 }
