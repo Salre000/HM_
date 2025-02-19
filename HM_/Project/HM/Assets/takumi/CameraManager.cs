@@ -121,7 +121,6 @@ public class CameraManager : MonoBehaviour
     void FixedUpdate()
     {
         if (!setupFlag) return;
-
         // ˆÚ“®—Ê‚Æ‰ñ“]—Ê‚ğ‹‚ß‚é
         _horizontal = Input.GetAxis("HorizontalR");
         _vertical = Input.GetAxis("VerticalR");
