@@ -26,6 +26,8 @@ public abstract class Hunter_AI : MonoBehaviour
     // ナビメッシュ
     protected NavMeshAgent _agent;
 
+    protected Vector3 _spwnPosition;
+
     // アニメーションの状態
     AnimatorStateInfo animationState;
 
@@ -191,7 +193,7 @@ public abstract class Hunter_AI : MonoBehaviour
         // モンスターのタグ取得
         _monster = GameObject.FindGameObjectWithTag("Player");
         _monsters = GameObject.FindGameObjectsWithTag("Player");
-        manager = new HunterManager();
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
         _animator = GetComponent<Animator>();
         hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
         status = eStatus.None;
@@ -530,7 +532,8 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public void DeathFinish()
     {
-        manager.Respawn(GetHunterID());
+        int num = this.GetComponent<Hunter_ID>().GetHunterID();
+        manager.Respawn(num);
     }
 
     //
@@ -671,5 +674,14 @@ public abstract class Hunter_AI : MonoBehaviour
         return _agent.enabled;
     }
 
+    public void ResetPosition()
+    {
+        if (_spwnPosition == null)
+        {
+            Vector3 pos = new Vector3(2.80463648f, 0.207313895f, -1.71056747f);
+            this.transform.position = pos;
+        }
+        this.transform.position = _spwnPosition;
+    }
 
 }

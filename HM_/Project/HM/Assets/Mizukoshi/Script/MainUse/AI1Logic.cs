@@ -9,6 +9,8 @@ public class AI1Logic :Hunter_AI
 {
     private Vector3 destination;
 
+    private Vector3 respoenPos;
+
     public float keepDistance = 1.5f/10/4;
 
     public float attackDistance = 2.0f/10/4;
@@ -32,7 +34,9 @@ public class AI1Logic :Hunter_AI
         SetAttackCoolTime(attackCoolTime);
         SetAttackDistance(attackDistance);
         SetViewAngle(viewAngle);
-        SetViewLength(viewLength);    
+        SetViewLength(viewLength);  
+        respoenPos=this.transform.position;
+        _spwnPosition=respoenPos;
    }
 
     public override void Chase()

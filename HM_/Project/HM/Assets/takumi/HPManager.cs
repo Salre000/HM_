@@ -43,7 +43,7 @@ public class HPManager : MonoBehaviour
         if (MonsterInvincibilityTime != -1) return -1;
         MonsterHp -= Damage;
         MonsterInvincibilityTime = 0;
-        //uiManager.SliderUpdate();
+        uiManager.HPSliderUpdate();
         if (DownFlag) return 1;   
         PartHp-= Damage;
 
@@ -139,7 +139,6 @@ public class HPManager : MonoBehaviour
 
     public int GetHunterLostNumber() 
     {
-
         return HunterLostNumber;
     }
 
