@@ -158,7 +158,7 @@ public abstract class Hunter_AI : MonoBehaviour
             }
         }
 
-        TurnMonser();
+        //TurnMonser();
 
         // UŒ‚‚Å‚«‚é‹——£‚É‚¢‚È‚¢‚È‚ç
         if (!CheckAttackDistance(this.gameObject))

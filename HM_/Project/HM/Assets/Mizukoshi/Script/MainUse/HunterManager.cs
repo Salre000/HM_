@@ -1,17 +1,16 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 public class HunterManager : MonoBehaviour
 {
-
     private GameObject[] gameObjects;
-    private GameObject _spear;
     private HPManager _hpManager;
     public UIManager uiManager;
-
-    int deathCount = 0;
+    public int deathCount = 0;
     private int preDeathNum = -1;
     bool deathAnimationNow = false;
-    bool[] isDeath = new bool[4];
-    float[] time = new float[4];
+    private float deathResetTime = 0f;
+    private float deathResetDelay = 3f;
+   
 
 
     Vector3 respawnPosition;
@@ -25,7 +24,7 @@ public class HunterManager : MonoBehaviour
             if (gameObjects[i].GetComponent<Hunter_AI>() == null) continue;
             gameObjects[i].GetComponent<Hunter_ID>().SetHunterID(i);
         }
-        respawnPosition = transform.position;
+        respawnPosition = new Vector3(-0.766783059f, 0.951499999f, 10.727313f);
         _hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
     }
 
@@ -33,7 +32,9 @@ public class HunterManager : MonoBehaviour
     void Update()
     {
         CheckDeath();
+        //ResetPreDeathNum();
         DebugCommand();
+        
         if (_hpManager == null)
         {
             Debug.Log("AAA");
@@ -50,6 +51,8 @@ public class HunterManager : MonoBehaviour
         _hpManager.HunterHeel(100, i);
         gameObjects[i].transform.position = respawnPosition;
         gameObjects[i].GetComponent<Hunter_AI>().WaitForCount();
+        gameObjects[i].GetComponent<Hunter_AI>().SetNavmesh();
+        deathCount++;
         //uiManager.ObjectiveText();
     }
 
@@ -64,7 +67,6 @@ public class HunterManager : MonoBehaviour
         if(preDeathNum==deathNum) return;
         preDeathNum = deathNum;
         Hunter_AI sss =gameObjects[deathNum].GetComponent<Hunter_AI>();
-
         sss.Death();
     }
 
@@ -143,9 +145,25 @@ public class HunterManager : MonoBehaviour
                 gameObjects[i].GetComponent<Hunter_AI>().ResetAnimation();
             }
         }
-        if (Input.GetKey(KeyCode.L))
+        if (Input.GetKeyUp(KeyCode.L))
         {
-            _hpManager.HunterDamage(100, 0);
+            for (int i = 0; i < gameObjects.Length; i++)
+            {
+               _hpManager.HunterDamage(90,i);
+            }
         }
+    }
+
+    private void ResetPreDeathNum()
+    {
+        if (preDeathNum != 0)
+        {
+            deathResetTime += Time.deltaTime;
+            if (deathResetTime > deathResetDelay)
+            {
+                preDeathNum = 0;
+            }
+        }
+        
     }
 }
