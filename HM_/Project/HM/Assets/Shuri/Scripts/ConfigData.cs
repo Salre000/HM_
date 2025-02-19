@@ -21,16 +21,16 @@ public class ConfigData
     //public string name11;
     //public string name12;
 
-    //public KeyType type1;
-    //public KeyType type2;
-    //public KeyType type3;
-    //public KeyType type4;
-    //public KeyType type5;
-    //public KeyType type6;
-    //public KeyType type7;
-    //public KeyType type8;
-    //public KeyType type9;
-    //public KeyType type10;
-    //public KeyType type11;
-    //public KeyType type12;
+    //public InputType type1;
+    //public InputType type2;
+    //public InputType type3;
+    //public InputType type4;
+    //public InputType type5;
+    //public InputType type6;
+    //public InputType type7;
+    //public InputType type8;
+    //public InputType type9;
+    //public InputType type10;
+    //public InputType type11;
+    //public InputType type12;
 }

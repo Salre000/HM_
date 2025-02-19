@@ -27,7 +27,7 @@ public class KeyImageChanger : MonoBehaviour
     {
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
-            if (inputManager.keys[i].type == KeyType.None) { keyImages[i].sprite = null; continue; }
+            if (inputManager.keys[i].type == InputType.None) { keyImages[i].sprite = null; continue; }
             keyImages[i].sprite = GetKeyImage(inputManager.keys[i]);
         }
     }
@@ -49,15 +49,21 @@ public class KeyImageChanger : MonoBehaviour
             case "joystick _button 6": return keySprites[5]; // LT
             case "joystick _button 5": return keySprites[6]; // RB
             case "joystick _button 4": return keySprites[7]; // LB
-            case "D_Pad_H": 
-                if(key.type == KeyType.AxisPlus) return keySprites[8];      // 右
-                else return keySprites[9];                                  // 左
+            case "D_Pad_H":
+                switch (key.type)
+                {
+                    case InputType.AxisPlus:return keySprites[8];     // DPad右  
+                    case InputType.AxisMinus:return keySprites[9];    // DPad左
+                } break;
             case "D_Pad_V":
-                if (key.type == KeyType.AxisPlus) return keySprites[10];    // 上
-                else return keySprites[11];                                 // 下
+                switch (key.type)
+                {
+                    case InputType.AxisPlus: return keySprites[10];   // DPad上 
+                    case InputType.AxisMinus: return keySprites[11];  // DPad下
+                } break;
             case "joystick _button 9": return keySprites[12]; // 右スティック押し込み 
             case "joystick _button 8": return keySprites[13]; // 左スティック押し込み
-                
+
         }
         return null;
     }

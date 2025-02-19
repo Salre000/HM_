@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using static DataModule;
+using static JsonDataModule;
 public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
 
     [HideInInspector] public ConfigData data;
 
-    private string _filepath;
+    private string _filepath = "/KeyConfig.json";
+    private string _configBasePath = "/KeyConfig_Base.json";
 
-    private string _configBasePath;
-
-    public enum KeyType
+    public enum InputType
     {
         None,
         Key,
@@ -43,7 +42,7 @@ public class InputManager : MonoBehaviour
     public struct Key
     {
         public string keyName;
-        public KeyType type;
+        public InputType type;
     }
 
     const float DeadZone = 0.3f;
@@ -57,9 +56,12 @@ public class InputManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         // パス名取得
-        _filepath = Application.dataPath + "/KeyConfig.json";
-        _configBasePath = Application.dataPath + "/KeyConfig_Base.json";
+        _filepath = Application.dataPath + _filepath;
+        _configBasePath = Application.dataPath + _configBasePath;
 
+        // ファイルを読み込んでdataに格納
+        data = Load<ConfigData>(_filepath);
+        
         for (int i = 0; i < ConfigData.ButtonNum; i++)
         {
             data.name[i] = keys[i].keyName;
@@ -69,13 +71,10 @@ public class InputManager : MonoBehaviour
         // ファイルがないとき、ファイル作成
         if (!File.Exists(_filepath)) Save(data,_filepath);
 
-        // ファイルを読み込んでdataに格納
-        data = Load<ConfigData>(_filepath);
-
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
             keys[i].keyName = data.name[i];
-            keys[i].type = (KeyType)int.Parse(data.types[i]);
+            keys[i].type = (InputType)int.Parse(data.types[i]);
         }
     }
 
@@ -83,17 +82,17 @@ public class InputManager : MonoBehaviour
     {
         Key key = keys[(int)inputKey];
 
-        KeyType type = key.type;
+        InputType type = key.type;
         string keyName = key.keyName;
 
         // タイプごとの取得方法で押されているか判定
         switch (type)
         {
-            case KeyType.Key:
+            case InputType.Key:
                 return IsOnKey(keyName);
-            case KeyType.AxisPlus:
+            case InputType.AxisPlus:
                 if (Input.GetAxis(keyName) > DeadZone) return true; break;
-            case KeyType.AxisMinus:
+            case InputType.AxisMinus:
                 if (Input.GetAxis(keyName) < -DeadZone) return true; break;
         }
         return false;
@@ -115,7 +114,7 @@ public class InputManager : MonoBehaviour
             if (keys[i].keyName == keys[index].keyName && keys[i].type == keys[index].type)
             {
                 keys[i].keyName = null;
-                keys[i].type = KeyType.None;
+                keys[i].type = InputType.None;
             }
         }
     }
@@ -124,7 +123,7 @@ public class InputManager : MonoBehaviour
     {
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
-            if (keys[i].type == KeyType.None) return false;
+            if (keys[i].type == InputType.None) return false;
         }
         return true;
     }
@@ -172,7 +171,7 @@ public class InputManager : MonoBehaviour
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
             keys[i].keyName = data.name[i];
-            keys[i].type = (KeyType)int.Parse(data.types[i]);
+            keys[i].type = (InputType)int.Parse(data.types[i]);
         }
         Save(data, _filepath);
     }

@@ -16,15 +16,15 @@ public class KeyCheckTest : MonoBehaviour
     {
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
-            if (_inputManager.keys[i].type == KeyType.Key)
+            if (_inputManager.keys[i].type == InputType.Key)
             {
                 if (Input.GetKeyDown(_inputManager.keys[i].keyName)) GetKey(i);
             }
-            if (_inputManager.keys[i].type == KeyType.AxisPlus)
+            if (_inputManager.keys[i].type == InputType.AxisPlus)
             {
                 if (Input.GetAxis(_inputManager.keys[i].keyName)>0.5f) GetKey(i);
             }
-            if (_inputManager.keys[i].type == KeyType.AxisMinus)
+            if (_inputManager.keys[i].type == InputType.AxisMinus)
             {
                 if (Input.GetAxis(_inputManager.keys[i].keyName)<-0.5f) GetKey(i);
             }

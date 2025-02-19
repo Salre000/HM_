@@ -11,61 +11,68 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-using static DataModule;
+using static JsonDataModule;
 
 public class OptionManager : MonoBehaviour
 {
     [HideInInspector] public OptionData data;
-    [SerializeField] GameObject selectPanel;
+
+    [SerializeField] private GameObject selectPanel;
     private RectTransform _panelRect;
 
-    Vector2 baseRectPos;
-    Vector2 baseRectSize;
+    private readonly Vector2 _SelectRectPos = new(0, -380);
+    private readonly Vector2 _SelectRectSize = new(1300, 640);
+
+    private Vector2 _baseRectPos;
+    private Vector2 _baseRectSize;
 
     public int menuIndex = 1;
-    int _menuNum;
+    private int _menuNum;
 
     private int _sliderIndex;
 
-    [SerializeField] GameObject _uiPanel;
-    [SerializeField] GameObject _beltText;
-    [SerializeField] GameObject _objective;
+    [SerializeField] private GameObject _uiPanel;
+    private RectTransform _childRect;
 
-    [SerializeField] Slider[] _slider;
-    [SerializeField] Slider _sensibilityBar;
-    [SerializeField] Slider _bgmBar;
-    [SerializeField] Slider _seBar;
-    [SerializeField] RectTransform _cursor;
+    [SerializeField] private GameObject _beltText;
+    [SerializeField] private GameObject _objective;
 
-    [SerializeField] Button _menuButton;
+    [SerializeField] private Slider[] _slider;
+    [SerializeField] private Slider _sensibilityBar;
+    [SerializeField] private Slider _bgmBar;
+    [SerializeField] private Slider _seBar;
+    [SerializeField] private RectTransform _cursor;
 
-    [SerializeField] Button _configButton;
+    [SerializeField] private Button _menuButton;
 
-    InputManager _inputManager;
+    [SerializeField] private Button _configButton;
 
-    UIManager _uiManager;
+    private InputManager _inputManager;
 
     bool _selected = false;
 
-    UniTask _panelMoveTask = UniTask.CompletedTask;
-    UniTask _cursorMoveTask = UniTask.CompletedTask;
+    const int UISwitchDelayFrame = 10;
 
-    private string _filepath;
+    private UniTask _panelMoveTask = UniTask.CompletedTask;
+    private UniTask _cursorMoveTask = UniTask.CompletedTask;
+
+    private string _filepath = "/Option.json";
 
     void Start()
     {
-        _filepath = Application.dataPath + "/Option.json";
+        _filepath = Application.dataPath + _filepath;
+
+        _childRect = _uiPanel.transform.GetChild(1).GetComponent<RectTransform>();
 
         _panelRect = selectPanel.GetComponent<RectTransform>();
-        baseRectPos = _panelRect.anchoredPosition;
-        baseRectSize = _panelRect.sizeDelta;
+        _baseRectPos = _panelRect.anchoredPosition;
+        _baseRectSize = _panelRect.sizeDelta;
 
         _menuNum = _objective.transform.childCount;
 
         _uiPanel.SetActive(false);
 
         _inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
-        _uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
 
         _cursor.anchoredPosition = new(_cursor.anchoredPosition3D.x, (1 - _sliderIndex) * 100);
 
@@ -82,51 +89,55 @@ public class OptionManager : MonoBehaviour
         _seBar.value = data.volumeSE;
     }
 
-    private async void Update()
+    private void Update()
     {
-        if (_selected) return;
+        if (Input.GetKeyDown(KeyCode.JoystickButton11) && !_uiPanel.activeSelf) { OpenUI(); return; };
+        if (Input.GetKeyDown(KeyCode.JoystickButton11) && _uiPanel.activeSelf) CloseUI();
+
+
+        //if (_selected) return;
 
         // オプション画面の開閉
-        if (Input.GetKeyDown(KeyCode.JoystickButton11)) UISwitch();
+        //if (Input.GetKeyDown(KeyCode.JoystickButton11)) UISwitch();
 
-        // オプション画面が開いていたら
-        if (_uiPanel.activeSelf)
-        {
-            Time.timeScale = 0.0f;
+        //// オプション画面が開いていたら
+        //if (_uiPanel.activeSelf)
+        //{
+        //    Time.timeScale = 0.0f;
 
-            // RB
-            if (Input.GetKey(KeyCode.JoystickButton5) && menuIndex < _menuNum && _panelMoveTask.Status.IsCompleted())
-            {
-                menuIndex++;
-                _panelMoveTask = UIBeltMove(Vector3.left);
-            }
-            // LB
-            if (Input.GetKey(KeyCode.JoystickButton4) && menuIndex > 1 && _panelMoveTask.Status.IsCompleted())
-            {
-                menuIndex--;
-                _panelMoveTask = UIBeltMove(Vector3.right);
-            }
-        }
-        else menuIndex = 1;
+        //    // RB
+        //    if (Input.GetKey(KeyCode.JoystickButton5) && menuIndex < _menuNum && _panelMoveTask.Status.IsCompleted())
+        //    {
+        //        menuIndex++;
+        //        _panelMoveTask = UIBeltMove(Vector3.left);
+        //    }
+        //    // LB
+        //    if (Input.GetKey(KeyCode.JoystickButton4) && menuIndex > 1 && _panelMoveTask.Status.IsCompleted())
+        //    {
+        //        menuIndex--;
+        //        _panelMoveTask = UIBeltMove(Vector3.right);
+        //    }
+        //}
+        //else menuIndex = 1;
 
-        _panelRect.anchoredPosition = baseRectPos;
-        _panelRect.sizeDelta = baseRectSize;
+        //_panelRect.anchoredPosition = _baseRectPos;
+        //_panelRect.sizeDelta = _baseRectSize;
 
-        if (!Input.GetKeyDown(KeyCode.JoystickButton3)) return;
+        //if (!Input.GetKeyDown(KeyCode.JoystickButton3)) return;
 
-        _panelRect.sizeDelta = new(1300, 640);
-        _panelRect.anchoredPosition = new(0, -380);
+        //_panelRect.sizeDelta = _SelectRectSize;
+        //_panelRect.anchoredPosition = _SelectRectPos;
 
-        _selected = true;
+        //_selected = true;
 
-        switch (menuIndex)
-        {
-            case 1: await Menu(); break;
-            case 2: await Option(); break;
-            case 3: await KeyConfig(); break;
-        }
+        //switch (menuIndex)
+        //{
+        //    case 1: await Menu(); break;
+        //    case 2: await Option(); break;
+        //    case 3: await KeyConfig(); break;
+        //}
 
-        await UniTask.WaitWhile(() => _selected);
+        //await UniTask.WaitWhile(() => _selected);
     }
 
     /// <summary>
@@ -139,14 +150,74 @@ public class OptionManager : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
             _selected = false;
 
-            _panelRect.anchoredPosition = baseRectPos;
-            _panelRect.sizeDelta = baseRectSize;
+            _panelRect.anchoredPosition = _baseRectPos;
+            _panelRect.sizeDelta = _baseRectSize;
 
             Time.timeScale = 1.0f;
         }
         else Time.timeScale = 0.0f;
 
         _uiPanel.SetActive(!_uiPanel.activeSelf);
+    }
+
+    async void OpenUI()
+    {
+        Time.timeScale = 0.0f;
+        _uiPanel.SetActive(true);
+
+        for (int i = 0; i < UISwitchDelayFrame; i++)
+        {
+            _childRect.localScale += Vector3.one / UISwitchDelayFrame;
+            await UniTask.DelayFrame(1);
+        }
+
+        UniTask task = new UniTask();
+
+        while (true)
+        {
+            // RB
+            if (Input.GetKey(KeyCode.JoystickButton5) && menuIndex < _menuNum && _panelMoveTask.Status.IsCompleted())
+            {
+                menuIndex++;
+                _panelMoveTask = UIBeltMove(Vector3.left);
+            }
+            // LB
+            if (Input.GetKey(KeyCode.JoystickButton4) && menuIndex > 1 && _panelMoveTask.Status.IsCompleted())
+            {
+                menuIndex--;
+                _panelMoveTask = UIBeltMove(Vector3.right);
+            }
+
+            await UniTask.DelayFrame(1);
+
+            if (!Input.GetKeyDown(KeyCode.JoystickButton3)) continue;
+
+            switch (menuIndex)
+            {
+                case 1: await Menu(); break;
+                case 2: await Option(); break;
+                case 3: await KeyConfig(); break;
+            }
+        }
+    }
+
+    async void CloseUI()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        _selected = false;
+
+        _panelRect.anchoredPosition = _baseRectPos;
+        _panelRect.sizeDelta = _baseRectSize;
+
+        for (int i = 0; i < UISwitchDelayFrame; i++)
+        {
+            _childRect.localScale -= Vector3.one / UISwitchDelayFrame;
+            await UniTask.DelayFrame(1);
+        }
+
+        Time.timeScale = 1.0f;
+
+        _uiPanel.SetActive(false);
     }
 
     /// <summary>

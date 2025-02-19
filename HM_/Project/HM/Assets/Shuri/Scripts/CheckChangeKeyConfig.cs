@@ -19,28 +19,28 @@ public static class CheckChangeKeyConfig
             if (Input.GetAxis("D_Pad_H") > 0.5f)
             {
                 key.keyName = "D_Pad_H";
-                key.type = KeyType.AxisPlus;
+                key.type = InputType.AxisPlus;
                 return key;
             }
             // 十字キー左判定
             if (Input.GetAxis("D_Pad_H") < -0.5f)
             { 
                 key.keyName = "D_Pad_H"; 
-                key.type = KeyType.AxisMinus; 
+                key.type = InputType.AxisMinus; 
                 return key;
             }
             // 十字キー上判定
             if (Input.GetAxis("D_Pad_V") > 0.5f)
             {
                 key.keyName = "D_Pad_V";
-                key.type = KeyType.AxisPlus;
+                key.type = InputType.AxisPlus;
                 return key;
             }
             // 十字キー下判定
             if (Input.GetAxis("D_Pad_V") < -0.5f)
             {
                 key.keyName = "D_Pad_V";
-                key.type = KeyType.AxisMinus;
+                key.type = InputType.AxisMinus;
                 return key;
             }
 
@@ -52,7 +52,7 @@ public static class CheckChangeKeyConfig
                 if (Input.GetKeyDown("joystick _button " + i.ToString()))
                 {
                     key.keyName = "joystick _button " + i.ToString();
-                    key.type = KeyType.Key;
+                    key.type = InputType.Key;
                     return key;
                 }
             }

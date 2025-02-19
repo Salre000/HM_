@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using SceneSound;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,14 +47,14 @@ public class SceneChanger : MonoBehaviour
                 await FadeManager.instance.FadeOutAlpha();
 
                 // アニメーションのキャンセル
-                NailAnim anim = GameObject.Find("Nail").GetComponent<NailAnim>();
-                anim.AnimCancel();
+                //NailAnim anim = GameObject.Find("Nail").GetComponent<NailAnim>();
+                //anim.AnimCancel();
 
                 // SEの再生が終わるまで待機
                 await UniTask.Delay((int)SoundListManager.instance.GetAudioClip((int)TitleSystem.Start).length * 1000);
                 
                 // シーンの読み込み
-                await SceneManager.LoadSceneAsync(sceneName);
+                await SceneManager.LoadSceneAsync(sceneName).ToUniTask();
                 
                 // フェードイン
                 await FadeManager.instance.FadeInAlpha();

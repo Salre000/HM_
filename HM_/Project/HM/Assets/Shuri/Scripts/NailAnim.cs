@@ -20,7 +20,8 @@ public class NailAnim : MonoBehaviour
         Application.targetFrameRate = 60;
         rectTransform = GetComponent<RectTransform>();
 
-        CancellationToken token = _cancel.Token;
+        //CancellationToken token = _cancel.Token;
+        CancellationToken token = this.GetCancellationTokenOnDestroy();
 
         Anim(token).Forget();
     }

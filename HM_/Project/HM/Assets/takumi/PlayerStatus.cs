@@ -108,7 +108,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void Start()
     {
-        data = DataModule.Load<OptionData>(Application.dataPath + "/Option.json");
+        data = JsonDataModule.Load<OptionData>(Application.dataPath + "/Option.json");
 
         _anime = this.gameObject.GetComponent<PlayerAnime>();
         _audioSource = this.transform.AddComponent<AudioSource>();

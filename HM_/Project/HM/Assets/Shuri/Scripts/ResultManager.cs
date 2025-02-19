@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 using static ResultRetention;
 using static ResultConst;
+using static JsonDataModule;
 
 public class ResultManager : MonoBehaviour
 {
@@ -51,43 +52,43 @@ public class ResultManager : MonoBehaviour
         _filepath = Application.dataPath + "/" + _fileName;
 
         // ファイルがないとき、ファイル作成
-        if (!File.Exists(_filepath)) Save(data);
+        if (!File.Exists(_filepath)) Save(data, _filepath);
 
         // ファイルを読み込んでdataに格納
-        data = Load(_filepath);
+        data = Load<RankingData>(_filepath);
     }
 
     // 保存
-    void Save(RankingData data)
-    {
-        // json変換
-        string json = JsonUtility.ToJson(data);
+    //void Save(RankingData data)
+    //{
+    //    // json変換
+    //    string json = JsonUtility.ToJson(data);
 
-        // 書き込み指定
-        StreamWriter wr = new(_filepath, false);
+    //    // 書き込み指定
+    //    StreamWriter wr = new(_filepath, false);
 
-        // 書き込み
-        wr.WriteLine(json);
+    //    // 書き込み
+    //    wr.WriteLine(json);
 
-        // ファイルを閉じる
-        wr.Close();
-    }
+    //    // ファイルを閉じる
+    //    wr.Close();
+    //}
 
-    // jsonファイル読み込み
-    RankingData Load(string path)
-    {
-        // 読み込み指定
-        StreamReader rd = new(path);
+    //// jsonファイル読み込み
+    //RankingData Load(string path)
+    //{
+    //    // 読み込み指定
+    //    StreamReader rd = new(path);
 
-        // ファイル内容全て読み込む
-        string json = rd.ReadToEnd();
+    //    // ファイル内容全て読み込む
+    //    string json = rd.ReadToEnd();
 
-        // ファイルを閉じる
-        rd.Close();
+    //    // ファイルを閉じる
+    //    rd.Close();
 
-        // jsonファイルを型に戻して返す
-        return JsonUtility.FromJson<RankingData>(json);
-    }
+    //    // jsonファイルを型に戻して返す
+    //    return JsonUtility.FromJson<RankingData>(json);
+    //}
 
     void Start()
     {
@@ -126,10 +127,10 @@ public class ResultManager : MonoBehaviour
             }
         }
         // データを保存
-        Save(data);
+        Save(data,_filepath);
 
         // データの読み込み
-        data = Load(_filepath);
+        data = Load<RankingData>(_filepath);
 
         // 昇順にソート
         Array.Sort(data.rank);

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class DataModule
+public class JsonDataModule
 {
-    // 保存
+    // jsonへの保存
     public static void Save<T>(T data,string filePath)
     {
         // json変換
@@ -21,7 +21,7 @@ public class DataModule
         wr.Close();
     }
 
-    // jsonファイル読み込み
+    // json読み込み
     public static T Load<T>(string path)
     {
         // 読み込み指定
@@ -32,8 +32,6 @@ public class DataModule
 
         // ファイルを閉じる
         rd.Close();
-
-        T aaa = JsonUtility.FromJson<T>(json);
 
         // jsonファイルを型に戻して返す
         return JsonUtility.FromJson<T>(json);

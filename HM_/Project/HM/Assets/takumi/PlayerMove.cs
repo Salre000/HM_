@@ -103,6 +103,7 @@ public class PlayerMove : MonoBehaviour
 
 
         this.transform.position = pos;
+        
 
     }
 }
