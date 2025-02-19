@@ -12,6 +12,7 @@ public class CameraManager : MonoBehaviour
 
     //プレイヤーのゲームオブジェクト
     [SerializeField] private GameObject _player;
+    private PlayerStatus _playerStatus;
     [SerializeField] private UIManager _manager;
     //プレイヤーとカメラの距離
     [SerializeField] private float _range = 0.2f;
@@ -26,8 +27,6 @@ public class CameraManager : MonoBehaviour
 
     [SerializeField] GameObject risuPos;
 
-    [HideInInspector] OptionData data;
-
     public float Get_CameraPositionAngle() { return _cameraPositionAngle + (180 * 3.14f / 180); }
 
     public void Add_CameraPositionAngle(float angle) { _cameraPositionAngle += angle; }
@@ -36,8 +35,8 @@ public class CameraManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         Setup();
+        _playerStatus=_player.GetComponent<PlayerStatus>();
     }
 
     async UniTask Setup()
@@ -130,7 +129,7 @@ public class CameraManager : MonoBehaviour
 
         Vector3 _position = this.transform.position;
 
-        _cameraPositionAngle += (((_horizontal) * data.sensibility) / 3.14f * 180) * 0.0001f;
+        _cameraPositionAngle += (((_horizontal*_playerStatus.data.sensibility)) / 3.14f * 180) * 0.0001f;
 
         _range += _vertical * 0.01f;
 
