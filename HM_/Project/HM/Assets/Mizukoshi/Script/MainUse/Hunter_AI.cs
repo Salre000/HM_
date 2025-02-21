@@ -135,7 +135,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(Vector3.Distance(_monster.transform.position, this.transform.position));
+        //Debug.Log(Vector3.Distance(_monster.transform.position, this.transform.position));
 
         WaitAttackCoolTime();
 
@@ -400,7 +400,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         float offsetX = 0;
         float offsetY = 0;
-        float offsetZ = 0.20f;
+        float offsetZ = 0.080f;
         Vector3 newPos = GetMonster().transform.position;
         Vector3 offset = new Vector3(offsetX, offsetY, offsetZ);
         offset = GetMonster().transform.rotation * offset;
@@ -411,7 +411,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // モンスターの右の位置を取得
     protected Vector3 GetMonsterRightPosition()
     {
-        float offsetX = 0.20f;
+        float offsetX = 0.080f;
         float offsetY = 0;
         float offsetZ = 0f;
         Vector3 newPos = GetMonster().transform.position;
@@ -424,7 +424,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // モンスターの左の位置を取得
     protected Vector3 GetMonsterLeftPosition()
     {
-        float offsetX = -0.2f;
+        float offsetX = -0.08f;
         float offsetY = 0;
         float offsetZ = 0f;
         Vector3 newPos = GetMonster().transform.position;
@@ -438,7 +438,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         float offsetX = 0f;
         float offsetY = 0;
-        float offsetZ = -0.20f;
+        float offsetZ = -0.080f;
         Vector3 newPos = GetMonster().transform.position;
         Vector3 offset = new Vector3(offsetX, offsetY, offsetZ);
         offset = GetMonster().transform.rotation * offset;

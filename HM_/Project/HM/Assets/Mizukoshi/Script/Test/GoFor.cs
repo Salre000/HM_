@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GoFor : MonoBehaviour
 {
+    private float rate = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,6 @@ public class GoFor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.Translate(Vector3.forward);
+        this.transform.Translate(rate*Vector3.forward*Time.deltaTime);
     }
 }
