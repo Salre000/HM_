@@ -13,7 +13,7 @@ public class HPManager : MonoBehaviour
     //引数はハンターの数
     void Start()
     {
-       // uiManager=GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+       // _uiManager=GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         MonsterHp = MaxMonsterHP;
 
         //ハンターの数を指定する

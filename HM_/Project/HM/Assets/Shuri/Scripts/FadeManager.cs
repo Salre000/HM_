@@ -33,6 +33,8 @@ public class FadeManager : MonoBehaviour
         _fadeRect = _fadeSlideObj?.GetComponent<RectTransform>();
         _fadeImage = _fadeAlphaObj?.GetComponent<Image>();
 
+        _fadeRect.anchoredPosition = Vector2.right*3000;
+
         _basePos = _fadeRect.localPosition;
     }
 
