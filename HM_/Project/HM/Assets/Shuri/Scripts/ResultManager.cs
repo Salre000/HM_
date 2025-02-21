@@ -147,7 +147,7 @@ public class ResultManager : MonoBehaviour
                     _bestResultTimes[j].text = "- - : - -";
 
                     _bestRankTexts[j].text = rankE.rankText;
-                    _rankText.colorGradientPreset = rankE.rankColor;
+                    _bestRankTexts[i].colorGradientPreset = rankE.rankColor;
                 }
                 break;
             }
@@ -160,7 +160,7 @@ public class ResultManager : MonoBehaviour
 
             // ランキングデータのランクの表示
             _bestRankTexts[i].text = bestRank.rankText;
-            _rankText.colorGradientPreset = bestRank.rankColor;
+            _bestRankTexts[i].colorGradientPreset = bestRank.rankColor;
         }
     }
 
@@ -175,12 +175,12 @@ public class ResultManager : MonoBehaviour
     /// </summary>
     void RankDefinition()
     {
-        rankS = new("S", new(Color.white, Gold, Gold, Gold));
-        rankA = new("A", new(Color.white, Red, Red, Color.red));
-        rankB = new("B", new(Color.white, Orange, Orange, Orange));
-        rankC = new("C", new(Color.white, Green, Green, Color.gray));
-        rankD = new("D", new(Color.white, Blue, Blue, Blue));
-        rankE = new("E", new(Color.white, Gray, Gray, Color.black));
+        rankS = new("S", new(Color.white, RankColorS, RankColorS, RankColorS));
+        rankA = new("A", new(Color.white, RankColorA, RankColorA, Color.red));
+        rankB = new("B", new(Color.white, RankColorB, RankColorB, RankColorB));
+        rankC = new("C", new(Color.white, RankColorC, RankColorC, Color.gray));
+        rankD = new("D", new(Color.white, RankColorD, RankColorD, RankColorD));
+        rankE = new("E", new(Color.white, RankColorE, RankColorE, Color.black));
     }
 
     /// <summary>
