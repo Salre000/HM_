@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 615166658428147690}
-  - component: {fileID: 615166658428147685}
   - component: {fileID: 3302532018582633838}
   m_Layer: 0
   m_Name: arrow
@@ -35,21 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &615166658428147685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615166658428147684}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a778854e5fa7b43b401eba769f7c4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _object: {fileID: 6413307565351903705}
-  _object2: {fileID: 615166659402752223}
-  _turn: {fileID: 0}
 --- !u!114 &3302532018582633838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,10 +167,5 @@ PrefabInstance:
 --- !u!4 &5929962995107003235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6540061452467591346, guid: 3058356566addd04d8ab52928169b5e2, type: 3}
-  m_PrefabInstance: {fileID: 615166660371686353}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6413307565351903705 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5875270693028758024, guid: 3058356566addd04d8ab52928169b5e2, type: 3}
   m_PrefabInstance: {fileID: 615166660371686353}
   m_PrefabAsset: {fileID: 0}
