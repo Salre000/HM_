@@ -42,17 +42,13 @@ public class SceneChanger : MonoBehaviour
             case GameScene.Title:
                 // SEの再生
                 SoundListManager.instance.PlaySound((int)TitleSystem.Start);
+
+                // 開始時のアニメーション再生
+                await GameObject.Find("Nail").GetComponent<NailAnim>().PlayAnim();
                 
                 // フェードアウト
                 await FadeManager.instance.FadeOutAlpha();
 
-                // アニメーションのキャンセル
-                //NailAnim anim = GameObject.Find("Nail").GetComponent<NailAnim>();
-                //anim.AnimCancel();
-
-                // SEの再生が終わるまで待機
-                await UniTask.Delay((int)SoundListManager.instance.GetAudioClip((int)TitleSystem.Start).length * 1000);
-                
                 // シーンの読み込み
                 await SceneManager.LoadSceneAsync(sceneName).ToUniTask();
                 
