@@ -148,8 +148,12 @@ public class OptionManager : MonoBehaviour
 
             Time.timeScale = 1.0f;
         }
-        else Time.timeScale = 0.0f;
-
+        else
+        {
+            _beltText.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+            _objective.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+            Time.timeScale = 0.0f;
+        }
         _uiPanel.SetActive(!_uiPanel.activeSelf);
     }
 
@@ -252,25 +256,19 @@ public class OptionManager : MonoBehaviour
         {
             await UniTask.DelayFrame(1);
 
+
             if (!_inputManager.EnableAllKey())
             {
-                if (_noteText.color.a == 0) DisplayNoteText();
+                _noteText.gameObject.SetActive(true);
                 continue;
             }
+            _noteText.gameObject.SetActive(false);
+            
             if (Input.GetKeyDown(KeyCode.JoystickButton10)) break;
         }
         EventSystem.current.SetSelectedGameObject(null);
 
         _selected = false;
-    }
-
-    private async void DisplayNoteText()
-    {
-        for (int alpha = 255; alpha > 0; alpha--)
-        {
-            _noteText.color = new(255, 255, 255, alpha);
-            await UniTask.DelayFrame(1);
-        }
     }
 
     public void OnBackToTheGame()
