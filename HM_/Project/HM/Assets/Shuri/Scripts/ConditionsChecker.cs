@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class ConditionsChecker : MonoBehaviour
 {
-    HunterManager hunterManager;
-    PlayerStatus playerStatus;
-    [SerializeField] UIManager uiManager;
+    [SerializeField] UIManager _uiManager;
+    HunterManager _hunterManager;
+    HPManager _hpManager;
 
     // 終了フラグ
     private bool _finishFlag;
@@ -17,21 +17,22 @@ public class ConditionsChecker : MonoBehaviour
     {
         _finishFlag = false;
 
-        // オブジェクトを探してクラスを取得
-        playerStatus = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>();
-        hunterManager = GameObject.Find("GameManager").GetComponent<HunterManager>();
+        _hunterManager = GetComponent<HunterManager>();
+        _hpManager = GetComponent<HPManager>();
     }
 
     void Update()
     {
         if (_finishFlag) return;
 
-        if (hunterManager.GetHunterDeathAmount() > 3)
+        // ハンターのやられた回数が4回以上だったら
+        if (_hunterManager.GetHunterDeathAmount() >= 4)
         {
-            GoToResult(uiManager.GetLimitTime() - uiManager.remainingTime).Forget();
+            GoToResult(_uiManager.GetLimitTime() - _uiManager.remainingTime).Forget();
         }
 
-        if(playerStatus.GetHP() <= 0 || uiManager.remainingTime <= 0)
+        // プレイヤーのHPが0以下になったら
+        if (_hpManager.GetMonsterHp() <= 0 || _uiManager.remainingTime <= 0)
         {
             GoToResult(0).Forget();
         }
@@ -41,10 +42,13 @@ public class ConditionsChecker : MonoBehaviour
     {
         _finishFlag = true;
 
-        await UniTask.DelayFrame(Application.targetFrameRate * 3);
-
+        // クリアタイムの記録
         ResultRetention.SetClearTime(time);
 
+        // 3秒待機
+        await UniTask.DelayFrame(3000);
+
+        // シーンの移動
         SceneManager.LoadScene("Result");
     }
 }
