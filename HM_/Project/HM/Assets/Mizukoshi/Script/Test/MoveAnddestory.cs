@@ -13,8 +13,8 @@ public class MoveAnddestory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetDirection();
         Turn();
+        SetDirection();
     }
 
     // Update is called once per frame
@@ -27,11 +27,11 @@ public class MoveAnddestory : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
-
+    
     public void SetDirection()
     {
         //_dir=(-_object.transform.localPosition+_object2.transform.localPosition).normalized;
-        _dir=(_turn.transform.position-transform.position).normalized;
+        _dir=(_turn.transform.position-this.transform.position).normalized;
     }
 
     public void Turn()

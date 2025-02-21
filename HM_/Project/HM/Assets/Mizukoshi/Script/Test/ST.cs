@@ -1,12 +1,12 @@
 using SceneSound;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ST : MonoBehaviour
 {
 
-    AudioSource source;
+    AudioSource audioSource;
+
+    float time = 0;
     
     public SoundListManager soundListManager;
 
@@ -15,9 +15,21 @@ public class ST : MonoBehaviour
         //source = GetComponent<AudioSource>();
         soundListManager.PlaySound((int)HunterSE.WalkSE, (int)Main.Hunter);
         //SoundListManager.instance.GetAudioClip((int)HunterSE.WalkSE, (int)Main.Hunter);
+        audioSource = this.gameObject.AddComponent<AudioSource>();
 
         //// 
         //source.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.WalkSE, (int)Main.Hunter));
 
+    }
+
+    public void Update()
+    {
+        time += Time.deltaTime;
+        if (time >= 3.0f)
+        {
+            time = 0;
+            audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.SpearSE, (int)Main.Hunter));
+        }
+       
     }
 }
