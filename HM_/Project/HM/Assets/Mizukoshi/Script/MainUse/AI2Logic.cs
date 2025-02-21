@@ -21,6 +21,10 @@ public class AI2Logic :Hunter_AI
     [SerializeField]
     private float viewLength = 100;
 
+    public GameObject Arrow;
+
+    public GameObject ArrowPos;
+
     public override void Start()
     {
         SetAttackDistance(attackDistance);
@@ -33,8 +37,9 @@ public class AI2Logic :Hunter_AI
 
     public override void Attack()
     {
-        base.Attack();
-
+        GameObject clone=GameObject.Instantiate(Arrow);
+        clone.transform.position=ArrowPos.transform.position;
+        clone.transform.LookAt(GetMonster().transform.position);
     }
 
     public override void Chase()
