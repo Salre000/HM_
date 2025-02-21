@@ -46,7 +46,7 @@ public class ConditionsChecker : MonoBehaviour
         ResultRetention.SetClearTime(time);
 
         // 3•b‘Ò‹@
-        await UniTask.DelayFrame(3000);
+        await UniTask.DelayFrame(180);
 
         // ƒV[ƒ“‚ÌˆÚ“®
         SceneManager.LoadScene("Result");

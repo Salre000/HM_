@@ -62,20 +62,15 @@ public class InputManager : MonoBehaviour
         // ファイルを読み込んでdataに格納
         data = Load<ConfigData>(_filepath);
         
-        for (int i = 0; i < ConfigData.ButtonNum; i++)
-        {
-            data.name[i] = keys[i].keyName;
-            data.types[i] = ((int)keys[i].type).ToString();
-        }
-
-        // ファイルがないとき、ファイル作成
-        if (!File.Exists(_filepath)) Save(data,_filepath);
-
         for (int i = 0; i < (int)InputKeys.Max; i++)
         {
             keys[i].keyName = data.name[i];
             keys[i].type = (InputType)int.Parse(data.types[i]);
         }
+
+        // ファイルがないとき、ファイル作成
+        if (!File.Exists(_filepath)) Save(data,_filepath);
+
     }
 
     public bool IsOnButton(InputKeys inputKey)

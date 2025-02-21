@@ -49,9 +49,9 @@ public static class CheckChangeKeyConfig
             // 
             for (int i = 0; i < 10; i++)
             {
-                if (Input.GetKeyDown("joystick _button " + i.ToString()))
+                if (Input.GetKeyDown("joystick button " + i.ToString()))
                 {
-                    key.keyName = "joystick _button " + i.ToString();
+                    key.keyName = "joystick button " + i.ToString();
                     key.type = InputType.Key;
                     return key;
                 }
