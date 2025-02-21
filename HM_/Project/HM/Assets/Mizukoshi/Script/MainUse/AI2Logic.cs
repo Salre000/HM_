@@ -1,3 +1,4 @@
+using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,7 +11,7 @@ public class AI2Logic :Hunter_AI
 {
     [SerializeField]
     // çUåÇãóó£
-    private float attackDistance = 20.0f;
+    private float attackDistance = 2.0f;
 
     [SerializeField]
     private float attackCoolTime = 5.0f;
@@ -25,6 +26,8 @@ public class AI2Logic :Hunter_AI
 
     public GameObject ArrowPos;
 
+    AudioSource audioSource;
+
     public override void Start()
     {
         SetAttackDistance(attackDistance);
@@ -32,14 +35,13 @@ public class AI2Logic :Hunter_AI
         SetAvoidRatio(0);
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);
+        audioSource = gameObject.AddComponent<AudioSource>();
         base.Start();
     }
 
     public override void Attack()
     {
-        GameObject clone=GameObject.Instantiate(Arrow);
-        clone.transform.position=ArrowPos.transform.position;
-        clone.transform.LookAt(GetMonster().transform.position);
+        base.Attack();
     }
 
     public override void Chase()
@@ -47,4 +49,16 @@ public class AI2Logic :Hunter_AI
         base.Chase();
     }
 
+    public void SetArch()
+    {
+        GameObject clone = GameObject.Instantiate(Arrow);
+        Vector3 startPos = this.transform.position;
+        startPos.y += 0.0750f;
+        clone.transform.position = startPos;
+        Vector3 dir = GetMonster().transform.position;
+        dir.y += 0.0065f;
+        clone.transform.LookAt(dir);
+        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.PreArechSE, (int)Main.Hunter));
+        
+    }
 }

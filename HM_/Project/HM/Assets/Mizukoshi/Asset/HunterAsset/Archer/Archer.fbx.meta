@@ -86,6 +86,13 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.68632704
+        functionName: SetArch
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: f612e14d026d633478f8bdd1d32f8759, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.9705094
         functionName: TestMover
         data: 
