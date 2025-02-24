@@ -71,6 +71,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // 攻撃のクールタイム
     private float _attackCoolTime = 10.0f;
 
+    [SerializeField]
     // 攻撃距離
     private float _attackDistance = 1.0f;
 
@@ -135,7 +136,6 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(Vector3.Distance(_monster.transform.position, this.transform.position));
 
         WaitAttackCoolTime();
 
@@ -163,6 +163,7 @@ public abstract class Hunter_AI : MonoBehaviour
         // 攻撃できる距離にいないなら
         if (!CheckAttackDistance(this.gameObject))
         {
+            if (_agent != null) _agent.isStopped = true;
             // 攻撃中ならスキップ
             if (CheckAttack()) return;
             Chase();
@@ -688,5 +689,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         this.speed = speed;
     }
+
+    
 
 }

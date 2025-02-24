@@ -86,10 +86,24 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0
+        functionName: SetCollider
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3168cd9fe8f451442a3baff2057c2f2c, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.9868766
         functionName: FinishAttack
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 78ba166b933e273419dd707f9945f7f3, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: CloseCollider
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3168cd9fe8f451442a3baff2057c2f2c, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

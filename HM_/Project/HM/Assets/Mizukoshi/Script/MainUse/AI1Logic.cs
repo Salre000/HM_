@@ -19,6 +19,8 @@ public class AI1Logic :Hunter_AI
 
     public float viewLength = 100 / 10/4;
 
+    public GameObject colliderObj;
+
     // âÒîçsìÆïpìx
     int avoidRatio = 7;
 
@@ -37,6 +39,7 @@ public class AI1Logic :Hunter_AI
         SetViewLength(viewLength);  
         respoenPos=this.transform.position;
         _spwnPosition=respoenPos;
+        CloseCollider();
    }
 
     public override void Chase()
@@ -47,5 +50,17 @@ public class AI1Logic :Hunter_AI
     public override void Attack()
     {
         base.Attack();
+    }
+
+    public void SetCollider()
+    {
+        if (colliderObj == null)return;
+        colliderObj.GetComponent<Collider>().enabled = true;
+    }
+
+    public void CloseCollider()
+    {
+        if (colliderObj == null) return;
+        colliderObj.GetComponent<Collider>().enabled = false;
     }
 }

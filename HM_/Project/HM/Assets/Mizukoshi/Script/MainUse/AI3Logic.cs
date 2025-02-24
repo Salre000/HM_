@@ -14,6 +14,8 @@ public class AI3Logic : Hunter_AI
 
     public float viewLength = 100;
 
+    public GameObject colliderObj;
+
     // âÒîçsìÆïpìx
     int avoidRatio = 7;
 
@@ -28,6 +30,7 @@ public class AI3Logic : Hunter_AI
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);
         SetAvoidRatio(avoidRatio);
+        CloseCollider();
     }
 
     public override void Chase()
@@ -38,5 +41,17 @@ public class AI3Logic : Hunter_AI
     public override void Attack()
     {
         base.Attack();
+    }
+
+    public void SetCollider()
+    {
+        if (colliderObj == null) return;
+        colliderObj.GetComponent<Collider>().enabled = true;
+    }
+
+    public void CloseCollider()
+    {
+        if (colliderObj == null) return;
+        colliderObj.GetComponent<Collider>().enabled = false;
     }
 }

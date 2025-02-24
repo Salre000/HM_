@@ -11,7 +11,7 @@ public class AI2Logic :Hunter_AI
 {
     [SerializeField]
     // UŒ‚‹——£
-    private float attackDistance = 2.0f;
+    private float attackDistance = 10.0f;
 
     [SerializeField]
     private float attackCoolTime = 5.0f;
