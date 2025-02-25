@@ -1,3 +1,4 @@
+using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,6 +42,7 @@ public class AI3Logic : Hunter_AI
     public override void Attack()
     {
         base.Attack();
+        p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.SpearSE, (int)Main.Hunter));
     }
 
     public void SetCollider()

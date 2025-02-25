@@ -49,6 +49,8 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private GameObject effect;
 
+    protected AudioSource p_audioSource;
+
     public int HP = 100;
 
     private float speed = 0.5f;
@@ -163,7 +165,6 @@ public abstract class Hunter_AI : MonoBehaviour
         // 攻撃できる距離にいないなら
         if (!CheckAttackDistance(this.gameObject))
         {
-            if (_agent != null) _agent.isStopped = true;
             // 攻撃中ならスキップ
             if (CheckAttack()) return;
             Chase();
@@ -208,6 +209,7 @@ public abstract class Hunter_AI : MonoBehaviour
         _trapList = SpiderTrapPool.instance?.GetTraps();
         myCollider = GetComponent<Collider>();
         playerAttack = GameObject.FindAnyObjectByType<PlayerAttack>();
+        SetDestination(_monster.transform.position);
     }
 
     /// <summary>
@@ -489,7 +491,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public virtual void Attack()
     {
         // ナビメーションによる移動をなくす。
-        //SetOffNavmesh();
+        SetOffNavmesh();
         if (attackReady)
         {
             AttackAnimation();
@@ -497,6 +499,12 @@ public abstract class Hunter_AI : MonoBehaviour
         }
 
     }
+
+    public void AttackEnd()
+    {
+        SetNavmesh();
+    }
+
     /// <summary>
     /// 追跡関数
     /// </summary>
