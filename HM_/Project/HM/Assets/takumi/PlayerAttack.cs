@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -85,15 +86,11 @@ public abstract class PlayerAttack : MonoBehaviour
     public void NowAnimeEvent() 
     {
         anime[(int)nowMode].AnimeEvent();
-
-
     }
-
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
         if (AnimeBase.useFlag) 
         {
 
@@ -111,7 +108,6 @@ public abstract class PlayerAttack : MonoBehaviour
         //çUåÇÇÇ∑ÇÈÉ{É^Éì
         if (instance.IsOnButton(InputKeys.RT))
         {
-
             _anime.SetAttackFlag(true);
 
 

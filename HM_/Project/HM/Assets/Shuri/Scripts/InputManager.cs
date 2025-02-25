@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using UnityEngine;
 using static JsonDataModule;
 public class InputManager : MonoBehaviour
 {
+
     public static InputManager instance;
 
     [HideInInspector] public ConfigData data;

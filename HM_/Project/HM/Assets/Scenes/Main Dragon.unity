@@ -23682,10 +23682,12 @@ MonoBehaviour:
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
+  _attackDistance: 1
   keepDistance: 0.1
   attackDistance: 0.3
   viewAngle: 180
   viewLength: 2
+  colliderObj: {fileID: 0}
   attackCoolTime: 6
 --- !u!1 &1201748994
 GameObject:
@@ -39337,11 +39339,13 @@ MonoBehaviour:
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
+  _attackDistance: 1
   keepDistance: 1.5
   attackDistance: 2
   viewAngle: 180
   viewLength: 100
   avoidCoolTime: 6
+  colliderObject: {fileID: 0}
 --- !u!1 &2050942329
 GameObject:
   m_ObjectHideFlags: 0
@@ -40610,10 +40614,12 @@ MonoBehaviour:
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
+  _attackDistance: 1
   keepDistance: 1.5
   attackDistance: 0.3
   viewAngle: 180
   viewLength: 100
+  colliderObj: {fileID: 0}
   avoidCoolTime: 6
 --- !u!195 &2107979505
 NavMeshAgent:
