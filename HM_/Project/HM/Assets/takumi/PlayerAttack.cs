@@ -132,7 +132,8 @@ public abstract class PlayerAttack : MonoBehaviour
         //前ジャンプ
         if (Input.GetAxis("Vertical") >= -0.3f && instance.IsOnButton(InputKeys.A) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
         {
-            if (Jump() > 0) _anime.SetJumpFlag(true);
+            _anime.SetJumpFlag(true);
+            Jump();
 
         }
         else
@@ -144,7 +145,8 @@ public abstract class PlayerAttack : MonoBehaviour
         //バックジャンプ
         if (Input.GetAxis("Vertical") < -0.3f && instance.IsOnButton(InputKeys.A) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
         {
-            if (BarkJump() > 0) _anime.SetBackSteppeFlag(true);
+            _anime.SetBackSteppeFlag(true);
+            BarkJump() ;
 
 
 

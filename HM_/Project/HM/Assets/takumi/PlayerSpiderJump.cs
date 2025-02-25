@@ -15,8 +15,8 @@ public class PlayerSpiderJump : AnimeBase
     public override void Start()
     {
         base.Start();
-    
 
+        End = true;
         // à⁄ìÆó Ç∆âÒì]ó ÇãÅÇﬂÇÈ
         float _horizontal = Input.GetAxis("Horizontal");
         float _vertical = Input.GetAxis("Vertical");
@@ -24,6 +24,7 @@ public class PlayerSpiderJump : AnimeBase
         JumpAngle = Mathf.Atan2(_horizontal, _vertical) + this.GameObject.transform.eulerAngles.y * 3.14f / 180;
         Vec = new Vector3(Mathf.Sin(JumpAngle), 0, Mathf.Cos(JumpAngle));
         stopTime();
+        ResetFlag();
     }
 
     const float MaxTime = 0.2f;
@@ -47,6 +48,8 @@ public class PlayerSpiderJump : AnimeBase
         if (End) return;
 
 
+        Debug.Log("JumpíÜ");
+
         AnimeUPDate();
 
 
@@ -69,6 +72,7 @@ public class PlayerSpiderJump : AnimeBase
     {
         base.AnimeEnd();
         useFlag = false;
+        
     }
 
 
