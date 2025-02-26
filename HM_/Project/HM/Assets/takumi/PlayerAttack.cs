@@ -19,6 +19,7 @@ public abstract class PlayerAttack : MonoBehaviour
 
     [SerializeField] protected Tag TagBox;
 
+    protected virtual AudioClip HitAttackSound() { return null; }
 
     //攻撃の判定を生成する予備動作のフラグ（ハンターの攻撃予測に使用）
     [SerializeField]bool predictionAttackFlag = false;

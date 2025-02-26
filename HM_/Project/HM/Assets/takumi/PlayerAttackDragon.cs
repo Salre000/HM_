@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using SceneSound;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,33 @@ public class PlayerAttackDragon :PlayerAttack
     [SerializeField] RockPool rockPool;
     RadialBlur radialBlur;
 
+    protected override AudioClip HitAttackSound()
+    {
+        switch (nowMode)
+        {
+            case actionMode.normal:
+                return SoundListManager.instance.GetAudioClip((int)Dragon.DragonAttackHit, (int)Main.Monster);
+           
+
+            case actionMode.skill:
+                return null;
+
+            case actionMode.special:
+                
+
+            case actionMode.jump:
+                
+
+            case actionMode.backJump:
+                
+                return SoundListManager.instance.GetAudioClip((int)Dragon.DragonLongAttack,(int)Main.Monster);
+
+
+        }
+
+        return null;
+
+    }
     protected override int BarkJump()
     {
 
