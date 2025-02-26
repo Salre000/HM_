@@ -6,7 +6,6 @@ using UnityEngine;
 using static JsonDataModule;
 public class InputManager : MonoBehaviour
 {
-
     public static InputManager instance;
 
     [HideInInspector] public ConfigData data;
@@ -52,9 +51,7 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         TextMeshProUGUI text = GameObject.Find("Text").GetComponent<TextMeshProUGUI>();
-
-        text.text = Application.dataPath;
-
+        text.text = Application.streamingAssetsPath;
 
         if (instance != null) Destroy(this.gameObject);
 
@@ -63,8 +60,8 @@ public class InputManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         // パス名取得
-        _filepath = Application.dataPath + _filepath;
-        _configBasePath = Application.dataPath + _configBasePath;
+        _filepath = Application.streamingAssetsPath + _filepath;
+        _configBasePath = Application.streamingAssetsPath + _configBasePath;
 
         // ファイルを読み込んでdataに格納
         data = Load<ConfigData>(_filepath);
@@ -80,18 +77,12 @@ public class InputManager : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        IsOnButton(InputKeys.RB);
-    }
-
     public bool IsOnButton(InputKeys inputKey)
     {
         Key key = keys[(int)inputKey];
 
         InputType type = key.type;
         string keyName = key.keyName;
-
 
         // タイプごとの取得方法で押されているか判定
         switch (type)
