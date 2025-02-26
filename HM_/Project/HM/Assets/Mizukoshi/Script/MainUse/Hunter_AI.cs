@@ -15,6 +15,11 @@ public abstract class Hunter_AI : MonoBehaviour
     // モンスターのオブジェクト
     private GameObject _monster;
 
+    // 230Frameの遅延
+    private float waitTime = 3.0f;
+
+    private bool startWait = true;
+
     private GameObject[] _monsters;
 
     // トラップリスト
@@ -122,6 +127,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         Initialize();
         _agent.destination = _monster.transform.position;
+        SetOffNavmesh();
 
     }
 
@@ -138,6 +144,17 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void Update()
     {
+        if (startWait)
+        {
+            elapsedTime += Time.deltaTime;
+            if(elapsedTime > waitTime)
+            {
+                startWait = false;
+                SetNavmesh();
+                elapsedTime = 0;
+            }
+            return;
+        }
 
         WaitAttackCoolTime();
 
@@ -169,6 +186,10 @@ public abstract class Hunter_AI : MonoBehaviour
             if (CheckAttack()) return;
             Chase();
             return;
+        }
+        else
+        {
+            SetNavmesh() ;
         }
 
         // 攻撃準備ができているのならば
