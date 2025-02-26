@@ -94,11 +94,11 @@ namespace SceneSound
     enum HunterSE
     {
        WalkSE,
-       SwordAttackSE,
        PreArechSE,
-       ArechSE,
        SpearSE,
        HunmerAttackSE,
+       SwordAttackSE,
+       ArechSE,
     }
 
 }
