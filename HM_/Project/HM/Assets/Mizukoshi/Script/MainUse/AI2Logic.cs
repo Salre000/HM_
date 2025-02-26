@@ -1,6 +1,7 @@
 using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,7 +12,7 @@ public class AI2Logic :Hunter_AI
 {
     [SerializeField]
     // çUåÇãóó£
-    private float attackDistance = 10.0f;
+    private float _attackDistance = 10.0f;
 
     [SerializeField]
     private float attackCoolTime = 5.0f;
@@ -30,7 +31,7 @@ public class AI2Logic :Hunter_AI
 
     public override void Start()
     {
-        SetAttackDistance(attackDistance);
+        SetAttackDistance(_attackDistance);
         SetAttackCoolTime(attackCoolTime);
         SetAvoidRatio(0);
         SetViewAngle(viewAngle);
@@ -42,11 +43,12 @@ public class AI2Logic :Hunter_AI
     public override void Attack()
     {
         base.Attack();
+        SetArch();
     }
 
     public override void Chase()
     {
-        base.Chase();
+       SetDestination(GetMonsterFrontPosition());
     }
 
     public void SetArch()
