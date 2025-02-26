@@ -51,6 +51,11 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
+        TextMeshProUGUI text = GameObject.Find("Text").GetComponent<TextMeshProUGUI>();
+
+        text.text = Application.dataPath;
+
+
         if (instance != null) Destroy(this.gameObject);
 
         instance = this;
@@ -75,12 +80,18 @@ public class InputManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        IsOnButton(InputKeys.RB);
+    }
+
     public bool IsOnButton(InputKeys inputKey)
     {
         Key key = keys[(int)inputKey];
 
         InputType type = key.type;
         string keyName = key.keyName;
+
 
         // タイプごとの取得方法で押されているか判定
         switch (type)

@@ -26,8 +26,10 @@ public class DragonSound :PlayerSoundBase
 
     public override void MoveSound()
     {
-        textMeshProUGUI.text = "idouonn";
-         audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Dragon.DragonMove, (int)Main.Monster));
+        textMeshProUGUI.text = audioSource.ToString();
+
+
+        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Dragon.DragonMove, (int)Main.Monster));
     }
 
     public override void MoveVoice()
