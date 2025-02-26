@@ -145,6 +145,8 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void Update()
     {
+
+
         if (startWait)
         {
             elapsedTime += Time.deltaTime;
@@ -191,7 +193,7 @@ public abstract class Hunter_AI : MonoBehaviour
                 int random = Random.Range(0, 5);
                 switch (random)
                 {
-                    case 0 :SetDestination(_monster.transform.position); break;
+                    case 0: SetDestination(_monster.transform.position); break;
                     case 1: SetDestination(GetMonsterBackPosition()); break;
                     case 2: SetDestination(GetMonsterFrontPosition()); break;
                     case 3: SetDestination(GetMonsterLeftPosition()); break;
@@ -590,6 +592,7 @@ public abstract class Hunter_AI : MonoBehaviour
     //
     void TurnMonser()
     {
+        if(GetMonster() == null) return;
         this.transform.LookAt(GetMonster().transform.position);
     }
 

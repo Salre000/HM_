@@ -12,7 +12,7 @@ public class AI2Logic :Hunter_AI
 {
     [SerializeField]
     // çUåÇãóó£
-    private float _attackDistance = 10.0f;
+    private float A = 10.0f;
 
     [SerializeField]
     private float attackCoolTime = 5.0f;
@@ -31,11 +31,12 @@ public class AI2Logic :Hunter_AI
 
     public override void Start()
     {
-        SetAttackDistance(_attackDistance);
+        SetAttackDistance(A);
         SetAttackCoolTime(attackCoolTime);
         SetAvoidRatio(0);
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);
+        SetDestination(GetMonster().transform.position);
         audioSource = gameObject.AddComponent<AudioSource>();
         base.Start();
     }
