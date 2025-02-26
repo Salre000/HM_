@@ -87,6 +87,8 @@ public class HunterManager : MonoBehaviour
         }
     }
 
+    public GameObject GetHunterObject(int i) {return gameObjects[i]; }
+
     /// <summary>
     /// ハンターの危険状態を確認
     /// </summary>

@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -19,7 +20,33 @@ public abstract class PlayerAttack : MonoBehaviour
 
     [SerializeField] protected Tag TagBox;
 
-    protected virtual AudioClip HitAttackSound() { return null; }
+    protected  AudioClip HitAttackSound()
+    {
+        switch (nowMode)
+        {
+            case actionMode.normal:
+                return SoundListManager.instance.GetAudioClip((int)Dragon.DragonAttackHit, (int)Main.Monster);
+
+
+            case actionMode.skill:
+                return null;
+
+            case actionMode.special:
+
+
+            case actionMode.jump:
+
+
+            case actionMode.backJump:
+
+                return SoundListManager.instance.GetAudioClip((int)Dragon.DragonLongAttack, (int)Main.Monster);
+
+
+        }
+
+        return null;
+
+    }
 
     //攻撃の判定を生成する予備動作のフラグ（ハンターの攻撃予測に使用）
     [SerializeField]bool predictionAttackFlag = false;
@@ -49,7 +76,15 @@ public abstract class PlayerAttack : MonoBehaviour
         _anime = GetComponent<PlayerAnime>();
         _status = GetComponent<PlayerStatus>();
 
-        
+        HunterManager hunterManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
+
+        for (int i = 0; i < 4; i++)
+        {
+            //hunterManager.GetHunterObject(i).GetComponent<Hunter_AI>().SetMonsterHitSound(HitAttackSound);
+
+        }
+
+
         Application.targetFrameRate = 60;
     }
 
@@ -109,6 +144,7 @@ public abstract class PlayerAttack : MonoBehaviour
         //攻撃をするボタン
         if (instance.IsOnButton(InputKeys.RT))
         {
+
             _anime.SetAttackFlag(true);
 
 

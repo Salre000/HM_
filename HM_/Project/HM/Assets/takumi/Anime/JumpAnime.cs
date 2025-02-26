@@ -65,11 +65,7 @@ public class JumpAnime : AnimeBase
         base.AnimeEnd(); 
         _AnimeFlagReset(false);
 
-
-
-
         FrameCount = 0;
-
 
         //if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
         //    this.audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.Monster, (int)Dragon.DragonJumpEnd));

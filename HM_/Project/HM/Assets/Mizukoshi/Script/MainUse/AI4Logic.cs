@@ -11,7 +11,7 @@ public class AI4Logic : Hunter_AI
     public float keepDistance = 1.5f;
 
     public float attackDistance = 2.0f;
-
+    
     public float viewAngle = 180.0f;
 
     public float viewLength = 100;

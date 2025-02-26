@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
 
     public void ObjectiveText()
     {
-        _textMeshProUGUI.text = string.Format("▼ハンターを4体倒す {0}/4", _hunterManager.GetHunterDeathAmount());
+        _textMeshProUGUI.text = string.Format("▼ハンターを4体倒す {0}/4",4 - _hunterManager.GetHunterDeathAmount());
     }
 
     private void ChangeConditionSprite(PlayerStatus.Condition condition)

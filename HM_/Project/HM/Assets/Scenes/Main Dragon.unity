@@ -6161,6 +6161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 300
   DamageRatio: 0.8
+  source: {fileID: 0}
   _type: 0
 --- !u!114 &311953600
 MonoBehaviour:
@@ -16004,6 +16005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 300
   DamageRatio: 0.2
+  source: {fileID: 0}
   _type: 1
 --- !u!1 &814030348
 GameObject:
@@ -17201,6 +17203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 300
   DamageRatio: 0.6
+  source: {fileID: 0}
   _type: 0
 --- !u!114 &881532538
 MonoBehaviour:
@@ -20189,6 +20192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 300
   DamageRatio: 2
+  source: {fileID: 0}
   _type: 1
 --- !u!1 &1039350116
 GameObject:
@@ -21635,6 +21639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 300
   DamageRatio: 0.5
+  source: {fileID: 0}
   _type: 0
 --- !u!1 &1134140405
 GameObject:
@@ -23872,9 +23877,9 @@ MonoBehaviour:
   _hunterManager: {fileID: 1418245116}
   _conditionSprites:
   - {fileID: 151241378, guid: 132358e9bf26b60458b731bf001e31db, type: 3}
-  - {fileID: 21300000, guid: 3496fa40bae7c87489f7e15539d0a641, type: 3}
-  - {fileID: 21300000, guid: 50e0b1eacad73884a93976e008f99439, type: 3}
   - {fileID: 21300000, guid: bfa859add11e5a4479d38f218ae0afde, type: 3}
+  - {fileID: 21300000, guid: 50e0b1eacad73884a93976e008f99439, type: 3}
+  - {fileID: 21300000, guid: 3496fa40bae7c87489f7e15539d0a641, type: 3}
 --- !u!4 &1209621435
 Transform:
   m_ObjectHideFlags: 0
@@ -27930,6 +27935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 300
   DamageRatio: 0.5
+  source: {fileID: 0}
   _type: 0
 --- !u!114 &1409908973
 MonoBehaviour:
@@ -28764,6 +28770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 300
   DamageRatio: 1
+  source: {fileID: 0}
   _type: 1
 --- !u!114 &1447911329
 MonoBehaviour:
@@ -32744,6 +32751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 300
   DamageRatio: 0.6
+  source: {fileID: 0}
   _type: 0
 --- !u!1 &1702409485
 GameObject:
@@ -37095,6 +37103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 300
   DamageRatio: 0.8
+  source: {fileID: 0}
   _type: 0
 --- !u!114 &1958339341
 MonoBehaviour:
