@@ -24,13 +24,18 @@ public class CollisionCheck : MonoBehaviour
         string ObjName=other.gameObject.name;
 
         Debug.Log($"Trigger{ObjName}Ç∆è’ìÀÇµÇ‹ÇµÇΩÅI");
+        GameObject collisionObj=other.gameObject.transform.parent.gameObject;
+        GameObject checkObj = collisionObj.transform.GetChild(0).gameObject;
 
-        if (ObjName == "ÉhÉâÉSÉì1")
+        //if (collisionObj.tag == "Hunter") return;
+
+        if (checkObj.tag=="Player")
         {
             float d = 200;
             hPManager = GameObject.Find("GameManager").GetComponent<HPManager>();
             hPManager.MonsterDamage(10, ref d, false);
             SoundListManager.instance.PlaySound((int)HunterSE.ArechSE, (int)Main.Hunter);
         }
+        Destroy(this.gameObject);
     }
 }

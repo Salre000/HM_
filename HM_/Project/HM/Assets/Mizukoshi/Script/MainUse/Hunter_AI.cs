@@ -590,6 +590,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public void DeathFinish()
     {
         int num = this.GetComponent<Hunter_ID>().GetHunterID();
+        deathAnimNow = false;
         manager.Respawn(num);
     }
 

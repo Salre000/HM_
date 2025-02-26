@@ -40,7 +40,13 @@ public class AI4Logic : Hunter_AI
     public override void Chase()
     {
         base.Chase();
-        SetDestination(GetMonster().transform.position);
+        base.Chase();
+        int random = Random.Range(0, 10);
+        if (random >= 3) SetDestination(GetMonsterBackPosition());
+        else
+        {
+            SetDestination(GetMonsterLeftPosition());
+        }
     }
 
     public override void Attack()

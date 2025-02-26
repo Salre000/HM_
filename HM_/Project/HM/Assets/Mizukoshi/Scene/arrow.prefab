@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 615166658428147690}
   - component: {fileID: 3302532018582633838}
   - component: {fileID: 7222712272272315488}
-  - component: {fileID: 9036348254714820952}
   m_Layer: 0
   m_Name: arrow
   m_TagString: EnemyAttack
@@ -60,19 +59,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a778854e5fa7b43b401eba769f7c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9036348254714820952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615166658428147684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b9529e500c9f1643a1e20049af14560, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hPManager: {fileID: 0}
 --- !u!1 &615166659402752223
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff321e354a13e9b4e88d4a77cf5c114d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 20
+  _damage: 200
 --- !u!114 &176954355905395552
 MonoBehaviour:
   m_ObjectHideFlags: 0
