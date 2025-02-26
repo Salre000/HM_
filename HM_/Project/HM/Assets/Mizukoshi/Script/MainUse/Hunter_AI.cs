@@ -139,6 +139,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
         HitEffectManager.instance.HitEffectShow(other.transform.position, HitEffectManager.CharacterType.Monster);
         damage = other.GetComponent<Damage>();
+        p_audioSource.PlayOneShot(_MonsterHitSound());
         hpManager.HunterDamage(damage.GetDamage(), this.GetHunterID());
     }
 
@@ -551,7 +552,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// </summary>
     public virtual void Chase()
     {
-
+       
     }
 
     public void Run()
@@ -739,6 +740,10 @@ public abstract class Hunter_AI : MonoBehaviour
         this.speed = speed;
     }
 
+    private System.Func<AudioClip> _MonsterHitSound;
+
+    public void SetMonsterHitSound(System.Func<AudioClip> _monsterHitSound) 
+    { _MonsterHitSound = _monsterHitSound; }
 
 
 }
