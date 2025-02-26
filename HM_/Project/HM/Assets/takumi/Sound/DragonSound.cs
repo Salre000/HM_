@@ -17,7 +17,7 @@ public class DragonSound :PlayerSoundBase
     }
     public override void HardDown()
     {
-        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.Monster, (int)Dragon.DragonHardDown));
+        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Dragon.DragonHardDown, (int)Main.Monster));
     }
     public override void HardDownVoice()
     {
