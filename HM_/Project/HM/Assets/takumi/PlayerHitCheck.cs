@@ -55,18 +55,10 @@ public class PlayerHitCheck : MonoBehaviour
 
             //ハンターごとの攻撃を当てた時の音を呼び出す
 
+            if(hitCheck>=0)SoundListManager.instance.GetAudioClip((int)Dragon.DragonAttackHit, (int)Main.Hunter);
 
 
-            SoundListManager.instance.GetAudioClip( (int)Dragon.DragonAttackHit, (int)Main.Monster);
-
-
-            if (other == null) 
-            {
-
-                int ss = 0;
-            }
-
-
+            SoundListManager.instance.GetAudioClip( (int)HunterSE.PreArechSE+(ID+1), (int)Main.Monster);
 
             if (Hp <= 0) 
             {
