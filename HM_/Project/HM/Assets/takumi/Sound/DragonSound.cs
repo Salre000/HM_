@@ -1,10 +1,12 @@
 using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DragonSound :PlayerSoundBase
 {
+    [SerializeField]TextMeshProUGUI textMeshProUGUI;
     public override void NormalDown()
     {
         audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip( (int)Dragon.DragonNormalDown, (int)Main.Monster));
@@ -24,7 +26,8 @@ public class DragonSound :PlayerSoundBase
 
     public override void MoveSound()
     {
-    audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Dragon.DragonMove, (int)Main.Monster));
+        textMeshProUGUI.text = "idouonn";
+         audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Dragon.DragonMove, (int)Main.Monster));
     }
 
     public override void MoveVoice()

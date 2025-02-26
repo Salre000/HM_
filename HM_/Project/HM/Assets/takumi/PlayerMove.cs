@@ -55,11 +55,11 @@ public class PlayerMove : MonoBehaviour
 
     private bool Flag = false;
     // Update is called once per frame
-    void Update()
-    {
+
+    private void FixedUpdate()
+    { 
 
         string NowAnime = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-        Debug.Log(NowAnime + "SSS");
 
         pos = Vector3.zero;
         _horizontal = _vertical = 0;
