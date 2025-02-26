@@ -45,6 +45,7 @@ public class AI1Logic :Hunter_AI
 
     public override void Chase()
     {
+        base.Chase();
         SetDestination(GetMonsterFrontPosition());
     }
 

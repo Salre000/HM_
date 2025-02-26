@@ -36,6 +36,7 @@ public class AI3Logic : Hunter_AI
 
     public override void Chase()
     {
+        base.Chase();
         SetDestination(GetMonsterLeftPosition());
     }
 

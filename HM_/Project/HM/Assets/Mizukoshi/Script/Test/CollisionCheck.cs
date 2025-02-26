@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CollisionCheck : MonoBehaviour
 {
+    public HPManager hPManager;
+
     private void OnCollisionEnter(Collision collision)
     {
         // 衝突したオブジェクトの名前を取得
@@ -25,6 +27,9 @@ public class CollisionCheck : MonoBehaviour
 
         if (ObjName == "ドラゴン1")
         {
+            float d = 200;
+            hPManager = GameObject.Find("GameManager").GetComponent<HPManager>();
+            hPManager.MonsterDamage(10, ref d, false);
             SoundListManager.instance.PlaySound((int)HunterSE.ArechSE, (int)Main.Hunter);
         }
     }

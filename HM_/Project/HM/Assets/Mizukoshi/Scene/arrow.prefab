@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9036348254714820952}
   m_Layer: 0
   m_Name: arrow
-  m_TagString: Untagged
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b9529e500c9f1643a1e20049af14560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hPManager: {fileID: 0}
 --- !u!1 &615166659402752223
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +119,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.10000002, y: 0.3045781, z: 0.1}
+  m_Size: {x: 0.10000002, y: 4, z: 0.1}
   m_Center: {x: 0.00000009381604, y: 0.13771111, z: 3.8584416e-10}
 --- !u!114 &5507210193812909231
 MonoBehaviour:
@@ -145,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b9529e500c9f1643a1e20049af14560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hPManager: {fileID: 0}
 --- !u!54 &8803093870295234002
 Rigidbody:
   m_ObjectHideFlags: 0

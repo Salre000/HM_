@@ -22,7 +22,7 @@ public class AI4Logic : Hunter_AI
     // 回避行動のクールタイム
     public float avoidCoolTime = 6.0f;
 
-    private float attackCoolTime = 6.0f;
+    private float attackCoolTime = 7.5f;
 
     public GameObject colliderObject;
 
@@ -39,6 +39,7 @@ public class AI4Logic : Hunter_AI
 
     public override void Chase()
     {
+        base.Chase();
         SetDestination(GetMonster().transform.position);
     }
 

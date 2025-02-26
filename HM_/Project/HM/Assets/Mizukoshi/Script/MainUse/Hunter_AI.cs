@@ -80,7 +80,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     [SerializeField]
     // 攻撃距離
-    private float _attackDistance = 1.0f;
+    private float _attackDistanceFF = 1.0f;
 
     // 視野角度
     private float _viewAngle;
@@ -188,26 +188,30 @@ public abstract class Hunter_AI : MonoBehaviour
             // 攻撃中ならスキップ
             if (CheckAttack()) return;
             Chase();
-            if (manager.GetHunterDeathAmount() >= 3)
-            {
-                int random = Random.Range(0, 5);
-                switch (random)
-                {
-                    case 0: SetDestination(_monster.transform.position); break;
-                    case 1: SetDestination(GetMonsterBackPosition()); break;
-                    case 2: SetDestination(GetMonsterFrontPosition()); break;
-                    case 3: SetDestination(GetMonsterLeftPosition()); break;
-                    case 4: SetDestination(GetMonsterRightPosition()); break;
-                    default:
-                        break;
-                }
-                return;
-            }
-            else
-            {
-                SetNavmesh();
-            }
+            //if (manager.GetHunterDeathAmount() >= 3)
+            //{
+            //    int random = Random.Range(0, 5);
+            //    switch (random)
+            //    {
+            //        case 0: SetDestination(_monster.transform.position); break;
+            //        case 1: SetDestination(GetMonsterBackPosition()); break;
+            //        case 2: SetDestination(GetMonsterFrontPosition()); break;
+            //        case 3: SetDestination(GetMonsterLeftPosition()); break;
+            //        case 4: SetDestination(GetMonsterRightPosition()); break;
+            //        default:
+            //            SetDestination(_monster.transform.position); break;
+                       
+            //    }
+            //    return;
+            //}
+            //else
+            //{
+            //    SetNavmesh();
+            //}
 
+        }
+        else
+        {
             // 攻撃準備ができているのならば
             if (attackReady)
             {
@@ -221,7 +225,6 @@ public abstract class Hunter_AI : MonoBehaviour
                 // 少し距離をとる。
                 //Back();
             }
-
         }
         //------------------------------------------------
         //                    処理
@@ -258,6 +261,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public void SetDestination(Vector3 pos)
     {
         if (!CheckNavmeshEnable()) return;
+        _agent.isStopped = false;
         _agent.destination = pos;
     }
 
@@ -295,7 +299,7 @@ public abstract class Hunter_AI : MonoBehaviour
     protected bool CheckAttackDistance(GameObject AIType)
     {
         float calculate = Vector3.Distance(_monster.transform.position, AIType.transform.position);
-        return calculate < _attackDistance;
+        return calculate < _attackDistanceFF;
     }
 
     public bool CheckKeepDistance(float acceptDistance, GameObject AIType)
@@ -381,7 +385,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     protected void SetAttackDistance(float attackDistance)
     {
-        _attackDistance = attackDistance;
+        _attackDistanceFF = attackDistance;
     }
 
     protected void SetViewAngle(float viewAngle)
@@ -442,7 +446,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         float offsetX = 0;
         float offsetY = 0;
-        float offsetZ = 0.080f;
+        float offsetZ = 0.0080f;
         Vector3 newPos = GetMonster().transform.position;
         Vector3 offset = new Vector3(offsetX, offsetY, offsetZ);
         offset = GetMonster().transform.rotation * offset;
@@ -453,7 +457,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // モンスターの右の位置を取得
     protected Vector3 GetMonsterRightPosition()
     {
-        float offsetX = 0.080f;
+        float offsetX = 0.0080f;
         float offsetY = 0;
         float offsetZ = 0f;
         Vector3 newPos = GetMonster().transform.position;
@@ -466,7 +470,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // モンスターの左の位置を取得
     protected Vector3 GetMonsterLeftPosition()
     {
-        float offsetX = -0.08f;
+        float offsetX = -0.008f;
         float offsetY = 0;
         float offsetZ = 0f;
         Vector3 newPos = GetMonster().transform.position;
@@ -480,7 +484,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         float offsetX = 0f;
         float offsetY = 0;
-        float offsetZ = -0.080f;
+        float offsetZ = -0.0080f;
         Vector3 newPos = GetMonster().transform.position;
         Vector3 offset = new Vector3(offsetX, offsetY, offsetZ);
         offset = GetMonster().transform.rotation * offset;
@@ -554,7 +558,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// </summary>
     public virtual void Chase()
     {
-       
+       if(!_agent.enabled) _agent.enabled = true;
     }
 
     public void Run()
