@@ -101,6 +101,13 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 1
+        functionName: SetNavmesh
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 387d244ba40a7154aa3806fff2de6295, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
         functionName: CloseCollider
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 387d244ba40a7154aa3806fff2de6295, type: 3}

@@ -95,7 +95,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     static PlayerAttack playerAttack;
 
-    
+
     protected enum eStatus
     {
         None,
@@ -147,7 +147,7 @@ public abstract class Hunter_AI : MonoBehaviour
         if (startWait)
         {
             elapsedTime += Time.deltaTime;
-            if(elapsedTime > waitTime)
+            if (elapsedTime > waitTime)
             {
                 startWait = false;
                 SetNavmesh();
@@ -185,55 +185,69 @@ public abstract class Hunter_AI : MonoBehaviour
             // 攻撃中ならスキップ
             if (CheckAttack()) return;
             Chase();
-            return;
-        }
-        else
-        {
-            SetNavmesh() ;
-        }
+            if (manager.GetHunterDeathAmount() >= 3)
+            {
+                int random = Random.Range(0, 5);
+                switch (random)
+                {
+                    case 0 :SetDestination(_monster.transform.position); break;
+                    case 1: SetDestination(GetMonsterBackPosition()); break;
+                    case 2: SetDestination(GetMonsterFrontPosition()); break;
+                    case 3: SetDestination(GetMonsterLeftPosition()); break;
+                    case 4: SetDestination(GetMonsterRightPosition()); break;
+                    default:
+                        break;
+                }
+                return;
+            }
+            else
+            {
+                SetNavmesh();
+            }
 
-        // 攻撃準備ができているのならば
-        if (attackReady)
-        {
-            // 攻撃
-            Attack();
-        }
-        else
-        {
-            if (CheckAttack()) return;
+            // 攻撃準備ができているのならば
+            if (attackReady)
+            {
+                // 攻撃
+                Attack();
+            }
+            else
+            {
+                if (CheckAttack()) return;
 
-            // 少し距離をとる。
-            //Back();
+                // 少し距離をとる。
+                //Back();
+            }
+
         }
+        //------------------------------------------------
+        //                    処理
+        //------------------------------------------------
 
     }
-    //------------------------------------------------
-    //                    処理
-    //------------------------------------------------
 
-    void Initialize()
-    {
-        // モンスターのタグ取得
-        _monster = GameObject.FindGameObjectWithTag("Player");
-        _monsters = GameObject.FindGameObjectsWithTag("Player");
-        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
-        _animator = GetComponent<Animator>();
-        hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
-        status = eStatus.None;
-        _agent = GetComponent<NavMeshAgent>();
-        _agent.speed = speed;
-        if (CloclWise)
+        void Initialize()
         {
-            _agent.destination = searchPosition[searchPosition.Length - 1];
+            // モンスターのタグ取得
+            _monster = GameObject.FindGameObjectWithTag("Player");
+            _monsters = GameObject.FindGameObjectsWithTag("Player");
+            manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
+            _animator = GetComponent<Animator>();
+            hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
+            status = eStatus.None;
+            _agent = GetComponent<NavMeshAgent>();
+            _agent.speed = speed;
+            if (CloclWise)
+            {
+                _agent.destination = searchPosition[searchPosition.Length - 1];
+            }
+            else { _agent.destination = searchPosition[0]; }
+            _trapList = SpiderTrapPool.instance?.GetTraps();
+            myCollider = GetComponent<Collider>();
+            playerAttack = GameObject.FindAnyObjectByType<PlayerAttack>();
+            p_audioSource = GetComponent<AudioSource>();
+            SetDestination(_monster.transform.position);
         }
-        else { _agent.destination = searchPosition[0]; }
-        _trapList = SpiderTrapPool.instance?.GetTraps();
-        myCollider = GetComponent<Collider>();
-        playerAttack = GameObject.FindAnyObjectByType<PlayerAttack>();
-        p_audioSource = GetComponent<AudioSource>();
-        SetDestination(_monster.transform.position);
-    }
-
     /// <summary>
     /// 目的地の設定
     /// </summary>
@@ -537,7 +551,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// </summary>
     public virtual void Chase()
     {
-        
+
     }
 
     public void Run()
@@ -725,6 +739,6 @@ public abstract class Hunter_AI : MonoBehaviour
         this.speed = speed;
     }
 
-    
+
 
 }
