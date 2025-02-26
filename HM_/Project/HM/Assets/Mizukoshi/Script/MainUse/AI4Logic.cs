@@ -45,6 +45,7 @@ public class AI4Logic : Hunter_AI
     public override void Attack()
     {
         base.Attack();
+        if (CheckAudioSourceNull()) return;
         p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.SwordAttackSE, (int)Main.Hunter));
     }
 

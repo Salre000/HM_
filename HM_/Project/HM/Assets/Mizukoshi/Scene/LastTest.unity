@@ -23857,6 +23857,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 628092622073076271, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8ced937f38f327842b4e2152ef4e7275, type: 2}
     - target: {fileID: 812456846067294336, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: m_Controller
       value: 
@@ -23953,6 +23957,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.65394354
       objectReference: {fileID: 0}
+    - target: {fileID: 2100995569458057248, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0ce92f274015ce744987f8d054f0b964, type: 2}
     - target: {fileID: 2491117907333688427, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -23965,6 +23973,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6532878432214670726, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0ce92f274015ce744987f8d054f0b964, type: 2}
+    - target: {fileID: 6980216813717448663, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0ce92f274015ce744987f8d054f0b964, type: 2}
     m_RemovedComponents:
     - {fileID: 812456846067294337, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
@@ -23991,6 +24007,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
+  _attackDistance: 1
   keepDistance: 0.1
   attackDistance: 0.3
   viewAngle: 180
@@ -39942,6 +39959,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
+  _attackDistance: 1
   keepDistance: 1.5
   attackDistance: 2
   viewAngle: 180
@@ -41297,6 +41315,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
+  _attackDistance: 1
   keepDistance: 1.5
   attackDistance: 0.3
   viewAngle: 180
@@ -42573,21 +42592,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7048168773782571683, guid: 550f7fb33f7b9b945849fa44c39e2475, type: 3}
+      propertyPath: m_Height
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7375375931481976140, guid: 550f7fb33f7b9b945849fa44c39e2475, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7375375931481976140, guid: 550f7fb33f7b9b945849fa44c39e2475, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.15826942
+      value: 7.49
       objectReference: {fileID: 0}
     - target: {fileID: 7375375931481976140, guid: 550f7fb33f7b9b945849fa44c39e2475, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9147
+      value: 0.2748
       objectReference: {fileID: 0}
     - target: {fileID: 7375375931481976140, guid: 550f7fb33f7b9b945849fa44c39e2475, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.826439
+      value: 5.93
       objectReference: {fileID: 0}
     - target: {fileID: 7375375931481976140, guid: 550f7fb33f7b9b945849fa44c39e2475, type: 3}
       propertyPath: m_LocalRotation.w
