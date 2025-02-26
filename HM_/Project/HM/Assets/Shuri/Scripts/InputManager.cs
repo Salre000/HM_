@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using UnityEngine;
 using static JsonDataModule;
 public class InputManager : MonoBehaviour
@@ -49,6 +50,9 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
+        TextMeshProUGUI text = GameObject.Find("Text").GetComponent<TextMeshProUGUI>();
+        text.text = Application.streamingAssetsPath;
+
         if (instance != null) Destroy(this.gameObject);
 
         instance = this;
@@ -56,8 +60,8 @@ public class InputManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         // パス名取得
-        _filepath = Application.dataPath + _filepath;
-        _configBasePath = Application.dataPath + _configBasePath;
+        _filepath = Application.streamingAssetsPath + _filepath;
+        _configBasePath = Application.streamingAssetsPath + _configBasePath;
 
         // ファイルを読み込んでdataに格納
         data = Load<ConfigData>(_filepath);

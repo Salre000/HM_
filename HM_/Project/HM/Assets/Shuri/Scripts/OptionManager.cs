@@ -52,8 +52,6 @@ public class OptionManager : MonoBehaviour
 
     bool _selected = false;
 
-    const int UISwitchDelayFrame = 10;
-
     private UniTask _panelMoveTask = UniTask.CompletedTask;
     private UniTask _cursorMoveTask = UniTask.CompletedTask;
 
@@ -61,7 +59,7 @@ public class OptionManager : MonoBehaviour
 
     void Start()
     {
-        _filepath = Application.dataPath + _filepath;
+        _filepath = Application.streamingAssetsPath + _filepath;
 
         _panelRect = selectPanel.GetComponent<RectTransform>();
         _baseRectPos = _panelRect.anchoredPosition;
@@ -280,6 +278,7 @@ public class OptionManager : MonoBehaviour
 
     public void OnReturnToSelect()
     {
+        _selected = false;
         UISwitch();
         SceneManager.LoadScene("Select");
     }

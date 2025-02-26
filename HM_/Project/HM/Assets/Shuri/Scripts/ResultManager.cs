@@ -49,7 +49,7 @@ public class ResultManager : MonoBehaviour
     void Awake()
     {
         // パス名取得
-        _filepath = Application.dataPath + "/" + _fileName;
+        _filepath = Application.streamingAssetsPath + "/" + _fileName;
 
         // ファイルがないとき、ファイル作成
         if (!File.Exists(_filepath)) Save(data, _filepath);
