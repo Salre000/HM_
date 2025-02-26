@@ -50,8 +50,6 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        TextMeshProUGUI text = GameObject.Find("Text").GetComponent<TextMeshProUGUI>();
-        text.text = Application.streamingAssetsPath;
 
         if (instance != null) Destroy(this.gameObject);
 
