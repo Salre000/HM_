@@ -323,7 +323,7 @@ ModelImporter:
         floatParameter: 5
         intParameter: 0
         messageOptions: 0
-      - time: 1
+      - time: 0.671916
         functionName: SetAttack
         data: 
         objectReferenceParameter: {instanceID: 0}

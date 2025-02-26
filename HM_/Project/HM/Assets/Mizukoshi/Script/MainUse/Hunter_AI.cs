@@ -49,6 +49,8 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private GameObject effect;
 
+    protected AudioSource p_audioSource;
+
     public int HP = 100;
 
     private float speed = 0.5f;
@@ -71,6 +73,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // 攻撃のクールタイム
     private float _attackCoolTime = 10.0f;
 
+    [SerializeField]
     // 攻撃距離
     private float _attackDistance = 1.0f;
 
@@ -135,7 +138,6 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(Vector3.Distance(_monster.transform.position, this.transform.position));
 
         WaitAttackCoolTime();
 
@@ -207,6 +209,8 @@ public abstract class Hunter_AI : MonoBehaviour
         _trapList = SpiderTrapPool.instance?.GetTraps();
         myCollider = GetComponent<Collider>();
         playerAttack = GameObject.FindAnyObjectByType<PlayerAttack>();
+        p_audioSource = GetComponent<AudioSource>();
+        SetDestination(_monster.transform.position);
     }
 
     /// <summary>
@@ -478,6 +482,11 @@ public abstract class Hunter_AI : MonoBehaviour
         return false;
     }
 
+    protected bool CheckAudioSourceNull()
+    {
+        return p_audioSource == null;
+    }
+
     //-------------------------------------------------------------------------
     //                           行動関係関数
     //-------------------------------------------------------------------------
@@ -488,7 +497,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public virtual void Attack()
     {
         // ナビメーションによる移動をなくす。
-        //SetOffNavmesh();
+        SetOffNavmesh();
         if (attackReady)
         {
             AttackAnimation();
@@ -496,6 +505,12 @@ public abstract class Hunter_AI : MonoBehaviour
         }
 
     }
+
+    public void AttackEnd()
+    {
+        SetNavmesh();
+    }
+
     /// <summary>
     /// 追跡関数
     /// </summary>
@@ -688,5 +703,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         this.speed = speed;
     }
+
+    
 
 }

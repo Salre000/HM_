@@ -12,7 +12,7 @@ public class PlayerAttackSpider : PlayerAttack
     protected override int BarkJump()
     {
 
-        nowMode = actionMode.jump;
+        nowMode = actionMode.backJump;
         AnimeBase.useFlag = true;
         anime[(int)nowMode].Start();
 

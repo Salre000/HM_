@@ -72,9 +72,6 @@ public class AnimeBase
 
         string NowAnime = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
-
-        Debug.Log(NowAnime + "SSS");
-
         //何かの理由でアニメーションが終了したとき
         if (!_AnimeName.Contains(NowAnime))
         {

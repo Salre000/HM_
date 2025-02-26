@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -85,15 +86,11 @@ public abstract class PlayerAttack : MonoBehaviour
     public void NowAnimeEvent() 
     {
         anime[(int)nowMode].AnimeEvent();
-
-
     }
-
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
         if (AnimeBase.useFlag) 
         {
 
@@ -111,7 +108,6 @@ public abstract class PlayerAttack : MonoBehaviour
         //攻撃をするボタン
         if (instance.IsOnButton(InputKeys.RT))
         {
-
             _anime.SetAttackFlag(true);
 
 
@@ -136,7 +132,8 @@ public abstract class PlayerAttack : MonoBehaviour
         //前ジャンプ
         if (Input.GetAxis("Vertical") >= -0.3f && instance.IsOnButton(InputKeys.A) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
         {
-            if (Jump() > 0) _anime.SetJumpFlag(true);
+            _anime.SetJumpFlag(true);
+            Jump();
 
         }
         else
@@ -148,7 +145,8 @@ public abstract class PlayerAttack : MonoBehaviour
         //バックジャンプ
         if (Input.GetAxis("Vertical") < -0.3f && instance.IsOnButton(InputKeys.A) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
         {
-            if (BarkJump() > 0) _anime.SetBackSteppeFlag(true);
+            _anime.SetBackSteppeFlag(true);
+            BarkJump() ;
 
 
 

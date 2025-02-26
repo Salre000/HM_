@@ -1,3 +1,4 @@
+using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,8 @@ public class AI4Logic : Hunter_AI
 
     private float attackCoolTime = 6.0f;
 
+    public GameObject colliderObject;
+
     public override void Start()
     {
         base.Start();
@@ -31,6 +34,7 @@ public class AI4Logic : Hunter_AI
         SetAvoidRatio(avoidRatio);
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);
+        CloseCollider();
     }
 
     public override void Chase()
@@ -41,5 +45,17 @@ public class AI4Logic : Hunter_AI
     public override void Attack()
     {
         base.Attack();
+        if (CheckAudioSourceNull()) return;
+        p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.SwordAttackSE, (int)Main.Hunter));
+    }
+
+    public void SetCollider()
+    {
+        if(colliderObject != null) colliderObject.GetComponent<Collider>().enabled = true;
+    }
+
+    public void CloseCollider()
+    {
+        if (colliderObject != null) colliderObject.GetComponent<Collider>().enabled = false;
     }
 }
