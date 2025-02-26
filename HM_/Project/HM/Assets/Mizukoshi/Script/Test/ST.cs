@@ -24,12 +24,12 @@ public class ST : MonoBehaviour
 
     public void Update()
     {
-        time += Time.deltaTime;
-        if (time >= 3.0f)
-        {
-            time = 0;
-            audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.SpearSE, (int)Main.Hunter));
-        }
+        //time += Time.deltaTime;
+        //if (time >= 3.0f)
+        //{
+        //    time = 0;
+        //    audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.SpearSE, (int)Main.Hunter));
+        //}
        
     }
 }

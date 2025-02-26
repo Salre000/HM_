@@ -51,6 +51,7 @@ public class AI1Logic :Hunter_AI
     public override void Attack()
     {
         base.Attack();
+        if(CheckAudioSourceNull())return;
         p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.HunmerAttackSE, (int)Main.Hunter));
     }
 

@@ -209,6 +209,7 @@ public abstract class Hunter_AI : MonoBehaviour
         _trapList = SpiderTrapPool.instance?.GetTraps();
         myCollider = GetComponent<Collider>();
         playerAttack = GameObject.FindAnyObjectByType<PlayerAttack>();
+        p_audioSource = GetComponent<AudioSource>();
         SetDestination(_monster.transform.position);
     }
 
@@ -479,6 +480,11 @@ public abstract class Hunter_AI : MonoBehaviour
         }
 
         return false;
+    }
+
+    protected bool CheckAudioSourceNull()
+    {
+        return p_audioSource == null;
     }
 
     //-------------------------------------------------------------------------
