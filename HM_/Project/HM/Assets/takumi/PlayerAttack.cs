@@ -29,7 +29,6 @@ public abstract class PlayerAttack : MonoBehaviour
 
 
             case actionMode.skill:
-                return null;
 
             case actionMode.special:
 
@@ -78,14 +77,28 @@ public abstract class PlayerAttack : MonoBehaviour
 
         HunterManager hunterManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
 
-        for (int i = 0; i < 4; i++)
-        {
-            //hunterManager.GetHunterObject(i).GetComponent<Hunter_AI>().SetMonsterHitSound(HitAttackSound);
-
-        }
 
 
         Application.targetFrameRate = 60;
+
+        DelayTask(() =>
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                GameObject gameObject = hunterManager.GetHunterObject(i);
+                Hunter_AI ai = gameObject.GetComponent<Hunter_AI>();
+                ai.SetMonsterHitSound(HitAttackSound);
+
+            }
+
+        }, 10).Forget();
+    }
+
+    async UniTask DelayTask(System.Action action,int delayTime) 
+    {
+        await UniTask.DelayFrame(delayTime);
+
+        action();
     }
 
     protected async UniTask ResetFlag(System.Action<bool> action) 
