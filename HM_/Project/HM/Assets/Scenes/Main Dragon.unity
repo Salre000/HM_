@@ -16933,6 +16933,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4929981563613167001, guid: c1440e657f418c144ad8f65334d8084c, type: 3}
+      propertyPath: Arrow
+      value: 
+      objectReference: {fileID: 615166658428147684, guid: 28b0dacefb60a9141b725db201fad660, type: 3}
+    - target: {fileID: 4929981563613167001, guid: c1440e657f418c144ad8f65334d8084c, type: 3}
       propertyPath: attackDistance
       value: 4
       objectReference: {fileID: 0}
