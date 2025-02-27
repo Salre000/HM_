@@ -139,7 +139,11 @@ public abstract class Hunter_AI : MonoBehaviour
 
         HitEffectManager.instance.HitEffectShow(other.transform.position, HitEffectManager.CharacterType.Monster);
         damage = other.GetComponent<Damage>();
-        p_audioSource.PlayOneShot(_MonsterHitSound());
+        if (p_audioSource != null)
+        {
+            p_audioSource.PlayOneShot(_MonsterHitSound());
+        }
+      
         hpManager.HunterDamage(damage.GetDamage(), this.GetHunterID());
     }
 

@@ -173,7 +173,7 @@ ModelImporter:
       curves: []
       events:
       - time: 1
-        functionName: WaitForCount
+        functionName: DeathFinish
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 387d244ba40a7154aa3806fff2de6295, type: 3}
         floatParameter: 0

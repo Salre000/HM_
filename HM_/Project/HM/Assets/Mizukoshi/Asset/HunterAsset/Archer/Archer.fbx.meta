@@ -93,8 +93,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9705094
-        functionName: TestMover
+      - time: 1
+        functionName: AttackEnd
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: d30d0bfebcaec4f488a3db3e473eaa33, type: 3}
         floatParameter: 0
@@ -157,7 +157,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.9678284
+        functionName: DeathFinish
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3cca6cb82de44fc46b3431d113f31d99, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
