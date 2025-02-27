@@ -52,6 +52,8 @@ public class OptionManager : MonoBehaviour
 
     bool _selected = false;
 
+    private const float DeadZone = 0.5f;
+
     private UniTask _panelMoveTask = UniTask.CompletedTask;
     private UniTask _cursorMoveTask = UniTask.CompletedTask;
 
@@ -86,7 +88,7 @@ public class OptionManager : MonoBehaviour
         _seBar.value = data.volumeSE;
     }
 
-    private void Update()
+    private async void Update()
     {
         if (_selected) return;
 
@@ -184,11 +186,11 @@ public class OptionManager : MonoBehaviour
         {
             await UniTask.DelayFrame(1);
 
-            if (Input.GetAxis("D_Pad_H") > 0.3 || Input.GetAxis("Horizontal") > 0.3)
+            if (Input.GetAxis("D_Pad_H") > DeadZone || Input.GetAxis("Horizontal") > DeadZone)
             {
                 _menuButton = _menuButton.navigation.selectOnRight.GetComponent<Button>();
             }
-            if (Input.GetAxis("D_Pad_H") < -0.3 || Input.GetAxis("Horizontal") < -0.3)
+            if (Input.GetAxis("D_Pad_H") < -DeadZone || Input.GetAxis("Horizontal") < -DeadZone)
             {
                 _menuButton = _menuButton.navigation.selectOnLeft.GetComponent<Button>();
             }
@@ -213,11 +215,11 @@ public class OptionManager : MonoBehaviour
 
             _slider[_sliderIndex].value += Input.GetAxis("D_Pad_H");
 
-            if (Input.GetAxis("D_Pad_V") > 0.3 || Input.GetAxis("Vertical") > 0.3)
+            if (Input.GetAxis("D_Pad_V") > DeadZone || Input.GetAxis("Vertical") > DeadZone)
             {
                 _sliderIndex--;
             }
-            else if (Input.GetAxis("D_Pad_V") < -0.3 || Input.GetAxis("Vertical") < -0.3)
+            else if (Input.GetAxis("D_Pad_V") < -DeadZone || Input.GetAxis("Vertical") < -DeadZone)
             {
                 _sliderIndex++;
             }
@@ -226,7 +228,7 @@ public class OptionManager : MonoBehaviour
             if (_sliderIndex > _slider.Length - 1) _sliderIndex = 0;
             if (_sliderIndex < 0) _sliderIndex = _slider.Length - 1;
 
-            _cursorMoveTask = ChangeSelectSlider();
+            await ChangeSelectSlider();
         }
         EventSystem.current.SetSelectedGameObject(null);
 
