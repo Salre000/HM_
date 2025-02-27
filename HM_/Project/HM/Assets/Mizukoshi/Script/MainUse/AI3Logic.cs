@@ -36,7 +36,14 @@ public class AI3Logic : Hunter_AI
 
     public override void Chase()
     {
-        SetDestination(GetMonsterLeftPosition());
+        base.Chase();
+        int random=Random.Range(0, 10);
+        if(random >= 3) SetDestination(GetMonsterLeftPosition());
+        else
+        {
+            SetDestination(GetMonsterRightPosition());
+        }
+
     }
 
     public override void Attack()

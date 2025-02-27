@@ -50,20 +50,20 @@ public class PlayerStatus : MonoBehaviour
 
     [SerializeField] int StunGage = 0;
     const int MaxStunGage = 1000;
-    public void AddStunGage(int Add)
+    public void AddAngerGage(int Add)
     {
         if (_nowCondition != Condition.Normal) return;
         StunGage += Add;
         if (MaxStunGage > StunGage) return;
         StunGage = MaxStunGage;
-        ChengeCondition(Condition.Stun);
+        ChengeCondition(Condition.Anger);
 
         _anime.SetSpped(1.3f);
     }
 
-    public void SbuStunGage(int Sbu)
+    public void SbuAngerGage(int Sbu)
     {
-        if (_nowCondition != Condition.Stun) return;
+        if (_nowCondition != Condition.Anger) return;
         StunGage -= Sbu;
         if (StunGage > 0) return;
         StunGage = 0;
@@ -119,8 +119,8 @@ public class PlayerStatus : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        AddStunGage(1);
-        SbuStunGage(1);
+        AddAngerGage(1);
+        SbuAngerGage(1);
         ChengeNomale();
     }
 

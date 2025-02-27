@@ -1,8 +1,10 @@
 using Cysharp.Threading.Tasks;
+using SceneSound;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
@@ -80,7 +82,6 @@ public class PlayerAttackDragon :PlayerAttack
         
         AnimeAttackRoar animeAttackRoar =(AnimeAttackRoar)anime[(int)actionMode.special];
         animeAttackRoar.SetRadialBlur(radialBlur);
-
     }
     // Start is called before the first frame update
 

@@ -11,6 +11,7 @@ public class PlayerHitCheck : MonoBehaviour
     [SerializeField] float Hp = 300;
     [Header("攻撃を受ける時に使うダメージの倍率")]
     [SerializeField] float DamageRatio = 1.0f;
+    [SerializeField] AudioSource source;
 
     public enum Type 
     {
@@ -27,6 +28,7 @@ public class PlayerHitCheck : MonoBehaviour
     {
         _playerAnime=GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnime>();
         _status = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
+        source= GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
     }
 
     //何かに当たった時
@@ -55,18 +57,10 @@ public class PlayerHitCheck : MonoBehaviour
 
             //ハンターごとの攻撃を当てた時の音を呼び出す
 
+            if(hitCheck>=0) source.PlayOneShot( SoundListManager.instance.GetAudioClip((int)Dragon.DragonAttackHit, (int)Main.Hunter));
 
 
-            SoundListManager.instance.GetAudioClip( (int)Dragon.DragonAttackHit, (int)Main.Monster);
-
-
-            if (other == null) 
-            {
-
-                int ss = 0;
-            }
-
-
+            SoundListManager.instance.GetAudioClip( (int)HunterSE.PreArechSE+(ID+1), (int)Main.Monster);
 
             if (Hp <= 0) 
             {

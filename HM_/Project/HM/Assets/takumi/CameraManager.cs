@@ -31,7 +31,8 @@ public class CameraManager : MonoBehaviour
 
     public void Add_CameraPositionAngle(float angle) { _cameraPositionAngle += angle; }
 
-    bool setupFlag = false;
+    public static bool setupFlag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,9 +110,6 @@ public class CameraManager : MonoBehaviour
 
             await UniTask.DelayFrame(1);
         }
-
-
-
 
 
 

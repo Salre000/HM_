@@ -57,7 +57,10 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
 
     private void FixedUpdate()
-    { 
+    {
+
+        if (!CameraManager.setupFlag) return;
+        if(this.transform.position.y<=-10)this.transform.position=new Vector3(this.transform.position.x,2,this.transform.position.z);
 
         string NowAnime = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 

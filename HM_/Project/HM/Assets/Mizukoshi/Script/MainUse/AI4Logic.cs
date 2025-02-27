@@ -11,7 +11,7 @@ public class AI4Logic : Hunter_AI
     public float keepDistance = 1.5f;
 
     public float attackDistance = 2.0f;
-
+    
     public float viewAngle = 180.0f;
 
     public float viewLength = 100;
@@ -22,7 +22,7 @@ public class AI4Logic : Hunter_AI
     // 回避行動のクールタイム
     public float avoidCoolTime = 6.0f;
 
-    private float attackCoolTime = 6.0f;
+    private float attackCoolTime = 7.5f;
 
     public GameObject colliderObject;
 
@@ -39,7 +39,14 @@ public class AI4Logic : Hunter_AI
 
     public override void Chase()
     {
-        SetDestination(GetMonster().transform.position);
+        base.Chase();
+        base.Chase();
+        int random = Random.Range(0, 10);
+        if (random >= 3) SetDestination(GetMonsterBackPosition());
+        else
+        {
+            SetDestination(GetMonsterLeftPosition());
+        }
     }
 
     public override void Attack()

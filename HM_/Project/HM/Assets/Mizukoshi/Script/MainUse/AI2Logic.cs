@@ -1,6 +1,7 @@
 using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,44 +10,65 @@ using UnityEngine.AI;
 // 弓のAIの行動論理
 public class AI2Logic :Hunter_AI
 {
-    [SerializeField]
-    // 攻撃距離
-    private float attackDistance = 10.0f;
-
-    [SerializeField]
-    private float attackCoolTime = 5.0f;
-
-    [SerializeField]
-    private float viewAngle = 90.0f;
-
-    [SerializeField]
-    private float viewLength = 100;
+    
 
     public GameObject Arrow;
 
     public GameObject ArrowPos;
 
+
+    public float keepDistance = 1.5f;
+
+    public float attackDistance = 2.0f;
+
+    public float viewAngle = 180.0f;
+
+    public float viewLength = 100;
+
+    // 回避行動頻度
+    int avoidRatio = 7;
+
+    // 回避行動のクールタイム
+    public float avoidCoolTime = 6.0f;
+
+    private float attackCoolTime = 6.0f;
+
+    public GameObject colliderObject;
+
     AudioSource audioSource;
 
     public override void Start()
     {
-        SetAttackDistance(attackDistance);
+        audioSource = GetComponent<AudioSource>();
+        base.Start();
         SetAttackCoolTime(attackCoolTime);
-        SetAvoidRatio(0);
+        SetAttackDistance(attackDistance);
+        SetAvoidRatio(avoidRatio);
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);
-        audioSource = gameObject.AddComponent<AudioSource>();
-        base.Start();
-    }
-
-    public override void Attack()
-    {
-        base.Attack();
+        CloseCollider();
     }
 
     public override void Chase()
     {
         base.Chase();
+        SetDestination(GetMonster().transform.position);
+    }
+
+    public override void Attack()
+    {
+        base.Attack();
+        if (CheckAudioSourceNull()) return;
+    }
+
+    public void SetCollider()
+    {
+        if (colliderObject != null) colliderObject.GetComponent<Collider>().enabled = true;
+    }
+
+    public void CloseCollider()
+    {
+        if (colliderObject != null) colliderObject.GetComponent<Collider>().enabled = false;
     }
 
     public void SetArch()

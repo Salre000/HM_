@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -19,6 +20,32 @@ public abstract class PlayerAttack : MonoBehaviour
 
     [SerializeField] protected Tag TagBox;
 
+    protected  AudioClip HitAttackSound()
+    {
+        switch (nowMode)
+        {
+            case actionMode.normal:
+                return SoundListManager.instance.GetAudioClip((int)Dragon.DragonAttackHit, (int)Main.Monster);
+
+
+            case actionMode.skill:
+
+            case actionMode.special:
+
+
+            case actionMode.jump:
+
+
+            case actionMode.backJump:
+
+                return SoundListManager.instance.GetAudioClip((int)Dragon.DragonLongAttack, (int)Main.Monster);
+
+
+        }
+
+        return null;
+
+    }
 
     //攻撃の判定を生成する予備動作のフラグ（ハンターの攻撃予測に使用）
     [SerializeField]bool predictionAttackFlag = false;
@@ -48,8 +75,30 @@ public abstract class PlayerAttack : MonoBehaviour
         _anime = GetComponent<PlayerAnime>();
         _status = GetComponent<PlayerStatus>();
 
-        
+        HunterManager hunterManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
+
+
+
         Application.targetFrameRate = 60;
+
+        DelayTask(() =>
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                GameObject gameObject = hunterManager.GetHunterObject(i);
+                Hunter_AI ai = gameObject.GetComponent<Hunter_AI>();
+                ai.SetMonsterHitSound(HitAttackSound);
+
+            }
+
+        }, 10).Forget();
+    }
+
+    async UniTask DelayTask(System.Action action,int delayTime) 
+    {
+        await UniTask.DelayFrame(delayTime);
+
+        action();
     }
 
     protected async UniTask ResetFlag(System.Action<bool> action) 
@@ -108,6 +157,7 @@ public abstract class PlayerAttack : MonoBehaviour
         //攻撃をするボタン
         if (instance.IsOnButton(InputKeys.RT))
         {
+
             _anime.SetAttackFlag(true);
 
 
