@@ -53,6 +53,7 @@ public class HunterManager : MonoBehaviour
         gameObjects[i].GetComponent<Hunter_AI>().WaitForCount();
         gameObjects[i].GetComponent<Hunter_AI>().SetNavmesh();
         deathCount++;
+        
         //_uiManager.ObjectiveText();
     }
 

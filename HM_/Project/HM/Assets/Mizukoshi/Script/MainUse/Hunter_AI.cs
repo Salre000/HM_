@@ -623,6 +623,8 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         int num = this.GetComponent<Hunter_ID>().GetHunterID();
         deathAnimNow = false;
+        _agent.speed=speed;
+        alreadyNear = false;
         manager.Respawn(num);
     }
 
