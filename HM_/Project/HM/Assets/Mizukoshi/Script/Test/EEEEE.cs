@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EEEEE : MonoBehaviour
 {
-    private ParticleSystem particleSystem;
+    private ParticleSystem particleSystem11;
 
     void Start()
     {
         // ParticleSystemコンポーネントを取得
-        particleSystem = GetComponent<ParticleSystem>();
+        particleSystem11 = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -24,8 +24,8 @@ public class EEEEE : MonoBehaviour
     void RestartEffect()
     {
         // エフェクトを停止してから再度再生
-        particleSystem.Stop();
-        particleSystem.Clear();  // パーティクルをリセット（必要な場合）
-        particleSystem.Play();
+        particleSystem11.Stop();
+        particleSystem11.Clear();  // パーティクルをリセット（必要な場合）
+        particleSystem11.Play();
     }
 }

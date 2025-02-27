@@ -21,10 +21,40 @@ public class CollisionCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        string ObjName=other.gameObject.name;
 
         GameObject parent=this.gameObject.transform.parent.gameObject;
+
+        PlayerStatus ste = other.transform.gameObject.GetComponentInParent<PlayerStatus>();
+        if(ste!= null)
+        {
+            hPManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
+            int damege = 30;
+            float part = damege / 2;
+            hPManager.MonsterDamage(damege, ref part, false);
+            Destroy(parent);
+        }
+
+        if (CheckCollisionTerrain(other))Destroy(parent);
+     
        
-        Destroy(parent);
+
+        
+    }
+
+    bool  CheckCollisionTerrain(Collider co)
+    {
+        Transform check=GetTopLevelParent(co.transform);
+        if(check.name== "Terrain")return true;
+        return false;
+    }
+
+    Transform GetTopLevelParent(Transform currentTransform)
+    {
+        // 現在の親がnullでない限り、親をたどり続ける
+        while (currentTransform.parent != null)
+        {
+            currentTransform = currentTransform.parent;
+        }
+        return currentTransform;  // 最上位の親を返す
     }
 }

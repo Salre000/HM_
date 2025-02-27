@@ -109,7 +109,7 @@ NavMeshSettings:
     agentRadius: 0.1
     agentHeight: 2
     agentSlope: 45
-    agentClimb: 1
+    agentClimb: 0.2
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -4329,6 +4329,10 @@ PrefabInstance:
     - target: {fileID: 7952331083926232828, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
       propertyPath: m_Size.z
       value: 10.917127
+      objectReference: {fileID: 0}
+    - target: {fileID: 7952331083926232828, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7952331083926232828, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
       propertyPath: m_Center.x
@@ -16932,13 +16936,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4576858793220471510, guid: c1440e657f418c144ad8f65334d8084c, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4929981563613167001, guid: c1440e657f418c144ad8f65334d8084c, type: 3}
       propertyPath: Arrow
       value: 
       objectReference: {fileID: 615166658428147684, guid: 28b0dacefb60a9141b725db201fad660, type: 3}
     - target: {fileID: 4929981563613167001, guid: c1440e657f418c144ad8f65334d8084c, type: 3}
       propertyPath: attackDistance
-      value: 4
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1440e657f418c144ad8f65334d8084c, type: 3}
@@ -23559,7 +23567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913334869372, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: _damage
-      value: 4
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913334869373, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: m_TagString
@@ -23607,6 +23615,10 @@ MonoBehaviour:
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
+  chaseSpeed: 0.075
+  dashSpeed: 0.15
+  detectionRadius: 0
+  fleeDistance: 0
   _attackDistanceFF: 1
   keepDistance: 0.1
   attackDistance: 0.3
@@ -35915,6 +35927,27 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1874490598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4855761234387649917, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+  m_PrefabInstance: {fileID: 299911648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1874490601
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874490598}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.256, y: 0.17600001, z: 0.316}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.042000003, y: 0.07, z: -0.055000003}
+  m_TimeToStationary: 0.5
 --- !u!114 &1876202868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41735,7 +41768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3278220772783456478, guid: 05d6b755961f31e40a448f1be77f4f90, type: 3}
       propertyPath: _damage
-      value: 6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3278220773175752458, guid: 05d6b755961f31e40a448f1be77f4f90, type: 3}
       propertyPath: m_LocalPosition.z
@@ -41747,7 +41780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3278220773221436954, guid: 05d6b755961f31e40a448f1be77f4f90, type: 3}
       propertyPath: attackDistance
-      value: 0.25
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3278220773221436954, guid: 05d6b755961f31e40a448f1be77f4f90, type: 3}
       propertyPath: colliderObject
@@ -41820,7 +41853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4606462654840620673, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
       propertyPath: _damage
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4606462654910583582, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
       propertyPath: colliderObj

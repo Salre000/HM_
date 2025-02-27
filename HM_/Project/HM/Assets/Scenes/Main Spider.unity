@@ -109,7 +109,7 @@ NavMeshSettings:
     agentRadius: 0.1
     agentHeight: 2
     agentSlope: 60
-    agentClimb: 0.4
+    agentClimb: 0.2
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -988,7 +988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1580820084962436094, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 1580820084962436094, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1032,7 +1032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4606462654840620673, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
       propertyPath: _damage
-      value: 30
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4606462654910583582, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
       propertyPath: colliderObj
@@ -4581,6 +4581,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579314751}
   m_CullTransparentMesh: 1
+--- !u!1 &579367994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6868521352842551379, guid: 7afa8793cc482854c9826ecae80ef398, type: 3}
+  m_PrefabInstance: {fileID: 699610263}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &579367996
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579367994}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.90900004, y: 0.87500006, z: 0.90900004}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.017, y: 0.28800002, z: 0.39600003}
+  m_TimeToStationary: 0.5
 --- !u!1001 &579440712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4638,7 +4659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3278220772783456478, guid: 05d6b755961f31e40a448f1be77f4f90, type: 3}
       propertyPath: _damage
-      value: 40
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3278220773175752458, guid: 05d6b755961f31e40a448f1be77f4f90, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5908,7 +5929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913256928417, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913256928417, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: m_LocalScale.x
@@ -5972,7 +5993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913334869372, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: _damage
-      value: 20
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913334869373, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: m_TagString
@@ -6036,6 +6057,10 @@ MonoBehaviour:
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
+  chaseSpeed: 0.075
+  dashSpeed: 0.15
+  detectionRadius: 0.1
+  fleeDistance: 0.2
   _attackDistanceFF: 1
   keepDistance: 0.1
   attackDistance: 0.3
@@ -9805,9 +9830,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4576858793220471510, guid: c1440e657f418c144ad8f65334d8084c, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4929981563613167001, guid: c1440e657f418c144ad8f65334d8084c, type: 3}
       propertyPath: attackDistance
-      value: 4
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1440e657f418c144ad8f65334d8084c, type: 3}
