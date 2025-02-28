@@ -51,8 +51,7 @@ public class SIGHT : MonoBehaviour
             if (ste != null) 
             {
                 
-                int ssz = 0;
-                Debug.Log(hit.transform.gameObject);
+              
             }
             
             

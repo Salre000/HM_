@@ -259,7 +259,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2|Avoid"
-  m_Speed: 1
+  m_Speed: 3.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2050398925305230997}
@@ -314,7 +314,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2|Die(\u4EEE)"
-  m_Speed: 1
+  m_Speed: 3.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -7994679409705214827}

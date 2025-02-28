@@ -20,11 +20,6 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private bool startWait = true;
 
-    private GameObject[] _monsters;
-
-    // トラップリスト
-    private List<GameObject> _trapList;
-
     // トラップ感知
     public SpiderTrapPool trap;
 
@@ -60,6 +55,12 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private float speed = 0.5f;
 
+    public float chaseSpeed = 0.075f;
+
+    public float dashSpeed = 0.075f * 2;
+
+    private bool alreadyNear = false;
+
     // 待機時間
     private float waitSecond = 1.0f;
 
@@ -74,6 +75,9 @@ public abstract class Hunter_AI : MonoBehaviour
 
     // 時間経過用変数
     private float coolTime = 0.0f;
+
+    public float detectionRadius = 0.0f;  // 相手が近づいた時に反応する距離
+    public float fleeDistance = 0.0f;     // 離れる距離
 
     // 攻撃のクールタイム
     private float _attackCoolTime = 10.0f;
@@ -92,6 +96,8 @@ public abstract class Hunter_AI : MonoBehaviour
     private float _AvoidRatio;
 
     private bool deathAnimNow = false;
+
+    private bool runAway = false;
 
     static PlayerAttack playerAttack;
 
@@ -165,8 +171,26 @@ public abstract class Hunter_AI : MonoBehaviour
 
         WaitAttackCoolTime();
 
+        
+
         // 拘束状態なら停止
         if (CheckRest()) return;
+
+        // 近づきすぎなら逃げる
+        if (CheckKeepDistance(detectionRadius, this.gameObject))
+        {
+            if(!_agent.enabled)_agent.enabled = true;
+            FleeFromPlayer();
+        }
+
+        if (CheckKeepDistance(4.0f, this.gameObject))
+        {
+            if (alreadyNear)
+            {
+                if (!_agent.enabled) _agent.enabled = true;
+                _agent.speed = dashSpeed;
+            }
+        }
 
         // ハンターの攻撃がとんできているかどうかを確認
         if (CheckMonsterAttack())
@@ -216,18 +240,18 @@ public abstract class Hunter_AI : MonoBehaviour
         }
         else
         {
+            if (_agent.speed != 0.075) _agent.speed = 0.075f;
+            if (!alreadyNear) alreadyNear = true;
             // 攻撃準備ができているのならば
             if (attackReady)
             {
+               
                 // 攻撃
                 Attack();
             }
             else
             {
                 if (CheckAttack()) return;
-
-                // 少し距離をとる。
-                //Back();
             }
         }
         //------------------------------------------------
@@ -240,7 +264,6 @@ public abstract class Hunter_AI : MonoBehaviour
         {
             // モンスターのタグ取得
             _monster = GameObject.FindGameObjectWithTag("Player");
-            _monsters = GameObject.FindGameObjectsWithTag("Player");
             manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
             _animator = GetComponent<Animator>();
             hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
@@ -252,7 +275,6 @@ public abstract class Hunter_AI : MonoBehaviour
                 _agent.destination = searchPosition[searchPosition.Length - 1];
             }
             else { _agent.destination = searchPosition[0]; }
-            _trapList = SpiderTrapPool.instance?.GetTraps();
             myCollider = GetComponent<Collider>();
             playerAttack = GameObject.FindAnyObjectByType<PlayerAttack>();
             p_audioSource = GetComponent<AudioSource>();
@@ -316,6 +338,12 @@ public abstract class Hunter_AI : MonoBehaviour
     public bool CheckKeepDistance(Vector3 pos, GameObject AIType, float distance)
     {
         return Vector3.Distance(pos, AIType.transform.position) < distance;
+    }
+
+    public void SetKeepDistance(float activeDistance,float keep)
+    {
+        detectionRadius = activeDistance;
+        fleeDistance = keep;
     }
 
     // モンスターとの距離を確認
@@ -595,6 +623,8 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         int num = this.GetComponent<Hunter_ID>().GetHunterID();
         deathAnimNow = false;
+        _agent.speed=speed;
+        alreadyNear = false;
         manager.Respawn(num);
     }
 
@@ -603,6 +633,18 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         if(GetMonster() == null) return;
         this.transform.LookAt(GetMonster().transform.position);
+    }
+
+    void FleeFromPlayer()
+    {
+        // プレイヤーから逆方向に一定距離離れる位置を計算
+        Vector3 directionAwayFromPlayer = transform.position - _monster.transform.position;
+        Vector3 fleeTarget = transform.position + directionAwayFromPlayer.normalized * fleeDistance;
+
+        if (!_agent.enabled) return;
+
+        // ナビメッシュエージェントを使って、逃げる場所に移動
+        _agent.SetDestination(fleeTarget);
     }
 
     // 罠情報の更新

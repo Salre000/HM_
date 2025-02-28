@@ -17,9 +17,10 @@ public class AI2Logic :Hunter_AI
     public GameObject ArrowPos;
 
 
-    public float keepDistance = 1.5f;
+    public float detection2Radius = 1f;  // ‘ŠŽè‚ª‹ß‚Ã‚¢‚½Žž‚É”½‰ž‚·‚é‹——£
+    public float flee2Distance = 2.5f;     // —£‚ê‚é‹——£
 
-    public float attackDistance = 2.0f;
+    public float attackDistance = 1.0f;
 
     public float viewAngle = 180.0f;
 
@@ -47,6 +48,7 @@ public class AI2Logic :Hunter_AI
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);
         CloseCollider();
+        SetKeepDistance(detectionRadius,flee2Distance);
     }
 
     public override void Chase()
