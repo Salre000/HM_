@@ -42,6 +42,7 @@ public class CameraManager : MonoBehaviour
 
     async UniTask Setup()
     {
+        setupFlag = false;
         _player = GameObject.FindGameObjectWithTag("Player");
 
         await StartShowHunter();
