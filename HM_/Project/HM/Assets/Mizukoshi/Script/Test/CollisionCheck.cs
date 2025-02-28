@@ -27,11 +27,11 @@ public class CollisionCheck : MonoBehaviour
         PlayerStatus ste = other.transform.gameObject.GetComponentInParent<PlayerStatus>();
         if(ste!= null)
         {
-            hPManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
-            int damege = 30;
-            float part = damege / 2;
-            hPManager.MonsterDamage(damege, ref part, false);
-            Destroy(parent);
+            //hPManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
+            //int damege = 30;
+            //float part = damege / 2;
+            //hPManager.MonsterDamage(damege, ref part, false);
+            //Destroy(parent);
         }
 
         if (CheckCollisionTerrain(other))Destroy(parent);
