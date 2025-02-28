@@ -103,7 +103,10 @@ public abstract class Hunter_AI : MonoBehaviour
 
     static PlayerAttack playerAttack;
 
+    protected virtual void DebugDistance()
+    {
 
+    }
     protected enum eStatus
     {
         None,
@@ -157,7 +160,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void Update()
     {
-
+        DebugDistance();
 
         if (startWait)
         {

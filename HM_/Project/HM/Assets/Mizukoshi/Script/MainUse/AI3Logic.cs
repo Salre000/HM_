@@ -64,4 +64,9 @@ public class AI3Logic : Hunter_AI
         if (colliderObj == null) return;
         colliderObj.GetComponent<Collider>().enabled = false;
     }
+
+    protected override void DebugDistance()
+    {
+        Debug.Log("‚â‚è‚Ì–Ú“I’n" + _agent.destination);
+    }
 }

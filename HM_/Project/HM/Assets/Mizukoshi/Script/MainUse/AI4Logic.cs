@@ -65,4 +65,9 @@ public class AI4Logic : Hunter_AI
     {
         if (colliderObject != null) colliderObject.GetComponent<Collider>().enabled = false;
     }
+
+    protected override void DebugDistance()
+    {
+        Debug.Log("Œ•‚Ì–Ú“I’n" + _agent.destination);
+    }
 }

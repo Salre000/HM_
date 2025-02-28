@@ -23619,7 +23619,7 @@ MonoBehaviour:
   dashSpeed: 0.15
   detectionRadius: 0
   fleeDistance: 0
-  _attackDistanceFF: 1
+  _attackDistanceFF: 0.3
   keepDistance: 0.1
   attackDistance: 0.3
   viewAngle: 180
@@ -28333,7 +28333,6 @@ GameObject:
   - component: {fileID: 1418245116}
   - component: {fileID: 1418245119}
   - component: {fileID: 1418245120}
-  - component: {fileID: 1418245121}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -28412,19 +28411,6 @@ MonoBehaviour:
   uiManager: {fileID: 1209621434}
   MonsterHp: 0
   HunterHp: []
---- !u!114 &1418245121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418245115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 901b80e7627d5ea4b9871f56345780e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundListManager: {fileID: 657350236}
 --- !u!1 &1423780448
 GameObject:
   m_ObjectHideFlags: 0
