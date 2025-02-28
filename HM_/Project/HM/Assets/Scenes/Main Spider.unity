@@ -5680,6 +5680,10 @@ PrefabInstance:
       propertyPath: near clip plane
       value: 0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 6801594655650888666, guid: 7afa8793cc482854c9826ecae80ef398, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 247
+      objectReference: {fileID: 0}
     - target: {fileID: 6801594656135392137, guid: 7afa8793cc482854c9826ecae80ef398, type: 3}
       propertyPath: m_Size.x
       value: 5.61
@@ -12030,6 +12034,7 @@ MonoBehaviour:
   soundList:
   - {fileID: 11400000, guid: 861fde09b71123440b72feeb9d5f14bc, type: 2}
   - {fileID: 11400000, guid: f40235c1e2f0d1e42a78a34357fb5692, type: 2}
+  - {fileID: 11400000, guid: 5ee342e875072e7459bcdbf31108bf3d, type: 2}
 --- !u!4 &1800036643
 Transform:
   m_ObjectHideFlags: 0
