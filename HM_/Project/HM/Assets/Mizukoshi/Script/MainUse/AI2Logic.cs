@@ -80,7 +80,7 @@ public class AI2Logic :Hunter_AI
         startPos.y += 0.0750f;
         clone.transform.position = startPos;
         Vector3 dir = GetMonster().transform.position;
-        dir.y += 0.0065f;
+        dir.y += 0.1265f;
         clone.transform.LookAt(dir);
         audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.PreArechSE, (int)Main.Hunter));
         

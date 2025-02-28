@@ -61,6 +61,8 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private bool alreadyNear = false;
 
+    private bool avoiding=false;
+
     // 待機時間
     private float waitSecond = 1.0f;
 
@@ -171,7 +173,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
         WaitAttackCoolTime();
 
-        
+        if(avoiding)return;
 
         // 拘束状態なら停止
         if (CheckRest()) return;
@@ -602,6 +604,9 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         // アニメーションを流す
         _animator.SetTrigger("AvoidTrigger");
+
+        avoiding = true;
+        _agent.enabled = false;
     }
 
     /// <summary>
@@ -626,6 +631,12 @@ public abstract class Hunter_AI : MonoBehaviour
         _agent.speed=speed;
         alreadyNear = false;
         manager.Respawn(num);
+    }
+
+    public void AvoidFinish()
+    {
+        _agent.enabled = true;
+        avoiding=false;
     }
 
     //
