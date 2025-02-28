@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerSpiderTrap : AnimeBase
@@ -36,17 +37,18 @@ public class PlayerSpiderTrap : AnimeBase
         if (TrapObject == null) { AnimeEnd(); return; }
         Trap = TrapObject.GetComponent<SpiderTrap>();
 
-
+        if(task.Status.IsCanceled()) _AnimeFlagReset(false);
         // Unitask‚Å0.5•b‚²‚Æ‚É’wå‚Ì‘ƒ‚ÌƒTƒCƒY‚ðL‚°‚é
+        Flag = true;
+        
         task = Times();
-
     }
     bool Flag = true;
     UniTask task;
     public override void Action()
     {
-        AnimeUPDate();
         if (!InputManager.instance.IsOnButton(InputManager.InputKeys.LT)) _AnimeFlagReset(false);
+        AnimeUPDate();
 
     }
 
@@ -78,7 +80,8 @@ public class PlayerSpiderTrap : AnimeBase
 
             if (TrapObject.transform.localScale.x >= MaxSize) break;
         }
-
+        TrapObject = null;
+        _AnimeFlagReset(false);
 
 
     }
