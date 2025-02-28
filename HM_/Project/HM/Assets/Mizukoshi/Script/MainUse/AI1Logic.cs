@@ -67,4 +67,9 @@ public class AI1Logic :Hunter_AI
         if (colliderObj == null) return;
         colliderObj.GetComponent<Collider>().enabled = false;
     }
+
+    protected override void DebugDistance()
+    {
+        Debug.Log("ハンマーの目的地" + _agent.destination);
+    }
 }
