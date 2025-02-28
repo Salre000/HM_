@@ -38,6 +38,8 @@ public class PlayerStatus : MonoBehaviour
 
     private AudioSource _audioSource;
 
+    public static PlayerStatus Instance { get; private set; }
+
     [HideInInspector] public OptionData data;
     public enum Condition
     {
@@ -106,9 +108,13 @@ public class PlayerStatus : MonoBehaviour
 
     }
 
+    public void SetData(OptionData data) { this.data=data; }
+
     public void Start()
     {
         data = JsonDataModule.Load<OptionData>(Application.streamingAssetsPath + "/Option.json");
+
+        Instance = this;
 
         _anime = this.gameObject.GetComponent<PlayerAnime>();
         _audioSource = this.transform.AddComponent<AudioSource>();

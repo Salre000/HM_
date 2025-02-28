@@ -11,6 +11,8 @@ public class SoundListManager : MonoBehaviour
     AudioSource _audioSource;
     AudioSource _audioSourceBGM;
 
+
+
     public static SoundListManager instance;
 
     private void Start()

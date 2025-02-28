@@ -88,7 +88,7 @@ public class OptionManager : MonoBehaviour
         _seBar.value = data.volumeSE;
     }
 
-    private async void Update()
+    private void Update()
     {
         if (_selected) return;
 
@@ -230,6 +230,13 @@ public class OptionManager : MonoBehaviour
 
             await ChangeSelectSlider();
         }
+        data.sensibility = (int)_sensibilityBar.value;
+        data.volumeBGM = (int)_bgmBar.value;
+        data.volumeSE = (int)_seBar.value;
+
+        Save<OptionData>(data, _filepath);
+
+        PlayerStatus.Instance.SetData(data);
         EventSystem.current.SetSelectedGameObject(null);
 
         _selected = false;
