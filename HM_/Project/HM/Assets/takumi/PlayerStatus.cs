@@ -38,6 +38,7 @@ public class PlayerStatus : MonoBehaviour
 
     private AudioSource _audioSource;
 
+    public static bool isLife = true;
     public static PlayerStatus Instance { get; private set; }
 
     [HideInInspector] public OptionData data;

@@ -15,6 +15,8 @@ public class SoundListManager : MonoBehaviour
 
     public static SoundListManager instance;
 
+    float soundVolume = 0.5f;
+
     private void Start()
     {
         _audioSource = this.transform.AddComponent<AudioSource>();
@@ -31,10 +33,19 @@ public class SoundListManager : MonoBehaviour
         _audioSource.spatialBlend = 0;
         _audioSourceBGM.spatialBlend = 0;
 
+        _audioSourceBGM.loop = true;
 
         _audioSourceBGM.loop = true;
 
     }
+
+    public void SetSoundVolume(int volume)
+    {
+        soundVolume = (float)volume/100.0f;
+
+    }
+
+    public float GetSoundVolume() {return soundVolume;}
 
     //‚µ‚Ä‚¢‚ÌƒTƒEƒ“ƒh‚ğÄ¶‚·‚éŠÖ”
     public void PlaySound( int index, int type=0)
