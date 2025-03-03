@@ -31,14 +31,14 @@ public class CollisionCheck : MonoBehaviour
             //int damege = 30;
             //float part = damege / 2;
             //hPManager.MonsterDamage(damege, ref part, false);
-            Destroy(parent);
+            parent.SetActive(false);
         }
 
-        if (CheckCollisionTerrain(other))Destroy(parent);
-     
-       
+        if (CheckCollisionTerrain(other)) parent.SetActive(false);
 
-        
+
+
+
     }
 
     bool  CheckCollisionTerrain(Collider co)

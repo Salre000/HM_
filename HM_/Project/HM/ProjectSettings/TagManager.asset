@@ -10,6 +10,7 @@ TagManager:
   - ItemBox
   - GameManager
   - Arch
+  - ArrowList
   layers:
   - Default
   - TransparentFX

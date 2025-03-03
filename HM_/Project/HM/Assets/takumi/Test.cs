@@ -7,13 +7,15 @@ using UnityEngine;
 public class Test : MonoBehaviour
 {
     [SerializeField] PlayerHitCheck[] hItTest = new PlayerHitCheck[30];
-    [SerializeField] GameObject[] GameObject = new GameObject[30];
+    [SerializeField] GameObject[] sameObject = new GameObject[30];
 
     AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         audioSource = this.gameObject.AddComponent<AudioSource>();
+
+        hItTest = GameObject.FindObjectsByType<PlayerHitCheck>(FindObjectsSortMode.None);
     }
 }
 //}
