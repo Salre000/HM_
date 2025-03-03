@@ -77,6 +77,7 @@ public abstract class PlayerAttack : MonoBehaviour
 
         HunterManager hunterManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
 
+        AnimeBase.useFlag = false;
 
 
         Application.targetFrameRate = 60;
