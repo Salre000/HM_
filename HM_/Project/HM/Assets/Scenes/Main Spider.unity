@@ -661,6 +661,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1580820083477749231, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1580820084962436093, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
       propertyPath: m_Name
       value: HunterSpear
