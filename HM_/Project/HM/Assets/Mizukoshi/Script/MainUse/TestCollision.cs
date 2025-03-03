@@ -24,6 +24,7 @@ public class TestCollision : MonoBehaviour
     }
 
     public GameObject GetGameObject() {  return m_gameObject; }
+    public void SetGameObject(GameObject gameObject) {  m_gameObject = gameObject; }
 
     public AudioSource GetAudioSource() { return _audioSource; }
 }
