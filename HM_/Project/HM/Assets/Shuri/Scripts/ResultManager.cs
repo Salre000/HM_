@@ -154,6 +154,7 @@ public class ResultManager : MonoBehaviour
     {
         // Bボタンが押されたらセレクト画面に戻る
         if (Input.GetKeyDown(KeyCode.JoystickButton3)) SceneManager.LoadScene("Select");
+        if (Input.GetKeyDown(KeyCode.JoystickButton3)) GetComponent<SceneChanger>().ChangeScene();
     }
 
     /// <summary>
