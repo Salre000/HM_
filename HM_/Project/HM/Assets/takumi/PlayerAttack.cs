@@ -158,13 +158,13 @@ public abstract class PlayerAttack : MonoBehaviour
         }
 
         //遠距離攻撃をするボタン
-        if (instance.IsOnButton(InputKeys.LT))
+        if (instance.IsOnButton(InputKeys.Skill))
         {
             if (LTAttack() > 0) _anime.SetLoanAttackFlag(true);
 
         }
         //攻撃をするボタン
-        if (instance.IsOnButton(InputKeys.RT))
+        if (instance.IsOnButton(InputKeys.Normal))
         {
 
             _anime.SetAttackFlag(true);
@@ -178,7 +178,7 @@ public abstract class PlayerAttack : MonoBehaviour
         }
 
         //LR同時押し
-        if ((instance.IsOnButton(InputKeys.RB) && instance.IsOnButton(InputKeys.LB) && ULTFlag) || IsCapFlag)
+        if ((instance.IsOnButton(InputKeys.Special1) && instance.IsOnButton(InputKeys.Special2) && ULTFlag) || IsCapFlag)
         {
             if (LTRTAttack() > 0) _anime.SetRoarFlag(true);
             Debug.Log("Anime");
@@ -189,7 +189,7 @@ public abstract class PlayerAttack : MonoBehaviour
         }
 
         //前ジャンプ
-        if (Input.GetAxis("Vertical") >= -0.3f && instance.IsOnButton(InputKeys.A) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
+        if (Input.GetAxis("Vertical") >= -0.3f && instance.IsOnButton(InputKeys.Jump) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
         {
             _anime.SetJumpFlag(true);
             Jump();
@@ -202,7 +202,7 @@ public abstract class PlayerAttack : MonoBehaviour
         }
 
         //バックジャンプ
-        if (Input.GetAxis("Vertical") < -0.3f && instance.IsOnButton(InputKeys.A) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
+        if (Input.GetAxis("Vertical") < -0.3f && instance.IsOnButton(InputKeys.Jump) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
         {
             _anime.SetBackSteppeFlag(true);
             BarkJump();

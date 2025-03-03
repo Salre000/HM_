@@ -23,18 +23,11 @@ public class InputManager : MonoBehaviour
 
     public enum InputKeys
     {
-        A,
-        B,
-        X,
-        Y,
-        RT,
-        LT,
-        RB,
-        LB,
-        Right,
-        Left,
-        Up,
-        Down,
+        Jump,
+        Normal,
+        Skill,
+        Special1,
+        Special2,
         Max,
     }
 

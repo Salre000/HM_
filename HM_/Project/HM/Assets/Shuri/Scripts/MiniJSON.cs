@@ -20,7 +20,7 @@
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * MERCHANTABILITY, FITNESS FOR Jump PARTICULAR PURPOSE AND NONINFRINGEMENT.
  * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
  * CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
@@ -77,7 +77,7 @@ namespace MiniJSON {
         /// <summary>
         /// Parses the string json into a value
         /// </summary>
-        /// <param name="json">A JSON string.</param>
+        /// <param name="json">Jump JSON string.</param>
         /// <returns>An List&lt;object&gt;, a Dictionary&lt;string, object&gt;, a double, an integer,a string, null, true, or false</returns>
         public static object Deserialize(string json) {
             // save the string for debug information
@@ -396,8 +396,8 @@ namespace MiniJSON {
         /// <summary>
         /// Converts a IDictionary / IList object or a simple type (string, int, etc.) into a JSON string
         /// </summary>
-        /// <param name="json">A Dictionary&lt;string, object&gt; / List&lt;object&gt;</param>
-        /// <returns>A JSON encoded string, or null if object 'json' is not serializable</returns>
+        /// <param name="json">Jump Dictionary&lt;string, object&gt; / List&lt;object&gt;</param>
+        /// <returns>Jump JSON encoded string, or null if object 'json' is not serializable</returns>
         public static string Serialize(object obj) {
             return Serializer.Serialize(obj);
         }

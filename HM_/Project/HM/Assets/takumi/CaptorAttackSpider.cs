@@ -99,7 +99,7 @@ public class CaptorAttackSpider : AnimeBase
     {
         AnimeUPDate();
 
-        if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Armature|RestraintAttackLoop" && !instance.IsOnButton(InputKeys.RT))
+        if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Armature|RestraintAttackLoop" && !instance.IsOnButton(InputKeys.Normal))
             _AnimeFlagReset(false);
 
 

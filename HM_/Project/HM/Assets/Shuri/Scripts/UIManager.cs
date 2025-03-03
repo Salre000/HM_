@@ -20,13 +20,19 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Sprite[] _conditionSprites;
 
-    void Start()
+    async void Start()
     {
+        Time.timeScale = 0.0f;
+
         remainingTime = LimitTime;
 
         _hpBar.value = _hpBar.maxValue = _hpManager.GetMaxMonsterHp();
 
         GameObject.FindWithTag("Player").GetComponent<PlayerStatus>().SetCallBackCondition(ChangeConditionSprite);
+
+        await UniTask.WaitUntil(() => CameraManager.setupFlag);
+
+        Time.timeScale = 1.0f;
     }
 
     ~UIManager()
