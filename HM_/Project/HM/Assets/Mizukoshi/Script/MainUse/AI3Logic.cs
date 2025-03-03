@@ -51,6 +51,7 @@ public class AI3Logic : Hunter_AI
         base.Attack();
         if (CheckAudioSourceNull()) return;
         p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.PreSpearAttack, (int)Main.Hunter));
+        Debug.Log("AAA");
     }
 
     public void SetCollider()

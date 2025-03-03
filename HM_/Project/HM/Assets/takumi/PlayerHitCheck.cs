@@ -61,7 +61,7 @@ public class PlayerHitCheck : MonoBehaviour
 
                 source.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Dragon.DragonAttackHit, (int)Main.Hunter));
 
-                SoundListManager.instance.GetAudioClip((int)HunterSE.PreArechSE + (ID + 1), (int)Main.Monster);
+                source.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.PreArechSE + (ID + 1), (int)Main.Monster));
 
             });
 
