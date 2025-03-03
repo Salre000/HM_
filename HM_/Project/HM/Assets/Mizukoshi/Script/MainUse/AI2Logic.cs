@@ -38,6 +38,8 @@ public class AI2Logic :Hunter_AI
 
     AudioSource audioSource;
 
+    ArrowList arrowList;
+
     public override void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -48,7 +50,9 @@ public class AI2Logic :Hunter_AI
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);
         CloseCollider();
+        arrowList=GetComponentInChildren<ArrowList>();
         SetKeepDistance(detectionRadius,flee2Distance);
+        
     }
 
     public override void Chase()
@@ -75,13 +79,19 @@ public class AI2Logic :Hunter_AI
 
     public void SetArch()
     {
-        GameObject clone = GameObject.Instantiate(Arrow);
+        //GameObject clone = GameObject.Instantiate(Arrow);
         Vector3 startPos = this.transform.position;
         startPos.y += 0.0750f;
-        clone.transform.position = startPos;
+        //clone.transform.position = startPos;
         Vector3 dir = GetMonster().transform.position;
         dir.y += 0.0665f;
-        clone.transform.LookAt(dir);
+        //clone.transform.LookAt(dir);
+
+        if(arrowList==null) return;
+
+        //ñÓÇà⁄ìÆÇ≥ÇπÅAÉIÉìÇ…Ç∑ÇÈ
+        arrowList.SetArrow(startPos, dir);
+        
         audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.PreArechSE, (int)Main.Hunter));
         
     }
