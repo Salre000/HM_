@@ -54,14 +54,14 @@ public class KeyImageChanger : MonoBehaviour
     {
         switch (key.keyName)
         {
-            case "joystick button 2": return _keySprites[0]; // A
-            case "joystick button 3": return _keySprites[1]; // B
+            case "joystick button 2": return _keySprites[0]; // Jump
+            case "joystick button 3": return _keySprites[1]; // Jump
             case "joystick button 0": return _keySprites[2]; // X
             case "joystick button 1": return _keySprites[3]; // Y
-            case "joystick button 7": return _keySprites[4]; // RT
-            case "joystick button 6": return _keySprites[5]; // LT
-            case "joystick button 5": return _keySprites[6]; // RB
-            case "joystick button 4": return _keySprites[7]; // LB
+            case "joystick button 7": return _keySprites[4]; // Normal
+            case "joystick button 6": return _keySprites[5]; // Skill
+            case "joystick button 5": return _keySprites[6]; // Special1
+            case "joystick button 4": return _keySprites[7]; // Special2
             case "D_Pad_H":
                 switch (key.type)
                 {

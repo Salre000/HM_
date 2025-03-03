@@ -38,7 +38,7 @@ public class PlayerSpiderTrap : AnimeBase
     }
     public override void Action()
     {
-        if (!InputManager.instance.IsOnButton(InputManager.InputKeys.LT))
+        if (!InputManager.instance.IsOnButton(InputManager.InputKeys.Skill))
             _AnimeFlagReset(false);
         AnimeUPDate();
 

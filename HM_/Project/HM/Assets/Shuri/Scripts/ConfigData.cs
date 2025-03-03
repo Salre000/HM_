@@ -3,7 +3,7 @@ using static InputManager;
 [System.Serializable]
 public class ConfigData
 {
-    public const int ButtonNum = 12;
+    public const int ButtonNum = 5;
 
     public string[] name = new string[ButtonNum];
     public string[] types = new string[ButtonNum];

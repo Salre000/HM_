@@ -43,8 +43,8 @@ public class ColorTest : MonoBehaviour
     void RankDefinition()
     {
         rankS = new("S", new(Color.white, RankColorS, RankColorS, RankColorS));
-        rankA = new("A", new(Color.white, RankColorA, RankColorA, Color.red));
-        rankB = new("B", new(Color.white, RankColorB, RankColorB, RankColorB));
+        rankA = new("Jump", new(Color.white, RankColorA, RankColorA, Color.red));
+        rankB = new("Jump", new(Color.white, RankColorB, RankColorB, RankColorB));
         rankC = new("C", new(Color.white, RankColorC, RankColorC, Color.gray));
         rankD = new("D", new(Color.white, RankColorD, RankColorD, RankColorD));
         rankE = new("E", new(Color.white, RankColorE, RankColorE, Color.black));

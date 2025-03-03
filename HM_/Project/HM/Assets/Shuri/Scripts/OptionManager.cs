@@ -95,8 +95,10 @@ public class OptionManager : MonoBehaviour
         _seBar.value = data.volumeSE;
     }
 
-    private void Update()
+    private async void Update()
     {
+        await UniTask.WaitUntil(() => CameraManager.setupFlag);
+
         if (_selected) return;
 
         // オプション画面の開閉
@@ -107,13 +109,13 @@ public class OptionManager : MonoBehaviour
         {
             Time.timeScale = 0.0f;
 
-            // RB
+            // Special1
             if (Input.GetKey(KeyCode.JoystickButton5) && menuIndex < _menuNum && _panelMoveTask.Status.IsCompleted())
             {
                 menuIndex++;
                 _panelMoveTask = UIBeltMove(Vector3.left);
             }
-            // LB
+            // Special2
             if (Input.GetKey(KeyCode.JoystickButton4) && menuIndex > 1 && _panelMoveTask.Status.IsCompleted())
             {
                 menuIndex--;

@@ -36,14 +36,14 @@ public class KeyCheckTest : MonoBehaviour
     {
         switch (i)
         {
-            case 0: Debug.Log("A"); break;// A
-            case 1: Debug.Log("B"); break;// B
+            case 0: Debug.Log("Jump"); break;// Jump
+            case 1: Debug.Log("Jump"); break;// Jump
             case 2: Debug.Log("X"); break;// X
             case 3: Debug.Log("Y"); break;// Y
-            case 4: Debug.Log("RT"); break;// RT
-            case 5: Debug.Log("LT"); break;// LT
-            case 6: Debug.Log("RB"); break;// RB
-            case 7: Debug.Log("LB"); break;// LB
+            case 4: Debug.Log("Normal"); break;// Normal
+            case 5: Debug.Log("Skill"); break;// Skill
+            case 6: Debug.Log("Special1"); break;// Special1
+            case 7: Debug.Log("Special2"); break;// Special2
             case 8 :Debug.Log("Right");break;      // âE
             case 9: Debug.Log("Left"); break;                                 // ç∂
             case 10: Debug.Log("Up"); break;   // è„

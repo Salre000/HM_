@@ -408,7 +408,7 @@ public class DragonExample : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.A))
         {
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("Lands"))
-            {                        //A to land
+            {                        //Jump to land
                 anim.SetBool(IdleSimple, true);
                 anim.SetBool(IdleAgressive, false);
                 anim.SetBool(IdleRestless, false);
