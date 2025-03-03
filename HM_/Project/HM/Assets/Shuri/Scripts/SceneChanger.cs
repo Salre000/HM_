@@ -58,10 +58,6 @@ public class SceneChanger : MonoBehaviour
                 await FadeManager.instance.FadeInAlpha();
                 break;
             case GameScene.Select:
-
-                this.gameObject.GetComponent<Button>().navigation.selectOnLeft.interactable = false;
-                this.gameObject.GetComponent<Button>().navigation.selectOnRight.interactable = false;
-
                 // フェードアウト
                 await FadeManager.instance.FadeOutSlide();
 
