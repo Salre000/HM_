@@ -12909,6 +12909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 657350237}
   - component: {fileID: 657350236}
+  - component: {fileID: 657350238}
   m_Layer: 0
   m_Name: SoundList
   m_TagString: Untagged
@@ -12932,6 +12933,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 861fde09b71123440b72feeb9d5f14bc, type: 2}
   - {fileID: 11400000, guid: 861fde09b71123440b72feeb9d5f14bc, type: 2}
   - {fileID: 11400000, guid: 5ee342e875072e7459bcdbf31108bf3d, type: 2}
+  - {fileID: 11400000, guid: 5006a55e275053e47985ad26e567886e, type: 2}
 --- !u!4 &657350237
 Transform:
   m_ObjectHideFlags: 0
@@ -12947,6 +12949,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &657350238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657350235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d3e097634f85c4e8f076e5589f7d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &670660121
 MonoBehaviour:
   m_ObjectHideFlags: 0

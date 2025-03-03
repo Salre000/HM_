@@ -24,7 +24,8 @@ namespace SceneSound
         
         Monster,
         System,
-        Hunter
+        Hunter,
+        BGM,
     }
 
 
@@ -99,6 +100,11 @@ namespace SceneSound
        HunmerAttackSE,
        SwordAttackSE,
        ArechSE,
+    }
+
+    enum BGM
+    {
+        MainGameBGM,
     }
 
 }
