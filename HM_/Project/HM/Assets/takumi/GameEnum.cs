@@ -100,6 +100,8 @@ namespace SceneSound
        HunmerAttackSE,
        SwordAttackSE,
        ArechSE,
+       PreSwordAttack,
+       PreSpearAttack,
     }
 
     enum BGM
