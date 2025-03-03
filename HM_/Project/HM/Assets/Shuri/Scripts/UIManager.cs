@@ -16,10 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider _hpBar;
     [SerializeField] Image conditionImage;
 
-    [SerializeField] TextMeshProUGUI _textMeshProUGUI;
-
     [SerializeField] HPManager _hpManager;
-    [SerializeField] HunterManager _hunterManager;
 
     [SerializeField] Sprite[] _conditionSprites;
 
@@ -65,11 +62,6 @@ public class UIManager : MonoBehaviour
 
             await UniTask.DelayFrame(1);
         }
-    }
-
-    public void ObjectiveText()
-    {
-        _textMeshProUGUI.text = string.Format("Å•ÉnÉìÉ^Å[Ç4ëÃì|Ç∑ {0}/4",4 - _hunterManager.GetHunterDeathAmount());
     }
 
     private void ChangeConditionSprite(PlayerStatus.Condition condition)

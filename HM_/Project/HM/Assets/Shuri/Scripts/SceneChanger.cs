@@ -70,6 +70,14 @@ public class SceneChanger : MonoBehaviour
             case GameScene.MainSpider:
                 break;
             case GameScene.Result:
+                // フェードアウト
+                await FadeManager.instance.FadeOutAlpha();
+
+                // シーンの読み込み
+                await SceneManager.LoadSceneAsync(sceneName).ToUniTask();
+
+                // フェードイン
+                await FadeManager.instance.FadeInAlpha();
                 break;
         }
         

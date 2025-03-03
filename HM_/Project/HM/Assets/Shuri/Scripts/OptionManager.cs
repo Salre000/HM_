@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -30,6 +31,7 @@ public class OptionManager : MonoBehaviour
     private int _menuNum;
 
     private int _sliderIndex;
+    private int _menuButtonIndex = 0;
 
     [SerializeField] private GameObject _uiPanel;
 
@@ -40,15 +42,20 @@ public class OptionManager : MonoBehaviour
     [SerializeField] private Slider _sensibilityBar;
     [SerializeField] private Slider _bgmBar;
     [SerializeField] private Slider _seBar;
+    [SerializeField] private TextMeshProUGUI _sensivilityValue;
+    [SerializeField] private TextMeshProUGUI _bgmValue;
+    [SerializeField] private TextMeshProUGUI _seValue;
     [SerializeField] private RectTransform _cursor;
 
     [SerializeField] private Text _noteText;
+    [SerializeField] private Text _objectiveText;
 
-    [SerializeField] private Button _menuButton;
+    [SerializeField] private Button[] _menuButtons;
 
     [SerializeField] private Button _configButton;
 
     private InputManager _inputManager;
+    [SerializeField] private HunterManager _hunterManager;
 
     bool _selected = false;
 
@@ -113,7 +120,7 @@ public class OptionManager : MonoBehaviour
                 _panelMoveTask = UIBeltMove(Vector3.right);
             }
         }
-        else menuIndex = 1;
+        else { menuIndex = 1;return; };
 
         _panelRect.anchoredPosition = _baseRectPos;
         _panelRect.sizeDelta = _baseRectSize;
@@ -150,6 +157,7 @@ public class OptionManager : MonoBehaviour
         }
         else
         {
+            _objectiveText.text = string.Format("Å•ÉnÉìÉ^Å[Ç4ëÃì|Ç∑ {0}/4", _hunterManager.GetHunterDeathAmount());
             _beltText.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
             _objective.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
             Time.timeScale = 0.0f;
@@ -177,24 +185,29 @@ public class OptionManager : MonoBehaviour
         _beltText.transform.position = beltPos + dir * 250;
         _objective.transform.position = objectivePos + dir * 1500;
     }
-
+    
     private async void Menu()
     {
-        EventSystem.current.SetSelectedGameObject(_menuButton.gameObject);
+        EventSystem.current.SetSelectedGameObject(_menuButtons[0].gameObject);
 
         while (true)
         {
             await UniTask.DelayFrame(1);
 
-            if (Input.GetAxis("D_Pad_H") > DeadZone || Input.GetAxis("Horizontal") > DeadZone)
-            {
-                _menuButton = _menuButton.navigation.selectOnRight.GetComponent<Button>();
-            }
-            if (Input.GetAxis("D_Pad_H") < -DeadZone || Input.GetAxis("Horizontal") < -DeadZone)
-            {
-                _menuButton = _menuButton.navigation.selectOnLeft.GetComponent<Button>();
-            }
+            if (Input.GetAxis("D_Pad_H") > DeadZone || Input.GetAxis("Horizontal") > DeadZone) _menuButtonIndex = 1;
+            if (Input.GetAxis("D_Pad_H") < -DeadZone || Input.GetAxis("Horizontal") < -DeadZone) _menuButtonIndex = 0;
+            
+            _menuButtons[_menuButtonIndex].Select();
             if (Input.GetKeyDown(KeyCode.JoystickButton10)) break;
+
+            if (!Input.GetKeyDown(KeyCode.JoystickButton3)) continue;
+
+            switch (_menuButtonIndex)
+            {
+                case 0: OnBackToTheGame(); break;
+                case 1: OnReturnToSelect(); break;
+            }
+            break;
         }
         EventSystem.current.SetSelectedGameObject(null);
         _selected = false;
@@ -204,8 +217,6 @@ public class OptionManager : MonoBehaviour
     {
         _sliderIndex = 0;
 
-        _slider[0].Select();
-
         while (true)
         {
             await UniTask.DelayFrame(1);
@@ -213,13 +224,17 @@ public class OptionManager : MonoBehaviour
 
             if (!_cursorMoveTask.Status.IsCompleted()) continue;
 
+            _sensivilityValue.text = _sensibilityBar.value.ToString();
+            _bgmValue.text = _bgmBar.value.ToString();
+            _seValue.text = _seBar.value.ToString();
+
             _slider[_sliderIndex].value += Input.GetAxis("D_Pad_H");
 
-            if (Input.GetAxis("D_Pad_V") > DeadZone || Input.GetAxis("Vertical") > DeadZone)
+            if (Input.GetAxis("D_Pad_V") > DeadZone)
             {
                 _sliderIndex--;
             }
-            else if (Input.GetAxis("D_Pad_V") < -DeadZone || Input.GetAxis("Vertical") < -DeadZone)
+            else if (Input.GetAxis("D_Pad_V") < -DeadZone)
             {
                 _sliderIndex++;
             }
@@ -228,7 +243,7 @@ public class OptionManager : MonoBehaviour
             if (_sliderIndex > _slider.Length - 1) _sliderIndex = 0;
             if (_sliderIndex < 0) _sliderIndex = _slider.Length - 1;
 
-            await ChangeSelectSlider();
+            _cursorMoveTask = ChangeSelectSlider();
         }
         data.sensibility = (int)_sensibilityBar.value;
         data.volumeBGM = (int)_bgmBar.value;
@@ -270,7 +285,7 @@ public class OptionManager : MonoBehaviour
                 continue;
             }
             _noteText.gameObject.SetActive(false);
-            
+
             if (Input.GetKeyDown(KeyCode.JoystickButton10)) break;
         }
         EventSystem.current.SetSelectedGameObject(null);
@@ -280,14 +295,11 @@ public class OptionManager : MonoBehaviour
 
     public void OnBackToTheGame()
     {
-        EventSystem.current.SetSelectedGameObject(null);
-        _selected = false;
         UISwitch();
     }
 
     public void OnReturnToSelect()
     {
-        _selected = false;
         UISwitch();
         SceneManager.LoadScene("Select");
     }
