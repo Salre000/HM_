@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AI;
 /// <summary>
@@ -282,6 +283,7 @@ public abstract class Hunter_AI : MonoBehaviour
             else { _agent.destination = searchPosition[0]; }
             myCollider = GetComponent<Collider>();
             playerAttack = GameObject.FindAnyObjectByType<PlayerAttack>();
+            this.gameObject.AddComponent<AudioSource>();
             p_audioSource = GetComponent<AudioSource>();
             SetDestination(_monster.transform.position);
         }
@@ -483,7 +485,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         float offsetX = 0;
         float offsetY = 0;
-        float offsetZ = 0.0080f;
+        float offsetZ = 0.180f;
         Vector3 newPos = GetMonster().transform.position;
         Vector3 offset = new Vector3(offsetX, offsetY, offsetZ);
         offset = GetMonster().transform.rotation * offset;
@@ -494,7 +496,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // モンスターの右の位置を取得
     protected Vector3 GetMonsterRightPosition()
     {
-        float offsetX = 0.0080f;
+        float offsetX = 0.120f;
         float offsetY = 0;
         float offsetZ = 0f;
         Vector3 newPos = GetMonster().transform.position;
@@ -507,7 +509,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // モンスターの左の位置を取得
     protected Vector3 GetMonsterLeftPosition()
     {
-        float offsetX = -0.008f;
+        float offsetX = -0.12f;
         float offsetY = 0;
         float offsetZ = 0f;
         Vector3 newPos = GetMonster().transform.position;
@@ -521,7 +523,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         float offsetX = 0f;
         float offsetY = 0;
-        float offsetZ = -0.0080f;
+        float offsetZ = -0.180f;
         Vector3 newPos = GetMonster().transform.position;
         Vector3 offset = new Vector3(offsetX, offsetY, offsetZ);
         offset = GetMonster().transform.rotation * offset;
