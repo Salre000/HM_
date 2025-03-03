@@ -46,6 +46,7 @@ public class SceneChanger : MonoBehaviour
 
                 // 開始時のアニメーション再生
                 await GameObject.Find("Nail").GetComponent<NailAnim>().PlayAnim();
+                //NailAnim ddd = GameObject.Find("Nail").GetComponent<NailAnim>();
                 
                 // フェードアウト
                 await FadeManager.instance.FadeOutAlpha();

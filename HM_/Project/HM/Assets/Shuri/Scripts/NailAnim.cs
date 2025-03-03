@@ -7,6 +7,7 @@ public class NailAnim : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
+        Time.timeScale = 1;
     }
 
     public async UniTask PlayAnim()
