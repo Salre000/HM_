@@ -5874,7 +5874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputManager: {fileID: 0}
-  _keys: 5
+  _keys: 2
 --- !u!114 &321653137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6189,7 +6189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputManager: {fileID: 0}
-  _keys: 7
+  _keys: 4
 --- !u!114 &333632197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9841,7 +9841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputManager: {fileID: 0}
-  _keys: 6
+  _keys: 3
 --- !u!114 &526288356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25943,7 +25943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e103a8123b3e04b97bdf9732ed02f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 1209621434}
   deathCount: 0
 --- !u!114 &1418245117
 MonoBehaviour:
@@ -26737,7 +26737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputManager: {fileID: 0}
-  _keys: 4
+  _keys: 1
 --- !u!114 &1458214626
 MonoBehaviour:
   m_ObjectHideFlags: 0
