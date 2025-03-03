@@ -243,6 +243,8 @@ public abstract class Hunter_AI : MonoBehaviour
             // 攻撃準備ができているのならば
             if (attackReady)
             {
+                AnimatorStateInfo s = GetAnimState();
+                if (GetAnimState().IsName("アーマチュア|Attack1"))return;
                
                 // 攻撃
                 Attack();
