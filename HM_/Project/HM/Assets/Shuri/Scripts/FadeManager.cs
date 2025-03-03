@@ -61,6 +61,7 @@ public class FadeManager : MonoBehaviour
 
         while (elapsedTime < duration)
         {
+            Debug.Log("aaa"+Time.timeScale);
             elapsedTime += Time.deltaTime;
 
             float t = elapsedTime / duration;

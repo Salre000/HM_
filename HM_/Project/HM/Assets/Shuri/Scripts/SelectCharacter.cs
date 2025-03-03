@@ -63,6 +63,14 @@ public class SelectCharacter : MonoBehaviour
     {
         _selectBuf = _selectCharacter;
 
+        if (Input.GetKeyDown(KeyCode.JoystickButton3))
+        {
+            for (int i = 0; i < (int)eSelectCharacter.Max; i++)
+            {
+                _charaSelectButtons[i].interactable = false;
+            }
+        }
+
         if (Input.GetAxis("D_Pad_H") > DeadZone || Input.GetAxis("Horizontal") > DeadZone)
         {
             if (_selectCharacter != eSelectCharacter.Max - 1)
@@ -89,7 +97,7 @@ public class SelectCharacter : MonoBehaviour
         _demoCamera[(int)_selectBuf].targetTexture = null;
         _demoCamera[(int)_selectCharacter].targetTexture = _renderTexture;
 
-        for(int i = 0; i < _nameTexts.Length; i++) _nameTexts[i].SetActive(false);
+        for (int i = 0; i < _nameTexts.Length; i++) _nameTexts[i].SetActive(false);
         _nameTexts[(int)_selectCharacter].SetActive(true);
 
         // ボタンの選択変更
