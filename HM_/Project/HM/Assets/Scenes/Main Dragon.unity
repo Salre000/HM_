@@ -32650,27 +32650,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1871076396}
   m_CullTransparentMesh: 1
---- !u!1 &1874490598 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4855761234387649917, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
-  m_PrefabInstance: {fileID: 299911648}
-  m_PrefabAsset: {fileID: 0}
---- !u!208 &1874490601
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874490598}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.256, y: 0.17600001, z: 0.316}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.042000003, y: 0.07, z: -0.055000003}
-  m_TimeToStationary: 0.5
 --- !u!114 &1876202868
 MonoBehaviour:
   m_ObjectHideFlags: 0
