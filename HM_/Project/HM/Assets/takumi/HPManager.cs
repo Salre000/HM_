@@ -38,11 +38,12 @@ public class HPManager : MonoBehaviour
     }
 
     //モンスターのダメージ処理
-    public int MonsterDamage(float Damage,ref float PartHp,bool DownFlag)
+    public int MonsterDamage(float Damage, ref float PartHp, bool DownFlag, System.Action soundAction = null)
     {
         if (MonsterInvincibilityTime != -1) return -1;
         MonsterHp -= Damage;
         MonsterInvincibilityTime = 0;
+        soundAction();
         uiManager.HPSliderUpdate();
         if (DownFlag) return 1;   
         PartHp-= Damage;
