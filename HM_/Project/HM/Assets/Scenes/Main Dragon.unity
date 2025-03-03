@@ -25943,7 +25943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e103a8123b3e04b97bdf9732ed02f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 1209621434}
   deathCount: 0
 --- !u!114 &1418245117
 MonoBehaviour:
