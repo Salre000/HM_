@@ -101,6 +101,8 @@ public class OptionManager : MonoBehaviour
 
         if (_selected) return;
 
+        if (SceneManager.GetActiveScene().buildIndex != 2 && SceneManager.GetActiveScene().buildIndex != 3) return;
+
         // オプション画面の開閉
         if (Input.GetKeyDown(KeyCode.JoystickButton11)) UISwitch();
 
