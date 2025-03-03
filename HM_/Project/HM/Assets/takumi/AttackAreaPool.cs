@@ -17,6 +17,7 @@ public class AttackAreaPool : MonoBehaviour
 
     private void Awake()
     {
+
         int index = 0;
         Player = GameObject.FindGameObjectWithTag("Player");
 
@@ -43,6 +44,7 @@ public class AttackAreaPool : MonoBehaviour
         GameObjects[index] = GameObject.Find("LightArm"); index++;
         GameObjects[index] = GameObject.Find("LightFoot"); index++;
     }
+
 
     public void SetAttack(AnimationEvent Event) 
     {
@@ -74,7 +76,7 @@ public class AttackAreaPool : MonoBehaviour
             if (objectList[i].activeSelf == false)
             {
 
-                attackAreaList[i].SetAttackArea(Player, Damage, 3.0f,-60);
+                attackAreaList[i].SetAttackArea(Player, Damage, 0.3f,-60);
 
                 return;
             }
