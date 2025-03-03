@@ -116,7 +116,7 @@ public class PlayerStatus : MonoBehaviour
         data = JsonDataModule.Load<OptionData>(Application.streamingAssetsPath + "/Option.json");
 
         Instance = this;
-
+        isLife = true;
         _anime = this.gameObject.GetComponent<PlayerAnime>();
         _audioSource = this.transform.AddComponent<AudioSource>();
         _audioSource.loop = false;

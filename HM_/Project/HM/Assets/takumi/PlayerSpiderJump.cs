@@ -9,8 +9,10 @@ public class PlayerSpiderJump : AnimeBase
         AddAnimeName("Armature|Jump");
 
 
+        _camera = Camera.main.transform.gameObject;
     }
 
+    GameObject _camera;
     Vector3 Vec;
     public override void Start()
     {
@@ -21,7 +23,11 @@ public class PlayerSpiderJump : AnimeBase
         float _horizontal = Input.GetAxis("Horizontal");
         float _vertical = Input.GetAxis("Vertical");
 
-        JumpAngle = Mathf.Atan2(_horizontal, _vertical) + this.GameObject.transform.eulerAngles.y * 3.14f / 180;
+       Vec = GameObject.transform.position - _camera.transform.position;
+        float cameraAngle = Mathf.Atan2(Vec.x, Vec.z);
+
+        JumpAngle = Mathf.Atan2(_horizontal, _vertical) + cameraAngle;
+
         Vec = new Vector3(Mathf.Sin(JumpAngle), 0, Mathf.Cos(JumpAngle));
         stopTime();
         ResetFlag();

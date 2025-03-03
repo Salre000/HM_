@@ -75,7 +75,7 @@ public abstract class PlayerAttack : MonoBehaviour
         _anime = GetComponent<PlayerAnime>();
         _status = GetComponent<PlayerStatus>();
 
-        activeFlag = true;
+        activeFlag = false;
 
         HunterManager hunterManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
 
@@ -145,7 +145,9 @@ public abstract class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (activeFlag) return;
+        if (!PlayerStatus.isLife) return;      
+        
+        if (!activeFlag) return;
 
         if (AnimeBase.useFlag)
         {

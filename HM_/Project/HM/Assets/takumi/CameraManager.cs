@@ -112,6 +112,7 @@ public class CameraManager : MonoBehaviour
             await UniTask.DelayFrame(1);
         }
 
+        PlayerAttack.activeFlag = true;
 
 
     }
