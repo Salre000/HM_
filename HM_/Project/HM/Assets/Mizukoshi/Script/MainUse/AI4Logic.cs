@@ -40,20 +40,20 @@ public class AI4Logic : Hunter_AI
     public override void Chase()
     {
         base.Chase();
-        base.Chase();
         int random = Random.Range(0, 10);
-        if (random >= 3) SetDestination(GetMonsterBackPosition());
-        else
-        {
-            SetDestination(GetMonsterLeftPosition());
-        }
+        //if (random >= 3) SetDestination(GetMonsterBackPosition());
+        //else
+        //{
+        //    SetDestination(GetMonsterLeftPosition());
+        //}
+        SetDestination(GetMonsterRightPosition());
     }
 
     public override void Attack()
     {
         base.Attack();
         if (CheckAudioSourceNull()) return;
-        p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.SwordAttackSE, (int)Main.Hunter));
+        p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.PreSwordAttack, (int)Main.Hunter));
     }
 
     public void SetCollider()

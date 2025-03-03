@@ -9,6 +9,7 @@ public class BackSteppeAnime : AnimeBase
         AddAnimeName("Armature|BackSteppe");
 
 
+        _camera = Camera.main.transform.gameObject;
 
     }
 
@@ -23,11 +24,20 @@ public class BackSteppeAnime : AnimeBase
     public override void Start()
     {
 
-        JumpAngle = (this.GameObject.transform.eulerAngles.y - 180) * Mathf.Deg2Rad;
-        Debug.Log(JumpAngle);
+        // 移動量と回転量を求める
+        float _horizontal = Input.GetAxis("Horizontal");
+        float _vertical = Input.GetAxis("Vertical");
+
+        Vector3 Vec = GameObject.transform.position - _camera.transform.position;
+        float cameraAngle = Mathf.Atan2(Vec.x, Vec.z);
+
+        JumpAngle = Mathf.Atan2(_horizontal, _vertical) + cameraAngle;
+
         ResetFlag();
 
     }
+
+    GameObject _camera;
 
     //飛びたくない事前フレームのカウンター
     int FrameCount = 0;

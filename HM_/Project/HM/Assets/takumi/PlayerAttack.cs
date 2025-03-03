@@ -20,7 +20,7 @@ public abstract class PlayerAttack : MonoBehaviour
 
     [SerializeField] protected Tag TagBox;
 
-    protected  AudioClip HitAttackSound()
+    protected AudioClip HitAttackSound()
     {
         switch (nowMode)
         {
@@ -48,11 +48,11 @@ public abstract class PlayerAttack : MonoBehaviour
     }
 
     //攻撃の判定を生成する予備動作のフラグ（ハンターの攻撃予測に使用）
-    [SerializeField]bool predictionAttackFlag = false;
+    [SerializeField] bool predictionAttackFlag = false;
 
-    public void SetPredictionAttackFlag() {predictionAttackFlag = true; ResetPredictionAttackFlag(); }
+    public void SetPredictionAttackFlag() { predictionAttackFlag = true; ResetPredictionAttackFlag(); }
 
-    private async UniTask ResetPredictionAttackFlag() 
+    private async UniTask ResetPredictionAttackFlag()
     {
 
         await UniTask.DelayFrame(14);
@@ -62,7 +62,7 @@ public abstract class PlayerAttack : MonoBehaviour
 
     }
 
-    public bool GetPredictionAttackFlag() {  return predictionAttackFlag; }
+    public bool GetPredictionAttackFlag() { return predictionAttackFlag; }
 
     private bool ULTFlag = true;
     public void SetULTFLag(bool Flag) { ULTFlag = Flag; }
@@ -75,8 +75,11 @@ public abstract class PlayerAttack : MonoBehaviour
         _anime = GetComponent<PlayerAnime>();
         _status = GetComponent<PlayerStatus>();
 
-        HunterManager hunterManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
+        activeFlag = false;
 
+        HunterManager hunterManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
+
+        AnimeBase.useFlag = false;
 
 
         Application.targetFrameRate = 60;
@@ -94,14 +97,14 @@ public abstract class PlayerAttack : MonoBehaviour
         }, 10).Forget();
     }
 
-    async UniTask DelayTask(System.Action action,int delayTime) 
+    async UniTask DelayTask(System.Action action, int delayTime)
     {
         await UniTask.DelayFrame(delayTime);
 
         action();
     }
 
-    protected async UniTask ResetFlag(System.Action<bool> action) 
+    protected async UniTask ResetFlag(System.Action<bool> action)
     {
         await UniTask.DelayFrame(10);
         action(false);
@@ -116,9 +119,9 @@ public abstract class PlayerAttack : MonoBehaviour
     protected abstract int BarkJump();
 
     public bool IsCapFlag = false;
-    public void IsCap() { _anime.SetRoarFlag(true);}
+    public void IsCap() { _anime.SetRoarFlag(true); }
 
-    protected enum actionMode 
+    protected enum actionMode
     {
         normal,
         skill,
@@ -129,18 +132,24 @@ public abstract class PlayerAttack : MonoBehaviour
 
 
     }
-    [SerializeField]protected actionMode nowMode = actionMode.normal;
-    [SerializeField]protected AnimeBase []anime=new AnimeBase[(int)actionMode.max];
+    [SerializeField] protected actionMode nowMode = actionMode.normal;
+    [SerializeField] protected AnimeBase[] anime = new AnimeBase[(int)actionMode.max];
 
-    public void NowAnimeEvent() 
+    public void NowAnimeEvent()
     {
         anime[(int)nowMode].AnimeEvent();
     }
 
+    public static bool activeFlag = false;
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (AnimeBase.useFlag) 
+        if (!PlayerStatus.isLife) return;      
+        
+        if (!activeFlag) return;
+
+        if (AnimeBase.useFlag)
         {
 
             anime[(int)nowMode].Action();
@@ -196,7 +205,7 @@ public abstract class PlayerAttack : MonoBehaviour
         if (Input.GetAxis("Vertical") < -0.3f && instance.IsOnButton(InputKeys.A) && !_anime.GetNowDownFlag() && !_anime.GetAttackFlag())
         {
             _anime.SetBackSteppeFlag(true);
-            BarkJump() ;
+            BarkJump();
 
 
 

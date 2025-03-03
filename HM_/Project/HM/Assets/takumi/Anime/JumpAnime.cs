@@ -13,8 +13,10 @@ public class JumpAnime : AnimeBase
 
         //startClip = SoundListManager.instance.GetAudioClip((int)Main.Monster, (int)Dragon.DragonJumpStart);
 
+        _camera = Camera.main.transform.gameObject;
     }
 
+    GameObject _camera;
     const float Damages = 30.0f;
 
     const float MaxTime = 0.3f;
@@ -36,7 +38,10 @@ public class JumpAnime : AnimeBase
         float _horizontal = Input.GetAxis("Horizontal");
         float _vertical = Input.GetAxis("Vertical");
 
-        JumpAngle = Mathf.Atan2(_horizontal, _vertical) + this.GameObject.transform.eulerAngles.y * 3.14f / 180;
+        Vector3 Vec=GameObject.transform.position-_camera.transform.position;
+        float cameraAngle = Mathf.Atan2(Vec.x, Vec.z);
+
+        JumpAngle = Mathf.Atan2(_horizontal, _vertical) + cameraAngle;
 
         ResetFlag();
     }

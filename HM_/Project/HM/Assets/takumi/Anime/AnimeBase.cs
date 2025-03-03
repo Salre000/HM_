@@ -88,7 +88,7 @@ public class AnimeBase
 
     virtual protected void AnimeEnd()
     {
-        //EndAnimation();
+        TimeCount = 0;
     }
 
 }

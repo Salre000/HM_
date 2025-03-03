@@ -20,6 +20,7 @@ public class HPManager : MonoBehaviour
         HunterHp = new float[HunterCount];
         HunterInvincibilityTime = new float[HunterCount];
 
+        playerAnime=GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnime>();
 
         //すべてのハンターのHPをリセットする
         for (int i = 0; i < HunterCount; i++)
@@ -37,13 +38,17 @@ public class HPManager : MonoBehaviour
         SetHunterLostNumber();
     }
 
+
+    PlayerAnime playerAnime;
     //モンスターのダメージ処理
-    public int MonsterDamage(float Damage,ref float PartHp,bool DownFlag)
+    public int MonsterDamage(float Damage, ref float PartHp, bool DownFlag, System.Action soundAction = null)
     {
         if (MonsterInvincibilityTime != -1) return -1;
         MonsterHp -= Damage;
         MonsterInvincibilityTime = 0;
+        soundAction();
         uiManager.HPSliderUpdate();
+        if (MonsterHp <= 0) { PlayerStatus.isLife = false; playerAnime.SetDownFlag(); }
         if (DownFlag) return 1;   
         PartHp-= Damage;
 

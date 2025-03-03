@@ -13,22 +13,22 @@ public class PlayerHitCheck : MonoBehaviour
     [SerializeField] float DamageRatio = 1.0f;
     [SerializeField] AudioSource source;
 
-    public enum Type 
+    public enum Type
     {
         Normal,
         Hard,
         None
     }
 
-   [SerializeField] Type _type=Type.Hard;
-    
+    [SerializeField] Type _type = Type.Hard;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        _playerAnime=GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnime>();
+        _playerAnime = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnime>();
         _status = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
-        source= GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
+        source = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
     }
 
     //何かに当たった時
@@ -42,10 +42,9 @@ public class PlayerHitCheck : MonoBehaviour
         {
 
             //敵の攻撃力を利用した挙動
-            Damage _damage=other.GetComponent<Damage>();
+            Damage _damage = other.GetComponent<Damage>();
 
             ////HPを減らす
-           int hitCheck= _status.MonsterDamage(_damage.GetDamage()* DamageRatio, ref Hp,_playerAnime.GetNowDownFlag());
 
             TestCollision test = other.GetComponent<TestCollision>();
 
@@ -53,22 +52,27 @@ public class PlayerHitCheck : MonoBehaviour
 
             int ID = AI.GetHunterID();
 
-            if(hitCheck>=0) HitEffectManager.instance.HitEffectShow(other.transform.position, (HitEffectManager.CharacterType)ID + 1);
-
-            //ハンターごとの攻撃を当てた時の音を呼び出す
-
-            if(hitCheck>=0) source.PlayOneShot( SoundListManager.instance.GetAudioClip((int)Dragon.DragonAttackHit, (int)Main.Hunter));
-
-
-            SoundListManager.instance.GetAudioClip( (int)HunterSE.PreArechSE+(ID+1), (int)Main.Monster);
-
-            if (Hp <= 0) 
+            _status.MonsterDamage(_damage.GetDamage() * DamageRatio, ref Hp, _playerAnime.GetNowDownFlag(), () =>
             {
-                switch (_type) 
+
+                HitEffectManager.instance.HitEffectShow(other.transform.position, (HitEffectManager.CharacterType)ID + 1);
+
+                //ハンターごとの攻撃を当てた時の音を呼び出す
+
+                source.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Dragon.DragonAttackHit, (int)Main.Hunter));
+
+                SoundListManager.instance.GetAudioClip((int)HunterSE.PreArechSE + (ID + 1), (int)Main.Monster);
+
+            });
+
+
+            if (Hp <= 0)
+            {
+                switch (_type)
                 {
                     case Type.Normal: _playerAnime.SetDownFlag(); break;
                     case Type.Hard: _playerAnime.SetStartHardDownFlag(); break;
-                    case Type.None:break;
+                    case Type.None: break;
 
 
                 }

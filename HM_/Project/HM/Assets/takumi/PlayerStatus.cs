@@ -38,6 +38,7 @@ public class PlayerStatus : MonoBehaviour
 
     private AudioSource _audioSource;
 
+    public static bool isLife = true;
     public static PlayerStatus Instance { get; private set; }
 
     [HideInInspector] public OptionData data;
@@ -115,7 +116,7 @@ public class PlayerStatus : MonoBehaviour
         data = JsonDataModule.Load<OptionData>(Application.streamingAssetsPath + "/Option.json");
 
         Instance = this;
-
+        isLife = true;
         _anime = this.gameObject.GetComponent<PlayerAnime>();
         _audioSource = this.transform.AddComponent<AudioSource>();
         _audioSource.loop = false;

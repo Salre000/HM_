@@ -58,6 +58,7 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!PlayerStatus.isLife) return;
 
         if (!CameraManager.setupFlag) return;
         if(this.transform.position.y<=-10)this.transform.position=new Vector3(this.transform.position.x,2,this.transform.position.z);
