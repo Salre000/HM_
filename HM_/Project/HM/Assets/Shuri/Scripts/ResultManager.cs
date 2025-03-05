@@ -153,7 +153,6 @@ public class ResultManager : MonoBehaviour
     private void Update()
     {
         // Bボタンが押されたらセレクト画面に戻る
-        if (Input.GetKeyDown(KeyCode.JoystickButton3)) SceneManager.LoadScene("Select");
         if (Input.GetKeyDown(KeyCode.JoystickButton3)) GetComponent<SceneChanger>().ChangeScene();
     }
 
@@ -163,8 +162,8 @@ public class ResultManager : MonoBehaviour
     void RankDefinition()
     {
         rankS = new("S", new(Color.white, RankColorS, RankColorS, RankColorS));
-        rankA = new("Jump", new(Color.white, RankColorA, RankColorA, Color.red));
-        rankB = new("Jump", new(Color.white, RankColorB, RankColorB, RankColorB));
+        rankA = new("A", new(Color.white, RankColorA, RankColorA, Color.red));
+        rankB = new("B", new(Color.white, RankColorB, RankColorB, RankColorB));
         rankC = new("C", new(Color.white, RankColorC, RankColorC, Color.gray));
         rankD = new("D", new(Color.white, RankColorD, RankColorD, RankColorD));
         rankE = new("E", new(Color.white, RankColorE, RankColorE, Color.black));

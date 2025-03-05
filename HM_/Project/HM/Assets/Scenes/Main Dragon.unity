@@ -1738,6 +1738,7 @@ MonoBehaviour:
   - {fileID: 691771724}
   - {fileID: 814030350}
   _configButton: {fileID: 425056481}
+  _resetButton: {fileID: 1293523678}
   _hunterManager: {fileID: 1418245116}
 --- !u!4 &118534736
 Transform:
@@ -23309,9 +23310,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: ConfigReset
+      - m_Target: {fileID: 118534735}
+        m_TargetAssemblyTypeName: OptionManager, Assembly-CSharp
+        m_MethodName: ResetConfig
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -48,7 +48,7 @@ public class SelectOptionManager : MonoBehaviour
         Max,
     }
 
-    Option[] _optionGroup=new Option[(int)OptionType.Max];
+    Option[] _optionGroup = new Option[(int)OptionType.Max];
 
     void Start()
     {
@@ -126,6 +126,11 @@ public class SelectOptionManager : MonoBehaviour
 
         for (int i = 0; i < _decisionButtons.Length; i++) _decisionButtons[i].interactable = !_decisionButtons[i].interactable;
 
+        optionDataSystem.volumeBGM = (int)_optionGroup[(int)OptionType.SystemBGM].slider.value;
+        optionDataSystem.volumeSE = (int)_optionGroup[(int)OptionType.SystemSE].slider.value;
+        optionDataMain.sensibility = (int)_optionGroup[(int)OptionType.Sensibility].slider.value;
+        optionDataMain.sensibility = (int)_optionGroup[(int)OptionType.MainBGM].slider.value;
+        optionDataMain.sensibility = (int)_optionGroup[(int)OptionType.MainSE].slider.value;
         // セーブ＆リロード
         Save(optionDataMain, _FilePathMain);
         Save(optionDataSystem, _FilePathSystem);

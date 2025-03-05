@@ -38,9 +38,11 @@ public class CollisionCheck : MonoBehaviour
             parent.SetActive(false);
         }
 
-        if (CheckCollisionTerrain(other)) parent.SetActive(false);
+        if (CheckCollisionTerrain(other))
+        {
+            parent.SetActive(false);
 
-
+        }
 
 
     }
@@ -48,7 +50,7 @@ public class CollisionCheck : MonoBehaviour
     bool  CheckCollisionTerrain(Collider co)
     {
         Transform check=GetTopLevelParent(co.transform);
-        if(check.name== "Terrain")return true;
+        if(check.gameObject.name== "Terrain")return true;
         return false;
     }
 
