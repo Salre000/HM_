@@ -29,7 +29,6 @@ public class HPManager : MonoBehaviour
             HunterInvincibilityTime[i] = 0;
 
         }
-        TimeCountLostNumber();
 
     }
 
