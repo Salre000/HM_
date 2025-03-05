@@ -93,7 +93,7 @@ public class AI2Logic :Hunter_AI
         //–î‚ğˆÚ“®‚³‚¹AƒIƒ“‚É‚·‚é
         arrowList.SetArrow(startPos, dir);
         
-        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.PreArechSE, (int)Main.Hunter));
+        audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.PreArechSE, (int)Main.Hunter), SoundListManager.instance.GetSoundVolume());
         
     }
 
