@@ -53,6 +53,9 @@ public class SelectCharacter : MonoBehaviour
     // パーティクルの生成位置
     [SerializeField] private Transform[] _generateTransforms;
 
+    // オプションUIオブジェクト
+    [SerializeField] private GameObject _uiPanel;
+
     private void Start()
     {
         _selectCharacter = eSelectCharacter.Dragon;
@@ -61,6 +64,8 @@ public class SelectCharacter : MonoBehaviour
 
     void Update()
     {
+        if (_uiPanel.activeSelf) return;
+
         _selectBuf = _selectCharacter;
 
         if (Input.GetKeyDown(KeyCode.JoystickButton3))
@@ -106,5 +111,11 @@ public class SelectCharacter : MonoBehaviour
         for (int i = 0; i < _CharaChangeButtons.Length; i++) _CharaChangeButtons[i].interactable = true;
         if (_selectCharacter == eSelectCharacter.Max - 1) _CharaChangeButtons[(int)eChangeButton.Right].interactable = false;
         else if (_selectCharacter == eSelectCharacter.Dragon) _CharaChangeButtons[(int)eChangeButton.Left].interactable = false;
+    }
+
+    public void ReSelectButton()
+    {
+        // ボタンの選択
+        _charaSelectButtons[(int)_selectCharacter].Select();
     }
 }

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,6 +21,14 @@ public class SelectOptionManager : MonoBehaviour
     [SerializeField] private Slider[] _slider;
 
     [SerializeField] private TextMeshProUGUI[] _valueText;
+
+    [SerializeField] private Button[] _decisionButtons;
+
+    private int _sliderIndex;
+
+    private const float DeadZone = 0.5f;
+
+    SelectCharacter _selectCharacter;
 
     public struct Option
     {
@@ -48,6 +57,8 @@ public class SelectOptionManager : MonoBehaviour
             _optionGroup[i] = new Option(_slider[i], _valueText[i]);
         }
 
+        _selectCharacter = GetComponent<SelectCharacter>();
+
         _uiPanel.SetActive(false);
 
         // 初期値
@@ -69,27 +80,63 @@ public class SelectOptionManager : MonoBehaviour
         _optionGroup[(int)OptionType.MainBGM].slider.value = optionDataMain.volumeBGM;
         _optionGroup[(int)OptionType.MainSE].slider.value = optionDataMain.volumeSE;
 
-        _optionGroup[0].slider.onValueChanged.AddListener(delegate { ValueChangeCheck(_optionGroup[0]); });
-        _optionGroup[1].slider.onValueChanged.AddListener(delegate { ValueChangeCheck(_optionGroup[1]); });
-        _optionGroup[2].slider.onValueChanged.AddListener(delegate { ValueChangeCheck(_optionGroup[2]); });
-        _optionGroup[3].slider.onValueChanged.AddListener(delegate { ValueChangeCheck(_optionGroup[3]); });
-        _optionGroup[4].slider.onValueChanged.AddListener(delegate { ValueChangeCheck(_optionGroup[4]); });
+        // コールバック呼び出し
+        _optionGroup[(int)OptionType.SystemBGM].slider.onValueChanged.AddListener(delegate { ChangeSliderValue(_optionGroup[(int)OptionType.SystemBGM]); });
+        _optionGroup[(int)OptionType.SystemSE].slider.onValueChanged.AddListener(delegate { ChangeSliderValue(_optionGroup[(int)OptionType.SystemSE]); });
+        _optionGroup[(int)OptionType.Sensibility].slider.onValueChanged.AddListener(delegate { ChangeSliderValue(_optionGroup[(int)OptionType.Sensibility]); });
+        _optionGroup[(int)OptionType.MainBGM].slider.onValueChanged.AddListener(delegate { ChangeSliderValue(_optionGroup[(int)OptionType.MainBGM]); });
+        _optionGroup[(int)OptionType.MainSE].slider.onValueChanged.AddListener(delegate { ChangeSliderValue(_optionGroup[(int)OptionType.MainSE]); });
 
         SoundListManager.instance.SetSoundVolume(optionDataSystem.volumeSE, optionDataSystem.volumeBGM);
     }
 
-    void Update()
+    async void Update()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton10)) _uiPanel.SetActive(!_uiPanel.activeSelf);
+        if (Input.GetKeyDown(KeyCode.JoystickButton10)) UISwitch();
 
         if (!_uiPanel.activeSelf) return;
 
-        SoundListManager.instance.SetSoundVolume(optionDataSystem.volumeSE, optionDataSystem.volumeBGM);
+        await UniTask.DelayFrame(5);
+
+        _slider[_sliderIndex].value += Input.GetAxis("D_Pad_H");
+
+        if (Input.GetAxis("D_Pad_V") > DeadZone)
+        {
+            _sliderIndex--;
+        }
+        else if (Input.GetAxis("D_Pad_V") < -DeadZone)
+        {
+            _sliderIndex++;
+        }
+
+        if (_sliderIndex > _slider.Length - 1) _sliderIndex = 0;
+        if (_sliderIndex < 0) _sliderIndex = _slider.Length - 1;
+
+
 
     }
 
-    public void ValueChangeCheck(Option optionData)
+    void UISwitch()
+    {
+        _uiPanel.SetActive(!_uiPanel.activeSelf);
+
+        _sliderIndex = 0;
+        _optionGroup[(int)OptionType.SystemBGM].slider.Select();
+        _selectCharacter.ReSelectButton();
+
+        for (int i = 0; i < _decisionButtons.Length; i++) _decisionButtons[i].interactable = !_decisionButtons[i].interactable;
+
+        // セーブ＆リロード
+        Save(optionDataMain, _FilePathMain);
+        Save(optionDataSystem, _FilePathSystem);
+        optionDataMain = Load<OptionDataMain>(_FilePathMain);
+        optionDataSystem = Load<OptionDataSystem>(_FilePathSystem);
+    }
+
+    public void ChangeSliderValue(Option optionData)
     {
         optionData.value.text = optionData.slider.value.ToString();
+
+        SoundListManager.instance.SetSoundVolume(optionDataSystem.volumeSE, optionDataSystem.volumeBGM);
     }
 }

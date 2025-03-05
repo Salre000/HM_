@@ -4387,6 +4387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1289878004}
   - component: {fileID: 1289878003}
+  - component: {fileID: 1289878005}
   m_Layer: 0
   m_Name: OptionManager
   m_TagString: Untagged
@@ -4426,6 +4427,9 @@ MonoBehaviour:
   - {fileID: 204621935}
   - {fileID: 619746885}
   - {fileID: 254460150}
+  _decisionButtons:
+  - {fileID: 2135171141}
+  - {fileID: 157158556}
 --- !u!4 &1289878004
 Transform:
   m_ObjectHideFlags: 0
@@ -4441,6 +4445,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1289878005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289878002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc23edd4f4bf62f478dc8354ad2399ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _charaSelectButtons:
+  - {fileID: 2135171141}
+  - {fileID: 157158556}
+  _CharaChangeButtons:
+  - {fileID: 940274074}
+  - {fileID: 1072457836}
+  _nameTexts:
+  - {fileID: 1408963131}
+  - {fileID: 2105293218}
+  _renderTexture: {fileID: 8400000, guid: c3bb82a0636bdc24490006933e265635, type: 2}
+  _demoCamera:
+  - {fileID: 32484976}
+  - {fileID: 995417258}
+  _demoPlayer:
+  - {fileID: 1940900526}
+  - {fileID: 1974370851}
+  _changePerticle: {fileID: 2865039213101034240, guid: c9743d628a706004eb2bd0bb8f2b3bbc, type: 3}
+  _generateTransforms:
+  - {fileID: 1614381600}
+  - {fileID: 856745559}
+  _uiPanel: {fileID: 437395784}
 --- !u!1 &1353623871
 GameObject:
   m_ObjectHideFlags: 0
@@ -5803,7 +5840,6 @@ GameObject:
   - component: {fileID: 1779026908}
   - component: {fileID: 1779026907}
   - component: {fileID: 1779026906}
-  - component: {fileID: 1779026910}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5899,38 +5935,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1779026910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1779026905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc23edd4f4bf62f478dc8354ad2399ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _charaSelectButtons:
-  - {fileID: 2135171141}
-  - {fileID: 157158556}
-  _CharaChangeButtons:
-  - {fileID: 940274074}
-  - {fileID: 1072457836}
-  _nameTexts:
-  - {fileID: 1408963131}
-  - {fileID: 2105293218}
-  _renderTexture: {fileID: 8400000, guid: c3bb82a0636bdc24490006933e265635, type: 2}
-  _demoCamera:
-  - {fileID: 32484976}
-  - {fileID: 995417258}
-  _demoPlayer:
-  - {fileID: 1940900526}
-  - {fileID: 1974370851}
-  _changePerticle: {fileID: 2865039213101034240, guid: c9743d628a706004eb2bd0bb8f2b3bbc, type: 3}
-  _generateTransforms:
-  - {fileID: 1614381600}
-  - {fileID: 856745559}
 --- !u!1 &1862746291
 GameObject:
   m_ObjectHideFlags: 0
