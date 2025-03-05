@@ -34,6 +34,14 @@ public class PlayerMove : MonoBehaviour
     Animator _animator;
     private PlayerAnime _anime;
 
+    private Vector3 respawnPosition;
+
+    struct ssss 
+    {
+       public Object sss;
+
+    }
+    ssss ss;
     void Start()
     {
         _animator = this.gameObject.GetComponent<Animator>();
@@ -51,6 +59,9 @@ public class PlayerMove : MonoBehaviour
         _anime = this.gameObject.GetComponent<PlayerAnime>();
 
         audioSource=GetComponent<AudioSource>();
+
+        respawnPosition=this.transform.position;
+        ss.sss = this.gameObject;
     }
 
     private bool Flag = false;
@@ -61,7 +72,7 @@ public class PlayerMove : MonoBehaviour
         if (!PlayerStatus.isLife) return;
 
         if (!CameraManager.setupFlag) return;
-        if(this.transform.position.y<=-10)this.transform.position=new Vector3(this.transform.position.x,2,this.transform.position.z);
+        if (this.transform.position.y <= -10) this.transform.position = respawnPosition;
 
         string NowAnime = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 

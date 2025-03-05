@@ -1021,6 +1021,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1580820083477749229, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
   m_PrefabInstance: {fileID: 75326968}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &75326970 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1815331819823762319, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
+  m_PrefabInstance: {fileID: 75326968}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &75326971
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75326970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 14.4
+  m_Height: 87.01
+  m_Direction: 1
+  m_Center: {x: 0, y: 39.57, z: 0}
+--- !u!54 &75326972
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75326970}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &81267637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9486,6 +9521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1800036643}
   - component: {fileID: 1800036642}
+  - component: {fileID: 1800036644}
   m_Layer: 0
   m_Name: SoundManaegr
   m_TagString: Untagged
@@ -9509,6 +9545,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 861fde09b71123440b72feeb9d5f14bc, type: 2}
   - {fileID: 11400000, guid: f40235c1e2f0d1e42a78a34357fb5692, type: 2}
   - {fileID: 11400000, guid: 5ee342e875072e7459bcdbf31108bf3d, type: 2}
+  - {fileID: 11400000, guid: 5006a55e275053e47985ad26e567886e, type: 2}
 --- !u!4 &1800036643
 Transform:
   m_ObjectHideFlags: 0
@@ -9524,6 +9561,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1800036644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800036641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d3e097634f85c4e8f076e5589f7d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1825898907
 GameObject:
   m_ObjectHideFlags: 0
