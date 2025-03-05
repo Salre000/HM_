@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class ArrowList : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class ArrowList : MonoBehaviour
         {
             //_arrowList[i] = Instantiate(aro);
             _arrowList[i]=Instantiate(aro);
-
             _arrowList[i].SetActive(false);
 
             TestCollision test = _arrowList[i].transform.GetChild(1).GetComponent<TestCollision>();
@@ -41,7 +41,7 @@ public class ArrowList : MonoBehaviour
                 _arrowList[i].SetActive(true);
                 _arrowList[i].transform.position = startPos;
                 _arrowList[i].transform.LookAt(dir);
-                return;
+                break;
             }
         }
     }

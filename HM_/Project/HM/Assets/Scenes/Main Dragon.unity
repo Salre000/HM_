@@ -21615,7 +21615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 812456846067294343, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: m_StoppingDistance
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913256928417, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: m_RootOrder
@@ -38341,6 +38341,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -155
       objectReference: {fileID: 0}
+    - target: {fileID: 3278220773221436953, guid: 05d6b755961f31e40a448f1be77f4f90, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3278220773221436954, guid: 05d6b755961f31e40a448f1be77f4f90, type: 3}
       propertyPath: avoidCoolTime
       value: 3
@@ -38437,6 +38441,10 @@ PrefabInstance:
     - target: {fileID: 4606462654910583582, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
       propertyPath: attackDistance
       value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606462654910583583, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}

@@ -289,6 +289,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public void SetDestination(Vector3 pos)
     {
         if (!CheckNavmeshEnable()) return;
+        _agent.enabled=true;
         _agent.isStopped = false;
         _agent.destination = pos;
     }
