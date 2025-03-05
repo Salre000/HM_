@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hPManager: {fileID: 0}
+  getChildFlag: 0
 --- !u!54 &48013903982969231
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -115,6 +116,7 @@ GameObject:
   - component: {fileID: 8217320610413732791}
   - component: {fileID: 6292856890800621875}
   - component: {fileID: 2214770274721046589}
+  - component: {fileID: 9194102886729730061}
   m_Layer: 0
   m_Name: arrow 1
   m_TagString: Untagged
@@ -162,6 +164,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a778854e5fa7b43b401eba769f7c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9194102886729730061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8217320610413732793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c83d7a3815da7243a68276e00728bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_gameObject: {fileID: 0}
 --- !u!1001 &8217320609544984460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -248,24 +263,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2558306408350274948}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.21917413, y: 2.2114882, z: 0.21917409}
   m_Center: {x: 0.0000011771917, y: -0.22915992, z: -0.0000074468553}
---- !u!114 &5838429551015484405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2558306408350274948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c83d7a3815da7243a68276e00728bf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_gameObject: {fileID: 0}
 --- !u!114 &5920644202465057366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hPManager: {fileID: 0}
+  getChildFlag: 1
 --- !u!114 &8852584377943637582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +295,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 30
+--- !u!114 &2253815032782806873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558306408350274948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c83d7a3815da7243a68276e00728bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_gameObject: {fileID: 0}
 --- !u!4 &2939512120894721854 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6540061452467591346, guid: 3058356566addd04d8ab52928169b5e2, type: 3}
