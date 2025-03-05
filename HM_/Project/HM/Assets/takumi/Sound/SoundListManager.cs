@@ -18,7 +18,7 @@ public class SoundListManager : MonoBehaviour
     float soundVolumeBGM = 0.5f;
     float soundVolumeSE = 0.5f;
 
-    private void Start()
+    private void Awake()
     {
         _audioSource = this.transform.AddComponent<AudioSource>();
         _audioSourceBGM = this.transform.AddComponent<AudioSource>();

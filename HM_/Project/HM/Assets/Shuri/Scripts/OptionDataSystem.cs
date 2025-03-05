@@ -1,5 +1,5 @@
 [System.Serializable]
-public class OptionDataOther
+public class OptionDataSystem
 {
     public int volumeBGM;
     public int volumeSE;
