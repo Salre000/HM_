@@ -44,7 +44,7 @@ public class AnimeAttackRoar : AnimeBase
 
     private async UniTask AnimeRoarEnd() 
     {
-        await UniTask.DelayFrame(50);
+        await UniTask.DelayFrame(90);
 
         radialBlur.enabled = false;
 
