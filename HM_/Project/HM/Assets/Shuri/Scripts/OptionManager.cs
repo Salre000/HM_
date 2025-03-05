@@ -13,6 +13,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 using static JsonDataModule;
+using static SelectOptionManager;
 
 public class OptionManager : MonoBehaviour
 {
@@ -92,6 +93,11 @@ public class OptionManager : MonoBehaviour
         _sensibilityBar.value = data.sensibility;
         _bgmBar.value = data.volumeBGM;
         _seBar.value = data.volumeSE;
+
+        SoundListManager.instance.SetSoundVolume(data.volumeSE, data.volumeBGM);
+
+        _bgmBar.onValueChanged.AddListener(delegate { ChangeSliderValue(); });
+        _seBar.onValueChanged.AddListener(delegate { ChangeSliderValue(); });
     }
 
     private async void Update()
@@ -166,6 +172,11 @@ public class OptionManager : MonoBehaviour
             Time.timeScale = 0.0f;
         }
         _uiPanel.SetActive(!_uiPanel.activeSelf);
+    }
+
+    public void ChangeSliderValue()
+    {
+        SoundListManager.instance.SetSoundVolume((int)_seBar.value, (int)_bgmBar.value);
     }
 
     /// <summary>
