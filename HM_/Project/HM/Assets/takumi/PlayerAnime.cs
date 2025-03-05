@@ -10,7 +10,7 @@ public class PlayerAnime : MonoBehaviour
     private bool _moveFlag = true;
     private bool _dieFlag = false;
     private bool _SkillFlag = false;
-    private bool _ULTFlag = false;
+   [SerializeField] private bool _ULTFlag = false;
     private bool _jumpFlag = false;
     private bool _backSteppeFlag = false;
     private bool _bigRoarFlag = false;
