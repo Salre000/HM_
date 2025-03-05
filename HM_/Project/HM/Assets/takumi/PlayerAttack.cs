@@ -168,7 +168,7 @@ public abstract class PlayerAttack : MonoBehaviour
         //UŒ‚‚ğ‚·‚éƒ{ƒ^ƒ“
         if (instance.IsOnButton(InputKeys.Normal))
         {
-
+            RTAttack();
             _anime.SetAttackFlag(true);
 
             AnimeBase.useFlag = true;
