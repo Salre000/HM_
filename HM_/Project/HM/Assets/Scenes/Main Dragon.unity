@@ -3812,6 +3812,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftArm
       objectReference: {fileID: 0}
+    - target: {fileID: 3115370620048113506, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+      propertyPath: Image
+      value: 
+      objectReference: {fileID: 1871076398}
     - target: {fileID: 3115370620048113508, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
       propertyPath: UIManager
       value: 

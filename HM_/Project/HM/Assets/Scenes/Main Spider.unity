@@ -4150,6 +4150,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6801594655605112233, guid: 7afa8793cc482854c9826ecae80ef398, type: 3}
+      propertyPath: Image
+      value: 
+      objectReference: {fileID: 914963846}
     - target: {fileID: 6801594655650888644, guid: 7afa8793cc482854c9826ecae80ef398, type: 3}
       propertyPath: risuPos
       value: 
@@ -9546,6 +9550,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f40235c1e2f0d1e42a78a34357fb5692, type: 2}
   - {fileID: 11400000, guid: 5ee342e875072e7459bcdbf31108bf3d, type: 2}
   - {fileID: 11400000, guid: 5006a55e275053e47985ad26e567886e, type: 2}
+  soundVolumeSE: 0.5
 --- !u!4 &1800036643
 Transform:
   m_ObjectHideFlags: 0
