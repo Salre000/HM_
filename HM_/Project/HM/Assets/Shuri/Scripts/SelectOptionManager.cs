@@ -24,6 +24,8 @@ public class SelectOptionManager : MonoBehaviour
 
     [SerializeField] private Button[] _decisionButtons;
 
+    [SerializeField] private RectTransform _cursor;
+
     private int _sliderIndex;
 
     private const float DeadZone = 0.5f;
@@ -49,6 +51,8 @@ public class SelectOptionManager : MonoBehaviour
     }
 
     Option[] _optionGroup = new Option[(int)OptionType.Max];
+
+    private UniTask _cursorMoveTask = UniTask.CompletedTask;
 
     void Start()
     {
@@ -79,8 +83,8 @@ public class SelectOptionManager : MonoBehaviour
         _optionGroup[(int)OptionType.Sensibility].slider.value = optionDataMain.sensibility;
         _optionGroup[(int)OptionType.MainBGM].slider.value = optionDataMain.volumeBGM;
         _optionGroup[(int)OptionType.MainSE].slider.value = optionDataMain.volumeSE;
-        
-        for(int i = 0; i < (int)OptionType.Max; i++) ChangeSliderValue(_optionGroup[i]);
+
+        for (int i = 0; i < (int)OptionType.Max; i++) ChangeSliderValue(_optionGroup[i]);
 
         // コールバック呼び出し
         _optionGroup[(int)OptionType.SystemBGM].slider.onValueChanged.AddListener(delegate { ChangeSliderValue(_optionGroup[(int)OptionType.SystemBGM]); });
@@ -95,10 +99,11 @@ public class SelectOptionManager : MonoBehaviour
     async void Update()
     {
         if (Input.GetKeyDown(KeyCode.JoystickButton11)) UISwitch();
+        if (_uiPanel.activeSelf && Input.GetKeyDown(KeyCode.JoystickButton10)) UISwitch();
 
         if (!_uiPanel.activeSelf) return;
 
-        await UniTask.DelayFrame(5);
+        if (!_cursorMoveTask.Status.IsCompleted()) return;
 
         _slider[_sliderIndex].value += Input.GetAxis("D_Pad_H");
 
@@ -110,9 +115,25 @@ public class SelectOptionManager : MonoBehaviour
         {
             _sliderIndex++;
         }
+        else return;
 
         if (_sliderIndex > _slider.Length - 1) _sliderIndex = 0;
         if (_sliderIndex < 0) _sliderIndex = _slider.Length - 1;
+
+        _cursorMoveTask = ChangeSelectSlider();
+    }
+
+    private async UniTask ChangeSelectSlider()
+    {
+        Vector2 startPos = _cursor.anchoredPosition;
+        Vector2 goalPos = new(_cursor.anchoredPosition.x, ((1 - _sliderIndex) * 100) - ((_sliderIndex > 1) ? 50 : 0));
+
+        for (float i = 0; i < 10; i++)
+        {
+            _cursor.anchoredPosition = Vector2.Lerp(startPos, goalPos, (i + 1 / 10.0f));
+            await UniTask.DelayFrame(1);
+        }
+        _cursor.anchoredPosition = goalPos;
     }
 
     void UISwitch()
