@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
 
 public class PlayerAnime : MonoBehaviour
 {
