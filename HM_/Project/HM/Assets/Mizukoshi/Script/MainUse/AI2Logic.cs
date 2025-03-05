@@ -27,7 +27,7 @@ public class AI2Logic :Hunter_AI
     public float viewLength = 100;
 
     // 回避行動頻度
-    int avoidRatio = 0;
+    int avoidRatio = -1;
 
     // 回避行動のクールタイム
     public float avoidCoolTime = 6.0f;
