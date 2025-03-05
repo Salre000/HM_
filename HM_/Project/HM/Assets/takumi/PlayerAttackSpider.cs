@@ -68,6 +68,7 @@ public class PlayerAttackSpider : PlayerAttack
         Animator animator = GetComponent<Animator>();
         anime[(int)actionMode.skill] = new PlayerSpiderTrap(this.gameObject, source, animator, _anime.SetLoanAttackFlag);
         anime[(int)actionMode.normal] = new AnimeBase(this.gameObject, source, animator, _anime.SetAttackFlag);
+        anime[(int)actionMode.normal].AddAnimeName("Armature|Attack");
         anime[(int)actionMode.special] = new CaptorAttackSpider(this.gameObject, source, animator, _anime.SetRoarFlag, ChengeJumpAnime, CaptorPosition);
         anime[(int)actionMode.jump] = new PlayerSpiderJump(this.gameObject, source, animator, _anime.SetJumpFlag);
         anime[(int)actionMode.backJump] = new PlayerSpiderJump(this.gameObject, source, animator, _anime.SetBackSteppeFlag);

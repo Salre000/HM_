@@ -14,7 +14,7 @@ public class RadialBlur : MonoBehaviour
 
     private void Start()
     {
-        this.enabled = false;
+        //this.enabled = false;
     }
 
     private void OnRenderImage(RenderTexture source, RenderTexture dest)

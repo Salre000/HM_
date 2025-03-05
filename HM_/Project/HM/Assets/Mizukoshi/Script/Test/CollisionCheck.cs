@@ -7,6 +7,10 @@ public class CollisionCheck : MonoBehaviour
 {
     public HPManager hPManager;
 
+    GameObject parent;
+
+    public bool getChildFlag = false;
+
     private void OnCollisionEnter(Collision collision)
     {
         // 衝突したオブジェクトの名前を取得
@@ -21,8 +25,8 @@ public class CollisionCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        parent = this.gameObject.transform.parent.gameObject;
 
-        GameObject parent=this.gameObject.transform.parent.gameObject;
 
         PlayerStatus ste = other.transform.gameObject.GetComponentInParent<PlayerStatus>();
         if(ste!= null)

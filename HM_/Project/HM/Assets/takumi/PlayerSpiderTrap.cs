@@ -65,7 +65,7 @@ public class PlayerSpiderTrap : AnimeBase
 
         if (TrapObject.transform.localScale.x >= MaxSize) return;
 
-        TrapObject.transform.localScale += Vector3.one;
+        TrapObject.transform.localScale += Vector3.one/5.0f;
 
         TrapObject.GetComponent<SpiderTrap>().ResetTime();
 

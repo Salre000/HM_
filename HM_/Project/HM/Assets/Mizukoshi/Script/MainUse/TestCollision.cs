@@ -9,17 +9,22 @@ public class TestCollision : MonoBehaviour
     private AudioSource _audioSource;
     void Start()
     {
+     
         _audioSource = this.gameObject.AddComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (m_gameObject == null)
+        {
+            m_gameObject = GameObject.Find("Last");
+        }
     }
     private void FixedUpdate()
     {
-        this.transform.position= m_gameObject.transform.position;
+        if(m_gameObject.name=="Last")return;
+        this.transform.position = m_gameObject.transform.position;
         this.transform.eulerAngles = m_gameObject.transform.eulerAngles;
     }
 
