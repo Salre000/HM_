@@ -79,6 +79,8 @@ public class SelectOptionManager : MonoBehaviour
         _optionGroup[(int)OptionType.Sensibility].slider.value = optionDataMain.sensibility;
         _optionGroup[(int)OptionType.MainBGM].slider.value = optionDataMain.volumeBGM;
         _optionGroup[(int)OptionType.MainSE].slider.value = optionDataMain.volumeSE;
+        
+        for(int i = 0; i < (int)OptionType.Max; i++) ChangeSliderValue(_optionGroup[i]);
 
         // コールバック呼び出し
         _optionGroup[(int)OptionType.SystemBGM].slider.onValueChanged.AddListener(delegate { ChangeSliderValue(_optionGroup[(int)OptionType.SystemBGM]); });
@@ -92,7 +94,7 @@ public class SelectOptionManager : MonoBehaviour
 
     async void Update()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton10)) UISwitch();
+        if (Input.GetKeyDown(KeyCode.JoystickButton11)) UISwitch();
 
         if (!_uiPanel.activeSelf) return;
 
@@ -111,9 +113,6 @@ public class SelectOptionManager : MonoBehaviour
 
         if (_sliderIndex > _slider.Length - 1) _sliderIndex = 0;
         if (_sliderIndex < 0) _sliderIndex = _slider.Length - 1;
-
-
-
     }
 
     void UISwitch()

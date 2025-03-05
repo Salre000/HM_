@@ -94,6 +94,8 @@ public class OptionManager : MonoBehaviour
         _bgmBar.value = data.volumeBGM;
         _seBar.value = data.volumeSE;
 
+        ChangeSliderValue();
+
         SoundListManager.instance.SetSoundVolume(data.volumeSE, data.volumeBGM);
 
         _bgmBar.onValueChanged.AddListener(delegate { ChangeSliderValue(); });
