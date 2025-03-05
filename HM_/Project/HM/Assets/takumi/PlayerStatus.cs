@@ -6,12 +6,14 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 //プレイヤーをステータスを管理するクラス
 public class PlayerStatus : MonoBehaviour
 {
     //現在のプレイヤーのHPの変数
     [SerializeField] float HP = 0.0f;
+    [SerializeField] Image Image;
 
     //プレイヤーの最大HPの定数
    　const float MAXHP = 100.0f;
@@ -58,6 +60,9 @@ public class PlayerStatus : MonoBehaviour
         if (_nowCondition != Condition.Normal) return;
         //UIのゲージを変更する処理を入れる
         AngerGage += Add;
+
+        Image.fillAmount += (float)AngerGage / (float) MaxAngerGage;
+
         if (MaxAngerGage > AngerGage) return;
         AngerGage = MaxAngerGage;
         ChengeCondition(Condition.Anger);
@@ -84,7 +89,7 @@ public class PlayerStatus : MonoBehaviour
     {
         if (_nowCondition != Condition.Fatigue) return;
         FatigueGage++;
-
+        Image.fillAmount-= (float)FatigueGage /(float)MAXFatigueGage;
         if (FatigueGage < MAXFatigueGage) return;
 
         _anime.SetSpped(1.0f);
@@ -115,7 +120,7 @@ public class PlayerStatus : MonoBehaviour
     public void Start()
     {
         data = JsonDataModule.Load<OptionDataMain>(Application.streamingAssetsPath + "/OptionMain.json");
-
+        Image.fillAmount = 0;
         Instance = this;
         isLife = true;
         _anime = this.gameObject.GetComponent<PlayerAnime>();
