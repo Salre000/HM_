@@ -25,16 +25,8 @@ public class CollisionCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (getChildFlag)
-        {
-            parent = this.gameObject.transform.parent.parent.gameObject;
-        }
-        
-        else
-        {
-            parent= this.gameObject.transform.parent.gameObject;
-        }
-      
+        parent = this.gameObject.transform.parent.gameObject;
+
 
         PlayerStatus ste = other.transform.gameObject.GetComponentInParent<PlayerStatus>();
         if(ste!= null)
