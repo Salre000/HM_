@@ -57,6 +57,7 @@ public class AI2Logic :Hunter_AI
 
     public override void Chase()
     {
+        _agent.enabled = true;
         base.Chase();
         SetDestination(GetMonster().transform.position);
     }

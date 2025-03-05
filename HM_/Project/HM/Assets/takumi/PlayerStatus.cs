@@ -51,14 +51,15 @@ public class PlayerStatus : MonoBehaviour
     }
     public Condition GetNowCondition() { return _nowCondition; }
 
-    [SerializeField] int StunGage = 0;
-    const int MaxStunGage = 1000;
+    [SerializeField] int AngerGage = 0;
+    const int MaxAngerGage = 1000;
     public void AddAngerGage(int Add)
     {
         if (_nowCondition != Condition.Normal) return;
-        StunGage += Add;
-        if (MaxStunGage > StunGage) return;
-        StunGage = MaxStunGage;
+        //UIのゲージを変更する処理を入れる
+        AngerGage += Add;
+        if (MaxAngerGage > AngerGage) return;
+        AngerGage = MaxAngerGage;
         ChengeCondition(Condition.Anger);
 
         _anime.SetSpped(1.3f);
@@ -67,33 +68,33 @@ public class PlayerStatus : MonoBehaviour
     public void SbuAngerGage(int Sbu)
     {
         if (_nowCondition != Condition.Anger) return;
-        StunGage -= Sbu;
-        if (StunGage > 0) return;
-        StunGage = 0;
+        AngerGage -= Sbu;
+        if (AngerGage > 0) return;
+        AngerGage = 0;
         ChengeCondition(Condition.Fatigue);
         _anime.SetSpped(0.8f);
 
 
     }
 
-    [SerializeField] int StunCount = 0;
-    int MAXStunCount = 3600;
+    [SerializeField] int FatigueGage = 0;
+    int MAXFatigueGage = 3600;
     //ノーマルモードに変更する関数
     private void ChengeNomale()
     {
         if (_nowCondition != Condition.Fatigue) return;
-        StunCount++;
+        FatigueGage++;
 
-        if (StunCount < MAXStunCount) return;
+        if (FatigueGage < MAXFatigueGage) return;
 
         _anime.SetSpped(1.0f);
         ChengeCondition(Condition.Normal);
-        StunCount = 0;
+        FatigueGage = 0;
 
     }
 
 
-    private Condition _nowCondition;
+    [SerializeField]private Condition _nowCondition;
     private Condition _lostCondition;
 
     System.Action<Condition> ChengeConditionMode; 
@@ -123,6 +124,27 @@ public class PlayerStatus : MonoBehaviour
         //音量とかを調整する
 
         HP = MAXHP;
+
+        _anime.SetCallback(StartStu, condition =>
+        {
+
+            ChengeCondition(condition);
+
+
+
+        });
+
+    }
+
+    private Condition StartStu() 
+    {
+        Condition condition=_nowCondition;
+
+        ChengeCondition(Condition.Stun);
+
+        return condition;
+
+
     }
     public void FixedUpdate()
     {
@@ -133,7 +155,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void NormalVoice() 
     {
-        _audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip(3, (int)Main.Monster));
+        _audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip(3, (int)Main.Monster), SoundListManager.instance.GetSoundVolume());
 
 
     }

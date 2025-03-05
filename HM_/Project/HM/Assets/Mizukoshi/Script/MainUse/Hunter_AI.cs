@@ -146,7 +146,7 @@ public abstract class Hunter_AI : MonoBehaviour
         damage = other.GetComponent<Damage>();
         if (p_audioSource != null)
         {
-            p_audioSource.PlayOneShot(_MonsterHitSound());
+            p_audioSource.PlayOneShot(_MonsterHitSound(), SoundListManager.instance.GetSoundVolume());
         }
       
         hpManager.HunterDamage(damage.GetDamage(), this.GetHunterID());
@@ -289,6 +289,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public void SetDestination(Vector3 pos)
     {
         if (!CheckNavmeshEnable()) return;
+        _agent.enabled=true;
         _agent.isStopped = false;
         _agent.destination = pos;
     }

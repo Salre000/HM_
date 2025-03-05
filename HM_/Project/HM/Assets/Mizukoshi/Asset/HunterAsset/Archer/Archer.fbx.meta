@@ -132,7 +132,7 @@ ModelImporter:
       - time: 1
         functionName: AvoidFinish
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: f612e14d026d633478f8bdd1d32f8759, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: 78ba166b933e273419dd707f9945f7f3, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

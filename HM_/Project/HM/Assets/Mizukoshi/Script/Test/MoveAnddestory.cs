@@ -6,10 +6,10 @@ public class MoveAnddestory : MonoBehaviour
 {
     private void Update()
     {
-        Destroy(gameObject,5f);
+       
     }
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }
