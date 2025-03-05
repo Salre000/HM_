@@ -3909,6 +3909,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3115370620048113513, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 1871076398}
     - target: {fileID: 3115370620691858454, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20
@@ -33137,7 +33141,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

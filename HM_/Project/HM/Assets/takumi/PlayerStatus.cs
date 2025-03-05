@@ -60,8 +60,11 @@ public class PlayerStatus : MonoBehaviour
         if (_nowCondition != Condition.Normal) return;
         //UI‚ÌƒQ[ƒW‚ð•ÏX‚·‚éˆ—‚ð“ü‚ê‚é
         AngerGage += Add;
+        Color color = Color.red;
+        color.a = 0.5f;
+        Image.color = color;
 
-        Image.fillAmount += (float)AngerGage / (float) MaxAngerGage;
+        Image.fillAmount += (float)Add / (float) MaxAngerGage;
 
         if (MaxAngerGage > AngerGage) return;
         AngerGage = MaxAngerGage;
@@ -89,7 +92,10 @@ public class PlayerStatus : MonoBehaviour
     {
         if (_nowCondition != Condition.Fatigue) return;
         FatigueGage++;
-        Image.fillAmount-= (float)FatigueGage /(float)MAXFatigueGage;
+        Color color = Color.blue;
+        color.a = 0.5f;
+        Image.color = color;
+        Image.fillAmount-= 1.0f /(float)MAXFatigueGage;
         if (FatigueGage < MAXFatigueGage) return;
 
         _anime.SetSpped(1.0f);
@@ -121,6 +127,7 @@ public class PlayerStatus : MonoBehaviour
     {
         data = JsonDataModule.Load<OptionDataMain>(Application.streamingAssetsPath + "/OptionMain.json");
         Image.fillAmount = 0;
+
         Instance = this;
         isLife = true;
         _anime = this.gameObject.GetComponent<PlayerAnime>();
@@ -134,19 +141,22 @@ public class PlayerStatus : MonoBehaviour
         {
 
             ChengeCondition(condition);
-
-
+            Image.fillAmount = memory;
+            Image.color = memoColor;
 
         });
 
     }
+    Color memoColor;
+    float memory = 0;
 
     private Condition StartStu() 
     {
         Condition condition=_nowCondition;
 
         ChengeCondition(Condition.Stun);
-
+        memory = Image.fillAmount;
+        memoColor=Image.color;
         return condition;
 
 
