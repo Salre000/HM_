@@ -53,7 +53,7 @@ public class AI4Logic : Hunter_AI
     {
         base.Attack();
         if (CheckAudioSourceNull()) return;
-        p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.PreSwordAttack, (int)Main.Hunter));
+        p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.PreSwordAttack, (int)Main.Hunter), SoundListManager.instance.GetSoundVolume());
     }
 
     public void SetCollider()

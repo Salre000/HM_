@@ -16,7 +16,7 @@ public class SoundListManager : MonoBehaviour
     public static SoundListManager instance;
 
     float soundVolumeBGM = 0.5f;
-    float soundVolumeSE = 0.5f;
+    [SerializeField]float soundVolumeSE = 0.5f;
 
     private void Awake()
     {
@@ -48,7 +48,7 @@ public class SoundListManager : MonoBehaviour
         _audioSource.volume = soundVolumeSE;
     }
 
-    public float GetSoundVolume() {return soundVolumeBGM;}
+    public float GetSoundVolume() {return soundVolumeSE; }
 
     //‚µ‚Ä‚¢‚ÌƒTƒEƒ“ƒh‚ğÄ¶‚·‚éŠÖ”
     public void PlaySound( int index, int type=0)

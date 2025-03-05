@@ -30,6 +30,7 @@ public class CaptorAttackSpider : AnimeBase
     {
         base.Start();
         eventNumber = 0;
+        
     }
     private GameObject CaptorPosition;
     private GameObject CaptorTarget;
@@ -59,6 +60,10 @@ public class CaptorAttackSpider : AnimeBase
         if (CaptorTarget == null)
         {
             _AnimeFlagReset(false);
+        }
+        else 
+        {
+            _AnimeFlagReset(true);
         }
 
     }
@@ -122,10 +127,14 @@ public class CaptorAttackSpider : AnimeBase
 
         if ("Armature|Jump" == _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name)
         {
+            Debug.Log(_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name + "BBB");
+            useFlag = true;
+
             _NestJump();
         }
         else
         {
+            Debug.Log(_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name+"SSS");
             useFlag = false;
         }
 
