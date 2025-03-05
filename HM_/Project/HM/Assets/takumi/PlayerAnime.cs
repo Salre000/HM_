@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
 
 public class PlayerAnime : MonoBehaviour
 {
@@ -92,14 +93,53 @@ public class PlayerAnime : MonoBehaviour
         _animator.SetBool("JumpFlag", _jumpFlag);
         _animator.SetBool("BackSteppeFlag", _backSteppeFlag);
         if (HardDownCount < 0) return;
+
         HardDownCount++;
-        if (HardDownCount <= 1000) return;
+        LiverAction();
+        if (HardDownCount <= MAX_HARD_DOWN_COUNT) return;
         _animator.SetTrigger("EndHardDown");
         _nowDownFlag = false;
         HardDownCount = -1;
+        _EndStun(lostCondition);
     }
 
-    private int HardDownCount = -1;
-    public void HardDownCountStart() { HardDownCount = 0; }
+    public void SetCallback(System.Func<PlayerStatus.Condition> setStart, System.Action<PlayerStatus.Condition> setEnd) { _StartStun = setStart;_EndStun = setEnd; }
+
+    private System.Func<PlayerStatus.Condition> _StartStun;
+    private System.Action<PlayerStatus.Condition> _EndStun;
+
+    PlayerStatus.Condition lostCondition = PlayerStatus.Condition.Normal;
+
+    [SerializeField]private int HardDownCount = -1;
+    const int MAX_HARD_DOWN_COUNT = 1200;
+
+    public void AddHardDownCount(int count) { HardDownCount += count; }
+
+    public void HardDownCountStart() 
+    {
+        HardDownCount = 0;
+        lostCondition= _StartStun();
+    }
+
+    public int GetHardDownCount() { return HardDownCount; }
+    public int GetHardDownCountMax() { return MAX_HARD_DOWN_COUNT; }
+
+
+    int StunReleaseRete = 5;
+    private void LiverAction() 
+    {
+        // à⁄ìÆó Ç∆âÒì]ó ÇãÅÇﬂÇÈ
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        if (horizontal == 0 && vertical == 0) return;
+
+        int totalAction = (int)(Mathf.Abs(horizontal)+Mathf.Abs(vertical));
+
+        AddHardDownCount(totalAction * StunReleaseRete);
+
+
+
+    }
 
 }

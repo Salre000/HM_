@@ -15,7 +15,8 @@ public class SoundListManager : MonoBehaviour
 
     public static SoundListManager instance;
 
-    float soundVolume = 0.5f;
+    float soundVolumeBGM = 0.5f;
+    float soundVolumeSE = 0.5f;
 
     private void Start()
     {
@@ -35,17 +36,19 @@ public class SoundListManager : MonoBehaviour
 
         _audioSourceBGM.loop = true;
 
-        _audioSourceBGM.loop = true;
-
+      
     }
 
-    public void SetSoundVolume(int volume)
+    public void SetSoundVolume(int volumeSE,int volumeBGM )
     {
-        soundVolume = (float)volume/100.0f;
+        soundVolumeSE = (float)volumeSE/100.0f;
+        soundVolumeBGM = (float)volumeBGM/100.0f;
 
+        _audioSourceBGM.volume = soundVolumeBGM;
+        _audioSource.volume = soundVolumeSE;
     }
 
-    public float GetSoundVolume() {return soundVolume;}
+    public float GetSoundVolume() {return soundVolumeBGM;}
 
     //‚µ‚Ä‚¢‚ÌƒTƒEƒ“ƒh‚ğÄ¶‚·‚éŠÖ”
     public void PlaySound( int index, int type=0)
@@ -77,15 +80,4 @@ public class SoundListManager : MonoBehaviour
 
 
     }
-
-    public void StopBGM() 
-    {
-
-    }
-
-
-
-
-
-
 }
