@@ -23,6 +23,7 @@ public class TestCollision : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (m_gameObject == null)return;
         if(m_gameObject.name=="Last")return;
         this.transform.position = m_gameObject.transform.position;
         this.transform.eulerAngles = m_gameObject.transform.eulerAngles;
