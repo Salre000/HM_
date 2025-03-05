@@ -54,6 +54,8 @@ public class OptionManager : MonoBehaviour
 
     [SerializeField] private Button _configButton;
 
+    [SerializeField] private Button _resetButton;
+
     private InputManager _inputManager;
     [SerializeField] private HunterManager _hunterManager;
 
@@ -295,6 +297,11 @@ public class OptionManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
 
         _selected = false;
+    }
+
+    public void ResetConfig()
+    {
+        InputManager.instance.ConfigReset();
     }
 
     public void OnBackToTheGame()
