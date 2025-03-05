@@ -1,4 +1,6 @@
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.UI;
 using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
 
 public class PlayerAnime : MonoBehaviour
@@ -16,6 +18,7 @@ public class PlayerAnime : MonoBehaviour
     private bool _bigRoarFlag = false;
     private bool _downFlag = false;
     [SerializeField] float Speed = 0;
+    [SerializeField] Image image;
 
     public void SetSpped(float Spped) { _animator.SetFloat("Speed", Spped);this.Speed = Spped; }
 
@@ -96,6 +99,7 @@ public class PlayerAnime : MonoBehaviour
         if (HardDownCount < 0) return;
 
         HardDownCount++;
+        image.fillAmount-=1.0f/ (float)MAX_HARD_DOWN_COUNT;
         LiverAction();
         if (HardDownCount <= MAX_HARD_DOWN_COUNT) return;
         _animator.SetTrigger("EndHardDown");
@@ -120,6 +124,12 @@ public class PlayerAnime : MonoBehaviour
     {
         HardDownCount = 0;
         lostCondition= _StartStun();
+
+        image.fillAmount = 1;
+        Color color = Color.yellow;
+        color.a = 0.5f;
+        image.color = color;
+
     }
 
     public int GetHardDownCount() { return HardDownCount; }
@@ -139,6 +149,7 @@ public class PlayerAnime : MonoBehaviour
 
         AddHardDownCount(totalAction * StunReleaseRete);
 
+        image.fillAmount -= (totalAction * StunReleaseRete) / (float)MAX_HARD_DOWN_COUNT;
 
 
     }

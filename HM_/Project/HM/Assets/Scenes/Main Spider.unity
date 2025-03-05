@@ -5584,7 +5584,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -7698,6 +7698,7 @@ MonoBehaviour:
   - {fileID: 38964855}
   - {fileID: 1518134979}
   _configButton: {fileID: 66592008}
+  _resetButton: {fileID: 0}
   _hunterManager: {fileID: 1418245116}
 --- !u!4 &1263032198
 Transform:
@@ -10998,6 +10999,7 @@ MonoBehaviour:
   _objectiveText: {fileID: 0}
   _menuButtons: []
   _configButton: {fileID: 0}
+  _resetButton: {fileID: 0}
   _hunterManager: {fileID: 0}
 --- !u!4 &2112712215
 Transform:
