@@ -18,7 +18,6 @@ public class PlayerSpiderJump : AnimeBase
     {
         base.Start();
 
-        End = true;
         // 移動量と回転量を求める
         float _horizontal = Input.GetAxis("Horizontal");
         float _vertical = Input.GetAxis("Vertical");
@@ -29,8 +28,8 @@ public class PlayerSpiderJump : AnimeBase
         JumpAngle = Mathf.Atan2(_horizontal, _vertical) + cameraAngle;
 
         Vec = new Vector3(Mathf.Sin(JumpAngle), 0, Mathf.Cos(JumpAngle));
-        stopTime();
         ResetFlag();
+        FrameCount = 0;
     }
 
     const float MaxTime = 0.2f;
@@ -39,24 +38,17 @@ public class PlayerSpiderJump : AnimeBase
     float JumpAngle = 0;
     //飛びたくない事前フレームのカウンター
     int FrameCount = 0;
-
-    async UniTask stopTime()
-    {
-        await UniTask.DelayFrame(100);
-
-        End = false;
-    }
-
     public override void Action()
     {
-    
 
-        if (End) return;
+        FrameCount++;
+        AnimeUPDate();
+
+        if (FrameCount <= 100) return;
 
 
         Debug.Log("Jump中");
 
-        AnimeUPDate();
 
 
 
@@ -70,7 +62,8 @@ public class PlayerSpiderJump : AnimeBase
     {
         base.AnimeEvent();
 
-        End = false;
+       // End = false;
+
     }
 
 
@@ -78,7 +71,7 @@ public class PlayerSpiderJump : AnimeBase
     {
         base.AnimeEnd();
         useFlag = false;
-        
+        FrameCount = 0;
     }
 
 

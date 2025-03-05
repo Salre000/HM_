@@ -57,10 +57,11 @@ public class AnimeBase
     public virtual void Start()
     {
         if(startClip != null)audioSource.PlayOneShot(startClip);
+        ResetFlag();
     }
    
 
-    public virtual void Action() { }
+    public virtual void Action() { AnimeUPDate(); }
 
     float TimeCount = 0;
     // Update is called once per frame
@@ -89,6 +90,7 @@ public class AnimeBase
     virtual protected void AnimeEnd()
     {
         TimeCount = 0;
+        useFlag = false;
     }
 
 }

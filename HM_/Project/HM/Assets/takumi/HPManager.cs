@@ -48,7 +48,7 @@ public class HPManager : MonoBehaviour
         MonsterInvincibilityTime = 0;
         soundAction();
         uiManager.HPSliderUpdate();
-        if (MonsterHp <= 0) { PlayerStatus.isLife = false; playerAnime.SetDownFlag(); }
+        if (MonsterHp <= 0) { PlayerStatus.isLife = false; playerAnime.SetStartHardDownFlag(); }
         if (DownFlag) return 1;   
         PartHp-= Damage;
 

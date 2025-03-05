@@ -46,6 +46,7 @@ public class PlayerAnime : MonoBehaviour
 
     public void SetStartHardDownFlag()
     {
+        if (_nowDownFlag) return;
         _animator.SetTrigger("StartHardDown");
         _nowDownFlag = true;
     }

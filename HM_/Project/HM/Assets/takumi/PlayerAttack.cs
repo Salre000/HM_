@@ -145,15 +145,17 @@ public abstract class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!PlayerStatus.isLife) return;      
-        
+        if (!PlayerStatus.isLife) return;
+
         if (!activeFlag) return;
+
 
         if (AnimeBase.useFlag)
         {
 
             anime[(int)nowMode].Action();
 
+            if (!instance.IsOnButton(InputKeys.Normal)) _anime.SetAttackFlag(false);
             return;
         }
 
@@ -168,6 +170,8 @@ public abstract class PlayerAttack : MonoBehaviour
         {
 
             _anime.SetAttackFlag(true);
+
+            AnimeBase.useFlag = true;
 
 
         }
