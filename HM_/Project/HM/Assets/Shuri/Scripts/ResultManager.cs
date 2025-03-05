@@ -153,7 +153,6 @@ public class ResultManager : MonoBehaviour
     private void Update()
     {
         // Bボタンが押されたらセレクト画面に戻る
-        if (Input.GetKeyDown(KeyCode.JoystickButton3)) SceneManager.LoadScene("Select");
         if (Input.GetKeyDown(KeyCode.JoystickButton3)) GetComponent<SceneChanger>().ChangeScene();
     }
 
