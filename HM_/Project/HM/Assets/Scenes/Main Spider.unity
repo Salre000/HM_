@@ -1008,7 +1008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4606462654910583582, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
       propertyPath: attackDistance
-      value: 0.25
+      value: 0.14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
@@ -3363,7 +3363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3278220773221436954, guid: 05d6b755961f31e40a448f1be77f4f90, type: 3}
       propertyPath: attackDistance
-      value: 0.25
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 3278220773221436954, guid: 05d6b755961f31e40a448f1be77f4f90, type: 3}
       propertyPath: colliderObject
@@ -4510,11 +4510,11 @@ MonoBehaviour:
   HP: 100
   chaseSpeed: 0.075
   dashSpeed: 0.15
-  detectionRadius: 0.1
-  fleeDistance: 0.2
+  detectionRadius: 0
+  fleeDistance: 0
   _attackDistanceFF: 1
   keepDistance: 0.1
-  attackDistance: 0.3
+  attackDistance: 0.2
   viewAngle: 180
   viewLength: 2
   colliderObj: {fileID: 0}
