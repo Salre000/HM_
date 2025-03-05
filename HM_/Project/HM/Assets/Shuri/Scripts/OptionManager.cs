@@ -56,7 +56,6 @@ public class OptionManager : MonoBehaviour
 
     [SerializeField] private Button _resetButton;
 
-    private InputManager _inputManager;
     [SerializeField] private HunterManager _hunterManager;
 
     bool _selected = false;
@@ -79,8 +78,6 @@ public class OptionManager : MonoBehaviour
         _menuNum = _objective.transform.childCount;
 
         _uiPanel.SetActive(false);
-
-        _inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
 
         _cursor.anchoredPosition = new(_cursor.anchoredPosition3D.x, (1 - _sliderIndex) * 100);
 
@@ -255,7 +252,7 @@ public class OptionManager : MonoBehaviour
         data.volumeBGM = (int)_bgmBar.value;
         data.volumeSE = (int)_seBar.value;
 
-        Save<OptionDataMain>(data, _filepath);
+        Save(data, _filepath);
 
         PlayerStatus.Instance.SetData(data);
         EventSystem.current.SetSelectedGameObject(null);
@@ -285,7 +282,7 @@ public class OptionManager : MonoBehaviour
             await UniTask.DelayFrame(1);
 
 
-            if (!_inputManager.EnableAllKey())
+            if (!InputManager.instance.EnableAllKey())
             {
                 _noteText.gameObject.SetActive(true);
                 continue;

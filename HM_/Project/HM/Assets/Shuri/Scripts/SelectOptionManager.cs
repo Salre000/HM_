@@ -129,8 +129,8 @@ public class SelectOptionManager : MonoBehaviour
         optionDataSystem.volumeBGM = (int)_optionGroup[(int)OptionType.SystemBGM].slider.value;
         optionDataSystem.volumeSE = (int)_optionGroup[(int)OptionType.SystemSE].slider.value;
         optionDataMain.sensibility = (int)_optionGroup[(int)OptionType.Sensibility].slider.value;
-        optionDataMain.sensibility = (int)_optionGroup[(int)OptionType.MainBGM].slider.value;
-        optionDataMain.sensibility = (int)_optionGroup[(int)OptionType.MainSE].slider.value;
+        optionDataMain.volumeBGM = (int)_optionGroup[(int)OptionType.MainBGM].slider.value;
+        optionDataMain.volumeSE = (int)_optionGroup[(int)OptionType.MainSE].slider.value;
         // セーブ＆リロード
         Save(optionDataMain, _FilePathMain);
         Save(optionDataSystem, _FilePathSystem);
