@@ -41,7 +41,7 @@ public class PlayerStatus : MonoBehaviour
     public static bool isLife = true;
     public static PlayerStatus Instance { get; private set; }
 
-    [HideInInspector] public OptionData data;
+    [HideInInspector] public OptionDataMain data;
     public enum Condition
     {
         Normal,//í èÌèÛë‘
@@ -109,11 +109,11 @@ public class PlayerStatus : MonoBehaviour
 
     }
 
-    public void SetData(OptionData data) { this.data=data; }
+    public void SetData(OptionDataMain data) { this.data=data; }
 
     public void Start()
     {
-        data = JsonDataModule.Load<OptionData>(Application.streamingAssetsPath + "/Option.json");
+        data = JsonDataModule.Load<OptionDataMain>(Application.streamingAssetsPath + "/OptionMain.json");
 
         Instance = this;
         isLife = true;

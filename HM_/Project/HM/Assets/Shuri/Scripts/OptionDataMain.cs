@@ -2,7 +2,7 @@ using System.IO;
 using UnityEngine;
 
 [System.Serializable]
-public class OptionData
+public class OptionDataMain
 {
     public int sensibility;
     public int volumeBGM;

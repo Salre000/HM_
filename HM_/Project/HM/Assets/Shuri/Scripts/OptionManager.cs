@@ -16,7 +16,7 @@ using static JsonDataModule;
 
 public class OptionManager : MonoBehaviour
 {
-    [HideInInspector] public OptionData data;
+    [HideInInspector] public OptionDataMain data;
 
     [SerializeField] private GameObject selectPanel;
     private RectTransform _panelRect;
@@ -64,7 +64,7 @@ public class OptionManager : MonoBehaviour
     private UniTask _panelMoveTask = UniTask.CompletedTask;
     private UniTask _cursorMoveTask = UniTask.CompletedTask;
 
-    private string _filepath = "/Option.json";
+    private string _filepath = "/OptionMain.json";
 
     void Start()
     {
@@ -88,7 +88,7 @@ public class OptionManager : MonoBehaviour
         if (!File.Exists(_filepath)) Save(data, _filepath);
 
         // ÉtÉ@ÉCÉãÇì«Ç›çûÇÒÇ≈dataÇ…äiî[
-        data = Load<OptionData>(_filepath);
+        data = Load<OptionDataMain>(_filepath);
 
         _sensibilityBar.value = data.sensibility;
         _bgmBar.value = data.volumeBGM;
@@ -253,7 +253,7 @@ public class OptionManager : MonoBehaviour
         data.volumeBGM = (int)_bgmBar.value;
         data.volumeSE = (int)_seBar.value;
 
-        Save<OptionData>(data, _filepath);
+        Save<OptionDataMain>(data, _filepath);
 
         PlayerStatus.Instance.SetData(data);
         EventSystem.current.SetSelectedGameObject(null);
