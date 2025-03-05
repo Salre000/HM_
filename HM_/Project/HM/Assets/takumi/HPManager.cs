@@ -29,6 +29,7 @@ public class HPManager : MonoBehaviour
             HunterInvincibilityTime[i] = 0;
 
         }
+        TimeCountLostNumber();
 
     }
 
@@ -153,7 +154,7 @@ public class HPManager : MonoBehaviour
         int Count =0;
         while (true) 
         {
-            if(Count>=1)break;
+            if(Count>=1) HunterLostNumber = -1; 
 
             await UniTask.DelayFrame(1);
             Count++;
@@ -165,7 +166,7 @@ public class HPManager : MonoBehaviour
             Count = 0;
         }
 
-        HunterLostNumber = -1;
+        
 
     }
 }
