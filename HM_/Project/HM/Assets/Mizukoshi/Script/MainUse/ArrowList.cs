@@ -16,11 +16,14 @@ public class ArrowList : MonoBehaviour
         {
             //_arrowList[i] = Instantiate(aro);
             _arrowList[i]=Instantiate(aro);
-            _arrowList[i].SetActive(false);
 
-            TestCollision test = _arrowList[i].transform.GetChild(1).GetComponent<TestCollision>();
+
+            TestCollision test = _arrowList[i].transform.GetChild(0).GetComponent<TestCollision>();
+            //TestCollision test = _arrowList[i].transform.GetComponent<TestCollision>();
             test.SetGameObject(Hunter);
-            
+
+
+            _arrowList[i].SetActive(false);
         }
         foreach (GameObject arrow in _arrowList)
         {

@@ -22,7 +22,7 @@ public class CollisionCheck : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        GameObject parent=this.gameObject.transform.parent.gameObject;
+        GameObject parent=this.gameObject.transform.parent.parent.gameObject;
 
         PlayerStatus ste = other.transform.gameObject.GetComponentInParent<PlayerStatus>();
         if(ste!= null)
