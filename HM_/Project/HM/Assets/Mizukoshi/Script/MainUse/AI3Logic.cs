@@ -49,7 +49,6 @@ public class AI3Logic : Hunter_AI
     public override void Attack()
     {
         base.Attack();
-        Debug.Log("AAAAA1");
         if (CheckAudioSourceNull()) return;
         p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.PreSpearAttack, (int)Main.Hunter));
       
@@ -69,8 +68,8 @@ public class AI3Logic : Hunter_AI
 
     protected override void DebugDistance()
     {
-        string motionName = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-        if (motionName != "アーマチュア|Attack1") return;
-        Debug.Log($"{motionName}");
+        //string motionName = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        //if (motionName != "アーマチュア|Attack1") return;
+        //Debug.Log($"{motionName}");
     }
 }
