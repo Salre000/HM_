@@ -48,6 +48,8 @@ public class AI3Logic : Hunter_AI
 
     public override void Attack()
     {
+        Debug.Log("AAA--");
+
         base.Attack();
         if (CheckAudioSourceNull()) return;
         //p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.PreSpearAttack, (int)Main.Hunter));

@@ -170,7 +170,8 @@ public abstract class Hunter_AI : MonoBehaviour
 
         WaitAttackCoolTime();
 
-        if(avoiding)return;
+
+        if (avoiding)return;
 
         // 拘束状態なら停止
         if (CheckRest()) return;
@@ -244,6 +245,7 @@ public abstract class Hunter_AI : MonoBehaviour
             // 攻撃準備ができているのならば
             if (attackReady)
             {
+
                 AnimatorStateInfo s = GetAnimState();
                 if (GetAnimState().IsName("アーマチュア|Attack1"))return;
                
@@ -446,6 +448,7 @@ public abstract class Hunter_AI : MonoBehaviour
         {
             coolTime = 0;
             attackReady = true;
+
         }
     }
     /// <summary>
@@ -575,10 +578,13 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         // ナビメーションによる移動をなくす。
         SetOffNavmesh();
+
         if (attackReady)
         {
             AttackAnimation();
             attackReady = false;
+            //Debug.Log(this.gameObject.name + "SSS" + attackReady);
+
         }
 
     }
