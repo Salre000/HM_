@@ -28,8 +28,10 @@ public class HitEffectManager : MonoBehaviour
 
 
     const int HunterCount = 4;
-
+    [Header("モンスターエフェクトの大きさ")]
     [SerializeField] float MonsterEffectSize=1.5f;
+    [Header("ハンターエフェクトの大きさ")]
+    [SerializeField] float HunterEffectSize=0.3f;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,7 @@ public class HitEffectManager : MonoBehaviour
                 HunterEffectPool[i][j] = Instantiate(HunterEffect[i],this.transform);
                 HunterEffectPool[i][j].SetActive(false);
                 HunterEffectPool[i][j].name = "Hunter";
+                HunterEffectPool[i][j].transform.localScale = new Vector3(HunterEffectSize, HunterEffectSize, HunterEffectSize);
             }
         }
 
