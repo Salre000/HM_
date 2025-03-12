@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class AI3Logic : Hunter_AI
 {
-    public float keepDistance = 1.5f;
+    private float keepDistance = 6.5f;
 
     public float attackDistance = 0.30f;
 
@@ -18,7 +18,7 @@ public class AI3Logic : Hunter_AI
     public GameObject colliderObj;
 
     // 回避行動頻度
-    int avoidRatio = 7;
+    int avoidRatio = 3;
 
     // 回避行動のクールタイム
     public float avoidCoolTime = 6.0f;
@@ -51,9 +51,10 @@ public class AI3Logic : Hunter_AI
         Debug.Log("AAA--");
 
         base.Attack();
+        Debug.Log("AAAAA1");
         if (CheckAudioSourceNull()) return;
-        //p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.PreSpearAttack, (int)Main.Hunter));
-        Debug.Log("AAA");
+        p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.PreSpearAttack, (int)Main.Hunter));
+      
     }
 
     public void SetCollider()
@@ -70,6 +71,8 @@ public class AI3Logic : Hunter_AI
 
     protected override void DebugDistance()
     {
-        Debug.Log("やりの目的地" + _agent.destination);
+        string motionName = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        if (motionName != "アーマチュア|Attack1") return;
+        Debug.Log($"{motionName}");
     }
 }
