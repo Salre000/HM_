@@ -26,7 +26,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     [SerializeField]
     // アニメーションコントローラー
-    private Animator _animator;
+    protected Animator _animator;
 
     // ダメージクラス
     public Damage damage;
