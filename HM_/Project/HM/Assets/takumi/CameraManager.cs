@@ -124,7 +124,7 @@ public class CameraManager : MonoBehaviour
         _horizontal = Input.GetAxis("HorizontalR");
         _vertical = Input.GetAxis("VerticalR");
 
-        if (_horizontal == 0 && (_vertical <= 0 && _vertical >= -0.5f)) return;
+        //if (_horizontal == 0 && (_vertical <= 0 && _vertical >= -0.5f)) return;
 
         Vector3 _position = this.transform.position;
 

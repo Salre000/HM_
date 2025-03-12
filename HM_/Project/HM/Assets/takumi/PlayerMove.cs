@@ -1,6 +1,10 @@
+using Cysharp.Threading.Tasks;
 using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 //プレイヤーを動かすクラス
 public class PlayerMove : MonoBehaviour
@@ -15,7 +19,7 @@ public class PlayerMove : MonoBehaviour
     //プレイヤーの角度
     [SerializeField] private float _angle;
 
-    [SerializeField]private string MoveAnimeName = "Armature|Move";
+    [SerializeField] private string MoveAnimeName = "Armature|Move";
 
     //角度の差
     [SerializeField] private float _angleDifference;
@@ -36,12 +40,8 @@ public class PlayerMove : MonoBehaviour
 
     private Vector3 respawnPosition;
 
-    struct ssss 
-    {
-       public Object sss;
+    private Camera _camera;
 
-    }
-    ssss ss;
     void Start()
     {
         _animator = this.gameObject.GetComponent<Animator>();
@@ -58,10 +58,10 @@ public class PlayerMove : MonoBehaviour
 
         _anime = this.gameObject.GetComponent<PlayerAnime>();
 
-        audioSource=GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
 
-        respawnPosition=this.transform.position;
-        ss.sss = this.gameObject;
+        respawnPosition = this.transform.position;
+        _camera = Camera.main;
     }
 
     private bool Flag = false;
@@ -74,7 +74,14 @@ public class PlayerMove : MonoBehaviour
         if (!CameraManager.setupFlag) return;
         if (this.transform.position.y <= -10) this.transform.position = respawnPosition;
 
+        LookAtMove();
+    }
+
+    void LostMove()
+    {
+
         string NowAnime = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+
 
         pos = Vector3.zero;
         _horizontal = _vertical = 0;
@@ -95,7 +102,7 @@ public class PlayerMove : MonoBehaviour
 
         if (_horizontal == 0 && _vertical == 0) return;
 
-        if (NowAnime == "Armature|Moves" || NowAnime == "Armature|AttackMove" || NowAnime == "Armature|AttackMoveLoops" || NowAnime == MoveAnimeName) 
+        if (NowAnime == "Armature|Moves" || NowAnime == "Armature|AttackMove" || NowAnime == "Armature|AttackMoveLoops" || NowAnime == MoveAnimeName)
         {
             int sss = 0;
         }
@@ -118,7 +125,146 @@ public class PlayerMove : MonoBehaviour
 
 
         this.transform.position = pos;
-        
+
 
     }
+    void LookAtMove()
+    {
+
+        string NowAnime = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+
+
+        pos = Vector3.zero;
+        _horizontal = _vertical = 0;
+        _angle = 0;
+
+
+        Vector3 Angles = _camera.transform.position - this.transform.position;
+
+        _angle = Mathf.Atan2(Angles.x, Angles.z);
+
+
+
+        // 移動量と回転量を求める
+        _horizontal = Input.GetAxis("Horizontal");
+        _vertical = Input.GetAxis("Vertical");
+
+        _anime.SetMoveFlag(Flag);
+
+
+        if (_horizontal == 0 && _vertical == 0) return;
+
+        if (NowAnime == "Armature|Moves" || NowAnime == "Armature|AttackMove" || NowAnime == "Armature|AttackMoveLoops" || NowAnime == MoveAnimeName)
+        {
+            int sss = 0;
+        }
+        else { _horizontal = 0; _vertical = 0; }
+        // Debug.Log(NowAnime);
+
+        _anime.SetMoveFlag(true);
+        if (_horizontal == 0 && _vertical == 0) return;
+
+        _vertical *= -1;
+        _horizontal *= -1;
+
+        float angle = Mathf.Atan2(_horizontal, _vertical);
+        float vecAngle = angle - _angle;
+        _angle += angle;
+
+
+        this.transform.eulerAngles = new Vector3(0, _angle * Mathf.Rad2Deg, 0);
+
+        _manager.Add_CameraPositionAngle(vecAngle);
+
+        pos = this.transform.position;
+
+
+        //プレイヤーの移動
+        pos.x += Mathf.Sin(_angle) * (1 * _status.GetSpeed());
+        pos.z += Mathf.Cos(_angle) * (1 * _status.GetSpeed());
+
+
+
+        this.transform.position = pos;
+
+
+    }
+
+    UniTask task;
+    void LookAtTimeMove()
+    {
+
+        string NowAnime = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+
+
+        pos = Vector3.zero;
+        _horizontal = _vertical = 0;
+        _angle = 0;
+
+
+        Vector3 Angles = _camera.transform.position - this.transform.position;
+
+        _angle = Mathf.Atan2(Angles.x, Angles.z);
+
+
+
+        // 移動量と回転量を求める
+        _horizontal = Input.GetAxis("Horizontal");
+        _vertical = Input.GetAxis("Vertical");
+
+        _anime.SetMoveFlag(Flag);
+
+
+        if (_horizontal == 0 && _vertical == 0) return;
+
+        if (NowAnime == "Armature|Moves" || NowAnime == "Armature|AttackMove" || NowAnime == "Armature|AttackMoveLoops" || NowAnime == MoveAnimeName)
+        {
+            int sss = 0;
+        }
+        else { _horizontal = 0; _vertical = 0; }
+        // Debug.Log(NowAnime);
+
+        _anime.SetMoveFlag(true);
+        if (_horizontal == 0 && _vertical == 0) return;
+
+        _vertical *= -1;
+        _horizontal *= -1;
+
+        float angle = Mathf.Atan2(_horizontal, _vertical);
+        float vecAngle = angle - _angle;
+        _angle += angle;
+
+
+        pos = this.transform.position;
+
+
+        //プレイヤーの移動
+        pos.x += Mathf.Sin(_angle) * (1 * _status.GetSpeed());
+        pos.z += Mathf.Cos(_angle) * (1 * _status.GetSpeed());
+
+        if (task.Status.IsCanceled()) return;
+        task = TimeCount(vecAngle);
+
+
+        this.transform.position = pos;
+
+
+    }
+
+    async UniTask TimeCount(float vecAngle)
+    {
+        float Angle = vecAngle * Mathf.Rad2Deg;
+
+
+        _manager.Add_CameraPositionAngle(vecAngle / (int)Angle);
+
+        float ss = (vecAngle / (int)Angle) * Mathf.Rad2Deg;
+
+        this.transform.eulerAngles += new Vector3(0, (vecAngle / Mathf.Abs((int)Angle)) * Mathf.Rad2Deg, 0);
+
+        if (this.transform.eulerAngles.y >= (_angle * Mathf.Rad2Deg) - 5 && this.transform.eulerAngles.y <= (_angle * Mathf.Rad2Deg) + 5);
+
+        await UniTask.DelayFrame(1);
+    }
+
 }
