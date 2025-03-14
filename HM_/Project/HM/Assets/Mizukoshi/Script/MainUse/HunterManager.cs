@@ -106,7 +106,7 @@ public class HunterManager : MonoBehaviour
     // ‹­§“I‚ÉƒQ[ƒ€‚­‚è‚ ‚É‚·‚éB
     public void ForceDie()
     {
-        deathCount = 4;
+        deathCount += 4;
     }
 
 

@@ -143,7 +143,6 @@ public abstract class Hunter_AI : MonoBehaviour
     public virtual void Start()
     {
         Initialize();
-        _agent.destination = _monster.transform.position;
         SetOffNavmesh();
 
     }
@@ -167,6 +166,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private void Update()
     {
+
         DebugDistance();
 
         if (startWait)
@@ -285,16 +285,11 @@ public abstract class Hunter_AI : MonoBehaviour
             status = eStatus.None;
             _agent = GetComponent<NavMeshAgent>();
             _agent.speed = _speed;
-            if (CloclWise)
-            {
-                _agent.destination = searchPosition[searchPosition.Length - 1];
-            }
-            else { _agent.destination = searchPosition[0]; }
             myCollider = GetComponent<Collider>();
             playerAttack = GameObject.FindAnyObjectByType<PlayerAttack>();
             this.gameObject.AddComponent<AudioSource>();
             p_audioSource = GetComponent<AudioSource>();
-            SetDestination(_monster.transform.position);
+           
         }
     /// <summary>
     /// ñ⁄ìIínÇÃê›íË

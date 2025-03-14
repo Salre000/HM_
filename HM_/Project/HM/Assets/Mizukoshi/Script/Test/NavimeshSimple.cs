@@ -27,12 +27,13 @@ public class NavimeshSimple : MonoBehaviour
         agent= GetComponent<NavMeshAgent>();
         agent.speed = speed;
         _monster = GameObject.FindGameObjectWithTag("Player");
+        agent.destination = _monster.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-         agent.destination = _monster.transform.position;
+        
     }
 
 
