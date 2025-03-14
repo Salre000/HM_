@@ -2,6 +2,7 @@ using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 /// <summary>
 /// 剣の行動論理を表すクラス    行動の基本
 /// </summary>

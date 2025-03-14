@@ -41,6 +41,11 @@ public class PlayerStatus : MonoBehaviour
     private AudioSource _audioSource;
 
     public static bool isLife = true;
+
+    System.Action<float> _SetSpeed;
+
+    public void Set_SetSpeed(System.Action<float> setSpeed) {  _SetSpeed = setSpeed; }
+
     public static PlayerStatus Instance { get; private set; }
 
     [HideInInspector] public OptionDataMain data;
@@ -71,6 +76,7 @@ public class PlayerStatus : MonoBehaviour
         ChengeCondition(Condition.Anger);
 
         _anime.SetSpped(1.3f);
+        _SetSpeed(1.3f);
     }
 
     public void SbuAngerGage(int Sbu)
@@ -81,6 +87,7 @@ public class PlayerStatus : MonoBehaviour
         AngerGage = 0;
         ChengeCondition(Condition.Fatigue);
         _anime.SetSpped(0.8f);
+        _SetSpeed(0.8f);
 
 
     }
@@ -99,6 +106,7 @@ public class PlayerStatus : MonoBehaviour
         if (FatigueGage < MAXFatigueGage) return;
 
         _anime.SetSpped(1.0f);
+        _SetSpeed(1.0f);
         ChengeCondition(Condition.Normal);
         FatigueGage = 0;
 
