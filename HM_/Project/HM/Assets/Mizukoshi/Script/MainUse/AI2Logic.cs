@@ -99,6 +99,6 @@ public class AI2Logic :Hunter_AI
 
     protected override void DebugDistance()
     {
-        Debug.Log("‹|‚Ì–Ú“I’n" + _agent.destination);
+       base.DebugDistance();
     }
 }
