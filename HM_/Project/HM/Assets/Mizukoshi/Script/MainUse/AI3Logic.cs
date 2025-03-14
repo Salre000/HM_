@@ -70,8 +70,6 @@ public class AI3Logic : Hunter_AI
 
     protected override void DebugDistance()
     {
-        //string motionName = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-        //if (motionName != "アーマチュア|Attack1") return;
-        //Debug.Log($"{motionName}");
+        base.DebugDistance();
     }
 }

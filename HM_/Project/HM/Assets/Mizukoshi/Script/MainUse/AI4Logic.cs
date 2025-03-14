@@ -69,5 +69,6 @@ public class AI4Logic : Hunter_AI
     protected override void DebugDistance()
     {
         Debug.Log("Œ•‚Ì–Ú“I’n" + _agent.destination);
+        //base.DebugDistance();
     }
 }

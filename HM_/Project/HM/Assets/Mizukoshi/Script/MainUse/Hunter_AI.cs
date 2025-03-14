@@ -98,7 +98,24 @@ public abstract class Hunter_AI : MonoBehaviour
 
     protected virtual void DebugDistance()
     {
+        
+        if (!_agent.isOnNavMesh)
+        {
+            Debug.Log("ŒvZ–¢Š®—¹QQQ");
+        }
+        else
+        {
+            Debug.Log("ŒvZŠ®—¹!QQQ");
+        }
 
+        if (!_agent.hasPath)
+        {
+            Debug.Log("ŒŸõ’†QQQ");
+        }
+        else
+        {
+            Debug.Log("ŒŸõŠ®—¹!QQQ");
+        }
     }
     protected enum eStatus
     {
