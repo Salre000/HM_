@@ -71,6 +71,7 @@ public class AI1Logic :Hunter_AI
 
     protected override void DebugDistance()
     {
+        //base.DebugDistance();
         Debug.Log("ハンマーの目的地" + _agent.destination);
     }
 }
