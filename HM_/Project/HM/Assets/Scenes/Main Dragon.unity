@@ -26323,6 +26323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 1209621434}
   deathCount: 0
+  preDeathNum: -1
 --- !u!114 &1418245117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26380,6 +26381,7 @@ MonoBehaviour:
   uiManager: {fileID: 1209621434}
   MonsterHp: 0
   HunterHp: []
+  HunterLostNumber: -1
 --- !u!1 &1423780448
 GameObject:
   m_ObjectHideFlags: 0
@@ -27642,7 +27644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shader: {fileID: 4800000, guid: c51ad9305991105418c258d7bd776622, type: 3}
   _sampleCount: 8
-  _strength: 0.5
+  _strength: 0.2
 --- !u!114 &1476018347
 MonoBehaviour:
   m_ObjectHideFlags: 0
