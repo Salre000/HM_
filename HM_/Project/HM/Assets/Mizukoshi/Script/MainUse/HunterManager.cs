@@ -6,7 +6,7 @@ public class HunterManager : MonoBehaviour
     private HPManager _hpManager;
     public UIManager uiManager;
     public int deathCount = 0;
-    private int preDeathNum = -1;
+    [SerializeField]private int preDeathNum = -1;
     bool deathAnimationNow = false;
     private float deathResetTime = 0f;
     private float deathResetDelay = 3f;
@@ -65,11 +65,11 @@ public class HunterManager : MonoBehaviour
     {
         int deathNum = _hpManager.GetHunterLostNumber();
         if (deathNum == -1) return;
-        if(preDeathNum==deathNum) return;
+
         preDeathNum = deathNum;
         Hunter_AI sss =gameObjects[deathNum].GetComponent<Hunter_AI>();
         sss.Death();
-
+        _hpManager.HunterHeel(1000, deathNum);
         _hpManager.SetHunterLostNumber(-1);
 
     }

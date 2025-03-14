@@ -36,6 +36,8 @@ public class HPManager : MonoBehaviour
     {
         TimeCount();
         SetHunterLostNumber();
+
+
     }
 
 
@@ -121,7 +123,7 @@ public class HPManager : MonoBehaviour
 
     float []HunterInvincibilityTime;
 
-    int HunterLostNumber = -1;
+    [SerializeField]int HunterLostNumber = -1;
 
     public void SetHunterLostNumber() 
     {
