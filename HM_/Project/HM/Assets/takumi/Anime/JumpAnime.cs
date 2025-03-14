@@ -30,7 +30,7 @@ public class JumpAnime : AnimeBase
 
     //SphereCollider[] Sphere = new SphereCollider[3];
 
-    //Damage []damage=new Damage[3];
+    //Damage []_damage=new Damage[3];
 
     public override void Start()
     {

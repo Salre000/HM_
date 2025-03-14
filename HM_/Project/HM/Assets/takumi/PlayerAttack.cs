@@ -163,6 +163,7 @@ public abstract class PlayerAttack : MonoBehaviour
         if (instance.IsOnButton(InputKeys.Skill))
         {
             if (LTAttack() > 0) _anime.SetLoanAttackFlag(true);
+            return;
 
         }
         //UŒ‚‚ð‚·‚éƒ{ƒ^ƒ“
@@ -172,6 +173,7 @@ public abstract class PlayerAttack : MonoBehaviour
             _anime.SetAttackFlag(true);
 
             AnimeBase.useFlag = true;
+            return;
 
 
         }
@@ -186,6 +188,7 @@ public abstract class PlayerAttack : MonoBehaviour
         {
             if (LTRTAttack() > 0) _anime.SetRoarFlag(true);
             Debug.Log("Anime");
+            return;
         }
         else
         {
@@ -198,6 +201,7 @@ public abstract class PlayerAttack : MonoBehaviour
             _anime.SetJumpFlag(true);
             Jump();
 
+            return;
         }
         else
         {
@@ -212,6 +216,7 @@ public abstract class PlayerAttack : MonoBehaviour
             BarkJump();
 
 
+            return;
 
         }
         else

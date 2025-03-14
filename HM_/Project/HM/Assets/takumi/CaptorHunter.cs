@@ -5,10 +5,13 @@ using UnityEngine;
 public class CaptorHunter : MonoBehaviour
 {
 
+    // オブジェクトを取得するコールバック
     System.Action<GameObject> SetObject;
 
+    //コールバックをセットする関数
     public void SetGameObject(System.Action<GameObject> SetObject) { this.SetObject = SetObject; }
 
+    //　起動しているかのフラグ
     bool activeFlag = false;    
 
     public void SetActiveFlag(bool Flag) {  activeFlag = Flag; }

@@ -648,6 +648,8 @@ public abstract class Hunter_AI : MonoBehaviour
         int num = this.GetComponent<Hunter_ID>().GetHunterID();
         deathAnimNow = false;
         alreadyNear = false;
+
+        hpManager.SetHunterLostNumber(-1);
         manager.Respawn(num);
     }
 

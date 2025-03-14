@@ -27657,12 +27657,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraSpeed: 0
   _player: {fileID: 0}
-  _manager: {fileID: 1209621434}
   _range: 100
-  _horizontal: 0
   _vertical: 0
+  _horizontal: 0
   _cameraPositionAngle: 3.14
-  risuPos: {fileID: 1864223180}
+  resurrectionPoint: {fileID: 1864223180}
 --- !u!81 &1476018348
 AudioListener:
   m_ObjectHideFlags: 0

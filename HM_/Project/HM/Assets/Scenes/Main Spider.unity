@@ -1950,12 +1950,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraSpeed: 0
   _player: {fileID: 0}
-  _manager: {fileID: 0}
   _range: 0
-  _horizontal: 0
   _vertical: 0
+  _horizontal: 0
   _cameraPositionAngle: 3.14
-  risuPos: {fileID: 708675640}
+  resurrectionPoint: {fileID: 708675640}
 --- !u!81 &225446727
 AudioListener:
   m_ObjectHideFlags: 0

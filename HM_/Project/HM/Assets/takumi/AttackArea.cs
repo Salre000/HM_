@@ -9,51 +9,54 @@ public class AttackArea : MonoBehaviour
 {
 
     //追従先のオブジェクト
-    [SerializeField] private GameObject Parent;
-    SphereCollider collider;
-    private Damage damage;
+    [SerializeField] private GameObject _parent;
+    SphereCollider _collider;
+    private Damage _damage;
 
     //当たり判定を消すまでの時間
-    const int MaxTime = 3;
+    private readonly int MAX_TIME = 3;
 
-    int CountTime = 0;
+    private int _countTime = 0;
 
     public void Awake()
     {
-        collider = this.gameObject.AddComponent<SphereCollider>();
-        collider.isTrigger = true;
-        collider.radius = 0.1f;
-        damage=GetComponent<Damage>();
+        //あたり判定を生成
+        _collider = this.gameObject.AddComponent<SphereCollider>();
+        _collider.isTrigger = true;
+        _collider.radius = 0.1f;
+
+        //攻撃判定に必要なクラスをゲット
+        _damage = GetComponent<Damage>();
 
     }
 
 
     private void FixedUpdate()
     {
-        if (CountTime >= MaxTime) 
+        //一定時間経つとオブジェクトのアクティブを変更
+        if (_countTime >= MAX_TIME)
         {
-          transform.gameObject.SetActive(false);
-          CountTime = 0;
+            transform.gameObject.SetActive(false);
+            _countTime = 0;
         }
 
-        transform.position =Parent.transform.position;
+        //攻撃判定を出すオブジェクトに追従
+        transform.position = _parent.transform.position;
 
-        CountTime++;
-
-        
-
+        //フレーム計測
+        _countTime++;
     }
 
-
-    public void SetAttackArea(GameObject parent, float Damage, float radius = 0.1f, int CountTime =0)
+    //あたり判定を有効にする関数
+    public void SetAttackArea(GameObject parent, float Damage, float radius = 0.1f, int CountTime = 0)
     {
 
-        this.CountTime = CountTime;
-        Parent = parent;
+        this._countTime = CountTime;
+        _parent = parent;
         CountTime = 0;
-        collider.radius=radius;
+        _collider.radius = radius;
         transform.gameObject.SetActive(true);
-        damage.SetDamage(Damage);
+        _damage.SetDamage(Damage);
 
     }
 
