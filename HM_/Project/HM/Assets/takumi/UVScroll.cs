@@ -14,7 +14,7 @@ public class UVScroll : MonoBehaviour
     Vector2 offset = Vector2.zero;
 
     private void FixedUpdate()
-    { 
+    {
         material.SetTextureOffset("_MainTex", offset);
         offset.x += 0.01f;
         offset.y -= 0.01f;

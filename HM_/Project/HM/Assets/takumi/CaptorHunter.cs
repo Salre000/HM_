@@ -28,18 +28,9 @@ public class CaptorHunter : MonoBehaviour
 
         GameObject Parent=other.gameObject;
 
-        Debug.Log(Parent.tag);
-
         if (Parent.tag != "Hunter") return;
 
         SetObject(other.gameObject);
-
         activeFlag = false;
-
-       
-
-
-
     }
-
 }

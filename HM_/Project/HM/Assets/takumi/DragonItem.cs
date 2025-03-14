@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class DragonItem : MonoBehaviour
 {
-    private void Start()
-    {
-
-
-    }
-
+    //アイテムのプレハブを格納
     [SerializeField] private GameObject dragItemRock;
     public GameObject GetObjectRock()
     {
         return dragItemRock; 
     }
-
 }
