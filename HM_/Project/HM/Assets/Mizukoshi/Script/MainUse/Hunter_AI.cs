@@ -46,11 +46,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public int HP = 100;
 
-    private float speed = 0.5f;
-
-    public float chaseSpeed = 0.075f;
-
-    public float dashSpeed = 0.075f * 2;
+    private float _speed = 0.5f;
 
     private bool alreadyNear = false;
 
@@ -205,7 +201,7 @@ public abstract class Hunter_AI : MonoBehaviour
             if (alreadyNear)
             {
                 if (!_agent.enabled) _agent.enabled = true;
-                _agent.speed = dashSpeed;
+              
             }
         }
 
@@ -257,7 +253,6 @@ public abstract class Hunter_AI : MonoBehaviour
         }
         else
         {
-            if (_agent.speed != 0.075) _agent.speed = 0.075f;
             if (!alreadyNear) alreadyNear = true;
             // UŒ‚€”õ‚ª‚Å‚«‚Ä‚¢‚é‚Ì‚È‚ç‚Î
             if (attackReady)
@@ -289,7 +284,7 @@ public abstract class Hunter_AI : MonoBehaviour
             hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
             status = eStatus.None;
             _agent = GetComponent<NavMeshAgent>();
-            _agent.speed = speed;
+            _agent.speed = _speed;
             if (CloclWise)
             {
                 _agent.destination = searchPosition[searchPosition.Length - 1];
@@ -652,7 +647,6 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         int num = this.GetComponent<Hunter_ID>().GetHunterID();
         deathAnimNow = false;
-        _agent.speed=speed;
         alreadyNear = false;
         manager.Respawn(num);
     }
@@ -826,7 +820,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     protected void SetSpeed(float speed)
     {
-        this.speed = speed;
+        this._speed = speed;
     }
 
     private System.Func<AudioClip> _MonsterHitSound;
