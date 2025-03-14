@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks.Triggers;
 using UnityEngine;
 using UnityEngine.AI;
 /// <summary>
@@ -107,11 +108,14 @@ public abstract class Hunter_AI : MonoBehaviour
         if (!_agent.hasPath)
         {
             Debug.Log("ŒŸõ’†QQQ");
+            //_agent.destination = playerAttack.transform.position;
+
         }
         else
         {
             Debug.Log("ŒŸõŠ®—¹!QQQ");
         }
+
     }
     protected enum eStatus
     {
