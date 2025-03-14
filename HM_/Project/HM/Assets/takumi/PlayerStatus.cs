@@ -42,12 +42,13 @@ public class PlayerStatus : MonoBehaviour
 
     public static bool isLife = true;
 
-    System.Action<float> _SetSpeed;
+    public System.Action<float> _SetSpeed;
 
-    public void Set_SetSpeed(System.Action<float> setSpeed) {  _SetSpeed = setSpeed; }
+    public void GetSet_SetSpeed(System.Action<float> setSpeed) {  _SetSpeed = setSpeed;}
 
     public static PlayerStatus Instance { get; private set; }
 
+    public float speed { private set; get; } = 1;
     [HideInInspector] public OptionDataMain data;
     public enum Condition
     {
@@ -75,8 +76,10 @@ public class PlayerStatus : MonoBehaviour
         AngerGage = MaxAngerGage;
         ChengeCondition(Condition.Anger);
 
-        _anime.SetSpped(1.3f);
-        _SetSpeed(1.3f);
+        speed = 1.3f;
+        _anime.SetSpped(speed);
+        _SetSpeed(speed);
+
     }
 
     public void SbuAngerGage(int Sbu)
@@ -86,8 +89,9 @@ public class PlayerStatus : MonoBehaviour
         if (AngerGage > 0) return;
         AngerGage = 0;
         ChengeCondition(Condition.Fatigue);
-        _anime.SetSpped(0.8f);
-        _SetSpeed(0.8f);
+        speed = 0.8f;
+        _anime.SetSpped(speed);
+        _SetSpeed(speed);
 
 
     }
@@ -105,8 +109,9 @@ public class PlayerStatus : MonoBehaviour
         Image.fillAmount-= 1.0f /(float)MAXFatigueGage;
         if (FatigueGage < MAXFatigueGage) return;
 
-        _anime.SetSpped(1.0f);
-        _SetSpeed(1.0f);
+        speed = 1.0f;
+        _anime.SetSpped(speed);
+        _SetSpeed(speed);
         ChengeCondition(Condition.Normal);
         FatigueGage = 0;
 

@@ -44,7 +44,10 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] float Speed = 1;
 
-    private void SetSpeed(float speed) { Speed = speed; }
+    private void SetSpeed(float speed) 
+    {
+        Speed = speed;
+    }
     void Start()
     {
         _animator = this.gameObject.GetComponent<Animator>();
@@ -56,7 +59,7 @@ public class PlayerMove : MonoBehaviour
 
         _status = this.GetComponent<PlayerStatus>();
 
-        _status.Set_SetSpeed(SetSpeed);
+        _status.GetSet_SetSpeed(SetSpeed);
 
         _angle = _manager.Get_CameraPositionAngle() * 180 / 3.14f;
 

@@ -55,8 +55,10 @@ public class JumpAnime : AnimeBase
         FrameCount++;
         if (FrameCount < 15) return;
 
-        Vector3 Vec = new Vector3(Mathf.Sin(JumpAngle), 0.75f, Mathf.Cos(JumpAngle)) / 20.0f;
+        Vector3 Vec = new Vector3(Mathf.Sin(JumpAngle), 0.50f, Mathf.Cos(JumpAngle)) / 13.0f;
 
+
+        Vec *= PlayerStatus.Instance.speed;
 
         if (FrameCount <= 30)
             this.GameObject.transform.position += Vec;

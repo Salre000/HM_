@@ -28,6 +28,7 @@ public class PlayerSpiderJump : AnimeBase
         JumpAngle = Mathf.Atan2(_horizontal, _vertical) + cameraAngle;
 
         Vec = new Vector3(Mathf.Sin(JumpAngle), 0, Mathf.Cos(JumpAngle));
+        Vec *= PlayerStatus.Instance.speed;
         ResetFlag();
         FrameCount = 0;
     }

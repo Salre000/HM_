@@ -22033,8 +22033,6 @@ MonoBehaviour:
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
-  chaseSpeed: 0.075
-  dashSpeed: 0.15
   detectionRadius: 0
   fleeDistance: 0
   _attackDistanceFF: 0.3
