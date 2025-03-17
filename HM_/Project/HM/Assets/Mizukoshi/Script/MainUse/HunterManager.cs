@@ -69,7 +69,11 @@ public class HunterManager : MonoBehaviour
         preDeathNum = deathNum;
         Hunter_AI sss =gameObjects[deathNum].GetComponent<Hunter_AI>();
         sss.Death();
+
+        
         _hpManager.HunterHeel(1000, deathNum);
+        
+        sss.WaitForCount();
         _hpManager.SetHunterLostNumber(-1);
 
     }
