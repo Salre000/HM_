@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,8 +27,17 @@ public class DragonSound :PlayerSoundBase
     public override void MoveSound()
     {
 
-
+        audioSource.pitch = 2.0f;
         audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Dragon.DragonMove, (int)Main.Monster), SoundListManager.instance.GetSoundVolume());
+        MinPitch().Forget();
+    }
+
+    private async UniTask MinPitch() 
+    {
+        await UniTask.DelayFrame(20);
+        audioSource.pitch = 1.0f;
+
+
     }
 
     public override void MoveVoice()
