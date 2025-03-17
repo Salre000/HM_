@@ -107,9 +107,9 @@ NavMeshSettings:
     serializedVersion: 2
     agentTypeID: 0
     agentRadius: 0.1
-    agentHeight: 2
+    agentHeight: 0.2
     agentSlope: 60
-    agentClimb: 0.2
+    agentClimb: 0.06
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -8790,6 +8790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 112135641}
   deathCount: 0
+  preDeathNum: -1
 --- !u!114 &1418245117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8847,6 +8848,7 @@ MonoBehaviour:
   uiManager: {fileID: 112135641}
   MonsterHp: 0
   HunterHp: []
+  HunterLostNumber: -1
 --- !u!1 &1431908121
 GameObject:
   m_ObjectHideFlags: 0
