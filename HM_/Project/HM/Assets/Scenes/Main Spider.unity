@@ -1162,7 +1162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3694408561729357699, guid: c1440e657f418c144ad8f65334d8084c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4039444847142772025, guid: c1440e657f418c144ad8f65334d8084c, type: 3}
       propertyPath: m_RootOrder
@@ -5115,7 +5115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913256928446, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913334869372, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: _damage
@@ -5177,7 +5177,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2012985913334869372, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
   m_PrefabInstance: {fileID: 733541894}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 733541899}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff321e354a13e9b4e88d4a77cf5c114d, type: 3}
@@ -5211,6 +5211,8 @@ MonoBehaviour:
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
+  waitFlag: 0
+  attackReady: 1
   detectionRadius: 0
   fleeDistance: 0
   _attackDistanceFF: 1
@@ -5218,8 +5220,13 @@ MonoBehaviour:
   attackDistance: 0.2
   viewAngle: 180
   viewLength: 2
-  colliderObj: {fileID: 0}
+  colliderObj: {fileID: 733541899}
   attackCoolTime: 2
+--- !u!1 &733541899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2012985913334869373, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
+  m_PrefabInstance: {fileID: 733541894}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &742247030
 GameObject:
   m_ObjectHideFlags: 0
