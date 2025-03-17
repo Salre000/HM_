@@ -47,6 +47,7 @@ public class CaptorAttackSpider : AnimeBase
         //アニメーションイベントの順番をリセット
         eventNumber = 0;
         _targetHunter = null;
+        _captorTarget = null;
     }
 
     //ハンターを捕まえるオブジェクトの格納先
@@ -60,7 +61,9 @@ public class CaptorAttackSpider : AnimeBase
     
     //捕まえたハンターのロジックの格納先
     private Hunter_AI _targetHunter = null;
-    
+
+    private GameObject HunterParent = null;
+
     //HPを管理するクラスを取得
     private HPManager _hpManager = null;
 
@@ -79,7 +82,7 @@ public class CaptorAttackSpider : AnimeBase
     {
         if (_captorTarget != null)
         {
-            _captorTarget.transform.parent = null;
+            _captorTarget.transform.parent = HunterParent.transform;
         }
         _captorPosition.gameObject.SetActive(false);
 
@@ -121,6 +124,7 @@ public class CaptorAttackSpider : AnimeBase
     private void SetTarget(GameObject gameObject)
     {
         _captorTarget = gameObject;
+        HunterParent = _captorTarget.transform.parent.gameObject;
         _captorTarget.transform.parent = _captorPosition.transform;
 
         _targetHunter = _captorTarget.GetComponent<Hunter_AI>();

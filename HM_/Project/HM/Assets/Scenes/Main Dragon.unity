@@ -22218,6 +22218,8 @@ MonoBehaviour:
   manager: {fileID: 0}
   hpManager: {fileID: 0}
   HP: 100
+  waitFlag: 0
+  attackReady: 1
   detectionRadius: 0
   fleeDistance: 0
   _attackDistanceFF: 0.3
