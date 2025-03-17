@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hPManager: {fileID: 0}
+  getChildFlag: 0
 --- !u!54 &8803093870295234002
 Rigidbody:
   m_ObjectHideFlags: 0

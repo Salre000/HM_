@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class GetComponentDemoPlayer : MonoBehaviour
+public class DemoPlayerNotAnimeEvent : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
+        //対象のオブジェクトのアニメーションイベントを全て無効化する
         GetComponent<Animator>().fireEvents = false;
     }
 

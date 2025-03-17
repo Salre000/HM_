@@ -25,7 +25,7 @@ public class HitEffectManager : MonoBehaviour
     [SerializeField] GameObject []HunterEffect=new GameObject[HunterCount];
     [Header("ハンターの攻撃エフェクトのプール")]
     [SerializeField] GameObject[][] HunterEffectPool=new GameObject[HunterCount][];
-
+    
 
     const int HunterCount = 4;
     [Header("モンスターエフェクトの大きさ")]
@@ -39,7 +39,9 @@ public class HitEffectManager : MonoBehaviour
 
         for(int i = 0; i < HunterCount; i++) 
         {
+            //ハンターの攻撃が当たった時のエフェクト
             HunterEffectPool[i]=new GameObject[30];
+
             for(int j = 0; j < 30; j++) 
             {
                 HunterEffectPool[i][j] = Instantiate(HunterEffect[i],this.transform);
@@ -150,9 +152,9 @@ public class HitEffectManager : MonoBehaviour
             Blood.transform.LookAt(Camera.main.transform.position);
             Blood.GetComponent<ParticleSystem>()?.Play();
 
-            InvisibleObject(Blood, time);
+            InvisibleObject(Blood, time).Forget();
 
-            InvisibleObject(Effect,time);
+            InvisibleObject(Effect,time).Forget();
 
             return;
         }
