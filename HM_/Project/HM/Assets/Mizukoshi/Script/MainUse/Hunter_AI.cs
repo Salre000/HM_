@@ -647,7 +647,7 @@ public abstract class Hunter_AI : MonoBehaviour
         int num = this.GetComponent<Hunter_ID>().GetHunterID();
         deathAnimNow = false;
         alreadyNear = false;
-
+        avoiding = false;
         hpManager.SetHunterLostNumber(-1);
         manager.Respawn(num);
     }
@@ -756,6 +756,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public void DeathAnimation()
     {
         _animator.SetTrigger("DeathTrigger");
+        attackReady = true;
         _agent.enabled = false;
 
     }
