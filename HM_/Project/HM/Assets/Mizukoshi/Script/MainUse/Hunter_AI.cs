@@ -95,7 +95,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     protected virtual void DebugDistance()
     {
-        
+        Debug.Log(restrainCount+"DDD");
         if (!_agent.isOnNavMesh)
         {
             Debug.Log("ŒvŽZ–¢Š®—¹QQQ");
@@ -726,7 +726,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public void StopRestraining()
     {
         restrainCount--;
-        if (restrainCount < 0) return;
+        if (restrainCount != 0) return;
         status = eStatus.None;
         _agent.enabled = true;
         _animator.SetTrigger("FlatterFinishTrigger");

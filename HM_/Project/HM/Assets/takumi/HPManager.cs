@@ -81,6 +81,8 @@ public class HPManager : MonoBehaviour
 
 
     }
+    public float GetHunterHp(int number) { return HunterHp[number]; }
+
 
     //–³“GŠÔ‚ğƒJƒEƒ“ƒg‚·‚éŠÖ”
     void TimeCount()

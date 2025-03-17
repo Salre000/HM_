@@ -153,7 +153,9 @@ public class CaptorAttackSpider : AnimeBase
         if (hunter == null) return;
 
         //掴んでいるハンターが死んだかどうかの判定
-        if (hunter.GetHunterID() != _hpManager.GetHunterLostNumber()) return;
+        if (_hpManager.GetHunterHp(_targetHunter.GetHunterID())<101) return;
+
+        AnimeEnd();
     }
 
     //このクラスの行動が終わる時に呼ばれる関数
