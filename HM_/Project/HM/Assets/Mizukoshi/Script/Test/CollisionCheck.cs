@@ -50,7 +50,7 @@ public class CollisionCheck : MonoBehaviour
     bool  CheckCollisionTerrain(Collider co)
     {
         Transform check=GetTopLevelParent(co.transform);
-        if(check.gameObject.name== "Terrain")return true;
+        if(check.gameObject.name== "Terrain (1)") return true;
         return false;
     }
 
