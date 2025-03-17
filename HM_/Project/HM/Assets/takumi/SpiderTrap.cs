@@ -113,6 +113,7 @@ public class SpiderTrap : MonoBehaviour
         {
             Hunter_AI[i].StopRestraining();
 
+
         }
         for (int i = 0; i < DestroyObject.Count; i++) Destroy(DestroyObject[i]);
         DestroyObject.Clear();

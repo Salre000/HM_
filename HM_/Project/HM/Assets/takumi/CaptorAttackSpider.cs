@@ -46,7 +46,7 @@ public class CaptorAttackSpider : AnimeBase
 
         //アニメーションイベントの順番をリセット
         eventNumber = 0;
-        
+        _targetHunter = null;
     }
 
     //ハンターを捕まえるオブジェクトの格納先
@@ -129,6 +129,7 @@ public class CaptorAttackSpider : AnimeBase
         //ハンターを怯み状態に変更する
         _targetHunter.StartRestraining();
 
+
         _captorTarget.transform.localPosition = Vector3.zero;
     }
 
@@ -172,8 +173,11 @@ public class CaptorAttackSpider : AnimeBase
         EndTarget();
 
         //捕まえているハンターがいたら拘束状態を解除する
-        if (_targetHunter != null)
+        if (_targetHunter != null) 
+        {
             _targetHunter.StopRestraining();
+
+        }
 
 
 
