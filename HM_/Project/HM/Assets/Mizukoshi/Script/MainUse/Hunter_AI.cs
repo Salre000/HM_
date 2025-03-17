@@ -108,7 +108,7 @@ public abstract class Hunter_AI : MonoBehaviour
         if (!_agent.hasPath)
         {
             Debug.Log("ŒŸõ’†QQQ");
-            //_agent.destination = playerAttack.transform.position;
+            _agent.destination = playerAttack.transform.position;
 
         }
         else
