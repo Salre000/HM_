@@ -645,6 +645,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public void DeathFinish()
     {
         int num = this.GetComponent<Hunter_ID>().GetHunterID();
+        //if(restrainCount!=0)restrainCount--;
         deathAnimNow = false;
         alreadyNear = false;
         avoiding = false;
@@ -662,7 +663,7 @@ public abstract class Hunter_AI : MonoBehaviour
     void TurnMonser()
     {
         if(GetMonster() == null) return;
-        this.transform.LookAt(GetMonster().transform.position);
+        this.transform.LookAt(new Vector3(_monster.transform.position.x,this.transform.position.y,_monster.transform.position.z));
     }
 
     void FleeFromPlayer()
@@ -718,6 +719,7 @@ public abstract class Hunter_AI : MonoBehaviour
         status = eStatus.Rest;
         _agent.enabled = false;
         _animator.SetTrigger("FlatterStartTrigger");
+        attackReady=true;
     }
 
     // 拘束状態の終了　アニメーションの終了
