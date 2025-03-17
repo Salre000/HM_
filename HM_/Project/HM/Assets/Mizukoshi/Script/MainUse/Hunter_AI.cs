@@ -60,10 +60,10 @@ public abstract class Hunter_AI : MonoBehaviour
     private float elapsedTime = 0;
 
     // 待機フラグ
-    private bool waitFlag = false;
+    [SerializeField]private bool waitFlag = false;
 
     // 攻撃準備ができているか
-    protected bool attackReady = true;
+    [SerializeField]protected bool attackReady = true;
 
     // 時間経過用変数
     private float coolTime = 0.0f;

@@ -16,11 +16,7 @@ public class PlayerSpiderTrap : AnimeBase
 
     }
 
-    float StartAngle = 0;
-
     const int MaxSize = 30;
-
-    const float AddSize = 0.01f;
 
     GameObject TrapObject = null;
 
@@ -28,19 +24,20 @@ public class PlayerSpiderTrap : AnimeBase
     {
         base.Start();
 
-        StartAngle = this.GameObject.transform.eulerAngles.y;
-
-        //’wå‚Ì‘ƒ‚ğ¶¬‚·‚é
-        TrapObject = SpiderTrapPool.instance.SetTarp();
-
-        ///if (TrapObject == null) { AnimeEnd(); return; }
-
     }
     public override void Action()
     {
         if (!InputManager.instance.IsOnButton(InputManager.InputKeys.Skill))
             _AnimeFlagReset(false);
         AnimeUPDate();
+
+
+    }
+    protected override void AnimeTrue()
+    {
+        //’wå‚Ì‘ƒ‚ğ¶¬‚·‚é
+        if (TrapObject == null) TrapObject = SpiderTrapPool.instance.SetTarp();
+
 
         Times();
 

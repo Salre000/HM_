@@ -138,7 +138,7 @@ public class CaptorAttackSpider : AnimeBase
         AnimeUPDate();
 
         //攻撃ループに入ったら指摘のキーを離さない限り続けるように変更
-        if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Armature|RestraintAttackLoop" && !instance.IsOnButton(InputKeys.Normal))
+        if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Armature|RestraintAttackLoop" && !instance.IsOnButton(InputKeys.Special1)&& !instance.IsOnButton(InputKeys.Special2))
             _AnimeFlagReset(false);
 
         //掴んでいるハンターが死んでいるかを判断
