@@ -51,7 +51,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private bool alreadyNear = false;
 
-    private bool avoiding=false;
+    private bool avoiding = false;
 
     // 待機時間
     private float waitSecond = 1.0f;
@@ -60,10 +60,10 @@ public abstract class Hunter_AI : MonoBehaviour
     private float elapsedTime = 0;
 
     // 待機フラグ
-    [SerializeField]private bool waitFlag = false;
+    [SerializeField] private bool waitFlag = false;
 
     // 攻撃準備ができているか
-    [SerializeField]protected bool attackReady = true;
+    [SerializeField] protected bool attackReady = true;
 
     // 時間経過用変数
     private float coolTime = 0.0f;
@@ -93,9 +93,13 @@ public abstract class Hunter_AI : MonoBehaviour
 
     static PlayerAttack playerAttack;
 
+    private float deathWaitTime = 5.0f;
+
+    private bool deathWaitNow = false;
+
     protected virtual void DebugDistance()
     {
-        Debug.Log(restrainCount+"DDD");
+        Debug.Log(restrainCount + "DDD");
         if (!_agent.isOnNavMesh)
         {
             Debug.Log("計算未完了QQQ");
@@ -108,7 +112,7 @@ public abstract class Hunter_AI : MonoBehaviour
         if (!_agent.hasPath)
         {
             Debug.Log("検索中QQQ");
-            if(_agent.enabled==false)return;
+            if (_agent.enabled == false) return;
             _agent.destination = playerAttack.transform.position;
 
         }
@@ -165,7 +169,7 @@ public abstract class Hunter_AI : MonoBehaviour
         {
             p_audioSource.PlayOneShot(_MonsterHitSound(), SoundListManager.instance.GetSoundVolume());
         }
-      
+
         hpManager.HunterDamage(damage.GetDamage(), this.GetHunterID());
     }
 
@@ -186,10 +190,23 @@ public abstract class Hunter_AI : MonoBehaviour
             return;
         }
 
+        if (deathWaitNow)
+        {
+            _agent.enabled = false;
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime > deathWaitTime)
+            {
+                deathWaitNow = false;
+                SetNavmesh();
+                elapsedTime = 0;
+            }
+            return;
+        }
+
         WaitAttackCoolTime();
 
 
-        if (avoiding)return;
+        if (avoiding) return;
 
         // 拘束状態なら停止
         if (CheckRest()) return;
@@ -197,7 +214,7 @@ public abstract class Hunter_AI : MonoBehaviour
         // 近づきすぎなら逃げる
         if (CheckKeepDistance(detectionRadius, this.gameObject))
         {
-            if(!_agent.enabled)_agent.enabled = true;
+            if (!_agent.enabled) _agent.enabled = true;
             FleeFromPlayer();
         }
 
@@ -206,7 +223,7 @@ public abstract class Hunter_AI : MonoBehaviour
             if (alreadyNear)
             {
                 if (!_agent.enabled) _agent.enabled = true;
-              
+
             }
         }
 
@@ -246,7 +263,7 @@ public abstract class Hunter_AI : MonoBehaviour
             //        case 4: SetDestination(GetMonsterRightPosition()); break;
             //        default:
             //            SetDestination(_monster.transform.position); break;
-                       
+
             //    }
             //    return;
             //}
@@ -264,8 +281,8 @@ public abstract class Hunter_AI : MonoBehaviour
             {
 
                 AnimatorStateInfo s = GetAnimState();
-                if (GetAnimState().IsName("アーマチュア|Attack1"))return;
-               
+                if (GetAnimState().IsName("アーマチュア|Attack1")) return;
+
                 // 攻撃
                 Attack();
             }
@@ -280,22 +297,22 @@ public abstract class Hunter_AI : MonoBehaviour
 
     }
 
-        void Initialize()
-        {
-            // モンスターのタグ取得
-            _monster = GameObject.FindGameObjectWithTag("Player");
-            manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
-            _animator = GetComponent<Animator>();
-            hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
-            status = eStatus.None;
-            _agent = GetComponent<NavMeshAgent>();
-            _agent.speed = _speed;
-            myCollider = GetComponent<Collider>();
-            playerAttack = GameObject.FindAnyObjectByType<PlayerAttack>();
-            this.gameObject.AddComponent<AudioSource>();
-            p_audioSource = GetComponent<AudioSource>();
-           
-        }
+    void Initialize()
+    {
+        // モンスターのタグ取得
+        _monster = GameObject.FindGameObjectWithTag("Player");
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
+        _animator = GetComponent<Animator>();
+        hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
+        status = eStatus.None;
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.speed = _speed;
+        myCollider = GetComponent<Collider>();
+        playerAttack = GameObject.FindAnyObjectByType<PlayerAttack>();
+        this.gameObject.AddComponent<AudioSource>();
+        p_audioSource = GetComponent<AudioSource>();
+
+    }
     /// <summary>
     /// 目的地の設定
     /// </summary>
@@ -303,7 +320,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public void SetDestination(Vector3 pos)
     {
         if (!CheckNavmeshEnable()) return;
-        _agent.enabled=true;
+        _agent.enabled = true;
         _agent.isStopped = false;
         _agent.destination = pos;
     }
@@ -357,7 +374,7 @@ public abstract class Hunter_AI : MonoBehaviour
         return Vector3.Distance(pos, AIType.transform.position) < distance;
     }
 
-    public void SetKeepDistance(float activeDistance,float keep)
+    public void SetKeepDistance(float activeDistance, float keep)
     {
         detectionRadius = activeDistance;
         fleeDistance = keep;
@@ -611,7 +628,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// </summary>
     public virtual void Chase()
     {
-       if(!_agent.enabled) _agent.enabled = true;
+        if (!_agent.enabled) _agent.enabled = true;
     }
 
     public void Run()
@@ -657,14 +674,14 @@ public abstract class Hunter_AI : MonoBehaviour
     public void AvoidFinish()
     {
         _agent.enabled = true;
-        avoiding=false;
+        avoiding = false;
     }
 
     //
     void TurnMonser()
     {
-        if(GetMonster() == null) return;
-        this.transform.LookAt(new Vector3(_monster.transform.position.x,this.transform.position.y,_monster.transform.position.z));
+        if (GetMonster() == null) return;
+        this.transform.LookAt(new Vector3(_monster.transform.position.x, this.transform.position.y, _monster.transform.position.z));
     }
 
     void FleeFromPlayer()
@@ -685,12 +702,10 @@ public abstract class Hunter_AI : MonoBehaviour
 
     }
 
-    public void WaitForCount(float length = 1)
+    public void WaitForCount(float length = 4)
     {
-        waitSecond = length;
-        if (waitFlag) return;
-        waitFlag = true;
-
+        deathWaitTime = length;
+        deathWaitNow = true;
     }
 
     // モンスターオブジェクトの取得
@@ -720,7 +735,7 @@ public abstract class Hunter_AI : MonoBehaviour
         status = eStatus.Rest;
         _agent.enabled = false;
         _animator.SetTrigger("FlatterStartTrigger");
-        attackReady=true;
+        attackReady = true;
     }
 
     // 拘束状態の終了　アニメーションの終了
@@ -830,7 +845,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private System.Func<AudioClip> _MonsterHitSound;
 
-    public void SetMonsterHitSound(System.Func<AudioClip> _monsterHitSound) 
+    public void SetMonsterHitSound(System.Func<AudioClip> _monsterHitSound)
     { _MonsterHitSound = _monsterHitSound; }
 
 

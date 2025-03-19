@@ -33,7 +33,7 @@ public class HunterManager : MonoBehaviour
     {
         CheckDeath();
         //ResetPreDeathNum();
-        DebugCommand();
+        //DebugCommand();
         
         if (_hpManager == null)
         {
