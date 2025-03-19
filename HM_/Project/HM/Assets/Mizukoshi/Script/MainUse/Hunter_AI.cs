@@ -93,7 +93,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     static PlayerAttack playerAttack;
 
-    private float deathWaitTime = 5.0f;
+    private float deathWaitTime = 1.0f;
 
     private bool deathWaitNow = false;
 
@@ -199,6 +199,8 @@ public abstract class Hunter_AI : MonoBehaviour
                 deathWaitNow = false;
                 SetNavmesh();
                 elapsedTime = 0;
+                int num = this.GetComponent<Hunter_ID>().GetHunterID();
+                manager.Respawn(num);
             }
             return;
         }
@@ -655,6 +657,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public void Death()
     {
+        if(GetAnimState().IsName("アーマチュア|Die(仮)"))return;
         DeathAnimation();
         deathAnimNow = true;
         // アニメーションイベントにより終了後リスポーンさせる
@@ -662,13 +665,12 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public void DeathFinish()
     {
-        int num = this.GetComponent<Hunter_ID>().GetHunterID();
         //if(restrainCount!=0)restrainCount--;
         deathAnimNow = false;
         alreadyNear = false;
         avoiding = false;
         hpManager.SetHunterLostNumber(-1);
-        manager.Respawn(num);
+        Respown();
     }
 
     public void AvoidFinish()
@@ -702,10 +704,12 @@ public abstract class Hunter_AI : MonoBehaviour
 
     }
 
-    public void WaitForCount(float length = 4)
+    
+
+    public void Respown()
     {
-        deathWaitTime = length;
         deathWaitNow = true;
+        SetOffNavmesh();
     }
 
     // モンスターオブジェクトの取得
