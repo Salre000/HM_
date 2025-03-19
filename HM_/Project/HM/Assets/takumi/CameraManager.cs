@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -129,6 +130,8 @@ public class CameraManager : MonoBehaviour
         _cameraPositionAngle += (((_horizontal*PlayerStatus.Instance.data.sensibility)) / 3.14f * 180) * 0.0001f;
         _range += _vertical * 0.01f;
 
+        RayCastCamera();
+
         //レンジの最小値を設定する
         if (_range < _minRange) { _range = _minRange; }
 
@@ -141,31 +144,37 @@ public class CameraManager : MonoBehaviour
         _position.x = _player.transform.position.x + Mathf.Sin(_cameraPositionAngle) * _range;
         _position.z = _player.transform.position.z + Mathf.Cos(_cameraPositionAngle) * _range;
 
-        Vector3 moveVec=this.transform.position - _position;
+        this.transform.position = _position;
+
+        //カメラの座標からモンスターの方向にカメラを向かせる
+        transform.LookAt(_player.transform.position + Vector3.up / 10);
+
+
+    }
+    private void RayCastCamera() 
+    {
+        Vector3 moveVec = this.transform.position - _player.transform.position;
 
         RaycastHit hit;
 
-        if(Physics.Raycast(this.transform.position, moveVec, out hit,0.1f)) 
+        if (Physics.Raycast(_player.transform.position + Vector3.up, moveVec, out hit))
         {
+            if (hit.distance >= _range) return;
 
-            Debug.DrawRay(this.transform.position, moveVec, Color.red, _range);
-            
-            if (hit.transform.gameObject.layer == 6) 
+            Debug.DrawRay(_player.transform.position + Vector3.up, moveVec, Color.red, _range);
+            Debug.Log(hit.transform.name + "FFF");
+
+            if (hit.transform.gameObject.layer == 6)
             {
                 Debug.Log("壁に当たったFFF");
 
-                Debug.Log(hit.transform.name+"FFF");
+                _range -= 0.01f;
+
             }
-            
+
         }
 
 
-        
-        this.transform.position = _position;
-
-
-        //カメラの座標からモンスターの方向にカメラを向かせる
-        transform.LookAt(_player.transform.position + Vector3.up/10);
     }
 
     //カメラの現在の角度を使いカメラの座標を変更する関数
