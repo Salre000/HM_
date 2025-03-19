@@ -72,6 +72,11 @@ public class SoundListManager : MonoBehaviour
 
     public void PlayBGM(int index, int type = 0)
     {
+        //AudioClip source=_audioSourceBGM.clip;
+        //if(source == null)
+        //{
+        //    return;
+        //}
 
         _audioSourceBGM.clip = GetAudioClip(index, type);
 

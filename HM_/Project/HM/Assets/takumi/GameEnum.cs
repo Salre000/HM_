@@ -28,6 +28,12 @@ namespace SceneSound
         BGM,
     }
 
+    enum Result
+    {
+        BGM,
+
+    }
+
 
     enum TitleSystem
     {
@@ -107,6 +113,7 @@ namespace SceneSound
     enum BGM
     {
         MainGameBGM,
+        ResultBGM,
     }
 
 }
