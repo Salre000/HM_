@@ -81,6 +81,12 @@ public class HPManager : MonoBehaviour
 
 
     }
+    public void HunterSetHp(float Heel, int Number)
+    {
+
+        HunterHp[Number] = Heel;
+
+    }
     public float GetHunterHp(int number) { return HunterHp[number]; }
 
 
