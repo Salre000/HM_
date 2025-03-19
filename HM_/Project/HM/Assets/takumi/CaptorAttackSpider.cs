@@ -82,7 +82,7 @@ public class CaptorAttackSpider : AnimeBase
     {
         if (_captorTarget != null)
         {
-            _captorTarget.transform.parent = HunterParent.transform;
+            _captorTarget.transform.parent = HunterParent != null ? HunterParent.transform : null;
         }
         _captorPosition.gameObject.SetActive(false);
 
@@ -124,7 +124,8 @@ public class CaptorAttackSpider : AnimeBase
     private void SetTarget(GameObject gameObject)
     {
         _captorTarget = gameObject;
-        HunterParent = _captorTarget.transform.parent.gameObject;
+        HunterParent = _captorTarget.transform.parent!=null?_captorTarget.transform.parent.gameObject: null;
+
         _captorTarget.transform.parent = _captorPosition.transform;
 
         _targetHunter = _captorTarget.GetComponent<Hunter_AI>();

@@ -140,6 +140,27 @@ public class CameraManager : MonoBehaviour
         _position.y += _player.transform.position.y;
         _position.x = _player.transform.position.x + Mathf.Sin(_cameraPositionAngle) * _range;
         _position.z = _player.transform.position.z + Mathf.Cos(_cameraPositionAngle) * _range;
+
+        Vector3 moveVec=this.transform.position - _position;
+
+        RaycastHit hit;
+
+        if(Physics.Raycast(this.transform.position, moveVec, out hit,0.1f)) 
+        {
+
+            Debug.DrawRay(this.transform.position, moveVec, Color.red, _range);
+            
+            if (hit.transform.gameObject.layer == 6) 
+            {
+                Debug.Log("•Ç‚É“–‚½‚Á‚½FFF");
+
+                Debug.Log(hit.transform.name+"FFF");
+            }
+            
+        }
+
+
+        
         this.transform.position = _position;
 
 
