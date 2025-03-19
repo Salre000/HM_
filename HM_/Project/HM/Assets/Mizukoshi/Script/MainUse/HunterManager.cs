@@ -50,10 +50,8 @@ public class HunterManager : MonoBehaviour
     {
         _hpManager.HunterHeel(100, i);
         gameObjects[i].transform.position = respawnPosition;
-        gameObjects[i].GetComponent<Hunter_AI>().WaitForCount();
         gameObjects[i].GetComponent<Hunter_AI>().SetNavmesh();
         deathCount++;
-        
         //_uiManager.ObjectiveText();
     }
 
@@ -69,14 +67,9 @@ public class HunterManager : MonoBehaviour
         preDeathNum = deathNum;
         Hunter_AI sss =gameObjects[deathNum].GetComponent<Hunter_AI>();
         sss.Death();
-
-        
-        _hpManager.HunterHeel(1000, deathNum);
-        
-        sss.WaitForCount();
-        _hpManager.SetHunterLostNumber(-1);
-
     }
+
+    
 
     float AmountDamaged(int hunterNum)
     {
