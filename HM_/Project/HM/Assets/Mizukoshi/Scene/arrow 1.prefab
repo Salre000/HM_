@@ -117,7 +117,6 @@ GameObject:
   - component: {fileID: 6292856890800621875}
   - component: {fileID: 2214770274721046589}
   - component: {fileID: 9194102886729730061}
-  - component: {fileID: -2489880513033824191}
   m_Layer: 0
   m_Name: arrow 1
   m_TagString: Untagged
@@ -178,24 +177,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_gameObject: {fileID: 0}
---- !u!114 &-2489880513033824191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8217320610413732793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1001 &8217320609544984460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -203,6 +184,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8217320610413732791}
     m_Modifications:
+    - target: {fileID: 5371065790828225501, guid: 3058356566addd04d8ab52928169b5e2, type: 3}
+      propertyPath: m_ProbeAnchor
+      value: 
+      objectReference: {fileID: -8679921383154817045, guid: 42ee359a2ceffdd4a88bd6f37916d64b, type: 3}
+    - target: {fileID: 5371065790828225501, guid: 3058356566addd04d8ab52928169b5e2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bac173ef79bd317489d8410895e45883, type: 2}
     - target: {fileID: 5875270693028758024, guid: 3058356566addd04d8ab52928169b5e2, type: 3}
       propertyPath: m_Name
       value: Staff_Epic
@@ -267,6 +256,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7885007625975322391, guid: 3058356566addd04d8ab52928169b5e2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1781805468462327908, guid: 42ee359a2ceffdd4a88bd6f37916d64b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3058356566addd04d8ab52928169b5e2, type: 3}
 --- !u!1 &2558306408350274948 stripped
