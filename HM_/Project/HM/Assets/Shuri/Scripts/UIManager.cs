@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
 
         GameObject.FindWithTag("Player").GetComponent<PlayerStatus>().SetCallBackCondition(ChangeConditionSprite);
 
-        await UniTask.WaitUntil(() => CameraManager.setupFlag);
+        await UniTask.WaitUntil(() => CameraManager.useFlag);
 
         Time.timeScale = 1.0f;
     }

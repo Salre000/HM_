@@ -200,7 +200,7 @@ public abstract class Hunter_AI : MonoBehaviour
                 SetNavmesh();
                 elapsedTime = 0;
                 int num = this.GetComponent<Hunter_ID>().GetHunterID();
-                manager.Respawn(num);
+                //manager.Respawn(num);
             }
             return;
         }

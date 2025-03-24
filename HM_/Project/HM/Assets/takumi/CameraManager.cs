@@ -34,9 +34,9 @@ public class CameraManager : MonoBehaviour
     public float Get_CameraPositionAngle() { return _cameraPositionAngle + (180 * 3.14f / 180); }
 
     public void Add_CameraPositionAngle(float angle) { _cameraPositionAngle += angle; }
-
+    public void SetCameraUseFlag(bool flag) { useFlag = flag; }
     //ゲーム開始時にハンターを映し終わるまでの変数
-    public static bool setupFlag = false;
+    public static bool useFlag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +47,7 @@ public class CameraManager : MonoBehaviour
     //ゲーム開始時の準備の関数
     async UniTask Setup()
     {
-        setupFlag = false;
+        useFlag = false;
 
         //プレイヤーを取得
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -75,7 +75,7 @@ public class CameraManager : MonoBehaviour
         transform.LookAt(_player.transform.position + Vector3.up/10);
 
         //セットアップを終了
-        setupFlag = true;
+        useFlag = true;
     }
 
     //ハンターのリスポーン地点を映す時の距離
@@ -118,7 +118,7 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!setupFlag) return;
+        if (!useFlag) return;
         // 移動量と回転量を求める
         _horizontal = Input.GetAxis("HorizontalR");
         _vertical = Input.GetAxis("VerticalR");

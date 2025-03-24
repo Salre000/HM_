@@ -78,7 +78,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (!PlayerStatus.isLife) return;
 
-        if (!CameraManager.setupFlag) return;
+        if (!CameraManager.useFlag) return;
         if (this.transform.position.y <= -10) this.transform.position = respawnPosition;
 
         LookAtMove();

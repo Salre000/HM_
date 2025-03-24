@@ -104,7 +104,7 @@ public class OptionManager : MonoBehaviour
 
     private async void Update()
     {
-        await UniTask.WaitUntil(() => CameraManager.setupFlag);
+        await UniTask.WaitUntil(() => CameraManager.useFlag);
 
         if (_selected) return;
 
