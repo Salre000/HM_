@@ -41,7 +41,7 @@ public class AI1Logic :Hunter_AI
         SetAttackDistance(attackDistance);
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);
-        SetKeepDistance(detectionRadius, flee2Distance);
+        //SetKeepDistance(detectionRadius, flee2Distance);
         respoenPos =this.transform.position;
         _spwnPosition=respoenPos;
         CloseCollider();

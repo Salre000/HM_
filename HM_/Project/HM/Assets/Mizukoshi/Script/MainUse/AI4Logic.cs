@@ -38,7 +38,7 @@ public class AI4Logic : Hunter_AI
         SetAvoidRatio(avoidRatio);
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);
-        SetKeepDistance(detectionRadius, flee2Distance);
+        //SetKeepDistance(detectionRadius, flee2Distance);
         CloseCollider();
     }
 

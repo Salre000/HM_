@@ -93,15 +93,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9910913
-        functionName: NewEvent
+      - time: 0.97550106
+        functionName: SetNavmesh
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 3168cd9fe8f451442a3baff2057c2f2c, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 1
-        functionName: SetNavmesh
+      - time: 0.9910913
+        functionName: CloseCollider
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 3168cd9fe8f451442a3baff2057c2f2c, type: 3}
         floatParameter: 0
