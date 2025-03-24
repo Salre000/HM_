@@ -51,6 +51,8 @@ public class AI4Logic : Hunter_AI
         //{
         //    SetDestination(GetMonsterLeftPosition());
         //}
+        if (float.IsInfinity(_agent.destination.magnitude)) return;
+
         SetDestination(GetMonsterRightPosition());
     }
 

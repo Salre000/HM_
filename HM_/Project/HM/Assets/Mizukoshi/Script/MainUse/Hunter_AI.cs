@@ -113,6 +113,8 @@ public abstract class Hunter_AI : MonoBehaviour
         {
             Debug.Log("検索中QQQ");
             if (_agent.enabled == false) return;
+            if (float.IsInfinity(_agent.destination.magnitude)) return;
+
             _agent.destination = playerAttack.transform.position;
 
         }
@@ -302,6 +304,8 @@ public abstract class Hunter_AI : MonoBehaviour
         if (!CheckNavmeshEnable()) return;
         _agent.enabled = true;
         _agent.isStopped = false;
+        if (float.IsInfinity(_agent.destination.magnitude)) return;
+
         _agent.destination = pos;
     }
 
@@ -671,7 +675,7 @@ public abstract class Hunter_AI : MonoBehaviour
         Vector3 fleeTarget = transform.position + directionAwayFromPlayer.normalized * fleeDistance;
 
         if (!_agent.enabled) return;
-
+        if(float.IsInfinity(_agent.destination.magnitude))return;
         // ナビメッシュエージェントを使って、逃げる場所に移動
         _agent.SetDestination(fleeTarget);
     }
