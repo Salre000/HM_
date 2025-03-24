@@ -18,7 +18,7 @@ namespace MatthewAssets
 
         void Start()
         {
-            UpdateInfoText(); // Update text at Start
+            UpdateInfoText(); // Update text at start
         }
         void Update()
         {
