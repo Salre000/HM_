@@ -79,6 +79,7 @@ public class PlayerAttackDragon :PlayerAttack
         anime[(int)actionMode.special]=new AnimeAttackRoar(this.gameObject, source, animator, _anime.SetRoarFlag);
         anime[(int)actionMode.jump]=new JumpAnime(this.gameObject, source, animator,_anime.SetJumpFlag);
         anime[(int)actionMode.backJump]=new BackSteppeAnime(this.gameObject, source, animator,_anime.SetBackSteppeFlag);
+        anime[(int)actionMode.finish] = new PlayerDragonFinish(this.gameObject, source, animator,_anime.SetStartFinish, GetHunter);
         
         AnimeAttackRoar animeAttackRoar =(AnimeAttackRoar)anime[(int)actionMode.special];
         animeAttackRoar.SetRadialBlur(radialBlur);
@@ -87,6 +88,10 @@ public class PlayerAttackDragon :PlayerAttack
 
     public GameObject GetStartPositionn() { return LeftHand; }
 
+    GameObject GetHunter() 
+    {
+        return hunterManager.GetHunterObject(hpManager.CheckHunterNowLost());
+    }
 
     void ResetObject()
     {

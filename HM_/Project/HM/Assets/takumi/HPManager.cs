@@ -139,14 +139,36 @@ public class HPManager : MonoBehaviour
         {
             if (HunterLostNumber == i) continue;
 
-            if (HunterHp[i] <= 0)
+            if (HunterHp[i] < 0)
             {
                 HunterLostNumber = i;
+
+
 
 
             }
         }
     }
+
+    public int CheckHunterNowLost() 
+    {
+
+        for (int i = 0; i < HunterCount; i++) 
+        {
+
+            if (HunterHp[i] <= 100) continue;
+
+
+            return i;
+
+
+
+        }
+
+        return -1;
+    }
+
+
     public void SetHunterLostNumber(int Number) 
     {
         HunterLostNumber = Number;

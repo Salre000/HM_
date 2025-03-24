@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using SceneSound;
 using System;
 using System.Collections;
@@ -35,9 +36,11 @@ public class AttackEffect : MonoBehaviour
     public void RoarShow() 
     {
         RoarAttackEffect.SetActive(true);
+        RoarEnd().Forget();
     }
-    public void RoarEnd() 
+    public async UniTask RoarEnd() 
     {
+        await UniTask.DelayFrame(70);
         RoarAttackEffect.SetActive(false);
 
     }

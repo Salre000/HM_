@@ -27,7 +27,7 @@ public class HunterManager : MonoBehaviour
         respawnPosition = new Vector3(-0.766783059f, 0.951499999f, 10.727313f);
         _hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
     }
-
+    
     // Update is called once per frame
     void Update()
     {

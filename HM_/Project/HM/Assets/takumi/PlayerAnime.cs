@@ -44,6 +44,9 @@ public class PlayerAnime : MonoBehaviour
     public bool GetBigRoarFlag() { return _bigRoarFlag; }
     public void SetBigRoarFlag(bool Flag) { _bigRoarFlag = Flag; }
 
+    public void SetStartFinish(bool flag) 
+    { _animator.SetTrigger("FinishStart"); }
+    public void SetFinish() { _animator.SetTrigger("Finish"); }
 
     public void SetStartHardDownFlag()
     {

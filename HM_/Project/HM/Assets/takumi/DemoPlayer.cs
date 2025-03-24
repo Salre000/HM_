@@ -27,8 +27,6 @@ public class DemoPlayer : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        animator.SetFloat("Rand", -1);
-
         if (time > MaxTime) 
         {
             time = 0;
@@ -40,19 +38,19 @@ public class DemoPlayer : MonoBehaviour
             {
                  
                 case 1:
-                    animator.SetBool("1", true); DexireiFrame();
+                    animator.SetBool("1", true); ResetFlag().Forget();
                     break;
                 case 2:
-                    animator.SetBool("2", true); DexireiFrame();
+                    animator.SetBool("2", true); ResetFlag().Forget();
                     break;
                 case 3:
-                    animator.SetBool("3", true); DexireiFrame();
+                    animator.SetBool("3", true); ResetFlag().Forget();
                     break;
                 case 4:
-                    animator.SetBool("4", true); DexireiFrame();
+                    animator.SetBool("4", true); ResetFlag().Forget();
                     break;
                 case 5:
-                    animator.SetBool("5", true); DexireiFrame();
+                    animator.SetBool("5", true); ResetFlag().Forget();
                     break;
 
 
@@ -62,7 +60,7 @@ public class DemoPlayer : MonoBehaviour
 
     }
 
-    private async UniTask DexireiFrame() 
+    private async UniTask ResetFlag() 
     {
         await UniTask.DelayFrame(1);
         animator.SetBool("1", false);

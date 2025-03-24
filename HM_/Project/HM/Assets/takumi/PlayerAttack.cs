@@ -70,6 +70,8 @@ public abstract class PlayerAttack : MonoBehaviour
     public Tag GetTag() { return TagBox; }
 
     [SerializeField] protected AnimeBase nowAnime = null;
+    protected HPManager hpManager = null;
+    protected HunterManager hunterManager;
     void Awake()
     {
         _anime = GetComponent<PlayerAnime>();
@@ -77,7 +79,8 @@ public abstract class PlayerAttack : MonoBehaviour
 
         activeFlag = false;
 
-        HunterManager hunterManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
+        hunterManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
+        hpManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
 
         AnimeBase.useFlag = false;
 
@@ -128,6 +131,7 @@ public abstract class PlayerAttack : MonoBehaviour
         special,
         jump,
         backJump,
+        finish,
         max
 
 
@@ -140,6 +144,15 @@ public abstract class PlayerAttack : MonoBehaviour
         anime[(int)nowMode].AnimeEvent();
     }
 
+    public void StartFinish() 
+    {
+        if (nowMode == actionMode.finish) return;
+        AnimeBase.useFlag=true;
+        _anime.SetFinish();
+        nowMode = actionMode.finish;
+        anime[(int)nowMode].Start();
+
+    }
     public static bool activeFlag = false;
 
     // Update is called once per frame
@@ -149,6 +162,7 @@ public abstract class PlayerAttack : MonoBehaviour
 
         if (!activeFlag) return;
 
+        if (hpManager.CheckHunterNowLost() >= 0) StartFinish();
 
         if (AnimeBase.useFlag)
         {
