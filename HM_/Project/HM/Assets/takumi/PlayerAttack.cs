@@ -172,6 +172,10 @@ public abstract class PlayerAttack : MonoBehaviour
             if (!instance.IsOnButton(InputKeys.Normal)) _anime.SetAttackFlag(false);
             return;
         }
+        else if(nowMode==actionMode.finish)
+        {
+            nowMode = actionMode.normal;
+        }
 
         //‰“‹——£UŒ‚‚ğ‚·‚éƒ{ƒ^ƒ“
         if (instance.IsOnButton(InputKeys.Skill))

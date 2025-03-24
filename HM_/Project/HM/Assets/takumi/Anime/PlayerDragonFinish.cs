@@ -12,6 +12,8 @@ public class PlayerDragonFinish : AnimeBase
     bool finishActionFlag = false;
 
     System.Func<GameObject> GetHunterObject;
+    float z = 1.2f;
+    float y = 2.9f;
 
     public PlayerDragonFinish(GameObject Object, AudioSource source, Animator animator, System.Action<bool> animeFlagReset, System.Func<GameObject> setGetHunterObject) : base(Object, source, animator, animeFlagReset)
     {
@@ -25,6 +27,16 @@ public class PlayerDragonFinish : AnimeBase
         _status = GameObject.GetComponent<PlayerStatus>();
         targetHunter = GetHunterObject();
         GameObject.transform.LookAt(targetHunter.transform);
+
+        Vector3 angle = GameObject.transform.eulerAngles;
+
+        angle.x = 0;
+        angle.z = 0;
+
+        GameObject.transform.eulerAngles = angle;
+        HPManager.instance.SetMonsterUseFlag(false);
+        
+
     }
 
     GameObject targetHunter;
@@ -35,6 +47,17 @@ public class PlayerDragonFinish : AnimeBase
 
         if (!finishActionFlag) FinishMove();
         else FinishAction();
+
+
+    }
+    bool startFlag=false;
+    public override void AnimeEvent()
+    {
+        rigidbody.useGravity = true;
+
+        HitEffectManager.instance.HitEffectBloodShow(targetHunter.transform.position);
+        DaleyTask().Forget();
+
 
 
     }
@@ -68,65 +91,83 @@ public class PlayerDragonFinish : AnimeBase
 
         //角度を使いカメラの座標を変更
         pos.y = ((_range / 3) * 2);
-        pos.y += camera.transform.position.y;
-        pos.x = camera.transform.position.x + Mathf.Sin(GameObject.transform.eulerAngles.y*Mathf.Deg2Rad) * _range;
-        pos.z = camera.transform.position.z + Mathf.Cos(GameObject.transform.eulerAngles.y * Mathf.Deg2Rad) * _range;
+        pos.y += targetHunter.transform.position.y+0.3f;
+        pos.x = targetHunter.transform.position.x + Mathf.Sin(GameObject.transform.eulerAngles.y*Mathf.Deg2Rad) * _range + 0.2f;
+        pos.z = targetHunter.transform.position.z + Mathf.Cos(GameObject.transform.eulerAngles.y * Mathf.Deg2Rad) * _range+0.2f;
 
         camera.transform.position = pos;
 
 
 
-        camera.transform.LookAt(GameObject.transform.position + Vector3.up / 10);
+        camera.transform.LookAt(targetHunter.transform.position);
+
 
 
 
     }
+    Rigidbody rigidbody;
+    CameraManager cameraManager;
     private async UniTask HunterUpMove() 
     {
         _range = 1.0f;
-        CameraManager cameraManager=camera.GetComponent<CameraManager>();
+        cameraManager=camera.GetComponent<CameraManager>();
 
         cameraManager.SetCameraUseFlag(false);
 
-        Rigidbody rigidbody = targetHunter.GetComponent<Rigidbody>();
+        rigidbody = targetHunter.GetComponent<Rigidbody>();
         rigidbody.useGravity = false;
         Vector3 startPos= targetHunter.transform.position;
 
         Vector3 endPos= targetHunter.transform.position+new Vector3(0,0.5f,0);
 
+        Vector3 MoveVex;
+
+        MoveVex = startPos - endPos;
+
         await UniTask.DelayFrame(20);
 
         for (int i = 0; i < 30; i++) 
         {
-            _range -= 0.002f;
+            _range -= 0.02f;
 
             // オブジェクトの移動
-            targetHunter.transform.position = Vector3.Lerp(startPos, endPos, (Time.time * 1.0f) / Vector3.Distance(startPos, endPos));
-
+            targetHunter.transform.position -= MoveVex/30;
+            Debug.Log(targetHunter.transform.position + "GGG");
             await UniTask.DelayFrame(1);
         }
         startPos = targetHunter.transform.position;
-        endPos= targetHunter.transform.position + new Vector3(0, -0.3f, 0);
+        endPos = GameObject.transform.position + new Vector3(Mathf.Sin(GameObject.transform.eulerAngles.y*Mathf.Deg2Rad)*0.1f, y/10, Mathf.Cos(GameObject.transform.eulerAngles.y * Mathf.Deg2Rad) * 0.1f);
+        
+        MoveVex = startPos - endPos;
+        new GameObject().transform.position = endPos;
+
         for (int i = 0; i < 20; i++) 
         {
-            _range -= 0.002f;
-
-            targetHunter.transform.position = Vector3.Lerp(startPos, endPos, (Time.time * 1.0f) / Vector3.Distance(startPos, endPos));
+            targetHunter.transform.position -= MoveVex/20;
+            Debug.Log(targetHunter.transform.position + "GGG");
 
             await UniTask.DelayFrame(1);
 
 
         }
-
-
-
-
-        rigidbody.useGravity = true;
-        cameraManager.SetCameraUseFlag(true);
-        base.AnimeEnd();
 
 
     }
 
+
+
+    private async UniTask DaleyTask()
+    {
+
+        await UniTask.DelayFrame(15);
+
+        cameraManager.SetCameraUseFlag(true);
+        HunterManager hunterManager = UnityEngine.GameObject.Find("GameManager").GetComponent<HunterManager>();
+
+        hunterManager.Respawn(targetHunter.GetComponent<Hunter_ID>().GetHunterID());
+        HPManager.instance.SetMonsterUseFlag(true);
+
+        AnimeEnd();
+    }
 
 }

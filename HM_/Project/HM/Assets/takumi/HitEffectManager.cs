@@ -13,50 +13,50 @@ public class HitEffectManager : MonoBehaviour
     [Header("モンスターの攻撃によるヒットエフェクトモデル")]
     [SerializeField] GameObject MonsterEffect;
     [Header("モンスターの攻撃エフェクトのプール")]
-    [SerializeField] GameObject[] MonsterEffectPool=new GameObject[20];
-    
+    [SerializeField] GameObject[] MonsterEffectPool = new GameObject[20];
+
     [Header("モンスターの血によるヒットエフェクトモデル")]
     [SerializeField] GameObject BloodEffect;
     [Header("モンスターの血による攻撃エフェクトのプール")]
-    [SerializeField] GameObject[] MonsterBloodEffectPool=new GameObject[20];
+    [SerializeField] GameObject[] MonsterBloodEffectPool = new GameObject[20];
 
 
     [Header("ハンターの攻撃によるヒットエフェクトモデル")]
-    [SerializeField] GameObject []HunterEffect=new GameObject[HunterCount];
+    [SerializeField] GameObject[] HunterEffect = new GameObject[HunterCount];
     [Header("ハンターの攻撃エフェクトのプール")]
-    [SerializeField] GameObject[][] HunterEffectPool=new GameObject[HunterCount][];
-    
+    [SerializeField] GameObject[][] HunterEffectPool = new GameObject[HunterCount][];
+
 
     const int HunterCount = 4;
     [Header("モンスターエフェクトの大きさ")]
-    [SerializeField] float MonsterEffectSize=1.5f;
+    [SerializeField] float MonsterEffectSize = 1.5f;
     [Header("ハンターエフェクトの大きさ")]
-    [SerializeField] float HunterEffectSize=0.3f;
+    [SerializeField] float HunterEffectSize = 0.3f;
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
 
-        for(int i = 0; i < HunterCount; i++) 
+        for (int i = 0; i < HunterCount; i++)
         {
             //ハンターの攻撃が当たった時のエフェクト
-            HunterEffectPool[i]=new GameObject[30];
+            HunterEffectPool[i] = new GameObject[30];
 
-            for(int j = 0; j < 30; j++) 
+            for (int j = 0; j < 30; j++)
             {
-                HunterEffectPool[i][j] = Instantiate(HunterEffect[i],this.transform);
+                HunterEffectPool[i][j] = Instantiate(HunterEffect[i], this.transform);
                 HunterEffectPool[i][j].SetActive(false);
                 HunterEffectPool[i][j].name = "Hunter";
                 HunterEffectPool[i][j].transform.localScale = new Vector3(HunterEffectSize, HunterEffectSize, HunterEffectSize);
             }
         }
 
-        for(int i = 0; i < 20; i++) 
+        for (int i = 0; i < 20; i++)
         {
 
-            MonsterEffectPool[i] = Instantiate(MonsterEffect,this.transform);
-            MonsterEffectPool[i].SetActive(false);  
-                MonsterEffectPool[i].name = "Monster";
+            MonsterEffectPool[i] = Instantiate(MonsterEffect, this.transform);
+            MonsterEffectPool[i].SetActive(false);
+            MonsterEffectPool[i].name = "Monster";
             MonsterEffectPool[i].transform.localScale = new Vector3(MonsterEffectSize, MonsterEffectSize, MonsterEffectSize);
 
 
@@ -69,37 +69,38 @@ public class HitEffectManager : MonoBehaviour
     [SerializeField] const int EffectTime = 2;
 
     //一定時間後にエフェクトが消えるようにする
-    private async UniTask InvisibleObject(GameObject EffectObject,int Time) 
+    private async UniTask InvisibleObject(GameObject EffectObject, int Time)
     {
 
-        await UniTask.DelayFrame(Time*10);
+        await UniTask.DelayFrame(Time * 10);
 
         //エフェクトの状態を最初に戻す
 
 
         EffectObject.SetActive(false);
+        EffectObject.transform.localScale=Vector3.one/50;
 
 
-    
+
 
 
 
     }
-    public enum CharacterType 
+    public enum CharacterType
     {
-        Monster=0,
+        Monster = 0,
         Hammer,
         Bow,
         Spear,
         sword,
-        None=-1
+        None = -1
 
 
     }
-     
-    private GameObject GetPoolObject(GameObject[] Object) 
+
+    private GameObject GetPoolObject(GameObject[] Object)
     {
-        for(int i = 0; i < Object.Length; i++) 
+        for (int i = 0; i < Object.Length; i++)
         {
             if (Object[i].activeSelf == true) continue;
 
@@ -117,7 +118,7 @@ public class HitEffectManager : MonoBehaviour
     }
 
     //vector３はエフェクトを出現させる座標
-    public  void HitEffectShow(Vector3 pos ,CharacterType type,int time= EffectTime) 
+    public void HitEffectShow(Vector3 pos, CharacterType type, int time = EffectTime)
     {
         GameObject Effect;
 
@@ -131,19 +132,19 @@ public class HitEffectManager : MonoBehaviour
             Effect.GetComponent<ParticleSystem>()?.Play();
 
 
-            InvisibleObject(Effect,time);
-           
+            InvisibleObject(Effect, time);
+
 
 
             return;
         }
         if (type != CharacterType.None)
         {
-            if ((int)type != 1) 
+            if ((int)type != 1)
             {
                 int ssss = 0;
             }
-            Effect = GetPoolObject(HunterEffectPool[(int)type-1]);
+            Effect = GetPoolObject(HunterEffectPool[(int)type - 1]);
 
             Effect.transform.position = pos;
             GameObject Blood = GetPoolObject(MonsterBloodEffectPool);
@@ -154,7 +155,7 @@ public class HitEffectManager : MonoBehaviour
 
             InvisibleObject(Blood, time).Forget();
 
-            InvisibleObject(Effect,time).Forget();
+            InvisibleObject(Effect, time).Forget();
 
             return;
         }
@@ -166,5 +167,21 @@ public class HitEffectManager : MonoBehaviour
 
     }
 
+    public void HitEffectBloodShow(Vector3 pos)
+    {
+        GameObject Blood = GetPoolObject(MonsterBloodEffectPool);
+
+        Blood.transform.position = pos;
+        Blood.transform.localScale = Vector3.one/10;
+        Blood.transform.LookAt(Camera.main.transform.position);
+        Blood.GetComponent<ParticleSystem>()?.Play();
+
+        InvisibleObject(Blood, 1).Forget();
+
+
+
+
+    }
 
 }
+

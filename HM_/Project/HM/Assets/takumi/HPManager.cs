@@ -10,9 +10,11 @@ public class HPManager : MonoBehaviour
 
     [SerializeField] int HunterCount = 4;
     [SerializeField] UIManager uiManager;
+    public static HPManager instance;
     //引数はハンターの数
     void Start()
     {
+        instance = this;
        // _uiManager=GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         MonsterHp = MaxMonsterHP;
 
@@ -42,10 +44,16 @@ public class HPManager : MonoBehaviour
 
 
     PlayerAnime playerAnime;
+
+    private bool monsterUseFlag=true;
+
+    public void SetMonsterUseFlag(bool Flag) {  monsterUseFlag = Flag; }
     //モンスターのダメージ処理
     public int MonsterDamage(float Damage, ref float PartHp, bool DownFlag, System.Action soundAction = null)
     {
         if (MonsterInvincibilityTime != -1) return -1;
+        if(!monsterUseFlag)return -1;
+
         MonsterHp -= Damage;
         MonsterInvincibilityTime = 0;
         soundAction();
