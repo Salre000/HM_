@@ -5138,6 +5138,14 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6801594656264373228, guid: 7afa8793cc482854c9826ecae80ef398, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801594656264373228, guid: 7afa8793cc482854c9826ecae80ef398, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6801594656264373231, guid: 7afa8793cc482854c9826ecae80ef398, type: 3}
       propertyPath: m_RootOrder
       value: 6
