@@ -200,7 +200,7 @@ public abstract class Hunter_AI : MonoBehaviour
                 SetNavmesh();
                 elapsedTime = 0;
                 int num = this.GetComponent<Hunter_ID>().GetHunterID();
-                manager.Respawn(num);
+                //manager.Respawn(num);
             }
             return;
         }
@@ -273,12 +273,10 @@ public abstract class Hunter_AI : MonoBehaviour
                 if (CheckAttack()) return;
             }
         }
-        //------------------------------------------------
-        //                    処理
-        //------------------------------------------------
-
     }
-
+    //------------------------------------------------
+    //                    処理
+    //------------------------------------------------
     void Initialize()
     {
         // モンスターのタグ取得
@@ -809,7 +807,8 @@ public abstract class Hunter_AI : MonoBehaviour
     // ナビメッシュが有効かどうかを確認
     protected bool CheckNavmeshEnable()
     {
-        return _agent.enabled;
+        if(!_agent.enabled)return false;
+        return true;
     }
 
     public void ResetPosition()
