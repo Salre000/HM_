@@ -808,6 +808,7 @@ public abstract class Hunter_AI : MonoBehaviour
     protected bool CheckNavmeshEnable()
     {
         if(!_agent.enabled)return false;
+        if(_agent==null) return false;
         return true;
     }
 
