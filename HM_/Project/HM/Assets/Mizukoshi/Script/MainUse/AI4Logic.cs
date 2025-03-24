@@ -11,6 +11,9 @@ public class AI4Logic : Hunter_AI
 
     public float keepDistance = 1.5f;
 
+    public float detection2Radius = 0.07f;  // ‘ŠŽè‚ª‹ß‚Ã‚¢‚½Žž‚É”½‰ž‚·‚é‹——£
+    public float flee2Distance = 2.5f;     // —£‚ê‚é‹——£
+
     public float attackDistance = 2.0f;
     
     public float viewAngle = 180.0f;
@@ -35,6 +38,7 @@ public class AI4Logic : Hunter_AI
         SetAvoidRatio(avoidRatio);
         SetViewAngle(viewAngle);
         SetViewLength(viewLength);
+        SetKeepDistance(detectionRadius, flee2Distance);
         CloseCollider();
     }
 

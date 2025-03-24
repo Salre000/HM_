@@ -45,12 +45,17 @@ public class HunterManager : MonoBehaviour
     {
         return deathCount;
     }
-
+    /// <summary>
+    /// ハンターをリスポーンさせるときの処理
+    /// </summary>
+    /// <param name="i"></param>
     public void Respawn(int i)
     {
         _hpManager.HunterHeel(100, i);
         gameObjects[i].transform.position = respawnPosition;
         gameObjects[i].GetComponent<Hunter_AI>().SetNavmesh();
+        Animator animator = gameObjects[i].GetComponent<Animator>();
+        animator.SetTrigger("DeathFinish");
         deathCount++;
         //_uiManager.ObjectiveText();
     }

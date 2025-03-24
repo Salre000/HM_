@@ -216,8 +216,10 @@ public abstract class Hunter_AI : MonoBehaviour
         // 近づきすぎなら逃げる
         if (CheckKeepDistance(detectionRadius, this.gameObject))
         {
-            if (!_agent.enabled) _agent.enabled = true;
+            //if (!_agent.enabled) _agent.enabled = true;
+            if(!_agent.enabled)return;
             FleeFromPlayer();
+            
         }
 
         if (CheckKeepDistance(4.0f, this.gameObject))
@@ -225,7 +227,6 @@ public abstract class Hunter_AI : MonoBehaviour
             if (alreadyNear)
             {
                 if (!_agent.enabled) _agent.enabled = true;
-
             }
         }
 
@@ -253,27 +254,6 @@ public abstract class Hunter_AI : MonoBehaviour
             // 攻撃中ならスキップ
             if (CheckAttack()) return;
             Chase();
-            //if (manager.GetHunterDeathAmount() >= 3)
-            //{
-            //    int random = Random.Range(0, 5);
-            //    switch (random)
-            //    {
-            //        case 0: SetDestination(_monster.transform.position); break;
-            //        case 1: SetDestination(GetMonsterBackPosition()); break;
-            //        case 2: SetDestination(GetMonsterFrontPosition()); break;
-            //        case 3: SetDestination(GetMonsterLeftPosition()); break;
-            //        case 4: SetDestination(GetMonsterRightPosition()); break;
-            //        default:
-            //            SetDestination(_monster.transform.position); break;
-
-            //    }
-            //    return;
-            //}
-            //else
-            //{
-            //    SetNavmesh();
-            //}
-
         }
         else
         {
@@ -470,7 +450,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         _AvoidRatio = avoidRatio;
     }
-
+    // 攻撃のクールタイムを待つ
     protected void WaitAttackCoolTime()
     {
         if (attackReady) return;
