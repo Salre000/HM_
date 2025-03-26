@@ -101,19 +101,19 @@ public abstract class Hunter_AI : MonoBehaviour
 
     protected virtual void DebugDistance()
     {
-        Debug.Log(restrainCount + "DDD");
+        //SDebug.Log(restrainCount + "DDD");
         if (!_agent.isOnNavMesh)
         {
-            Debug.Log("ŒvZ–¢Š®—¹QQQ");
+            Debug.Log("ŒvZ–¢Š®—¹QQQB");
         }
         else
         {
-            Debug.Log("ŒvZŠ®—¹!QQQ");
+            Debug.Log("ŒvZŠ®—¹!QQQB");
         }
 
         if (!_agent.hasPath)
         {
-            Debug.Log("ŒŸõ’†QQQ");
+            Debug.Log("ŒŸõ’†QQQA");
             if (_agent.enabled == false) return;
             if (float.IsInfinity(_agent.destination.magnitude)) return;
 
@@ -122,7 +122,7 @@ public abstract class Hunter_AI : MonoBehaviour
         }
         else
         {
-            Debug.Log("ŒŸõŠ®—¹!QQQ");
+            Debug.Log("ŒŸõŠ®—¹!QQQA");
         }
 
     }
