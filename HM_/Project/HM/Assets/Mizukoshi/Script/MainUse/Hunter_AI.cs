@@ -87,6 +87,7 @@ public abstract class Hunter_AI : MonoBehaviour
     // ‰ñ”ğ•p“x
     private float _AvoidRatio;
 
+    // €–Só‘Ô‚É
     private bool deathAnimNow = false;
 
     private bool runAway = false;
