@@ -42,7 +42,7 @@ public class AI3Logic : Hunter_AI
     {
         base.Chase();
         int random=Random.Range(0, 10);
-        if (float.IsInfinity(_agent.destination.magnitude)) return;
+        //if (float.IsInfinity(_agent.destination.magnitude)) return;
 
         if (random >= 3) SetDestination(GetMonsterLeftPosition());
         else

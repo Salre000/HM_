@@ -51,7 +51,7 @@ public class AI1Logic :Hunter_AI
     public override void Chase()
     {
         base.Chase();
-        if (float.IsInfinity(_agent.destination.magnitude)) return;
+        //if (float.IsInfinity(_agent.destination.magnitude)) return;
         SetDestination(GetMonsterFrontPosition());
     }
 

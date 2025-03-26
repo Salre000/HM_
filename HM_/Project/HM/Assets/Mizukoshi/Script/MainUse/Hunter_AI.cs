@@ -115,7 +115,7 @@ public abstract class Hunter_AI : MonoBehaviour
         {
             Debug.Log("検索中QQQA");
             if (_agent.enabled == false) return;
-            if (float.IsInfinity(_agent.destination.magnitude)) return;
+            ////if (float.IsInfinity(_agent.destination.magnitude)) return;
 
             _agent.destination = playerAttack.transform.position;
 
@@ -156,7 +156,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public virtual void Start()
     {
         Initialize();
-        SetOffNavmesh();
+        SetOffSpeed();
 
     }
 
@@ -188,7 +188,7 @@ public abstract class Hunter_AI : MonoBehaviour
             if (elapsedTime > waitTime)
             {
                 startWait = false;
-                SetNavmesh();
+                SetSpeed();
                 elapsedTime = 0;
             }
             return;
@@ -196,7 +196,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
         if (deathWaitNow)
         {
-            _agent.enabled = false;
+            _agent.speed=0.0f;
             elapsedTime += Time.deltaTime;
             if (elapsedTime > deathWaitTime)
             {
@@ -220,7 +220,7 @@ public abstract class Hunter_AI : MonoBehaviour
         // 近づきすぎなら逃げる
         if (CheckKeepDistance(detectionRadius, this.gameObject))
         {
-            //if (!_agent.enabled) _agent.enabled = true;
+            //if (!_agent.enabled) _agent.speed=0.5f;
             if(!_agent.enabled)return;
             FleeFromPlayer();
             
@@ -230,7 +230,7 @@ public abstract class Hunter_AI : MonoBehaviour
         {
             if (alreadyNear)
             {
-                if (!_agent.enabled) _agent.enabled = true;
+                if (!_agent.enabled)SetSpeed();
             }
         }
 
@@ -304,10 +304,9 @@ public abstract class Hunter_AI : MonoBehaviour
     public void SetDestination(Vector3 pos)
     {
         if (!CheckNavmeshEnable()) return;
-        _agent.enabled = true;
-        _agent.isStopped = false;
-       if (float.IsInfinity(_agent.destination.magnitude)) return;
-
+        _agent.speed=0.5f;
+       ////if (float.IsInfinity(_agent.destination.magnitude)) return;
+        _agent.speed=0.5f;
         _agent.destination = pos;
     }
 
@@ -592,7 +591,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public virtual void Attack()
     {
         // ナビメーションによる移動をなくす。
-        SetOffNavmesh();
+        _agent.speed = 0;
 
         if (attackReady)
         {
@@ -606,7 +605,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public void AttackEnd()
     {
-        SetNavmesh();
+       SetSpeed();
     }
 
     /// <summary>
@@ -614,7 +613,7 @@ public abstract class Hunter_AI : MonoBehaviour
     /// </summary>
     public virtual void Chase()
     {
-        if (!_agent.enabled) _agent.enabled = true;
+        if (!_agent.enabled) _agent.speed=0.5f;
     }
 
     public void Run()
@@ -628,7 +627,7 @@ public abstract class Hunter_AI : MonoBehaviour
         _animator.SetTrigger("AvoidTrigger");
 
         avoiding = true;
-        _agent.enabled = false;
+        SetOffSpeed();
     }
 
     /// <summary>
@@ -659,7 +658,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public void AvoidFinish()
     {
-        _agent.enabled = true;
+        SetSpeed();
         avoiding = false;
     }
 
@@ -688,6 +687,15 @@ public abstract class Hunter_AI : MonoBehaviour
 
     }
 
+    protected void SetSpeed()
+    {
+        _agent.speed = 0.5f;
+    }
+
+    protected void SetOffSpeed()
+    {
+        _agent.speed = 0;
+    }
     
 
     public void Respown()
@@ -721,7 +729,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         restrainCount++;
         status = eStatus.Rest;
-        _agent.enabled = false;
+        SetOffNavmesh() ;
         _animator.SetTrigger("FlatterStartTrigger");
         attackReady = true;
     }
@@ -732,7 +740,7 @@ public abstract class Hunter_AI : MonoBehaviour
         restrainCount--;
         if (restrainCount != 0) return;
         status = eStatus.None;
-        _agent.enabled = true;
+        SetNavmesh() ;
         _animator.SetTrigger("FlatterFinishTrigger");
         
     }
@@ -764,7 +772,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         _animator.SetTrigger("DeathTrigger");
         attackReady = true;
-        _agent.enabled = false;
+        _agent.speed=0.0f;
 
     }
 
@@ -790,7 +798,7 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public void ResetAnimation()
     {
-        _agent.enabled = true;
+        _agent.speed=0.5f;
         _animator.SetTrigger("Reset");
     }
 
@@ -803,12 +811,13 @@ public abstract class Hunter_AI : MonoBehaviour
 
     public void SetNavmesh()
     {
-        if (!_agent.enabled) _agent.enabled = true;
+        if (!_agent.enabled) _agent.enabled=true;
+        _agent.speed = 0.5f;
     }
 
     public void SetOffNavmesh()
     {
-        if (_agent.enabled) _agent.enabled = false;
+        if (_agent.enabled) _agent.enabled=false;
     }
 
     // ナビメッシュが有効かどうかを確認

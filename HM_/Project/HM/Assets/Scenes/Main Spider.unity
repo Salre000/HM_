@@ -109,7 +109,7 @@ NavMeshSettings:
     agentRadius: 0.1
     agentHeight: 0.5
     agentSlope: 45
-    agentClimb: 0.5
+    agentClimb: 12
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -1366,11 +1366,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3694408561729357699, guid: c1440e657f418c144ad8f65334d8084c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4039444847142772025, guid: c1440e657f418c144ad8f65334d8084c, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4039444847142772025, guid: c1440e657f418c144ad8f65334d8084c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1710,7 +1710,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &137483347
 GameObject:
@@ -1747,7 +1747,7 @@ RectTransform:
   - {fileID: 1765092679}
   - {fileID: 564548373}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3814,7 +3814,7 @@ RectTransform:
   - {fileID: 543072184}
   - {fileID: 5732817}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8075,7 +8075,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1163733226
 Transform:
   m_ObjectHideFlags: 0
@@ -8868,7 +8868,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1265823024
 GameObject:

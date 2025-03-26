@@ -59,7 +59,7 @@ public class AI2Logic :Hunter_AI
     {
         _agent.enabled = true;
         base.Chase();
-        if (float.IsInfinity(_agent.destination.magnitude)) return;
+        //if (float.IsInfinity(_agent.destination.magnitude)) return;
 
         SetDestination(GetMonster().transform.position);
     }
