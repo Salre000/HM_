@@ -72,6 +72,7 @@ public class PlayerAttackSpider : PlayerAttack
         anime[(int)actionMode.special] = new CaptorAttackSpider(this.gameObject, source, animator, _anime.SetRoarFlag, ChengeJumpAnime, CaptorPosition);
         anime[(int)actionMode.jump] = new PlayerSpiderJump(this.gameObject, source, animator, _anime.SetJumpFlag);
         anime[(int)actionMode.backJump] = new PlayerSpiderJump(this.gameObject, source, animator, _anime.SetBackSteppeFlag);
+        anime[(int)actionMode.finish] = new PlayerSpiderFinish(this.gameObject, source, animator, _anime.SetStartFinish,GetHunter, CaptorPosition);
 
 
 

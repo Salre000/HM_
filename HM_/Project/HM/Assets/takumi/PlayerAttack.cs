@@ -80,7 +80,7 @@ public abstract class PlayerAttack : MonoBehaviour
         activeFlag = false;
 
         hunterManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HunterManager>();
-        hpManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
+        hpManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HPManager>();
 
         AnimeBase.useFlag = false;
 
@@ -113,6 +113,11 @@ public abstract class PlayerAttack : MonoBehaviour
         action(false);
 
     }
+    protected GameObject GetHunter()
+    {
+        return hunterManager.GetHunterObject(hpManager.CheckHunterNowLost());
+    }
+
 
 
     protected abstract int LTAttack();
@@ -144,10 +149,10 @@ public abstract class PlayerAttack : MonoBehaviour
         anime[(int)nowMode].AnimeEvent();
     }
 
-    public void StartFinish() 
+    public void StartFinish()
     {
         if (nowMode == actionMode.finish) return;
-        AnimeBase.useFlag=true;
+        AnimeBase.useFlag = true;
         _anime.SetFinish();
         nowMode = actionMode.finish;
         anime[(int)nowMode].Start();
@@ -172,7 +177,7 @@ public abstract class PlayerAttack : MonoBehaviour
             if (!instance.IsOnButton(InputKeys.Normal)) _anime.SetAttackFlag(false);
             return;
         }
-        else if(nowMode==actionMode.finish)
+        else if (nowMode == actionMode.finish)
         {
             nowMode = actionMode.normal;
         }

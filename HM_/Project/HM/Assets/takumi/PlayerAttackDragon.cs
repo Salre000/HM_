@@ -88,10 +88,6 @@ public class PlayerAttackDragon :PlayerAttack
 
     public GameObject GetStartPositionn() { return LeftHand; }
 
-    GameObject GetHunter() 
-    {
-        return hunterManager.GetHunterObject(hpManager.CheckHunterNowLost());
-    }
 
     void ResetObject()
     {
