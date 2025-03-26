@@ -223,13 +223,13 @@ public abstract class Hunter_AI : MonoBehaviour
             
         }
 
-        if (CheckKeepDistance(4.0f, this.gameObject))
-        {
-            if (alreadyNear)
-            {
-                if (!_agent.enabled) _agent.enabled = true;
-            }
-        }
+        //if (CheckKeepDistance(4.0f, this.gameObject))
+        //{
+        //    if (alreadyNear)
+        //    {
+        //        if (!_agent.enabled) _agent.enabled = true;
+        //    }
+        //}
 
         // ハンターの攻撃がとんできているかどうかを確認
         if (CheckMonsterAttack())
@@ -254,6 +254,7 @@ public abstract class Hunter_AI : MonoBehaviour
         {
             // 攻撃中ならスキップ
             if (CheckAttack()) return;
+            Debug.Log("追いかける");
             Chase();
         }
         else
@@ -808,9 +809,8 @@ public abstract class Hunter_AI : MonoBehaviour
     // ナビメッシュが有効かどうかを確認
     protected bool CheckNavmeshEnable()
     {
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(this.transform.position,out hit,1.0f,NavMesh.AllAreas))return false;
-        if(!_agent.enabled)return false;
+        //if (NavMesh.SamplePosition(this.transform.position, out _, 10.0f, NavMesh.AllAreas)) return false;
+        if (!_agent.enabled)return false;
         if(_agent==null) return false;
         return true;
     }
