@@ -93,6 +93,8 @@ public class CaptorAttackSpider : AnimeBase
         if (_captorTarget == null)
         {
             _AnimeFlagReset(false);
+            _captorPosition.gameObject.SetActive(false);
+
         }
         else 
         {

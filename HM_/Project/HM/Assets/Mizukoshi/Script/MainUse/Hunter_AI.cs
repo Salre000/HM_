@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.Triggers;
 using UnityEngine;
 using UnityEngine.AI;
@@ -304,7 +305,7 @@ public abstract class Hunter_AI : MonoBehaviour
         if (!CheckNavmeshEnable()) return;
         _agent.enabled = true;
         _agent.isStopped = false;
-        if (float.IsInfinity(_agent.destination.magnitude)) return;
+       if (float.IsInfinity(_agent.destination.magnitude)) return;
 
         _agent.destination = pos;
     }
@@ -732,6 +733,7 @@ public abstract class Hunter_AI : MonoBehaviour
         status = eStatus.None;
         _agent.enabled = true;
         _animator.SetTrigger("FlatterFinishTrigger");
+        
     }
 
     // 攻撃アニメーション再生関数
@@ -836,5 +838,18 @@ public abstract class Hunter_AI : MonoBehaviour
     public void SetMonsterHitSound(System.Func<AudioClip> _monsterHitSound)
     { _MonsterHitSound = _monsterHitSound; }
 
+    public async UniTask AnimeResetFlag() 
+    {
+        while (restrainCount != 0) 
+        {
+            await UniTask.DelayFrame(1);
+        }
+
+        _animator.SetTrigger("FlatterStartTrigger");
+        _animator.SetTrigger("FlatterFinishTrigger");
+
+
+        await UniTask.CompletedTask;
+    }
 
 }

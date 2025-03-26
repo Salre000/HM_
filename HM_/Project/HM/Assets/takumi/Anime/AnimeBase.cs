@@ -89,9 +89,15 @@ public class AnimeBase
 
     }
 
+    public void AnimeForciblyEnd() 
+    {
+        AnimeEnd();
+    }
 
     virtual protected void AnimeTrue() { }
     virtual public void AnimeEvent() { }
+
+
 
     virtual protected void AnimeEnd()
     {

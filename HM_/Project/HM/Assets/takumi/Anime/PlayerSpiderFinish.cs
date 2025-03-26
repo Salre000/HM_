@@ -24,14 +24,19 @@ public class PlayerSpiderFinish : AnimeBase
         capObject = setCapObject;
     }
 
+    Vector3 offset = Vector3.zero;
+
     public override void Start()
     {
+        offset=camera.transform.position- GameObject.transform.position;
+     
         finishActionFlag = false;
         _status = GameObject.GetComponent<PlayerStatus>();
         targetHunter = GetHunterObject();
 
         hunterParentObject = targetHunter.transform.parent != null ? targetHunter.transform.parent.gameObject : null;
 
+        capObject.SetActive(true);
         targetHunter.transform.parent = capObject.transform;
 
         Hunter_AI _targetHunter = targetHunter.GetComponent<Hunter_AI>();
@@ -54,6 +59,7 @@ public class PlayerSpiderFinish : AnimeBase
 
         GameObject.transform.eulerAngles = angle;
         HPManager.instance.SetMonsterUseFlag(false);
+        
 
 
     }
@@ -63,6 +69,8 @@ public class PlayerSpiderFinish : AnimeBase
 
     public override void Action()
     {
+        targetHunter.transform.localPosition = Vector3.zero;
+
 
         if (!finishActionFlag) FinishMove();
         else FinishAction();
@@ -72,7 +80,6 @@ public class PlayerSpiderFinish : AnimeBase
     bool startFlag = false;
     public override void AnimeEvent()
     {
-        rigidbody.useGravity = true;
 
         HitEffectManager.instance.HitEffectBloodShow(targetHunter.transform.position);
         DaleyTask().Forget();
@@ -87,6 +94,11 @@ public class PlayerSpiderFinish : AnimeBase
         {
             finishActionFlag = true;
             _AnimeFlagReset(false);
+
+            cameraManager = camera.GetComponent<CameraManager>();
+
+            cameraManager.SetCameraUseFlag(false);
+
 
             return;
         }
@@ -107,11 +119,11 @@ public class PlayerSpiderFinish : AnimeBase
 
         Vector3 pos;
 
-        //角度を使いカメラの座標を変更
-        pos.y = ((_range / 3) * 2);
-        pos.y += targetHunter.transform.position.y + 0.3f;
-        pos.x = targetHunter.transform.position.x + Mathf.Sin(GameObject.transform.eulerAngles.y * Mathf.Deg2Rad) * _range + 0.2f;
-        pos.z = targetHunter.transform.position.z + Mathf.Cos(GameObject.transform.eulerAngles.y * Mathf.Deg2Rad) * _range + 0.2f;
+
+        pos = targetHunter.transform.position+ offset;
+
+
+
 
         camera.transform.position = pos;
 
@@ -123,7 +135,6 @@ public class PlayerSpiderFinish : AnimeBase
 
 
     }
-    Rigidbody rigidbody;
     CameraManager cameraManager;
 
 
@@ -131,13 +142,30 @@ public class PlayerSpiderFinish : AnimeBase
     private async UniTask DaleyTask()
     {
 
-        await UniTask.DelayFrame(15);
+        await UniTask.DelayFrame(1);
 
-        cameraManager.SetCameraUseFlag(true);
+        //cameraManager.SetCameraUseFlag(true);
         HunterManager hunterManager = UnityEngine.GameObject.Find("GameManager").GetComponent<HunterManager>();
 
         hunterManager.Respawn(targetHunter.GetComponent<Hunter_ID>().GetHunterID());
         HPManager.instance.SetMonsterUseFlag(true);
+
+        if (targetHunter != null)
+        {
+            targetHunter.transform.parent = hunterParentObject != null ? hunterParentObject.transform : null;
+        }
+
+        cameraManager.SetCameraUseFlag(true);
+
+
+        Hunter_AI _targetHunter = targetHunter.GetComponent<Hunter_AI>();
+        if (_targetHunter == null) return;
+
+        //ハンターを怯み状態に変更する
+        _targetHunter.StopRestraining();
+
+        capObject.gameObject.SetActive(false);
+
 
         AnimeEnd();
     }

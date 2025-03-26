@@ -152,6 +152,7 @@ public abstract class PlayerAttack : MonoBehaviour
     public void StartFinish()
     {
         if (nowMode == actionMode.finish) return;
+        if (AnimeBase.useFlag) anime[(int)nowMode].AnimeForciblyEnd();
         AnimeBase.useFlag = true;
         _anime.SetFinish();
         nowMode = actionMode.finish;

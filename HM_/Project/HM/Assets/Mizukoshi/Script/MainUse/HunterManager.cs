@@ -56,6 +56,7 @@ public class HunterManager : MonoBehaviour
         gameObjects[i].GetComponent<Hunter_AI>().SetNavmesh();
         Animator animator = gameObjects[i].GetComponent<Animator>();
         animator.SetTrigger("DeathFinish");
+        gameObjects[i].GetComponent <Hunter_AI>().AnimeResetFlag().Forget();
         deathCount++;
         //_uiManager.ObjectiveText();
     }

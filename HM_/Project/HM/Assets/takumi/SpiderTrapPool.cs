@@ -43,7 +43,7 @@ public class SpiderTrapPool : MonoBehaviour
 
             TarpPool[i].gameObject.SetActive(true);
 
-            TarpPool[i].transform.position=Player.transform.position+new Vector3(0,0.01f,0);
+            TarpPool[i].transform.position=Player.transform.position+new Vector3(0,0.03f,0);
 
 
             return TarpPool[i];
