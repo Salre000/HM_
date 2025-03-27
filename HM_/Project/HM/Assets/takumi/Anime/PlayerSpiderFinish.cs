@@ -25,6 +25,7 @@ public class PlayerSpiderFinish : AnimeBase
     }
 
     Vector3 offset = Vector3.zero;
+    int targetID = -1;
 
     public override void Start()
     {
@@ -32,23 +33,22 @@ public class PlayerSpiderFinish : AnimeBase
      
         finishActionFlag = false;
         _status = GameObject.GetComponent<PlayerStatus>();
-        targetHunter = GetHunterObject();
+        targetID=GetHunterObject().GetComponent<Hunter_ID>().GetHunterID();
+
+        targetHunter = HunterObjectDami.instance.HuntersObject[targetID];
+
+        targetHunter.transform.position = GetHunterObject().transform.position;
+
+        HunterManager hunterManager = UnityEngine.GameObject.Find("GameManager").GetComponent<HunterManager>();
+
+        hunterManager.Respawn(targetID);
 
         hunterParentObject = targetHunter.transform.parent != null ? targetHunter.transform.parent.gameObject : null;
 
         capObject.SetActive(true);
         targetHunter.transform.parent = capObject.transform;
 
-        Hunter_AI _targetHunter = targetHunter.GetComponent<Hunter_AI>();
-        if (_targetHunter == null) return;
-
-        //ハンターを怯み状態に変更する
-        _targetHunter.StartRestraining();
-
-
-        targetHunter.transform.localPosition = Vector3.zero;
-
-
+        targetHunter.transform.localPosition = Vector3.zero; 
 
         GameObject.transform.LookAt(targetHunter.transform);
 
@@ -145,9 +145,7 @@ public class PlayerSpiderFinish : AnimeBase
         await UniTask.DelayFrame(1);
 
         //cameraManager.SetCameraUseFlag(true);
-        HunterManager hunterManager = UnityEngine.GameObject.Find("GameManager").GetComponent<HunterManager>();
 
-        hunterManager.Respawn(targetHunter.GetComponent<Hunter_ID>().GetHunterID());
         HPManager.instance.SetMonsterUseFlag(true);
 
         if (targetHunter != null)
@@ -158,13 +156,9 @@ public class PlayerSpiderFinish : AnimeBase
         cameraManager.SetCameraUseFlag(true);
 
 
-        Hunter_AI _targetHunter = targetHunter.GetComponent<Hunter_AI>();
-        if (_targetHunter == null) return;
-
-        //ハンターを怯み状態に変更する
-        _targetHunter.StopRestraining();
-
         capObject.gameObject.SetActive(false);
+
+        targetHunter.transform.position = Vector3.zero;
 
 
         AnimeEnd();

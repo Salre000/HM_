@@ -22294,7 +22294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913256928446, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913334869372, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: _damage
@@ -26711,6 +26711,7 @@ GameObject:
   - component: {fileID: 1418245116}
   - component: {fileID: 1418245119}
   - component: {fileID: 1418245120}
+  - component: {fileID: 1418245121}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -26791,6 +26792,28 @@ MonoBehaviour:
   MonsterHp: 0
   HunterHp: []
   HunterLostNumber: -1
+--- !u!114 &1418245121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418245115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f06a70d31a2e3a4cb9bd7c005fa05f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hunters:
+  - {fileID: 4128980297481618871, guid: de63dd2fbab322c4ca577e500d615335, type: 3}
+  - {fileID: 3798673692739572396, guid: 90c99de82e22e5f40b18c0783969568a, type: 3}
+  - {fileID: 7507564557433191936, guid: d41d684d628b9b240abb9214151b73e1, type: 3}
+  - {fileID: 4796201221958457002, guid: ee72092566c383f4c921d7c0689bd631, type: 3}
+  HuntersObject:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1423780448
 GameObject:
   m_ObjectHideFlags: 0

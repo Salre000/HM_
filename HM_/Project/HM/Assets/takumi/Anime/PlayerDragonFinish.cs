@@ -20,12 +20,21 @@ public class PlayerDragonFinish : AnimeBase
         camera = Camera.main.gameObject;
         GetHunterObject = setGetHunterObject;
     }
-
+    int targetID = -1;
     public override void Start()
     {
         finishActionFlag = false;
         _status = GameObject.GetComponent<PlayerStatus>();
-        targetHunter = GetHunterObject();
+        targetID = GetHunterObject().GetComponent<Hunter_ID>().GetHunterID();
+
+        HunterManager hunterManager = UnityEngine.GameObject.Find("GameManager").GetComponent<HunterManager>();
+
+
+        targetHunter = HunterObjectDami.instance.HuntersObject[targetID];
+
+        targetHunter.transform.position = GetHunterObject().transform.position;
+        hunterManager.Respawn(targetID);
+
         GameObject.transform.LookAt(targetHunter.transform);
 
         Vector3 angle = GameObject.transform.eulerAngles;
@@ -53,7 +62,6 @@ public class PlayerDragonFinish : AnimeBase
     bool startFlag=false;
     public override void AnimeEvent()
     {
-        rigidbody.useGravity = true;
 
         HitEffectManager.instance.HitEffectBloodShow(targetHunter.transform.position);
         DaleyTask().Forget();
@@ -105,7 +113,6 @@ public class PlayerDragonFinish : AnimeBase
 
 
     }
-    Rigidbody rigidbody;
     CameraManager cameraManager;
     private async UniTask HunterUpMove() 
     {
@@ -113,9 +120,6 @@ public class PlayerDragonFinish : AnimeBase
         cameraManager=camera.GetComponent<CameraManager>();
 
         cameraManager.SetCameraUseFlag(false);
-
-        rigidbody = targetHunter.GetComponent<Rigidbody>();
-        rigidbody.useGravity = false;
         Vector3 startPos= targetHunter.transform.position;
 
         Vector3 endPos= targetHunter.transform.position+new Vector3(0,0.5f,0);
@@ -162,9 +166,9 @@ public class PlayerDragonFinish : AnimeBase
         await UniTask.DelayFrame(15);
 
         cameraManager.SetCameraUseFlag(true);
-        HunterManager hunterManager = UnityEngine.GameObject.Find("GameManager").GetComponent<HunterManager>();
 
-        hunterManager.Respawn(targetHunter.GetComponent<Hunter_ID>().GetHunterID());
+        targetHunter.transform.position=Vector3.zero;
+
         HPManager.instance.SetMonsterUseFlag(true);
 
         AnimeEnd();
