@@ -6,7 +6,7 @@ public class ST : MonoBehaviour
 
     AudioSource audioSource;
 
-    float time = 0;
+   
     
     public SoundListManager soundListManager;
 

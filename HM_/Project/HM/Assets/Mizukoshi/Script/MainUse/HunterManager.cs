@@ -7,7 +7,7 @@ public class HunterManager : MonoBehaviour
     public UIManager uiManager;
     public int deathCount = 0;
     [SerializeField]private int preDeathNum = -1;
-    bool deathAnimationNow = false;
+    //bool deathAnimationNow = false;
     private float deathResetTime = 0f;
     private float deathResetDelay = 3f;
    

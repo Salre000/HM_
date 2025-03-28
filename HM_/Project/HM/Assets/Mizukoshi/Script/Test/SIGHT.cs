@@ -7,9 +7,9 @@ public class SIGHT : MonoBehaviour
     [SerializeField]
     private float watchDistance = 20;
     [SerializeField]
-    private float verticalAngle = 80;
-    [SerializeField]
-    private float horizonAngle = 120;
+    //private float verticalAngle = 80;
+    //[SerializeField]
+    //private float horizonAngle = 120;
 
     private Vector3 startPos;
     private Vector3 endPos;

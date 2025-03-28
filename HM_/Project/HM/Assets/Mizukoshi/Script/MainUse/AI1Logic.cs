@@ -25,14 +25,14 @@ public class AI1Logic :Hunter_AI
 
     public GameObject colliderObj;
 
-    // 回避行動頻度
-    int avoidRatio = 7;
+    //// 回避行動頻度
+    //int avoidRatio = 7;
 
     // 回避行動のクールタイム
     public float attackCoolTime = 6.0f;
 
     // すでにオンになっているかどうか
-    private bool alreadyFlag=false;
+    
 
    public override void Start()
    {

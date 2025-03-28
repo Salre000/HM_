@@ -35,7 +35,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public Damage damage;
 
     // モンスターの位置を発見したかどうかのフラグ
-    private bool _monsterDisplay = false;
+    //private bool _monsterDisplay = false;
 
     // ハンターマネージャー
     public HunterManager manager;
@@ -51,18 +51,18 @@ public abstract class Hunter_AI : MonoBehaviour
 
     private float _speed = 0.5f;
 
-    private bool alreadyNear = false;
+    
 
     private bool avoiding = false;
 
-    // 待機時間
-    private float waitSecond = 1.0f;
+    
+    
 
     // 待機経過時間
     private float elapsedTime = 0;
 
     // 待機フラグ
-    [SerializeField] private bool waitFlag = false;
+    //[SerializeField] private bool waitFlag = false;
 
     // 攻撃準備ができているか
     [SerializeField] protected bool attackReady = true;
@@ -90,9 +90,9 @@ public abstract class Hunter_AI : MonoBehaviour
     private float _AvoidRatio;
 
     // 死亡状態に
-    private bool deathAnimNow = false;
+    //private bool deathAnimNow = false;
 
-    private bool runAway = false;
+    //private bool runAway = false;
 
     static PlayerAttack playerAttack;
 
@@ -637,7 +637,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         if(GetAnimState().IsName("アーマチュア|Die(仮)"))return;
         DeathAnimation();
-        deathAnimNow = true;
+        //deathAnimNow = true;
         //p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.DeathSE, (int)Main.Hunter), SoundListManager.instance.GetSoundVolume());
         // アニメーションイベントにより終了後リスポーンさせる
     }
@@ -645,8 +645,8 @@ public abstract class Hunter_AI : MonoBehaviour
     public void DeathFinish()
     {
         //if(restrainCount!=0)restrainCount--;
-        deathAnimNow = false;
-        alreadyNear = false;
+        //deathAnimNow = false;
+      
         avoiding = false;
         hpManager.SetHunterLostNumber(-1);
         Respown();

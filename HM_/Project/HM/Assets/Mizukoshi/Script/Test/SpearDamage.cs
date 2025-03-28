@@ -8,7 +8,7 @@ public class SpearDamage : MonoBehaviour
     public int damege = 10;
 
     // タグの名前
-    private string _tagName = "EnemyAttack";
+    //private string _tagName = "EnemyAttack";
 
     // やりをもつゲームオブジェクトの生成
     private GameObject _gameObject;

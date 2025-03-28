@@ -23,7 +23,7 @@ public class Hunter_AI_Base_Test : MonoBehaviour
     float distance = 0;
 
     // 攻撃してきた回数
-    int attackNum = 0;
+    //int attackNum = 0;
 
     // モンスターのオブジェクト 
     private GameObject _monster;
@@ -40,13 +40,13 @@ public class Hunter_AI_Base_Test : MonoBehaviour
 
     private bool _fight = false;
 
-    private bool readyAttack = false;
+    
 
     private bool _deathAnimationNow = false;
 
     public bool deathAnimationFinish = false;
 
-    private bool restrainingFlag = false;
+   
 
     AnimatorStateInfo animationState;
 
