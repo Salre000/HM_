@@ -37,6 +37,8 @@ public class PlayerSpiderFinish : AnimeBase
 
         HunterManager hunterManager = UnityEngine.GameObject.Find("GameManager").GetComponent<HunterManager>();
 
+        CameraManager.useFlag = false;
+
         hunterManager.Respawn(targetID);
 
         hunterParentObject = targetHunter.transform.parent != null ? targetHunter.transform.parent.gameObject : null;
@@ -152,7 +154,7 @@ public class PlayerSpiderFinish : AnimeBase
         capObject.gameObject.SetActive(false);
 
         targetHunter.transform.position = Vector3.zero;
-
+        CameraManager.useFlag = true;
 
         AnimeEnd();
     }

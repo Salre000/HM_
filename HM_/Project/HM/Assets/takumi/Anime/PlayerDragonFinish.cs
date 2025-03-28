@@ -28,6 +28,7 @@ public class PlayerDragonFinish : AnimeBase
 
         HunterManager hunterManager = UnityEngine.GameObject.Find("GameManager").GetComponent<HunterManager>();
 
+        CameraManager.useFlag = false;
 
         targetHunter = HunterObjectDami.instance.HuntersObject[targetID];
 
@@ -166,6 +167,8 @@ public class PlayerDragonFinish : AnimeBase
         targetHunter.transform.position=Vector3.zero;
 
         HPManager.instance.SetMonsterUseFlag(true);
+        CameraManager.useFlag = true;
+
 
         AnimeEnd();
     }
