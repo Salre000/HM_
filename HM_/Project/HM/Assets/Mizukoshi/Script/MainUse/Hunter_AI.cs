@@ -257,7 +257,7 @@ public abstract class Hunter_AI : MonoBehaviour
         }
         else
         {
-            if (!alreadyNear) alreadyNear = true;
+            
             // UŒ‚€”õ‚ª‚Å‚«‚Ä‚¢‚é‚Ì‚È‚ç‚Î
             if (attackReady)
             {
@@ -737,6 +737,7 @@ public abstract class Hunter_AI : MonoBehaviour
         if (restrainCount != 0) return;
         status = eStatus.None;
         SetNavmesh() ;
+        avoiding=false;
         _animator.SetTrigger("FlatterFinishTrigger");
         
     }
@@ -853,6 +854,10 @@ public abstract class Hunter_AI : MonoBehaviour
 
         _animator.SetTrigger("FlatterStartTrigger");
         _animator.SetTrigger("FlatterFinishTrigger");
+
+        attackReady=true;
+        avoiding = false;
+
 
 
         await UniTask.CompletedTask;
