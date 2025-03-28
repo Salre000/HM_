@@ -132,7 +132,7 @@ public class HitEffectManager : MonoBehaviour
             Effect.GetComponent<ParticleSystem>()?.Play();
 
 
-            InvisibleObject(Effect, time);
+            InvisibleObject(Effect, time).Forget();
 
 
 
@@ -140,10 +140,6 @@ public class HitEffectManager : MonoBehaviour
         }
         if (type != CharacterType.None)
         {
-            if ((int)type != 1)
-            {
-                int ssss = 0;
-            }
             Effect = GetPoolObject(HunterEffectPool[(int)type - 1]);
 
             Effect.transform.position = pos;

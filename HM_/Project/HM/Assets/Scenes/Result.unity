@@ -247,6 +247,7 @@ MonoBehaviour:
   _timeAnimator: {fileID: 1119353539}
   _nextTimeAnimator: {fileID: 1255353659}
   _rankAnimator: {fileID: 1161136046}
+  _colorGradient: {fileID: 11400000, guid: c1d2c1ad81a04a747bc2221e06599337, type: 2}
   data:
     rank:
     - 0

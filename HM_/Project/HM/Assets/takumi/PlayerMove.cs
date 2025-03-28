@@ -111,7 +111,6 @@ public class PlayerMove : MonoBehaviour
 
         if (NowAnime == "Armature|Moves" || NowAnime == "Armature|AttackMove" || NowAnime == "Armature|AttackMoveLoops" || NowAnime == MoveAnimeName)
         {
-            int sss = 0;
         }
         else { _horizontal = 0; _vertical = 0; }
         // Debug.Log(NowAnime);
@@ -163,7 +162,6 @@ public class PlayerMove : MonoBehaviour
 
         if (NowAnime == "Armature|Moves" || NowAnime == "Armature|AttackMove" || NowAnime == "Armature|AttackMoveLoops" || NowAnime == MoveAnimeName)
         {
-            int sss = 0;
         }
         else { _horizontal = 0; _vertical = 0; }
         // Debug.Log(NowAnime);
@@ -226,7 +224,6 @@ public class PlayerMove : MonoBehaviour
 
         if (NowAnime == "Armature|Moves" || NowAnime == "Armature|AttackMove" || NowAnime == "Armature|AttackMoveLoops" || NowAnime == MoveAnimeName)
         {
-            int sss = 0;
         }
         else { _horizontal = 0; _vertical = 0; }
         // Debug.Log(NowAnime);
@@ -269,7 +266,7 @@ public class PlayerMove : MonoBehaviour
 
         this.transform.eulerAngles += new Vector3(0, (vecAngle / Mathf.Abs((int)Angle)) * Mathf.Rad2Deg, 0);
 
-        if (this.transform.eulerAngles.y >= (_angle * Mathf.Rad2Deg) - 5 && this.transform.eulerAngles.y <= (_angle * Mathf.Rad2Deg) + 5);
+        //if (this.transform.eulerAngles.y >= (_angle * Mathf.Rad2Deg) - 5 && this.transform.eulerAngles.y <= (_angle * Mathf.Rad2Deg) + 5);
 
         await UniTask.DelayFrame(1);
     }

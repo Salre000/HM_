@@ -9,9 +9,6 @@ using UnityEngine;
 
 using static InputManager;
 
-#if UNITY_EDITOR
-[CustomEditor(typeof(PlayerAttack))]
-#endif
 public abstract class PlayerAttack : MonoBehaviour
 {
     protected PlayerAnime _anime;
@@ -27,6 +24,7 @@ public abstract class PlayerAttack : MonoBehaviour
             case actionMode.normal:
                 return SoundListManager.instance.GetAudioClip((int)Dragon.DragonAttackHit, (int)Main.Monster);
 
+            case actionMode.finish:
 
             case actionMode.skill:
 
@@ -50,7 +48,7 @@ public abstract class PlayerAttack : MonoBehaviour
     //攻撃の判定を生成する予備動作のフラグ（ハンターの攻撃予測に使用）
     [SerializeField] bool predictionAttackFlag = false;
 
-    public void SetPredictionAttackFlag() { predictionAttackFlag = true; ResetPredictionAttackFlag(); }
+    public void SetPredictionAttackFlag() { predictionAttackFlag = true; ResetPredictionAttackFlag().Forget(); }
 
     private async UniTask ResetPredictionAttackFlag()
     {
