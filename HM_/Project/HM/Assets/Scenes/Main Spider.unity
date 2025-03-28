@@ -5083,6 +5083,10 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 914963846}
+    - target: {fileID: 6801594655605112236, guid: 7afa8793cc482854c9826ecae80ef398, type: 3}
+      propertyPath: tagObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 51ef161ce5aa1684e86e1d485aeeb784, type: 2}
     - target: {fileID: 6801594655605112239, guid: 7afa8793cc482854c9826ecae80ef398, type: 3}
       propertyPath: m_Size.x
       value: 5.685504
