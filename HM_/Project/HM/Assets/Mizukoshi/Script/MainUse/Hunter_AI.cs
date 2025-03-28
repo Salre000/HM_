@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.Triggers;
+using SceneSound;
 using UnityEngine;
 using UnityEngine.AI;
 /// <summary>
@@ -157,6 +158,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         Initialize();
         SetOffSpeed();
+        //p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.DeathSE, (int)Main.Hunter), SoundListManager.instance.GetSoundVolume());
 
     }
 
@@ -625,7 +627,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         // アニメーションを流す
         _animator.SetTrigger("AvoidTrigger");
-
+        p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.AvoidSE, (int)Main.Hunter), SoundListManager.instance.GetSoundVolume());
         avoiding = true;
         SetOffSpeed();
     }
@@ -636,6 +638,7 @@ public abstract class Hunter_AI : MonoBehaviour
     public void Back()
     {
         SetDestination(GetBackPosition());
+
     }
 
     public void Death()
@@ -643,6 +646,7 @@ public abstract class Hunter_AI : MonoBehaviour
         if(GetAnimState().IsName("アーマチュア|Die(仮)"))return;
         DeathAnimation();
         deathAnimNow = true;
+        p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.DeathSE, (int)Main.Hunter), SoundListManager.instance.GetSoundVolume());
         // アニメーションイベントにより終了後リスポーンさせる
     }
 
