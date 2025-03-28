@@ -39646,7 +39646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4606462654910583583, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
       propertyPath: m_AutoRepath
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4606462654910583583, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
       propertyPath: m_StoppingDistance
@@ -39654,7 +39654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4606462654910583583, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
       propertyPath: m_AutoTraverseOffMeshLink
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4712226909592992748, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -105,16 +105,16 @@ public abstract class Hunter_AI : MonoBehaviour
         //SDebug.Log(restrainCount + "DDD");
         if (!_agent.isOnNavMesh)
         {
-            Debug.Log("計算未完了QQQB");
+            //Debug.Log("計算未完了QQQB");
         }
         else
         {
-            Debug.Log("計算完了!QQQB");
+            //Debug.Log("計算完了!QQQB");
         }
 
         if (!_agent.hasPath)
         {
-            Debug.Log("検索中QQQA");
+            //Debug.Log("検索中QQQA");
             if (_agent.enabled == false) return;
             ////if (float.IsInfinity(_agent.destination.magnitude)) return;
 
@@ -123,7 +123,7 @@ public abstract class Hunter_AI : MonoBehaviour
         }
         else
         {
-            Debug.Log("検索完了!QQQA");
+            //Debug.Log("検索完了!QQQA");
         }
 
     }
@@ -184,30 +184,18 @@ public abstract class Hunter_AI : MonoBehaviour
 
         DebugDistance();
 
+
         if (startWait)
         {
-            elapsedTime += Time.deltaTime;
-            if (elapsedTime > waitTime)
-            {
-                startWait = false;
-                SetSpeed();
-                elapsedTime = 0;
-            }
+            // スタート待機処理
+            StartWait();
             return;
         }
 
         if (deathWaitNow)
         {
-            _agent.speed=0.0f;
-            elapsedTime += Time.deltaTime;
-            if (elapsedTime > deathWaitTime)
-            {
-                deathWaitNow = false;
-                SetNavmesh();
-                elapsedTime = 0;
-                int num = this.GetComponent<Hunter_ID>().GetHunterID();
-                //manager.Respawn(num);
-            }
+            // 死亡待機処理
+            DeathWait();
             return;
         }
 
@@ -219,6 +207,20 @@ public abstract class Hunter_AI : MonoBehaviour
         // 拘束状態なら停止
         if (CheckRest()) return;
 
+        // ナビメッシュの対象外にいるとき、位置を調整する
+        if (!_agent.enabled == false)
+        {
+            if (IsOnNavMesh())
+            {
+                Vector3 newPosition=GetNearestNavmeshPosition();
+                if (newPosition - this.transform.position != Vector3.zero) 
+                {
+                    Debug.Log("過去の座標" + this.transform.position + "→現在の座標" + newPosition);
+                }
+                this.transform.position = newPosition;
+            }
+        }
+
         // 近づきすぎなら逃げる
         if (CheckKeepDistance(detectionRadius, this.gameObject))
         {
@@ -226,14 +228,6 @@ public abstract class Hunter_AI : MonoBehaviour
             if(!_agent.enabled)return;
             FleeFromPlayer();
             
-        }
-
-        if (CheckKeepDistance(4.0f, this.gameObject))
-        {
-            if (alreadyNear)
-            {
-                if (!_agent.enabled)SetSpeed();
-            }
         }
 
         // ハンターの攻撃がとんできているかどうかを確認
@@ -307,7 +301,7 @@ public abstract class Hunter_AI : MonoBehaviour
     {
         if (!CheckNavmeshEnable()) return;
         _agent.speed=0.5f;
-       ////if (float.IsInfinity(_agent.destination.magnitude)) return;
+        //if (float.IsInfinity(_agent.destination.magnitude)) return;
         _agent.speed=0.5f;
         _agent.destination = pos;
     }
@@ -599,12 +593,11 @@ public abstract class Hunter_AI : MonoBehaviour
         {
             AttackAnimation();
             attackReady = false;
-            //Debug.Log(this.gameObject.name + "SSS" + attackReady);
-
         }
 
     }
 
+    // 攻撃アニメーション終了後に呼ばれる関数
     public void AttackEnd()
     {
        SetSpeed();
@@ -638,7 +631,6 @@ public abstract class Hunter_AI : MonoBehaviour
     public void Back()
     {
         SetDestination(GetBackPosition());
-
     }
 
     public void Death()
@@ -646,7 +638,7 @@ public abstract class Hunter_AI : MonoBehaviour
         if(GetAnimState().IsName("アーマチュア|Die(仮)"))return;
         DeathAnimation();
         deathAnimNow = true;
-        p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.DeathSE, (int)Main.Hunter), SoundListManager.instance.GetSoundVolume());
+        //p_audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)HunterSE.DeathSE, (int)Main.Hunter), SoundListManager.instance.GetSoundVolume());
         // アニメーションイベントにより終了後リスポーンさせる
     }
 
@@ -865,5 +857,45 @@ public abstract class Hunter_AI : MonoBehaviour
 
         await UniTask.CompletedTask;
     }
+    void StartWait()
+    {
+        elapsedTime += Time.deltaTime;
+        if (elapsedTime > waitTime)
+        {
+            startWait = false;
+            SetSpeed();
+            elapsedTime = 0;
+        }
+    }
 
+    void DeathWait()
+    {
+        _agent.speed = 0.0f;
+        elapsedTime += Time.deltaTime;
+        if (elapsedTime > deathWaitTime)
+        {
+            deathWaitNow = false;
+            SetNavmesh();
+            elapsedTime = 0;
+            int num = this.GetComponent<Hunter_ID>().GetHunterID();
+            //manager.Respawn(num);
+        }
+    }
+
+    Vector3 GetNearestNavmeshPosition()
+    {
+        NavMeshHit hit;
+        if(NavMesh.SamplePosition(this.transform.position,out hit, 10f, NavMesh.AllAreas))
+        {
+            return hit.position;
+        }
+       
+        return this.transform.position;
+    }
+    // キャラクターがナビメッシュ上にいるかどうかを判定
+    bool IsOnNavMesh()
+    {
+        NavMeshHit hit;
+        return NavMesh.SamplePosition(transform.position, out hit, 0.1f, NavMesh.AllAreas);
+    }
 }
