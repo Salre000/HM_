@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,7 +34,7 @@ public class BackSteppeAnime : AnimeBase
 
         JumpAngle = Mathf.Atan2(_horizontal, _vertical) + cameraAngle;
 
-        ResetFlag();
+        ResetFlag().Forget();
 
     }
 

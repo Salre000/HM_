@@ -10,7 +10,6 @@ public class AnimeAttackRoar : AnimeBase
     public AnimeAttackRoar(GameObject Object, AudioSource source, Animator animator, System.Action<bool> animeFlagReset) : base(Object, source, animator, animeFlagReset)
     {
         AddAnimeName("Armature|AttackRoar");
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 
 
     }
@@ -21,13 +20,8 @@ public class AnimeAttackRoar : AnimeBase
     }
 
 
-    GameObject Roar;
     RadialBlur radialBlur;
-    Shader shader;
-    GameObject mainCamera;
-    void SetShader(Shader shader) { this.shader = shader; }
     public void SetRadialBlur(RadialBlur radial) { radialBlur = radial; }
-    int FrameCount = 0;
     public override void Action()
     {
         AnimeUPDate();
@@ -35,9 +29,8 @@ public class AnimeAttackRoar : AnimeBase
     public override void AnimeEvent()
     {
         radialBlur.enabled = true;
-        //audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.Monster, (int)Dragon.DragonRoar));
 
-        AnimeRoarEnd();
+        AnimeRoarEnd().Forget();
         _AnimeFlagReset(false);
 
     }

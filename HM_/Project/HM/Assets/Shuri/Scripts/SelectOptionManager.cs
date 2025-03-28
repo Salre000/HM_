@@ -96,7 +96,7 @@ public class SelectOptionManager : MonoBehaviour
         SoundListManager.instance.SetSoundVolume(optionDataSystem.volumeSE, optionDataSystem.volumeBGM);
     }
 
-    async void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.JoystickButton11)) UISwitch();
         if (_uiPanel.activeSelf && Input.GetKeyDown(KeyCode.JoystickButton10)) UISwitch();

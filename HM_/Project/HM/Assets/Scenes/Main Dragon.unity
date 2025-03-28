@@ -4075,10 +4075,6 @@ PrefabInstance:
       propertyPath: rockPool
       value: 
       objectReference: {fileID: 69537806}
-    - target: {fileID: 3115370620048113512, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
-      propertyPath: m_Mass
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 3115370620048113513, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
       propertyPath: image
       value: 
@@ -4235,13 +4231,7 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.8874356
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3115370620048113512, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
-    - {fileID: 3115370620048113509, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
-    - {fileID: 8281536527324762479, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
-    - {fileID: 3360930196117867584, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
-    - {fileID: 3115370620048113510, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
-    - {fileID: 3115370620048113511, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4f15451faff7b2498f3faeb3d820980, type: 3}
 --- !u!1 &299911649 stripped
 GameObject:
@@ -22390,6 +22380,10 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0ce92f274015ce744987f8d054f0b964, type: 2}
     m_RemovedComponents:
     - {fileID: 812456846067294337, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
+    - {fileID: 5688648980988415283, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
+    - {fileID: 1981207252745752624, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
+    - {fileID: 4365134717915424119, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
+    - {fileID: 7518394799798071951, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
 --- !u!1 &1196990156 stripped
 GameObject:
@@ -29807,7 +29801,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1619954213}
   - component: {fileID: 1619954214}
-  - component: {fileID: 1619954215}
   m_Layer: 0
   m_Name: Dragon
   m_TagString: Untagged
@@ -29847,18 +29840,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1619954215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619954211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d2de671d880a7041b39cfa171e6cd19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1621737354
 GameObject:
   m_ObjectHideFlags: 0
@@ -39556,6 +39537,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 37db71c48560682408904849d1cfb18e, type: 2}
+    - target: {fileID: 1580820083477749231, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
+      propertyPath: m_Size.z
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1580820084962436093, guid: e1ef6e2a5ac8ada4c8743e0510970686, type: 3}
       propertyPath: m_Name
       value: HunterSpear

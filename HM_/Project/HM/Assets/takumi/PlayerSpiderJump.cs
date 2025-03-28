@@ -29,13 +29,9 @@ public class PlayerSpiderJump : AnimeBase
 
         Vec = new Vector3(Mathf.Sin(JumpAngle), 0, Mathf.Cos(JumpAngle));
         Vec *= PlayerStatus.Instance.speed;
-        ResetFlag();
+        ResetFlag().Forget();
         FrameCount = 0;
     }
-
-    const float MaxTime = 0.2f;
-
-    float time = 0;
     float JumpAngle = 0;
     //飛びたくない事前フレームのカウンター
     int FrameCount = 0;
@@ -58,7 +54,6 @@ public class PlayerSpiderJump : AnimeBase
 
     }
 
-    bool End = true;
     public override void AnimeEvent()
     {
         base.AnimeEvent();

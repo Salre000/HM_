@@ -20,10 +20,8 @@ public class PartTestHit : MonoBehaviour
     [SerializeField] Tag tagBox;
     [SerializeField]Animator animator;
     [SerializeField]HPManager hpManager;
-    //このスプリクトを貼り付けるオブジェクトの属性
-    [SerializeField] Part ThisPart = Part.None;
-
     [SerializeField] float Hp = 100;
+
     [Header("攻撃を受ける時に使うダメージの倍率")]
     [SerializeField] float DamageRatio = 1.0f;
 

@@ -26,12 +26,24 @@ public class ResultManager : MonoBehaviour
     [SerializeField] Animator _timeAnimator;
     [SerializeField] Animator _nextTimeAnimator;
     [SerializeField] Animator _rankAnimator;
-
+    [SerializeField] TMP_ColorGradient _colorGradient;
     struct Rank
     {
         public string rankText;
         public TMP_ColorGradient rankColor;
         public Rank(string rank, TMP_ColorGradient rankColor) { this.rankText = rank; this.rankColor = rankColor; }
+    }
+
+    private void SetRankColor(ref Rank rank, string rankName, Color topLeft, Color topRight, Color downLeft, Color downRight)
+    {
+        rank.rankText = rankName;
+
+        rank.rankColor = ScriptableObject.Instantiate( _colorGradient);
+
+        rank.rankColor.topLeft = topLeft;
+        rank.rankColor.topRight = topRight;
+        rank.rankColor.bottomLeft = downLeft;
+        rank.rankColor.bottomRight = downRight;
     }
 
     Rank rank;
@@ -100,7 +112,7 @@ public class ResultManager : MonoBehaviour
             }
         }
         // データを保存
-        Save(data,_filepath);
+        Save(data, _filepath);
 
         // データの読み込み
         data = Load<RankingData>(_filepath);
@@ -161,12 +173,12 @@ public class ResultManager : MonoBehaviour
     /// </summary>
     void RankDefinition()
     {
-        rankS = new("S", new(Color.white, RankColorS, RankColorS, RankColorS));
-        rankA = new("A", new(Color.white, RankColorA, RankColorA, Color.red));
-        rankB = new("B", new(Color.white, RankColorB, RankColorB, RankColorB));
-        rankC = new("C", new(Color.white, RankColorC, RankColorC, Color.gray));
-        rankD = new("D", new(Color.white, RankColorD, RankColorD, RankColorD));
-        rankE = new("E", new(Color.white, RankColorE, RankColorE, Color.black));
+        SetRankColor(ref rankS, "S", Color.white, RankColorS, RankColorS, RankColorS);
+        SetRankColor(ref rankA, "A", Color.white, RankColorA, RankColorA, Color.red);
+        SetRankColor(ref rankB, "B", Color.white, RankColorB, RankColorB, RankColorB);
+        SetRankColor(ref rankC, "C", Color.white, RankColorC, RankColorC, Color.gray);
+        SetRankColor(ref rankD, "D", Color.white, RankColorD, RankColorD, RankColorD);
+        SetRankColor(ref rankE, "E", Color.white, RankColorE, RankColorE, Color.black);
     }
 
     /// <summary>

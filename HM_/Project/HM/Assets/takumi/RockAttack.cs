@@ -14,9 +14,6 @@ public class RockAttack : MonoBehaviour
 
     [SerializeField] private Tag TagBox;
 
-    float TimeCount = 0;
-    // Start is called before the first frame update
-
     private void FixedUpdate()
     {
 
@@ -36,10 +33,6 @@ public class RockAttack : MonoBehaviour
             StartUpVec = 0.05f;
             
             this.gameObject.SetActive(false);
-
-
-
-
 
     }
 

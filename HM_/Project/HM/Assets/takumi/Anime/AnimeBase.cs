@@ -57,7 +57,7 @@ public class AnimeBase
     public virtual void Start()
     {
         if(startClip != null)audioSource.PlayOneShot(startClip);
-        ResetFlag();
+        ResetFlag().Forget();
     }
    
 
