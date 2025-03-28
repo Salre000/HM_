@@ -100,7 +100,7 @@ namespace SceneSound
 
     enum HunterSE
     {
-       WalkSE,
+       DisappearSE,
        PreArechSE,
        SpearSE,
        HunmerAttackSE,
@@ -108,6 +108,9 @@ namespace SceneSound
        ArechSE,
        PreSwordAttack,
        PreSpearAttack,
+       WalkSE,
+       AvoidSE,
+       DeathSE,
     }
 
     enum BGM

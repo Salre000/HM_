@@ -13,7 +13,7 @@ public class ST : MonoBehaviour
     private void Start()
     {
         //source = GetComponent<AudioSource>();
-        soundListManager.PlaySound((int)HunterSE.WalkSE, (int)Main.Hunter);
+        soundListManager.PlaySound((int)HunterSE.DisappearSE, (int)Main.Hunter);
         //SoundListManager.instance.GetAudioClip((int)HunterSE.WalkSE, (int)Main.Hunter);
         audioSource = this.gameObject.AddComponent<AudioSource>();
 
