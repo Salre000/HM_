@@ -133,12 +133,12 @@ public class PlayerDragonFinish : AnimeBase
         for (int i = 0; i < 30; i++) 
         {
             _range -= 0.02f;
-
+            if (targetHunter == null) return;
             // オブジェクトの移動
             targetHunter.transform.position -= MoveVex/30;
-            Debug.Log(targetHunter.transform.position + "GGG");
             await UniTask.DelayFrame(1);
         }
+            if (targetHunter == null) return;
         startPos = targetHunter.transform.position;
         endPos = GameObject.transform.position + new Vector3(Mathf.Sin(GameObject.transform.eulerAngles.y*Mathf.Deg2Rad)*0.1f, y/10, Mathf.Cos(GameObject.transform.eulerAngles.y * Mathf.Deg2Rad) * 0.1f);
         
@@ -147,9 +147,8 @@ public class PlayerDragonFinish : AnimeBase
 
         for (int i = 0; i < 20; i++) 
         {
+            if (targetHunter == null) return;
             targetHunter.transform.position -= MoveVex/20;
-            Debug.Log(targetHunter.transform.position + "GGG");
-
             await UniTask.DelayFrame(1);
 
 

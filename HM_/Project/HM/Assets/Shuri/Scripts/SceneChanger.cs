@@ -3,12 +3,15 @@ using SceneSound;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SceneChanger : MonoBehaviour
 {
+    public static SceneChanger instance;
+
     [SerializeField] string sceneName;
 
     enum GameScene
@@ -26,6 +29,7 @@ public class SceneChanger : MonoBehaviour
     private void Start()
     {
         _nowScene = (GameScene)SceneManager.GetActiveScene().buildIndex;
+        instance = this;
     }
 
     private void Update()
