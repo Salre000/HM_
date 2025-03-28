@@ -21907,7 +21907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe06d654beb7f04bac40d938e14e614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tag: {fileID: 11400000, guid: 51ef161ce5aa1684e86e1d485aeeb784, type: 2}
+  tagObject: {fileID: 11400000, guid: 51ef161ce5aa1684e86e1d485aeeb784, type: 2}
   Player: {fileID: 0}
 --- !u!114 &1185465942
 MonoBehaviour:
