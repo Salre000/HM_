@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: f23712c79adc910408e872b127e825cf
-timeCreated: 1522615825
+guid: 897fbb337f4c42e449e760242b3bac5b
+timeCreated: 1520575773
 licenseType: Store
-DefaultImporter:
+ShaderImporter:
   externalObjects: {}
+  defaultTextures: []
   userData: 
   assetBundleName: 
   assetBundleVariant: 
