@@ -66,7 +66,7 @@ public class HitEffectManager : MonoBehaviour
 
         }
     }
-    [SerializeField] const int EffectTime = 2;
+    const int EffectTime = 2;
 
     //一定時間後にエフェクトが消えるようにする
     private async UniTask InvisibleObject(GameObject EffectObject, int Time)
@@ -170,7 +170,7 @@ public class HitEffectManager : MonoBehaviour
         Blood.transform.position = pos;
         Blood.transform.localScale = Vector3.one/10;
         Blood.transform.LookAt(Camera.main.transform.position);
-        Blood.GetComponent<ParticleSystem>()?.Play();
+        Blood?.GetComponent<ParticleSystem>()?.Play();
 
         InvisibleObject(Blood, 1).Forget();
 

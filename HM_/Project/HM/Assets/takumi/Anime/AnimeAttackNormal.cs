@@ -1,7 +1,9 @@
+using Cysharp.Threading.Tasks;
 using MapMagic.Locks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AnimeAttackNormal : AnimeBase
@@ -16,11 +18,9 @@ public class AnimeAttackNormal : AnimeBase
     public override void Start()
     {
         _AnimeFlagReset(false);
-        ResetFlag();
+        ResetFlag().Forget();
 
     }
-    const float damages = 30;
-
     public void SetHitTest()
     {
 

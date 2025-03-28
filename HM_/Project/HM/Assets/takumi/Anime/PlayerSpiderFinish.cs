@@ -13,10 +13,6 @@ public class PlayerSpiderFinish : AnimeBase
     System.Func<GameObject> GetHunterObject;
     private GameObject capObject;
     private GameObject hunterParentObject;
-
-    float z = 1.2f;
-    float y = 2.9f;
-
     public PlayerSpiderFinish(GameObject Object, AudioSource source, Animator animator, System.Action<bool> animeFlagReset, System.Func<GameObject> setGetHunterObject,GameObject setCapObject) : base(Object, source, animator, animeFlagReset)
     {
         camera = Camera.main.gameObject;
@@ -77,7 +73,6 @@ public class PlayerSpiderFinish : AnimeBase
 
 
     }
-    bool startFlag = false;
     public override void AnimeEvent()
     {
 
@@ -110,8 +105,6 @@ public class PlayerSpiderFinish : AnimeBase
         pos.z += Mathf.Cos(GameObject.transform.eulerAngles.y * Mathf.Deg2Rad) * (_status.GetSpeed());
         GameObject.transform.position = pos;
     }
-    float _cameraPositionAngle = 0;
-    float _range = 0;
 
     void FinishAction()
     {

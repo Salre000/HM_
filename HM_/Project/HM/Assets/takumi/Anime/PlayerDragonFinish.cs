@@ -12,7 +12,6 @@ public class PlayerDragonFinish : AnimeBase
     bool finishActionFlag = false;
 
     System.Func<GameObject> GetHunterObject;
-    float z = 1.2f;
     float y = 2.9f;
 
     public PlayerDragonFinish(GameObject Object, AudioSource source, Animator animator, System.Action<bool> animeFlagReset, System.Func<GameObject> setGetHunterObject) : base(Object, source, animator, animeFlagReset)
@@ -59,7 +58,6 @@ public class PlayerDragonFinish : AnimeBase
 
 
     }
-    bool startFlag=false;
     public override void AnimeEvent()
     {
 
@@ -88,7 +86,6 @@ public class PlayerDragonFinish : AnimeBase
         pos.z += Mathf.Cos(GameObject.transform.eulerAngles.y * Mathf.Deg2Rad) * (_status.GetSpeed());
         GameObject.transform.position = pos;
     }
-    float _cameraPositionAngle = 0;
     float _range = 0;
 
     void FinishAction()

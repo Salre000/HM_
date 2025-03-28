@@ -41,6 +41,7 @@ public class AttackEffect : MonoBehaviour
     public async UniTask RoarEnd() 
     {
         await UniTask.DelayFrame(70);
+        if (RoarAttackEffect == null) return;
         RoarAttackEffect.SetActive(false);
 
     }

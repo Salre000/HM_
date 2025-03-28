@@ -13,7 +13,7 @@ public class SpiderTrap : MonoBehaviour
 
     [SerializeField] Material Material;
     [SerializeField] Gradient Gradient;
-    List<GameObject> DestroyObject = new List<GameObject>(4);
+    List<GameObject> _destroyObject = new List<GameObject>(4);
     int Number = 0;
 
     const float range = 3;
@@ -115,8 +115,8 @@ public class SpiderTrap : MonoBehaviour
 
 
         }
-        for (int i = 0; i < DestroyObject.Count; i++) Destroy(DestroyObject[i]);
-        DestroyObject.Clear();
+        for (int i = 0; i < _destroyObject.Count; i++) Destroy(_destroyObject[i]);
+        _destroyObject.Clear();
 
 
         Hunter = null;

@@ -39,7 +39,7 @@ public class SpiderTrapPool : MonoBehaviour
     {
         for(int i = 0; i < TarpPool.Length; i++) 
         {
-            if (TarpPool[i].active == true) continue;
+            if (TarpPool[i].activeSelf == true) continue;
 
             TarpPool[i].gameObject.SetActive(true);
 

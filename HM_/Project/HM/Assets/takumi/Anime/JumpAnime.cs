@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using SceneSound;
 using System;
 using System.Collections;
@@ -43,7 +44,7 @@ public class JumpAnime : AnimeBase
 
         JumpAngle = Mathf.Atan2(_horizontal, _vertical) + cameraAngle;
 
-        ResetFlag();
+        ResetFlag().Forget();
     }
 
     //飛びたくない事前フレームのカウンター

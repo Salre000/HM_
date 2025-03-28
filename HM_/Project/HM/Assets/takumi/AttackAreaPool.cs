@@ -14,7 +14,7 @@ public class AttackAreaPool : MonoBehaviour
     List<AttackArea> attackAreaList = new List<AttackArea>(MAX_NUMBER);
     
     //攻撃判定を識別するためのタグを纏めたクラス
-    [SerializeField] Tag tag;
+    [SerializeField] Tag tagObject;
     //攻撃判定を追従させるオブジェクト配列
     [Header("頭、左腕、左足、右腕、右足")]
     GameObject []GameObjects=new GameObject[5];
@@ -36,7 +36,7 @@ public class AttackAreaPool : MonoBehaviour
             objectList[i].name = "attackArea";
 
             //識別するためにオブジェクトのタグを変更
-            objectList[i].tag = tag.GetPlayerAttackTag();
+            objectList[i].tag = tagObject.GetPlayerAttackTag();
 
             //ダメージクラスを追加
             objectList[i].AddComponent<Damage>().SetDamage(0);

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using SceneSound;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,11 +28,8 @@ public class AnimeAttackLongRange : AnimeBase
     public override void Start()
     {
 
-        ResetFlag();
+        ResetFlag().Forget();
     }
-
-
-    private bool Flag = false;
     public float time = 0;
     public override void Action()
     {
@@ -50,7 +48,6 @@ public class AnimeAttackLongRange : AnimeBase
     }
     void SetRocks() 
     {
-        Flag = true;
 
         float Angle=this.GameObject.transform.eulerAngles.y*3.14f/180;
         //audioSource.PlayOneShot(SoundListManager.instance.GetAudioClip((int)Main.Monster, (int)Dragon.DragonLongAttack));
@@ -74,7 +71,7 @@ public class AnimeAttackLongRange : AnimeBase
 
             RockAttack rockAttack = Rock.GetComponent<RockAttack>();
 
-            rockAttack.ActiveChenge();
+            rockAttack.ActiveChenge().Forget();
 
             rockAttack.SetMoveVec(new Vector3( Mathf.Sin(Angle+((i*15)*3.14f/180)),0,Mathf.Cos(Angle + ((i * 15) * 3.14f / 180))));
 
