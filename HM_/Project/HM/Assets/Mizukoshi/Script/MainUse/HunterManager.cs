@@ -2,7 +2,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 public class HunterManager : MonoBehaviour
 {
-    private GameObject[] gameObjects;
+    [SerializeField]private GameObject[] gameObjects;
     private HPManager _hpManager;
     public UIManager uiManager;
     public int deathCount = 0;
@@ -18,7 +18,8 @@ public class HunterManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObjects = GameObject.FindGameObjectsWithTag("Hunter");
+        
+        
         for (int i = 0; i < gameObjects.Length; i++)
         {
             if (gameObjects[i].GetComponent<Hunter_AI>() == null) continue;

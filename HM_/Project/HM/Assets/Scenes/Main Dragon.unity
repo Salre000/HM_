@@ -26731,6 +26731,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e103a8123b3e04b97bdf9732ed02f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjects:
+  - {fileID: 4606462653494814191}
+  - {fileID: 1196990156}
+  - {fileID: 3278220773857489432}
+  - {fileID: 68792630}
   uiManager: {fileID: 1209621434}
   deathCount: 0
   preDeathNum: -1
@@ -26807,8 +26812,8 @@ MonoBehaviour:
   Hunters:
   - {fileID: 4128980297481618871, guid: de63dd2fbab322c4ca577e500d615335, type: 3}
   - {fileID: 3798673692739572396, guid: 90c99de82e22e5f40b18c0783969568a, type: 3}
-  - {fileID: 7507564557433191936, guid: d41d684d628b9b240abb9214151b73e1, type: 3}
   - {fileID: 4796201221958457002, guid: ee72092566c383f4c921d7c0689bd631, type: 3}
+  - {fileID: 7507564557433191936, guid: d41d684d628b9b240abb9214151b73e1, type: 3}
   HuntersObject:
   - {fileID: 0}
   - {fileID: 0}
@@ -39531,6 +39536,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a588204242db70c41b2bc7982ff4569a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05d6b755961f31e40a448f1be77f4f90, type: 3}
+--- !u!1 &3278220773857489432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3278220773221436957, guid: 05d6b755961f31e40a448f1be77f4f90, type: 3}
+  m_PrefabInstance: {fileID: 3278220773857489431}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4606462653494814190
 PrefabInstance:
   m_ObjectHideFlags: 0

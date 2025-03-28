@@ -4473,6 +4473,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2712594795541788897, guid: 05d6b755961f31e40a448f1be77f4f90, type: 3}
   m_PrefabInstance: {fileID: 579440712}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &579440715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3278220773221436957, guid: 05d6b755961f31e40a448f1be77f4f90, type: 3}
+  m_PrefabInstance: {fileID: 579440712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &591156102
 GameObject:
   m_ObjectHideFlags: 0
@@ -5451,7 +5456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913256928446, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2012985913334869372, guid: 07583d7aee20e494ab273cb640163b68, type: 3}
       propertyPath: _damage
@@ -9352,6 +9357,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e103a8123b3e04b97bdf9732ed02f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjects:
+  - {fileID: 75326970}
+  - {fileID: 733541897}
+  - {fileID: 579440715}
+  - {fileID: 81267638}
   uiManager: {fileID: 112135641}
   deathCount: 0
   preDeathNum: -1
