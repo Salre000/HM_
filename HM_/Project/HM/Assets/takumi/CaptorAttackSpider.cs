@@ -171,7 +171,9 @@ public class CaptorAttackSpider : AnimeBase
         {
             useFlag = true;
 
-            _NestJump();
+
+
+            DelayTask().Forget();
         }
         else
         {
@@ -191,4 +193,11 @@ public class CaptorAttackSpider : AnimeBase
 
 
     }
+
+    private async UniTask DelayTask() 
+    {
+        await UniTask.DelayFrame(5);
+        _NestJump();
+    }
+
 }

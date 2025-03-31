@@ -69,7 +69,7 @@ public class AnimeBase
     {
         TimeCount += Time.deltaTime;
 
-        if (TimeCount < 0.5f) return;
+        if (TimeCount < 0.1f) return;
 
         string NowAnime = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
@@ -96,9 +96,6 @@ public class AnimeBase
 
     virtual protected void AnimeTrue() { }
     virtual public void AnimeEvent() { }
-
-
-
     virtual protected void AnimeEnd()
     {
         TimeCount = 0;

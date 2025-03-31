@@ -80,7 +80,10 @@ public class PlayerAttackDragon :PlayerAttack
         anime[(int)actionMode.jump]=new JumpAnime(this.gameObject, source, animator,_anime.SetJumpFlag);
         anime[(int)actionMode.backJump]=new BackSteppeAnime(this.gameObject, source, animator,_anime.SetBackSteppeFlag);
         anime[(int)actionMode.finish] = new PlayerDragonFinish(this.gameObject, source, animator,_anime.SetStartFinish, GetHunter);
-        
+
+        anime[(int)actionMode.normal].AddAnimeName("Armature|AttackMove");
+        anime[(int)actionMode.normal].AddAnimeName("Armature|AttackMoveLoops");
+
         AnimeAttackRoar animeAttackRoar =(AnimeAttackRoar)anime[(int)actionMode.special];
         animeAttackRoar.SetRadialBlur(radialBlur);
     }
