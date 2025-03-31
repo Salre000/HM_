@@ -83,10 +83,7 @@ public class HunterManager : MonoBehaviour
 
     
 
-    float AmountDamaged(int hunterNum)
-    {
-        return gameObjects[hunterNum].GetComponent<HunterHPManager>().collider.gameObject.GetComponent<Damage>().GetDamage();
-    }
+   
 
     /// <summary>
     /// ハンターがモンスターを見つけたときに呼ぶ関数
