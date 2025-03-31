@@ -12,9 +12,4 @@ public class DemoPlayerNotAnimeEvent : MonoBehaviour
         GetComponent<Animator>().fireEvents = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
