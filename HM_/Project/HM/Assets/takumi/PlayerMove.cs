@@ -38,7 +38,7 @@ public class PlayerMove : MonoBehaviour
 
     private Camera _camera;
 
-    [SerializeField] float Speed = 1;
+    [SerializeField] float Speed = 0.7f;
 
     private void SetSpeed(float speed) 
     {
